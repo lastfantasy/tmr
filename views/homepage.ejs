@@ -9,8 +9,14 @@
                    </p>
                    <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
                        
-                       <div class="input-group input-group-lg col-lg-4 col-sm-12">
-                           <a href="#features"><input class="btn btn-large" type="button" name="submit" value="Tell Me How" id="submit"/></a>
+                       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 215px;">
+                        <ul class="nav navbar-nav navbar-right" style="margin-left: 0px;">
+                            <% if(!session.authenticated) { %>
+                           <a class="nav-button" data-src="features" href="#features">
+                                <button class="btn btn-large" type="button">Tell Me How</button>
+                            </a>
+                           <% } %>
+                        </ul>
                        </div>
                    </form>
                </div>
@@ -23,263 +29,35 @@
        <!-- Features -->
           <section id="features" class="features generic">
               <div class="container text-center">
-                  <div class="row">
-                      <h2 class="special_font ">Every tool a teacher needs</h2>
-                      <article class="item col-sm-3 ">
-                          <a class="icon" href="#"><img class="icon-monitor" src="img/features-01.png" alt="//"></a>
-                          <h2><a href="#">online classes</a></h2>
-                          <p>Alias, porro, consequatur quas nostrum sed iure quos quia excepturi rerum libero odit maxime explicabo ducimus?</p>
+                    <h2 class="special_font ">Every tool a teacher needs</h2>
+                  <div class="row" style="padding-left: 160px;">
+                      
+                      <article class="item col-sm-3 " style="margin-top: 50px; margin-right: 15px; margin-left: 15px;">
+                          <a class="icon" href="#"><img class="icon-monitor" src="img/features-02.png" alt="//"></a>
+                          <h2><a href="#">Sign up</a></h2>
+                          <p>First, <a class="external" href="/register">sign up</a> with your new username and password.</p>
                       </article>
-                      <article class="item col-sm-3 ">
-                          <a class="icon" href="#"><img class="icon-users" src="img/features-02.png" alt="//"></a>
-                          <h2><a href="#">online classes</a></h2>
-                          <p> rerum amet deserunt obcaecati ea accusamus veniam facere nisi et eaque praesentium nemo rem!</p>
+                      <article class="item col-sm-3 " style="margin-top: 50px; margin-right: 15px; margin-left: 15px;">
+                          <a class="icon" href="#"><img class="icon-users" src="img/features-03.png" alt="//"></a>
+                          <h2><a href="#">apply grade</a></h2>
+                          <p>Second, you can choose which grade you want to apply for. Then edit your profile and upload your documents.</p>
                       </article>
-                      <article class="item col-sm-3 ">
-                          <a class="icon" href="#"><img class="icon-book-open" src="img/features-03.png" alt="//"></a>
-                          <h2><a href="#">online classes</a></h2>
-                          <p>luptatibus officia recusandae veritatis! Earum, architecto aliquam impedit laudantium provident rem accusantium odio at?</p>
+                      <article class="item col-sm-3 " style="margin-top: 50px; margin-right: 15px; margin-left: 15px;">
+                          <a class="icon" href="#"><img class="icon-book-open" src="img/features-04.png" alt="//"></a>
+                          <h2><a href="#">Get Testing</a></h2>
+                          <p>Last, wait for your testing schedule and get the test. Then you check your test result.</p>
                       </article>
-                      <article class="item col-sm-3 ">
-                          <a class="icon" href="#"><img class="icon-graduation-cap" src="img/features-04.png" alt="//"></a>
-                          <h2><a href="#">online classes</a></h2>
-                          <p>laudantium quisquam inventore? Facilis, ipsum, velit amet sed nulla harum aut veniam iste.</p>
-                      </article>
+                      
                   </div>
               </div>
           </section>
           <!-- end Features -->
           <!--svg-->
-    <svg preserveAspectRatio="none" viewBox="0 0 100 100" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" id="curveUpColor">
+    <svg preserveAspectRatio="none" viewBox="0 0 100 100" height="180" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" id="curveUpColor">
         <path d="M0 100 C 20 0 50 0 100 100 Z"/>
     </svg>
     <!--svg-->
-    <!-- Video -->
-    <section id="video" class="video generic">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-sm-12 col-lg-6 col-lg-offset-3">
-                    <h2 class="special_font">All our video training</h2>
-                    <p>Dynado is a unique product which not only provides all the tools you need to run your business, but integrates them in unprecedented ways.</p>
-
-                    <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
-                        <ol class="carousel-indicators">
-                            <li class="" data-slide-to="0" data-target="#carousel-example-generic"></li>
-                            <li data-slide-to="1" data-target="#carousel-example-generic" class=""></li>
-                            <li data-slide-to="2" data-target="#carousel-example-generic" class="active"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item">
-                                <div class="vendor">
-                                    <iframe src="http://player.vimeo.com/video/67741947?title=0&amp;byline=0&amp;portrait=0" width="570" height="350"></iframe>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="vendor">
-                                    <iframe src="http://player.vimeo.com/video/86152286?title=0&amp;byline=0&amp;portrait=0" width="570" height="350" ></iframe>
-                                </div>
-                            </div>
-                            <div class="item active">
-                                <div class="vendor">
-                                    <iframe src="http://player.vimeo.com/video/81795476?title=0&amp;byline=0&amp;portrait=0" width="570" height="350" ></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end Video -->
-    <!-- Teachers -->
-    <section id="teachers" class="teachers generic">
-        <div class="container text-center">
-            <div class="row">
-                <h2 class="special_font ">Meet the Teachers</h2>
-                <p class="sub-title ">Morbi dignissim non dolor non placerat. Ut sit amet lectus at neque quis vel imperdiet ullamcorper auctor.</p>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="zoom">
-                            <!-- Button to trigger modal -->
-                            <a href="#" class="box" data-toggle="modal" data-target="#teacher01">
-                                <i class="icon-plus-circle"></i>
-                            </a>
-                            <!-- Button to trigger modal -->
-                        </div>
-                        <img src="img/teachers/teacher-01.jpg" alt="test">
-                    </div>
-                    <div class="info">
-                        <h2><a href="#" data-toggle="modal" data-target="#teacher01">Peter Smithson</a></h2>
-                        <p>Lorem ipsum dolor sit amet, modi eveniet fugiat quis minus.</p>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="zoom">
-                            <!-- Button to trigger modal -->
-                            <a href="#" class="box" data-toggle="modal" data-target="#teacher02">
-                                <i class="icon-plus-circle"></i>
-                            </a>
-                            <!-- Button to trigger modal -->
-                        </div>
-                        <img src="img/teachers/teacher-02.jpg" alt="test">
-                    </div>
-                    <div class="info">
-                        <h2><a href="#" data-toggle="modal" data-target="#teacher02">Barbara Brown</a></h2>
-                        <p>Lorem ipsum dolor sit amet, modi eveniet fugiat quis minus.</p>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="zoom">
-                            <!-- Button to trigger modal -->
-                            <a href="#" class="box" data-toggle="modal" data-target="#teacher03">
-                                <i class="icon-plus-circle"></i>
-                            </a>
-                            <!-- Button to trigger modal -->
-                        </div>
-                        <img src="img/teachers/teacher-03.jpg" alt="test">
-                    </div>
-                    <div class="info">
-                        <h2><a href="#" data-toggle="modal" data-target="#teacher03">Edward Moore</a></h2>
-                        <p>Lorem ipsum dolor sit amet, modi eveniet fugiat quis minus.</p>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="zoom">
-                            <!-- Button to trigger modal -->
-                            <a href="#" class="box" data-toggle="modal" data-target="#teacher04">
-                                <i class="icon-plus-circle"></i>
-                            </a>
-                            <!-- Button to trigger modal -->
-                        </div>
-                        <img src="img/teachers/teacher-04.jpg" alt="test">
-                    </div>
-                    <div class="info">
-                        <h2><a href="#" data-toggle="modal" data-target="#teacher04">Janna Jackson</a></h2>
-                        <p>Lorem ipsum dolor sit amet, modi eveniet fugiat quis minus.</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-    <!-- end Teachers -->
-
-
-    <!-- Prices -->
-    <section id="prices" class="prices generic">
-        <div class="container text-center">
-            <div class="row">
-                <h2 class="special_font">Select your Price</h2>
-                <p class="sub-title">Morbi dignissim non dolor non placerat.
-                   Ut sit amet lectus at neque quis vel imperdiet ullamcorper auctor.
-                </p>
-
-                <article class="col-lg-3 col-sm-6">
-                    <div class="item">
-                        <div class="header">
-                            <h2>basic course</h2>
-                        </div>
-                        <h4 class="price"><span>$</span>19,<sup>00</sup></h4>
-                        <ul class="list-unstyled">
-                            <li>Provident accusantium </li>
-                            <li>Excepturi rerum libero </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Provident accusantium </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li class="last"><a href="#" class="btn btn-large"><i class="icon-basket"></i> Buy Now</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6">
-                    <div class="item">
-                        <div class="header">
-                            <h2>Marketing courses</h2>
-                        </div>
-                        <h4 class="price"><span>$</span>29,<sup>00</sup></h4>
-                        <ul class="list-unstyled">
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Excepturi rerum libero</li>
-                            <li>Provident accusantium  </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Provident accusantium </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li class="last"><a href="#" class="btn btn-large"><i class="icon-basket"></i> Buy Now</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="header">
-                            <h2>mathematic course</h2>
-                        </div>
-                        <h4 class="price"><span>$</span>39,<sup>00</sup></h4>
-                        <ul class="list-unstyled">
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Provident accusantium </li>
-                            <li>Excepturi rerum libero </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Excepturi rerum libero </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Provident accusantium </li>
-                            <li class="last"><a href="#" class="btn btn-large"><i class="icon-basket"></i> Buy Now</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="col-lg-3 col-sm-6 ">
-                    <div class="item">
-                        <div class="header">
-                            <h2>chemical course</h2>
-                        </div>
-                        <h4 class="price"><span>$</span>69,<sup>00</sup></h4>
-                        <ul class="list-unstyled">
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li>Lorem ipsum dolor sit </li>
-                            <li class="last"><a href="#" class="btn btn-large"><i class="icon-basket"></i> Buy Now</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-    <!-- end Prices -->
-
-
-    <!-- Twitter -->
-    <section id="twitter" class="twitter generic">
-        <figure></figure>
-            <div class="container text-center">
-            <div class="row">
-                <h2 class="special_font ">Follow us on Twitter</h2>
-                <i class="icon-twitter-1"></i>
-                <article class="item col-sm-12 ">
-                    <h3 class="username" ></h3>
-                    <p class="tweet twitterfeed"></p>
-                </article>
-            </div>
-        </div>
-    </section>
-    <!-- end Twitter -->
-
-
+    
     <!-- Information -->
     <section id="information" class="information generic">
         <div class="container text-center">
