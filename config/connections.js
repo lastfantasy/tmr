@@ -28,9 +28,9 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  localDiskDb: {
-    adapter: 'sails-disk'
-  },
+  // localDiskDb: {
+  //   adapter: 'sails-disk'
+  // },
 
   /***************************************************************************
   *                                                                          *
@@ -42,10 +42,13 @@ module.exports.connections = {
   ***************************************************************************/
   someMysqlServer: {
     adapter: 'sails-mysql',
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'temanis_baru'
+    module: 'sails-mysql',
+    url: 'mysql2://root:root@localhost:3306/temanis_baru'
+    // adapter: 'sails-mysql',
+    // host: 'localhost',
+    // user: 'root',
+    // password: 'root',
+    // database: 'temanis_baru'
   },
 
   /***************************************************************************
@@ -56,15 +59,15 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  someMongodbServer: {
-    adapter: 'sails-mongo',
-    url : 'mongodb://admin:admin@ds037155.mongolab.com:37155/temanisbaru',
-    //host: 'localhost',
-    //port: 27017,
-    // user: 'username',
-    // password: 'password',
-    //database: 'temanisbaru'
-  },
+  // someMongodbServer: {
+  //   adapter: 'sails-mongo',
+  //   url : 'mongodb://admin:admin@ds037155.mongolab.com:37155/temanisbaru',
+  //   //host: 'localhost',
+  //   //port: 27017,
+  //   // user: 'username',
+  //   // password: 'password',
+  //   //database: 'temanisbaru'
+  // },
 
   /***************************************************************************
   *                                                                          *

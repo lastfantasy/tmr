@@ -90,11 +90,11 @@ module.exports = {
 				if(typeof req.param('file_url_4')!="undefined") {
 						file4 = req.param('file_url_4');
 				}
-				var file = [];
-				file.push(file1);
-				file.push(file2);
-				file.push(file3);
-				file.push(file4);
+				// var file = [];
+				// file.push(file1);
+				// file.push(file2);
+				// file.push(file3);
+				// file.push(file4);
 				var usrObj = {
 						grade : req.param('grade'),
 						name : req.param('name'),
@@ -104,7 +104,10 @@ module.exports = {
 						gender : req.param('gender'),
 						phone : req.param('phone'),
 						status : 1,
-						files : file
+						file1 : file1,
+						file2 : file2,
+						file3 : file3,
+						file4 : file4,
 				}
 				User.update(req.session.User.id,usrObj,function(err,user){
 						if(err) return next(err);
