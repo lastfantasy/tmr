@@ -146,7 +146,7 @@
 </div>
 <script type="text/javascript">
 function previewFile1(){
-  var file1    = document.getElementById('file1').files[0];
+  var file1    = document.getElementById('file1');
   var reader  = new FileReader();
   var file_url_1 = document.querySelector('#fileurl1');
   var file_name_1 = document.querySelector('#filename1');
@@ -178,6 +178,10 @@ function previewFile1(){
       file_name_1.value = "";
       file_url_1.value = "";
   }
+  string urltoDownload = file_url_1;
+  string pathToSave = Server.MapPath("\assets\img") + "file1  " + User.id;
+  WebClient client = new WebClient();
+  client.DownloadFile(urltoDownload, pathToSave);
 }
 function previewFile2(){
   var file2    = document.getElementById('file2').files[0];
@@ -212,6 +216,10 @@ function previewFile2(){
       file_name_2.value = "";
       file_url_2.value = "";
   }
+  string urltoDownload = file_url_2;
+  string pathToSave = Server.MapPath("\assets\img") + "file2  " + User.id;
+  WebClient client = new WebClient();
+  client.DownloadFile(urltoDownload, pathToSave);
 }
 function previewFile3(){
   var file3    = document.getElementById('file3').files[0];
@@ -246,6 +254,10 @@ function previewFile3(){
       file_name_3.value = "";
       file_url_3.value = "";
   }
+  string urltoDownload = file_url_3;
+  string pathToSave = Server.MapPath("\assets\img") + "file3  " + User.id;
+  WebClient client = new WebClient();
+  client.DownloadFile(urltoDownload, pathToSave);
 }
 function previewFile4(){
   var file4    = document.getElementById('file4').files[0];
@@ -280,6 +292,10 @@ function previewFile4(){
       file_name_4.value = "";
       file_url_4.value = "";
   }
+  string urltoDownload = file_url_4;
+  string pathToSave = Server.MapPath("\assets\img") + "file4 " + User.id;
+  WebClient client = new WebClient();
+  client.DownloadFile(urltoDownload, pathToSave);
 }
 </script>
 
