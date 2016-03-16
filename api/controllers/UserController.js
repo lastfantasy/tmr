@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+ var fs = require('fs');
 module.exports = {
 		dashboard : function(req,res,next){
 			User.findOne(req.session.User.id, function(err,user){
@@ -150,7 +151,10 @@ module.exports = {
 				if(typeof req.param('file_name_4')!="undefined") {
 						file4 = req.param('file_name_4');
 				}
-				var usrObj = {
+				console.log(file1);
+				buf = new Buffer(file1.replace(/^data:image\/\w+;base64,/,""),'base64');
+				fs.writeFile('jansen.jpg',buf,function(err,data){
+					var usrObj = {
 						grade : req.param('grade'),
 						name : req.param('name'),
 						address : req.param('address'),
@@ -163,17 +167,20 @@ module.exports = {
 						file2 : file2,
 						file3 : file3,
 						file4 : file4
-				}
-				User.update(req.session.User.id,usrObj,function(err,user){
-						if(err) return next(err);
-						var info = ['Formulir anda sedang kami proses.']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 success: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
+					}
+					User.update(req.session.User.id,usrObj,function(err,user){
+							if(err) return next(err);
+							var info = ['Formulir anda sedang kami proses.']
+							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+							 // the key of usernamePasswordRequiredError
+							 req.session.flash = {
+								 success: info,
+							 }
+							 res.redirect('/user/dashboard');
+							 return;
+					});
 				});
+				
+
 		},
 };
