@@ -11,6 +11,11 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		test : function(req,res,next){
+			User.findOne(req.session.User.id, function(err, user){
+				return res.view({user:user});
+			});
+		},
 		apply : function(req,res,next){
 				if(typeof req.param('name')=="undefined" || typeof req.param('address')=="undefined" || typeof req.param('placebirth')=="undefined" || typeof req.param('datebirth')=="undefined" || typeof req.param('phone')=="undefined"){
 					var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']
@@ -39,6 +44,11 @@ module.exports = {
 				var file2 = "";
 				var file3 = "";
 				var file4 = "";
+
+				var fileurl1 = "";
+				var fileurl2 = "";
+				var fileurl3 = "";
+				var fileurl4 = "";
 				// if(typeof req.param('file_url_1')=="undefined") {
 				// 	var info = ['Anda harus mengupload akte lahir anda']
 				// 	 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
@@ -99,7 +109,7 @@ module.exports = {
 				// 		file4 = req.param('file_url_4');
 				// 		fs.write(new Buffer (file4));
 				// }
-				if(typeof req.param('file_name_1')=="undefined") {
+				if(typeof req.param('file_url_1')=="undefined") {
 					var info = ['Anda harus mengupload akte lahir anda']
 					 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 					 // the key of usernamePasswordRequiredError
@@ -109,7 +119,7 @@ module.exports = {
 					 res.redirect('/user/dashboard');
 					 return;
 				}
-				if(typeof req.param('file_name_2')=="undefined") {
+				if(typeof req.param('file_url_2')=="undefined") {
 					var info = ['Anda harus mengupload ijazah anda']
 					 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 					 // the key of usernamePasswordRequiredError
@@ -119,7 +129,7 @@ module.exports = {
 					 res.redirect('/user/dashboard');
 					 return;
 				}
-				if(typeof req.param('file_name_3')=="undefined") {
+				if(typeof req.param('file_url_3')=="undefined") {
 					var info = ['Anda harus mengupload dokumen pendukung 1 anda']
 					 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 					 // the key of usernamePasswordRequiredError
@@ -129,7 +139,7 @@ module.exports = {
 					 res.redirect('/user/dashboard');
 					 return;
 				}
-				if(typeof req.param('file_name_4')=="undefined") {
+				if(typeof req.param('file_url_4')=="undefined") {
 					var info = ['Anda harus mengupload dokumen pendukung 2 anda']
 					 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 					 // the key of usernamePasswordRequiredError
@@ -139,22 +149,32 @@ module.exports = {
 					 res.redirect('/user/dashboard');
 					 return;
 				}
-				if(typeof req.param('file_name_1')!="undefined") {
+				if(typeof req.param('file_url_1')!="undefined") {
 						file1 = req.param('file_name_1');
+						fileurl1 = req.param('file_url_1');
 				}
-				if(typeof req.param('file_name_2')!="undefined") {
+				if(typeof req.param('file_url_2')!="undefined") {
 						file2 = req.param('file_name_2');
+						fileurl2 = req.param('file_url_2');
 				}
-				if(typeof req.param('file_name_3')!="undefined") {
+				if(typeof req.param('file_url_3')!="undefined") {
 						file3 = req.param('file_name_3');
+						fileurl3 = req.param('file_url_3');
 				}
-				if(typeof req.param('file_name_4')!="undefined") {
+				if(typeof req.param('file_url_4')!="undefined") {
 						file4 = req.param('file_name_4');
+						fileurl4 = req.param('file_url_4');
 				}
-				console.log(file1);
-				buf = new Buffer(file1.replace(/^data:image\/\w+;base64,/,""),'base64');
-				fs.writeFile('jansen.jpg',buf,function(err,data){
-					var usrObj = {
+				buf = new Buffer(fileurl1.replace(/^data:image\/\w+;base64,/,""),'base64');
+				fs.writeFile('akte lahir ' + req.session.User.id + '.jpg',buf,function(err,data){});
+				buf = new Buffer(fileurl2.replace(/^data:image\/\w+;base64,/,""),'base64');
+				fs.writeFile('ijazah ' + req.session.User.id + '.jpg',buf,function(err,data){});
+				buf = new Buffer(fileurl3.replace(/^data:image\/\w+;base64,/,""),'base64');
+				fs.writeFile('dok1 ' + req.session.User.id + '.jpg',buf,function(err,data){});
+				buf = new Buffer(fileurl4.replace(/^data:image\/\w+;base64,/,""),'base64');
+				fs.writeFile('dok2 ' + req.session.User.id + '.jpg',buf,function(err,data){});
+
+				var usrObj = {
 						grade : req.param('grade'),
 						name : req.param('name'),
 						address : req.param('address'),
@@ -179,8 +199,5 @@ module.exports = {
 							 res.redirect('/user/dashboard');
 							 return;
 					});
-				});
-				
-
 		},
 };
