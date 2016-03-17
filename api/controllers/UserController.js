@@ -16,6 +16,7 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		
 		apply : function(req,res,next){
 				if(typeof req.param('name')=="undefined" || typeof req.param('address')=="undefined" || typeof req.param('placebirth')=="undefined" || typeof req.param('datebirth')=="undefined" || typeof req.param('phone')=="undefined"){
 					var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']
