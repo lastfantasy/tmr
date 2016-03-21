@@ -1,0 +1,7 @@
+- Test disempurnakan
+- Tanggal harus dibatasi
+- Dokumen pendukung dibuat optional
+- Tambah bagian (profil diri, akademis, upload), buat document flow (kayak website airasia)
+- Buat form bimbingan untuk Hardy & Sunario
+- Halaman untuk status aplikasi
+- Database untuk development SQLLite (simpan dlm bntk file)
