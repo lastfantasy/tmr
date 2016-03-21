@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center">Apply Grade</h1>
+  <h1 class="text-center">Application</h1>
   <% if(flash) { %>
   <% if(flash.err) { %>
         <div>
@@ -24,15 +24,20 @@
     </div>
   <% } %>
   <% } %>
+
 <div class="row">
   <form method="post" style="padding-left:10px; padding-right:10px" action="/user/apply" role="form">
-    <div class="col-md-4">
+    <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Choose your grade</h2>
+            <h2 class="panel-title">Fill your details about below topics</h2>
           </div>
           <div class="panel-body">
-            <div class="form-group">
+          
+          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Profile</button></a>
+          <a class="external" href="/user/test"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Grade</button></a>
+          <button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Documents</button>
+            <!-- <div class="form-group">
               <select class="btn btn-default" name="grade" style="width:100%">
                         <option value="0">SMP 1</p>
                         <option value="1">SMP 2</p>
@@ -41,48 +46,69 @@
                         <option value="4">SMA 2</p>
                         <option value="5">SMA 3</p>
               </select>
-            </div>
+            </div> -->
           </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Complete your profile below</h2>
+            <h2 class="panel-title">Profiles - Complete your profile below</h2>
           </div>
           <div class="panel-body">
 
                 <div class="form-group">
-                <input type="text" id="register_number" name="register_number" class="form-control" value="<%=user.id%>" disabled="">
+                <label>Registration No.</label><input type="text" id="register_number" name="register_number" class="form-control" value="<%=user.id%>" disabled="">
                 </div>
+
                 <div class="form-group">
-                <input type="text" id="name" name="name" required="required" class="form-control" placeholder="Name">
+                <label>Full Name</label><input type="text" id="name" name="name" required="required" class="form-control" placeholder="">
                 </div>
+
                 <div class="form-group">
-                <input type="text" id="address" name="address" required="required" class="form-control" placeholder="Address">
+                <label>Address</label><input type="text" id="address" name="address" required="required" class="form-control" placeholder="">
                 </div>
+
                 <div class="form-group">
-                <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" placeholder="Place of Birth">
+                <label>Place of Birth</label><input type="text" id="placebirth" name="placebirth" required="required" class="form-control" placeholder="">
                 </div>
+
                 <div class="form-group">
-                <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="Date of Birth">
+                <label>Date of Birth</label><input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="">
                 </div>
-                <div class="form-group">
-                  <select class="btn btn-default" name="gender" style="width:100%">
+
+                <div class="form-group" style="margin-top: 0px;">
+                <label>Gender</label>
+                  <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
                             <option value="m">Male</p>
                             <option value="f">Female</p>
                   </select>
                 </div>
+
                 <div class="form-group">
-                <input type="email" id="email" value="<%=user.email%>" class="form-control" disabled="">
+                <label>Email</label><input type="email" id="email" value="<%=user.email%>" class="form-control" disabled="">
                 </div>
+
                 <div class="form-group">
-                <input type="text" id="phonenumber" name="phone" required="required" class="form-control" placeholder="Phone Number">
+                <label>Phone Number</label><input type="text" id="phonenumber" name="phone" required="required" class="form-control" placeholder="">
                 </div>
+
+                 <div class="form-group">
+                <label>Handphone Number</label><input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                <label>Previous School</label><input type="text" id="previousschool" name="previousschool" required="required" class="form-control" placeholder="">
+                </div>
+
+                <div class="form-group">
+                <label>Previous School Grade</label><input type="text" id="previousschoolgrade" name="previousschoolgrade" required="required" class="form-control" placeholder="">
+                </div>
+
           </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <div class="panel panel-primary">
           <div class="panel-heading">
             <h2 class="panel-title">Upload your documents below</h2>
@@ -128,7 +154,7 @@
                 </div>
           </div>
         </div>
-    </div>
+    </div> -->
   </form>
 </div>
 <hr style="border:1px solid black;">
