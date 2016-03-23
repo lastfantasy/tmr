@@ -11,6 +11,11 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		documents : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
+			});
+		},
 		test : function(req,res,next){
 			User.findOne(req.session.User.id, function(err, user){
 				return res.view({user:user});
