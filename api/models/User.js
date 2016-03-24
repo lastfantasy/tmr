@@ -25,6 +25,16 @@ module.exports = {
       datebirth : 'string',
       phone : 'string',
       status : 'integer',
+      handphone : 'string',
+      fathername : 'string',
+      fatheroccupation : 'string',
+      fathersalary : 'integer',
+      fatherphone : 'string',
+      mothername : 'string',
+      motheroccupation : 'string',
+      mothersalary : 'integer',
+      motherphone : 'string',
+      numbersibligs : 'integer',
       admin : {
         type : 'boolean',
         defaultsTo : false

@@ -11,7 +11,7 @@ module.exports = {
 		return res.view({
 			title : 'Temanis Baru | Register',
 			image : '',
-			description : 'Sebuah portal untuk penerimaan siswa baru',
+			description : 'Sebuah portal untuk penerimaan mahasiswa baru',
 			url : 'http://www.temanis.com',
 		});
 	},
@@ -19,7 +19,7 @@ module.exports = {
 		return res.view({
 			title : 'Temanis Baru | Login',
 			image : '',
-			description : 'Sebuah portal untuk penerimaan siswa baru',
+			description : 'Sebuah portal untuk penerimaan mahasiswa baru',
 			url : 'http://www.temanis.com',
 		});
 	},

@@ -51,6 +51,12 @@ module.exports.connections = {
     // database: 'temanis_baru'
   },
 
+  sqliteServer: {
+    adapter: 'waterline-sqlite3',
+    filename: 'D:\tmr\TemanisBaru.sqlite',
+    debug: false
+  }
+
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
@@ -78,13 +84,13 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  somePostgresqlServer: {
-    adapter: 'sails-postgresql',
-    host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_POSTGRES_USER',
-    password: 'YOUR_POSTGRES_PASSWORD',
-    database: 'YOUR_POSTGRES_DB'
-  }
+  // somePostgresqlServer: {
+  //   adapter: 'sails-postgresql',
+  //   host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
+  //   user: 'YOUR_POSTGRES_USER',
+  //   password: 'YOUR_POSTGRES_PASSWORD',
+  //   database: 'YOUR_POSTGRES_DB'
+  // }
 
 
   /***************************************************************************
