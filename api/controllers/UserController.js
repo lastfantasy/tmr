@@ -51,6 +51,45 @@ module.exports = {
 							 return;
 						}
 				}
+				var handphone = req.param('handphone');
+				for(var i=0;i<handphone.length;i++){
+						if(handphone[i]<'0' || handphone[i]>'9'){
+							var info = ['Nomor Handphone harus dalam bentuk angka (0-9)']
+							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+							 // the key of usernamePasswordRequiredError
+							 req.session.flash = {
+								 err: info,
+							 }
+							 res.redirect('/user/dashboard');
+							 return;
+						}
+				}
+				var phone = req.param('phone');
+				for(var i=0;i<phone.length;i++){
+						if(phone[i]<'0' || phone[i]>'9'){
+							var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
+							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+							 // the key of usernamePasswordRequiredError
+							 req.session.flash = {
+								 err: info,
+							 }
+							 res.redirect('/user/dashboard');
+							 return;
+						}
+				}
+				var phone = req.param('phone');
+				for(var i=0;i<phone.length;i++){
+						if(phone[i]<'0' || phone[i]>'9'){
+							var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
+							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+							 // the key of usernamePasswordRequiredError
+							 req.session.flash = {
+								 err: info,
+							 }
+							 res.redirect('/user/dashboard');
+							 return;
+						}
+				}
 				var file1 = "";
 				var file2 = "";
 				var file3 = "";
@@ -193,6 +232,16 @@ module.exports = {
 						datebirth : req.param('datebirth'),
 						gender : req.param('gender'),
 						phone : req.param('phone'),
+						handphone : req.param('handphone'),
+						fathername : req.param('fathername'),
+						fatheroccupation : req.param('fatheroccupation'),
+						fathersalary : req.param('fathersalary'),
+						fatherphone : req.param('fatherphone'),
+						mothername : req.param('mothername'),
+						motheroccupation : req.param('motheroccupation'),
+						mothersalary : req.param('mothersalary'),
+						motherphone : req.param('motherphone'),
+						numbersiblings : req.param('numbersiblings'),
 						status : 1,
 						file1 : file1,
 						file2 : file2,
