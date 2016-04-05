@@ -6,6 +6,26 @@
  */
  var fs = require('fs');
 module.exports = {
+		openclose : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
+			});
+		},
+		verifyapplicant : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
+			});
+		},
+		aboutus : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
+			});
+		},
+		testadmin : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
+			});
+		},
 		dashboard : function(req,res,next){
 			User.findOne(req.session.User.id, function(err,user){
 				return res.view({user:user});
@@ -26,7 +46,16 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
-		
+		homesiswa : function(req,res,next){
+			User.findOne(req.session.User.id, function(err, user){
+				return res.view({user:user});
+			});
+		},
+		homeadmin : function(req,res,next){
+			User.findOne(req.session.User.id, function(err, user){
+				return res.view({user:user});
+			});
+		},
 		apply : function(req,res,next){
 				if(typeof req.param('name')=="undefined" || typeof req.param('address')=="undefined" || typeof req.param('placebirth')=="undefined" || typeof req.param('datebirth')=="undefined" || typeof req.param('phone')=="undefined"){
 					var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']

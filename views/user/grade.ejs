@@ -12,68 +12,37 @@
           <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profile</button></a>
           <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Grade</button></a>
           <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Documents</button>
-            <!-- <div class="form-group">
-              <select class="btn btn-default" name="grade" style="width:100%">
-                        <option value="0">SMP 1</p>
-                        <option value="1">SMP 2</p>
-                        <option value="2">SMP 3</p>
-                        <option value="3">SMA 1</p>
-                        <option value="4">SMA 2</p>
-                        <option value="5">SMA 3</p>
-              </select>
-            </div> -->
+          </a>
           </div>
         </div>
     </div>
     <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Documents - Upload your documents below</h2>
+            <h2 class="panel-title">Grade - Choose your grade and fill the details below</h2>
           </div>
           <div class="panel-body">
+                <div class="form-group">
 
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Akte Lahir &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file1" onchange="previewFile1()">
+                <label>Grade</label>
+                <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label>Previous School Name</label><input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
+                    <br>
+                    <button type="button" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                    <br>
+                    
                 </div>
 
-                </div>
-                <br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Ijazah &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file2" onchange="previewFile2()">
-                </div>
-
-                </div>
-                <br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 1 &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file3" onchange="previewFile3()">
-                </div>
-                </div>
-                <br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 2 &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file4" onchange="previewFile4()">
-                </div>
-                </div>
-                <input type="hidden" name="file_name_1" id="filename1">
-                <input type="hidden" name="file_url_1" id="fileurl1">
-                <input type="hidden" name="file_name_2" id="filename2">
-                <input type="hidden" name="file_url_2" id="fileurl2">
-                <input type="hidden" name="file_name_3" id="filename3">
-                <input type="hidden" name="file_url_3" id="fileurl3">
-                <input type="hidden" name="file_name_4" id="filename4">
-                <input type="hidden" name="file_url_4" id="fileurl4">
-                <div class="form-group">
-                <button type="button" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
-
-                <button type="button" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px; margin-right: 10px;">Save</button>
-                </div>                
+                                
           </div>
           
           

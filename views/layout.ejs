@@ -29,7 +29,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <figure class="content-logo">
-                            <a class="navbar-brand" href="/"><img src="img/logotemanis.png" style="margin-top: 5px;"></a>
+                            <a class="navbar-brand" href="/"><img src="/img/logotemanis.png" style="margin-top: 5px;"></a>
                         </figure>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,17 +37,20 @@
                         <ul class="nav navbar-nav navbar-right">
                             <% if(!session.authenticated) { %>
                               <li><a class="external" href="/">home</a></li>
-                              <!-- <li><a class="nav-button" data-src="features"  href="#features">tell me how</a></li>
-                              <li><a class="nav-button" data-src="classes" href="#classes">classes</a></li>
-                              <li><a class="nav-button" data-src="teachers" href="#teachers">teachers</a></li>
-                              <li><a class="nav-button" data-src="prices" href="#prices">pricing</a></li>
-                              <li><a class="nav-button" data-src="information" href="#information">About Us</a></li> -->
                               <li><a class="external" href="/register">Sign Up</a></li>
                               <li><a class="external" href="/login">Sign In</a></li>
                             <% } else { %>
+                              <% if(session.User.admin) { %>
+                                <li><a class="external" href="/user/openclose">Open/Close Reg</a></li>
+                                <li><a class="external" href="/user/verifyapplicant">Verify Applicants</a></li>
+                                <li><a class="external" href="/user/testadmin">Test</a></li>
+                                <li><a class="external" href="/user/aboutus">About Us</a></li>
+                                <li><a class="external" href="/session/signout">Sign Out</a></li>
+                                <% } else { %>
                               <li><a class="external" href="/user/dashboard">Application</a></li>
                               <li><a class="external" href="/user/test">Test</a></li>
                               <li><a class="external" href="/session/signout">Sign Out</a></li>
+                                <% } %>
                             <% } %>
                         </ul>
                     </div><!-- /.navbar-collapse -->

@@ -124,7 +124,10 @@ module.exports = {
 						}
 						req.session.authenticated = true;
 						req.session.User = user;
-						return res.redirect('/');
+						if(user.admin)
+							return res.redirect('/');
+						else
+							return res.redirect('/user/homesiswa');
 				});
 		});
 	},
