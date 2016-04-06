@@ -93,9 +93,9 @@ module.exports = {
 							 return;
 						}
 				}
-				var phone = req.param('phone');
-				for(var i=0;i<phone.length;i++){
-						if(phone[i]<'0' || phone[i]>'9'){
+				var fatherphone = req.param('phone');
+				for(var i=0;i<fatherphone.length;i++){
+						if(fatherphone[i]<'0' || fatherphone[i]>'9'){
 							var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
 							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 							 // the key of usernamePasswordRequiredError
@@ -106,9 +106,9 @@ module.exports = {
 							 return;
 						}
 				}
-				var phone = req.param('phone');
-				for(var i=0;i<phone.length;i++){
-						if(phone[i]<'0' || phone[i]>'9'){
+				var motherphone = req.param('phone');
+				for(var i=0;i<motherphone.length;i++){
+						if(motherphone[i]<'0' || motherphone[i]>'9'){
 							var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
 							 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 							 // the key of usernamePasswordRequiredError
@@ -271,6 +271,9 @@ module.exports = {
 						mothersalary : req.param('mothersalary'),
 						motherphone : req.param('motherphone'),
 						numbersiblings : req.param('numbersiblings'),
+						opendate : req.param('opendate'),
+						closedate : req.param('closedate'),
+						testdate : req.param('testdate'),
 						status : 1,
 						file1 : file1,
 						file2 : file2,
