@@ -14,7 +14,7 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
-    <form method="post">
+    <form method="post" action="/user/setopenclose">
      <div class="form-group ">
       <h3 align="center">Open Registration Date:</h3>
       <div class="input-group">
@@ -22,7 +22,7 @@
         <i class="fa fa-calendar-check-o">
         </i>
        </div>
-       <input class="form-control" id="opendate" name="opendate" placeholder="MM/DD/YYYY" type="text"/>
+       <input class="form-control" id="opendate" name="opendate" placeholder="" type="text"/>
       </div>
      </div>
      <div class="form-group ">
@@ -32,12 +32,12 @@
         <i class="fa fa-calendar-check-o">
         </i>
        </div>
-       <input class="form-control" id="closedate" name="closedate" placeholder="MM/DD/YYYY" type="text"/>
+       <input class="form-control" id="closedate" name="closedate" placeholder="" type="text"/>
       </div>
      </div>
      <div class="form-group">
       <div>
-       <button class="btn btn-large" type="button" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
+       <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
       </div>
      </div>
     </form>
@@ -72,19 +72,19 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         var date_input=$('input[name="opendate"]'); //our date input has the name "date"
        var date_input2=$('input[name="closedate"]'); //our date input has the name "date1"
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            format: 'mm/dd/yyyy',
+            // format: 'mm/dd/yyyy',
             container: container,
             todayHighlight: true,
             autoclose: true,
         })
 date_input2.datepicker({
-            format: 'mm/dd/yyyy',
+            // format: 'mm/dd/yyyy',
             container: container,
             todayHighlight: true,
             autoclose: true,

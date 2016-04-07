@@ -6,7 +6,6 @@
 */
 
 module.exports = {
-
   attributes: {
       email : 'string',
       encryptedPassword : 'string',
@@ -35,9 +34,9 @@ module.exports = {
       mothersalary : 'integer',
       motherphone : 'string',
       numbersiblings : 'integer',
-      opendate : 'date',
-      closedate : 'date',
-      testdate : 'date',
+      opendate : 'string',
+      closedate : 'string',
+      testdate : 'string',
       admin : {
         type : 'boolean',
         defaultsTo : false

@@ -5,6 +5,15 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
  var fs = require('fs');
+ var mysql = require('mysql');
+
+ var con = mysql.createConnection({
+ 	host : "localhost",
+ 	user : "root",
+ 	password : "root",
+ 	database : "temanis_baru"
+ });
+
 module.exports = {
 		openclose : function(req,res,next){
 			User.findOne(req.session.User.id, function(err,user){
