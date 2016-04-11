@@ -5,14 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
  var fs = require('fs');
- var mysql = require('mysql');
-
- var con = mysql.createConnection({
- 	host : "localhost",
- 	user : "root",
- 	password : "root",
- 	database : "temanis_baru"
- });
+ var open = 'null';
+ var close = 'null';
 
 module.exports = {
 		openclose : function(req,res,next){
@@ -65,6 +59,80 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		setopenclose: function(req, res, next){
+			var nowdate = new Date();
+			var opendate = new Date(req.param('opendate'));
+			var closedate = new Date(req.param('closedate'));
+			if (opendate < nowdate){
+				var info = ['Tanggal Pembukaan Tidak Boleh Kurang Dari Tanggal Hari Ini.']
+				req.session.flash = {
+					err : info,
+				}
+				res.redirect('/user/openclose');
+				return;
+			}
+			// if (closedate - opendate != 30){
+			// 	var info = ['Pendaftaran Dibuka Selama 30 Hari.']
+			// 	req.session.flash = {
+			// 		err : info,
+			// 	}
+			// 	res.redirect('/user/openclose');
+			// 	return;
+			// }
+			open = req.param('opendate');
+	        close = req.param('closedate');
+	        var usrObj = {
+	                opendate : req.param('opendate'),
+	                closedate : req.param('closedate'),
+	        }
+	        User.update(req.session.User.id, usrObj, function(err, user){
+	            if(err) return next(err);
+	            var info = ['Tanggal Berhasil Disetting']
+	             // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+	             // the key of usernamePasswordRequiredError
+	             req.session.flash = {
+	                 success: info,
+	             }
+	             res.redirect('/user/openclose');
+	             return;
+	         });
+	    },
+	    settestdate: function(req, res, next){
+	        if (open == 'null' || close == 'null'){
+	        	var info = ['Harap Tentukan Tanggal Pembukaan Dan Penutupan Terlebih Dahulu.']
+	        	req.session.flash = {
+	        		err : info,
+	        	}
+	        	res.redirect('/user/testadmin');
+	        	return;
+	        }
+
+	        var test = req.param('test');
+
+	        if (open > test || test < close){
+	        	var info = ['Tanggal Ujian Harus Setelah Pendaftaran Ditutup']
+	        	req.session.flash = {
+	        		err : info,
+	        	}
+	        	res.redirect('/user/testadmin');
+	        	return; 
+	        }
+
+	        var usrObj = {
+	                testdate : req.param('testdate')
+	        }
+	        User.update(req.session.User.id, usrObj, function(err, user){
+	            if(err) return next(err);
+	            var info = ['Tanggal Berhasil Disetting']
+	             // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+	             // the key of usernamePasswordRequiredError
+	             req.session.flash = {
+	                 success: info,
+	             }
+	             res.redirect('/user/testadmin');
+	             return;
+	         });
+	    },
 		apply : function(req,res,next){
 				if(typeof req.param('name')=="undefined" || typeof req.param('address')=="undefined" || typeof req.param('placebirth')=="undefined" || typeof req.param('datebirth')=="undefined" || typeof req.param('phone')=="undefined"){
 					var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']
@@ -280,9 +348,6 @@ module.exports = {
 						mothersalary : req.param('mothersalary'),
 						motherphone : req.param('motherphone'),
 						numbersiblings : req.param('numbersiblings'),
-						opendate : req.param('opendate'),
-						closedate : req.param('closedate'),
-						testdate : req.param('testdate'),
 						status : 1,
 						file1 : file1,
 						file2 : file2,

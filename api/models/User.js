@@ -34,9 +34,9 @@ module.exports = {
       mothersalary : 'integer',
       motherphone : 'string',
       numbersiblings : 'integer',
-      opendate : 'string',
-      closedate : 'string',
-      testdate : 'string',
+      opendate : 'date',
+      closedate : 'date',
+      testdate : 'date',
       admin : {
         type : 'boolean',
         defaultsTo : false

@@ -1,25 +1,101 @@
-<div class="container">
-  <h2 class="special_font" align="center">Set Test Date</h2>
-    <div class="row">
-      <form action="testadmin_submit" method="post" accept-charset="utf-8">
-        <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
-          <div class="form-group">
-          
-                      <h3 align="center">Set Test Date:</h3>
-                      <input type="text" id="datepicker" name="testdate" required="required" class="form-control" placeholder="" style="width: 30%; align: center;text-align: center; "></div>
-          
-                      <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
-          </div>
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+
+<div class="container" style="margin-bottom: 141px;">
+  <h2 class="special_font" align="center">Open/Close Registration</h2>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
         </div>
-      </form>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
     </div>
+    </div>
+  <% } %>
+  <% } %>
+  <div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+    <form method="post" action="/user/settestdate">
+     <div class="form-group ">
+      <h3 align="center">Set Test Date:</h3>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-calendar-check-o">
+        </i>
+       </div>
+       <input class="form-control" id="testdate" name="testdate" placeholder="" type="text"/>
+      </div>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+
+ </div>
+</div>
+    <!-- <div class="row">
+      <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
+        <div class="form-group">
+        
+                    <h3 align="center">Open Registration Date:</h3>
+                    <input type="text" id="datepicker" name="opendate" required="required" class="form-control" placeholder="" style="width: 30%; align: center;text-align: center; "></div>
+        
+                    <h3 align="center">Close Registration Date:</h3>
+                    <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder=""></div>
+                        
+                    <button class="btn btn-large" type="button" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
+        </div>
+      </div>
+    </div> -->
     <br><br><br>
 </div>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <script type="text/javascript">
-$('#datepicker').each(function(){
-  $(this).datepicker();
-});
+    $(document).ready(function(){
+        var date_input=$('input[name="testdate"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            // format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
 </script>
 

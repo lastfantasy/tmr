@@ -32,7 +32,9 @@ module.exports.policies = {
     'register' : ['flash']
   },
   'user' : {
-    'dashboard' : ['sessionAuth','flash']
+    'dashboard' : ['sessionAuth','flash'],
+    'openclose' : ['flash'],
+    'testadmin' : ['flash']
   }
   /***************************************************************************
   *                                                                          *
