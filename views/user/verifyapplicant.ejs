@@ -1,4 +1,42 @@
 <div class="container" style="margin-bottom: 141px;">
     <h2 class="special_font" align="center">Verify Applicants</h2>
-
+    <table width="95%" border="1" class="table">
+  <thead>
+    <th>Name</th>
+    <th>Reg No</th>
+    <th>Grade</th>
+    <th>Action</th>
+  </thead>
+ <tbody>
+ 	<% _.each(users, function(user){ %>
+ 		<tr>
+ 			<td><%=user.name%></td>
+ 			<td><%=user.types%></td>
+ 			<td><%=user.grade%></td>
+ 			<td></td>
+ 		</tr>
+ 	<% }) %>
+ </tbody>
+  <!--<tr>
+    <td>Jansen</td>
+    <td>M</td>
+    <td>13</td>
+    <td>SMP</td>
+    <td><button type="submit" class="btn btn-default">Approve</button> <button type="submit" class="btn btn-default">Reject</button></td>
+  </tr>
+  <tr>
+    <td>Kelvin Hermawan Leonardo</td>
+    <td>M</td>
+    <td>7</td>
+    <td>SD</td>
+    <td><button type="submit" class="btn btn-default">Approve</button> <button type="submit" class="btn btn-default">Reject</button></td>
+  </tr>
+  <tr>
+    <td>Nana</td>
+    <td>F</td>
+    <td>14</td>
+    <td>SMP</td>
+    <td><button type="submit" class="btn btn-default">Approve</button> <button type="submit" class="btn btn-default">Reject</button></td>
+  </tr>-->
+</table>
 </div>

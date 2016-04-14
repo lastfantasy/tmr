@@ -15,8 +15,8 @@ module.exports = {
 			});
 		},
 		verifyapplicant : function(req,res,next){
-			User.findOne(req.session.User.id, function(err,user){
-				return res.view({user:user});
+			User.find({admin:false},function(err,users){
+				return res.view({users:users});
 			});
 		},
 		aboutus : function(req,res,next){
