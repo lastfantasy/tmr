@@ -37,6 +37,8 @@ module.exports = {
       opendate : 'date',
       closedate : 'date',
       testdate : 'date',
+      previousschool : 'string',
+      verifyremarks : 'string',
       admin : {
         type : 'boolean',
         defaultsTo : false

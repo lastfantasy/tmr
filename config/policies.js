@@ -33,6 +33,8 @@ module.exports.policies = {
   },
   'user' : {
     'dashboard' : ['sessionAuth','flash'],
+    'grade' : ['flash'],
+    'documents' : ['flash'],
     'openclose' : ['flash'],
     'testadmin' : ['flash']
   }

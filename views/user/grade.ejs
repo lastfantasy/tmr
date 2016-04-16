@@ -1,7 +1,31 @@
 <div class="container">
   <h2 class="special_font" align="center">Application</h2>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
+        </div>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
+    </div>
+    </div>
+  <% } %>
+  <% } %>
 <div class="row">
-  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/apply" role="form">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/applygrade" role="form">
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
@@ -37,7 +61,7 @@
                     <br>
                     <label>Previous School Name</label><input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
                     <br>
-                    <button type="button" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                    <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
                     <br>
                     
                 </div>
@@ -105,6 +129,12 @@
   Accepted
  <% } else if(user.status==3) { %>
    Denied
+<% } %>
+</span>
+</h2>
+<h2 class="text-center">Remarks : <span id="remarks">
+<% if(typeof (user.verifyremarks) != "undefined") { %>
+  <label value="<%=user.verifyremarks%>"></label>
 <% } %>
 </span>
 </h2>
