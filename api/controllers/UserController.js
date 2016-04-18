@@ -14,9 +14,16 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+
+		
 		verifyapplicant : function(req,res,next){
 			User.find({admin:false},function(err,users){
 				return res.view({users:users});
+			});
+		},
+		verifydocument : function(req,res,next){
+			User.findOne(req.session.User.id, function(err,user){
+				return res.view({user:user});
 			});
 		},
 		aboutus : function(req,res,next){
