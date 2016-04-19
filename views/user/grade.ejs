@@ -126,9 +126,13 @@
 <% if(user.status==0 || user.status==1) { %>
   Pending
 <% } else if(user.status==2) { %>
-  Accepted
- <% } else if(user.status==3) { %>
+  Verified
+<% } else if(user.status==3) { %>
    Denied
+<% } else if(user.status==4) { %>
+   Passed
+<% } else if(user.status==5) { %>
+   Failed
 <% } %>
 </span>
 </h2>

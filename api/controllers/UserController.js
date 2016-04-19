@@ -7,6 +7,7 @@
  var fs = require('fs');
  var open = 'null';
  var close = 'null';
+ var tmpstatus = 0;
 
 module.exports = {
 		openclose : function(req,res,next){
@@ -141,6 +142,7 @@ module.exports = {
 	         });
 	    },
 	    applyprofile : function(req,res,next){
+	    	tmpstatus ++;
 	    	var nowdate = new Date().getFullYear();
 	    	var birthdate = new Date(req.param('datebirth')).getFullYear();
 			if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
@@ -216,24 +218,48 @@ module.exports = {
 						 return;
 					}
 			}
-			var usrObj = {
-				name : req.param('name'),
-				address : req.param('address'),
-				placebirth : req.param('placebirth'),
-				datebirth : req.param('datebirth'),
-				gender : req.param('gender'),
-				phone : req.param('phone'),
-				handphone : req.param('handphone'),
-				fathername : req.param('fathername'),
-				fatheroccupation : req.param('fatheroccupation'),
-				fathersalary : req.param('fathersalary'),
-				fatherphone : req.param('fatherphone'),
-				mothername : req.param('mothername'),
-				motheroccupation : req.param('motheroccupation'),
-				mothersalary : req.param('mothersalary'),
-				motherphone : req.param('motherphone'),
-				numbersiblings : req.param('numbersiblings'),
-				status : 1
+			if (tmpstatus == 3){
+				tmpstatus = 0;
+				var usrObj = {
+					name : req.param('name'),
+					address : req.param('address'),
+					placebirth : req.param('placebirth'),
+					datebirth : req.param('datebirth'),
+					gender : req.param('gender'),
+					phone : req.param('phone'),
+					handphone : req.param('handphone'),
+					fathername : req.param('fathername'),
+					fatheroccupation : req.param('fatheroccupation'),
+					fathersalary : req.param('fathersalary'),
+					fatherphone : req.param('fatherphone'),
+					mothername : req.param('mothername'),
+					motheroccupation : req.param('motheroccupation'),
+					mothersalary : req.param('mothersalary'),
+					motherphone : req.param('motherphone'),
+					numbersiblings : req.param('numbersiblings'),
+					status : 1,
+					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+				}
+			}
+			else {
+				var usrObj = {
+					name : req.param('name'),
+					address : req.param('address'),
+					placebirth : req.param('placebirth'),
+					datebirth : req.param('datebirth'),
+					gender : req.param('gender'),
+					phone : req.param('phone'),
+					handphone : req.param('handphone'),
+					fathername : req.param('fathername'),
+					fatheroccupation : req.param('fatheroccupation'),
+					fathersalary : req.param('fathersalary'),
+					fatherphone : req.param('fatherphone'),
+					mothername : req.param('mothername'),
+					motheroccupation : req.param('motheroccupation'),
+					mothersalary : req.param('mothersalary'),
+					motherphone : req.param('motherphone'),
+					numbersiblings : req.param('numbersiblings')
+				}
 			}
 			User.update(req.session.User.id,usrObj,function(err,user){
 					if(err) return next(err);
@@ -248,9 +274,21 @@ module.exports = {
 			});
 	    },
 	    applygrade : function(req,res,next){
-	    	var usrObj = {
-	    		grade : req.param('grade'),
-	    		previousschool : req.param('previousschoolname')
+	    	tmpstatus ++;
+	    	if (tmpstatus == 3){
+	    		tmpstatus = 0;
+	    		var usrObj = {
+		    		grade : req.param('grade'),
+		    		previousschool : req.param('previousschoolname'),
+		    		status : 1,
+		    		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+	    		}
+	    	}
+	    	else {
+	    		var usrObj = {
+		    		grade : req.param('grade'),
+		    		previousschool : req.param('previousschoolname')
+	    		}
 	    	}
 	    	User.update(req.session.User.id,usrObj,function(err,user){
 					if(err) return next(err);
@@ -265,6 +303,8 @@ module.exports = {
 			});
 	    },
 	    applydocuments : function(req,res,next){
+	    	tmpstatus ++;
+
 	    	var file1 = "";
 			var file2 = "";
 			var file3 = "";
@@ -319,11 +359,24 @@ module.exports = {
 			fs.writeFile('dok1 ' + req.session.User.id + '.jpg',buf,function(err,data){});
 			buf = new Buffer(fileurl4.replace(/^data:image\/\w+;base64,/,""),'base64');
 			fs.writeFile('dok2 ' + req.session.User.id + '.jpg',buf,function(err,data){});
-			var usrObj = {
-				file1 : file1,
-				file2 : file2,
-				file3 : file3,
-				file4 : file4
+			if (tmpstatus == 3){
+				tmpstatus = 0;
+				var usrObj = {
+					file1 : file1,
+					file2 : file2,
+					file3 : file3,
+					file4 : file4,
+					status : 1,
+					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+				}
+			}
+			else {
+				var usrObj = {
+					file1 : file1,
+					file2 : file2,
+					file3 : file3,
+					file4 : file4
+				}
 			}
 			User.update(req.session.User.id,usrObj,function(err,user){
 					if(err) return next(err);
