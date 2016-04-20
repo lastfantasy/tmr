@@ -32,6 +32,7 @@ module.exports.policies = {
     'register' : ['flash']
   },
   'user' : {
+    'homesiswa' : ['flash'],
     'dashboard' : ['sessionAuth','flash'],
     'grade' : ['flash'],
     'documents' : ['flash'],

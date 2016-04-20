@@ -49,20 +49,84 @@
                 <div class="form-group">
 
                 <label>Grade</label>
-                <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
-                              <option value="0">SMP 1</option>
+                <% if (user.grade_status == 1 { %>
+                  <% if (user.grade == "0"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0" selected="">SMP 1</option>
                               <option value="1">SMP 2</option>
                               <option value="2">SMP 3</option>
                               <option value="3">SMA 1</option>
                               <option value="4">SMA 2</option>
                               <option value="5">SMA 3</option>
                     </select>
-                    <br>
-                    <br>
-                    <label>Previous School Name</label><input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
-                    <br>
-                    <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
-                    <br>
+                  <% } else if (user.grade == "1"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1" selected="">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "2"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2" selected="">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "3"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3" selected="">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "4"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4" selected="">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "5"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5" selected="">SMA 3</option>
+                    </select>
+                  <% } %>
+                <% } else { %>
+                  <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                  </select>
+                <% } %> 
+                
+                <br>
+                <br>
+                <label>Previous School Name</label>
+                <% if (user.grade_status == 1) { %>
+                  <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschool%>">
+                <% } else { %>
+                  <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                <br>
                     
                 </div>
 
@@ -123,15 +187,15 @@
 </div>
 <hr style="border:1px solid black;">
 <h2 class="text-center">Status : <span id="status">
-<% if(user.status==0 || user.status==1) { %>
+<% if(user.status==0) { %>
   Pending
-<% } else if(user.status==2) { %>
+<% } else if(user.status==1) { %>
   Verified
-<% } else if(user.status==3) { %>
+<% } else if(user.status==2) { %>
    Denied
-<% } else if(user.status==4) { %>
+<% } else if(user.status==3) { %>
    Passed
-<% } else if(user.status==5) { %>
+<% } else if(user.status==4) { %>
    Failed
 <% } %>
 </span>

@@ -153,15 +153,15 @@
 </div>
 <hr style="border:1px solid black;">
 <h2 class="text-center">Status : <span id="status">
-<% if(user.status==0 || user.status==1) { %>
+<% if(user.status==0) { %>
   Pending
-<% } else if(user.status==2) { %>
+<% } else if(user.status==1) { %>
   Verified
-<% } else if(user.status==3) { %>
+<% } else if(user.status==2) { %>
    Denied
-<% } else if(user.status==4) { %>
+<% } else if(user.status==3) { %>
    Passed
-<% } else if(user.status==5) { %>
+<% } else if(user.status==4) { %>
    Failed
 <% } %>
 </span>

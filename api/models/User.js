@@ -15,7 +15,6 @@ module.exports = {
       file2 : 'string',
       file3 : 'string',
       file4 : 'string',
-      // files : 'array',
       types : 'string',
       gender : 'string',
       grade : "string",
@@ -23,7 +22,22 @@ module.exports = {
       placebirth : 'string',
       datebirth : 'string',
       phone : 'string',
-      status : 'integer',
+      dashboard_status : {
+        type : 'integer',
+        defaultsTo : 0
+      },
+      grade_status : {
+        type : 'integer',
+        defaultsTo : 0
+      },
+      documents_status : {
+        type : 'integer',
+        defaultsTo : 0
+      },
+      status : {
+        type : 'integer',
+        defaultsTo : 0
+      },
       handphone : 'string',
       fathername : 'string',
       fatheroccupation : 'string',

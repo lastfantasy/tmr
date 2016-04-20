@@ -62,28 +62,28 @@
                 <label>Registration No.</label><input type="text" id="register_number" name="register_number" class="form-control" value="<%=user.id%>" disabled="">
                 <br>
                 <label>Full Name</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="name" name="name" required="required" class="form-control" value="<%=user.username%>">
                 <% } else { %>
                   <input type="text" id="name" name="name" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Address</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="address" name="address" required="required" class="form-control" value="<%=user.address%>">
                 <% } else { %>
                   <input type="text" id="address" name="address" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Place of Birth</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" value="<%=user.placebirth%>">
                 <% } else { %>
                   <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Date of Birth</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
                 <% } else { %>
                   <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="">
@@ -106,77 +106,77 @@
                 <label>Email</label><input type="email" id="email" value="<%=user.email%>" class="form-control" disabled="">
                 <br>
                 <label>Phone Number</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="phonenumber" name="phone" required="required" class="form-control" value="<%=user.phone%>">
                 <% } else { %>
                   <input type="text" id="phonenumber" name="phone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Handphone Number</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" value="<%=user.handphone%>">
                 <% } else { %>
                   <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Father's Name</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fathername" name="fathername" required="required" class="form-control" value="<%=user.fathername%>">
                 <% } else { %>
                   <input type="text" id="fathername" name="fathername" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Father's Occupation</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" value="<%=user.fatheroccupation%>">
                 <% } else { %>
                   <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Father's Salary</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" value="<%=user.fathersalary%>">
                 <% } else { %>
                   <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Father's Phone</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" value="<%=user.fatherphone%>">
                 <% } else { %>
                   <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Mother's Name</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="mothername" name="mothername" required="required" class="form-control" value="<%=user.mothername%>">
                 <% } else { %>
                   <input type="text" id="mothername" name="mothername" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Mother's Occupation</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" value="<%=user.motheroccupation%>">
                 <% } else { %>
                   <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Mother's Salary</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" value="<%=user.mothersalary%>">
                 <% } else { %>
                   <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Mother's Phone</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" value="<%=user.motherphone%>">
                 <% } else { %>
                   <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>Number of Siblings</label>
-                <% if (user.status == 1) { %>
+                <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" value="<%=user.numbersiblings%>">
                 <% } else { %>
                   <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" placeholder="">
@@ -240,15 +240,15 @@
 </div>
 <hr style="border:1px solid black;">
 <h2 class="text-center">Status : <span id="status">
-<% if(user.status==0 || user.status==1) { %>
+<% if(user.status==0) { %>
   Pending
-<% } else if(user.status==2) { %>
+<% } else if(user.status==1) { %>
   Verified
-<% } else if(user.status==3) { %>
+<% } else if(user.status==2) { %>
    Denied
-<% } else if(user.status==4) { %>
+<% } else if(user.status==3) { %>
    Passed
-<% } else if(user.status==5) { %>
+<% } else if(user.status==4) { %>
    Failed
 <% } %>
 </span>

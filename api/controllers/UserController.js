@@ -15,8 +15,33 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
-
-		
+		verifyapplication : function(req,res,next){
+			var nowdate = new Date();
+			var opendate;
+			var closedate;
+			User.find({admin:true}, function(err, user){
+				opendate = new Date(user.opendate)
+				closedate = new Date(user.closedate)
+			});
+			if (nowdate < opendate){
+				var info = ['Pendaftaran Belum Dibuka.']
+				req.session.flash = {
+					err : info,
+				}
+				res.redirect('/user/homesiswa');
+				return;
+			}
+			else if (nowdate > closedate){
+				var info = ['Pendaftaran Sudah Ditutup.']
+				req.session.flash = {
+					err : info,
+				}
+				res.redirect('/user/homesiswa');
+				return;
+			}
+			res.redirect('/user/dashboard');
+			return;
+		},
 		verifyapplicant : function(req,res,next){
 			User.find({admin:false},function(err,users){
 				return res.view({users:users});
@@ -237,7 +262,7 @@ module.exports = {
 					mothersalary : req.param('mothersalary'),
 					motherphone : req.param('motherphone'),
 					numbersiblings : req.param('numbersiblings'),
-					status : 1,
+					dashboard_status : 1,
 					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
 				}
 			}
@@ -258,7 +283,8 @@ module.exports = {
 					motheroccupation : req.param('motheroccupation'),
 					mothersalary : req.param('mothersalary'),
 					motherphone : req.param('motherphone'),
-					numbersiblings : req.param('numbersiblings')
+					numbersiblings : req.param('numbersiblings'),
+					dashboard_status : 1
 				}
 			}
 			User.update(req.session.User.id,usrObj,function(err,user){
@@ -280,14 +306,15 @@ module.exports = {
 	    		var usrObj = {
 		    		grade : req.param('grade'),
 		    		previousschool : req.param('previousschoolname'),
-		    		status : 1,
+		    		grade_status : 1,
 		    		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
 	    		}
 	    	}
 	    	else {
 	    		var usrObj = {
 		    		grade : req.param('grade'),
-		    		previousschool : req.param('previousschoolname')
+		    		previousschool : req.param('previousschoolname'),
+		    		grade_status : 1
 	    		}
 	    	}
 	    	User.update(req.session.User.id,usrObj,function(err,user){
@@ -366,7 +393,7 @@ module.exports = {
 					file2 : file2,
 					file3 : file3,
 					file4 : file4,
-					status : 1,
+					documents_status : 1,
 					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
 				}
 			}
@@ -375,7 +402,8 @@ module.exports = {
 					file1 : file1,
 					file2 : file2,
 					file3 : file3,
-					file4 : file4
+					file4 : file4,
+					documents_status : 1
 				}
 			}
 			User.update(req.session.User.id,usrObj,function(err,user){
