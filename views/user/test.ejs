@@ -20,12 +20,16 @@
                 <article class="item col-xs-12 col-sm-6 col-lg-12 ">
                     
                     <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
-                    <h3 align="center">Your testing date:</h3>
-                        <h2 align="center">Thursday, 7 January 2016</h2>
+                        <h3 align="center">Your testing date:</h3>
+                        <% if (user.testdate != null) { %>
+                            <h2 align="center"><%=user.testdate%></h2>
+                        <% } else { %>
+                            <h2 align="center">-</h2>
+                        <% } %>
                         <h3 align="center">Print your testing card</h3>
                         <button class="btn btn-large" type="button" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Click here</button>
                         <p align="center">
-						
+    					
                         <br>
                         Things that you need to prepare:
                         <br>- Pencils & Pens
@@ -34,16 +38,26 @@
                         </p>
 
                         <hr style="border:1px solid black;">
-						<h2 class="text-center">Status : <span id="status">
-						<% if(user.status==0 || user.status==1) { %>
-						  Pending
-						<% } else if(user.status==2) { %>
-						  Passed
-						 <% } else if(user.status==3) { %>
-						   Failed
-						<% } %>
-						</span>
-						</h2>
+    					<h2 class="text-center">Status : <span id="status">
+                        <% if(user.status==0) { %>
+                          Pending
+                        <% } else if(user.status==1) { %>
+                          Verified
+                        <% } else if(user.status==2) { %>
+                           Denied
+                        <% } else if(user.status==3) { %>
+                           Passed
+                        <% } else if(user.status==4) { %>
+                           Failed
+                        <% } %>
+                        </span>
+                        </h2>
+                        <h2 class="text-center">Remarks : <span id="remarks">
+                        <% if(typeof (user.verifyremarks) != "undefined") { %>
+                          <label value="<%=user.verifyremarks%>"></label>
+                        <% } %>
+                        </span>
+                        </h2>
                     </div>
                 </article>
 

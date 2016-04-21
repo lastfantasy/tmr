@@ -1,31 +1,37 @@
 <div class="container">
   <h2 class="special_font" align="center">Verify Documents</h2>
  <div class="row">
-  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/applyprofile" role="form">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/verifyuser" role="form">
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
             <h2 class="panel-title">Profile</h2>
           </div>
           <div class="panel-body">
-          <p>Reg. Number:</p>
-          <p>Name:</p>
-          <p>Address:</p>
-          <p>Place of Birth:</p>
-          <p>Date of Birth:</p>
-          <p>Gender:</p>
-          <p>Email:</p>
-          <p>Phone Number:</p>
-          <p>Handphone Number:</p>
-          <p>Father's Name:</p>
-          <p>Father's Occupation:</p>
-          <p>Father's Salary:</p>
-          <p>Father's Phone:</p>
-          <p>Mother's Name:</p>
-          <p>Mother's Occupation:</p>
-          <p>Mother's Salary:</p>
-          <p>Mother's Phone:</p>
-          <p>Number of Siblings:</p>
+          <p>Reg. Number: <%=user.id%></p>
+          <p>Name: <%=user.username%></p>
+          <p>Address: <%=user.address%></p>
+          <p>Place of Birth: <%=user.placebirth%></p>
+          <p>Date of Birth: <%=user.datebirth%></p>
+          <p>Gender: 
+          <% if (user.gender == "m") { %>
+            Male
+          <% } else if (user.gender == "f") { %>
+            Female
+          <% } %>
+          </p>
+          <p>Email: <%=user.email%></p>
+          <p>Phone Number: <%=user.phone%></p>
+          <p>Handphone Number: <%=user.handphone%></p>
+          <p>Father's Name: <%=user.fathername%></p>
+          <p>Father's Occupation: <%=user.fatheroccupation%></p>
+          <p>Father's Salary: <%=user.fathersalary%></p>
+          <p>Father's Phone: <%=user.fatherphone%></p>
+          <p>Mother's Name: <%=user.mothername%></p>
+          <p>Mother's Occupation: <%=user.motheroccupation%></p>
+          <p>Mother's Salary: <%=user.mothersalary%></p>
+          <p>Mother's Phone: <%=user.motherphone%></p>
+          <p>Number of Siblings: <%=user.numbersiblings%></p>
           </div>
         </div>
     </div>
@@ -45,36 +51,40 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Akte Lahir &#42;</label>
                 <div class="col-lg-8" style="width: 35.6%">
-                  <input type="file" accept="image/*" id="file1" onchange="previewFile1()">
+                  <%=user.file1%>
+                  <!-- <input type="file" accept="image/*" id="file1" onchange="previewFile1()"> -->
                 </div>
                 
-                <label class="control-label col-lg-8 required" style="width: 180px;">Akte Lahir &#42;</label><input type="checkbox" name="aktelahir" value="aktelahir">
+                <label class="control-label col-lg-8 required" style="width: 180px;">Akte Lahir &#42;</label><input type="checkbox" name="aktelahir">
 
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label>
                 <div class="col-lg-8" style="width: 35.6%">
-                  <input type="file" accept="image/*" id="file2" onchange="previewFile2()">
+                  <%=user.file2%>
+                  <!-- <input type="file" accept="image/*" id="file2" onchange="previewFile2()"> -->
                 </div>
-                <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label><input type="checkbox" name="ijazah" value="ijazah">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label><input type="checkbox" name="ijazah">
 
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 1 </label>
                 <div class="col-lg-8" style="width: 35.6%">
-                  <input type="file" accept="image/*" id="file3" onchange="previewFile3()">
+                  <%=user.file3%>
+                  <!-- <input type="file" accept="image/*" id="file3" onchange="previewFile3()"> -->
                 </div>
-                <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 1 </label><input type="checkbox" name="dokumenpendukung1" value="dokumenpendukung1">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 1 </label><input type="checkbox" name="dokumenpendukung1">
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 2 </label>
                 <div class="col-lg-8" style="width: 35.6%">
-                  <input type="file" accept="image/*" id="file4" onchange="previewFile4()">
+                  <%=user.file4%>
+                  <!-- <input type="file" accept="image/*" id="file4" onchange="previewFile4()"> -->
                 </div>
-                <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 2 </label><input type="checkbox" name="dokumenpendukung2" value="dokumenpendukung2">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 2 </label><input type="checkbox" name="dokumenpendukung2">
                 </div>
                 <input type="hidden" name="file_name_1" id="filename1">
                 <input type="hidden" name="file_url_1" id="fileurl1">

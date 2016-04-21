@@ -5,15 +5,59 @@
     <th>Name</th>
     <th>Reg No</th>
     <th>Grade</th>
-    <th>Action</th>
+    <th>Previous School</th>
+    <th>Status</th>
+    <th>Test Result</th>
   </thead>
  <tbody>
  	<% _.each(users, function(user){ %>
  		<tr>
- 			<td><a href="verifydocument"><%=user.username%></a></td>
+ 			<td><a href="verifydocument/<%=user.id%>"><%=user.username%></a></td>
  			<td><%=user.id%></td>
- 			<td><%=user.grade%></td>
- 			<td><a href="" style="margin-right: 5px;">Verify Documents</a><a href="">Verify Test</a></td>
+ 			<td>
+        <% if (user.grade == "0") { %>
+          SMP 1
+        <% } else if (user.grade == "1") { %>
+          SMP 2
+        <% } else if (user.grade == "2") { %>
+          SMP 3
+        <% } else if (user.grade == "3") { %>
+          SMA 1
+        <% } else if (user.grade == "4") { %>
+          SMA 2
+        <% } else if (user.grade == "5") { %>
+          SMA 3
+        <% } else { %>
+          -
+        <% } %>    
+      </td>
+      <td>
+        <% if (user.previousschool == null) { %>
+          -
+        <% } else { %>
+          <%=user.previousschool%>
+        <% } %>  
+      </td>
+      <td>
+        <% if(user.status==0) { %>
+          Pending
+        <% } else if(user.status==1) { %>
+          Verified
+        <% } else if(user.status==2) { %>
+           Denied
+        <% } else if(user.status==3) { %>
+           Passed
+        <% } else if(user.status==4) { %>
+           Failed
+        <% } %>
+      </td>
+      <% if (user.status == 0 || user.status == 1 || user.status == 2) { %>
+        <td><a href="" style="margin-right: 20px;">Pass</a><a href="">Fail</a></td>  
+      <% } else if (user.status == 3) { %>
+        <td>Passed</td>
+      <% } else if (user.status == 4) { %>
+        <td>Failed</td>
+      <% } %>
  		</tr>
  	<% }) %>
  </tbody>

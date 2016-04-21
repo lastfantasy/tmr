@@ -19,28 +19,29 @@ module.exports = {
 			var nowdate = new Date();
 			var opendate;
 			var closedate;
-			User.find({admin:true}, function(err, user){
+			User.findOne({admin:true}, function(err, user){
 				opendate = new Date(user.opendate)
 				closedate = new Date(user.closedate)
+				if (nowdate < opendate){
+					var info = ['Pendaftaran Belum Dibuka.']
+					req.session.flash = {
+						err : info,
+					}
+					res.redirect('/user/homesiswa');
+					return;
+				}
+				else if (nowdate > closedate){
+					var info = ['Pendaftaran Sudah Ditutup.']
+					req.session.flash = {
+						err : info,
+					}
+					res.redirect('/user/homesiswa');
+					return;
+				}
+				res.redirect('/user/dashboard');
+				return;
 			});
-			if (nowdate < opendate){
-				var info = ['Pendaftaran Belum Dibuka.']
-				req.session.flash = {
-					err : info,
-				}
-				res.redirect('/user/homesiswa');
-				return;
-			}
-			else if (nowdate > closedate){
-				var info = ['Pendaftaran Sudah Ditutup.']
-				req.session.flash = {
-					err : info,
-				}
-				res.redirect('/user/homesiswa');
-				return;
-			}
-			res.redirect('/user/dashboard');
-			return;
+			
 		},
 		verifyapplicant : function(req,res,next){
 			User.find({admin:false},function(err,users){
@@ -48,7 +49,7 @@ module.exports = {
 			});
 		},
 		verifydocument : function(req,res,next){
-			User.findOne(req.session.User.id, function(err,user){
+			User.findOne(req.param('id'), function(err,user){
 				return res.view({user:user});
 			});
 		},
@@ -92,46 +93,49 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		verifyuser : function(req,res,next){
+			if (req.param('aktelahir') == "on" || req.param('ijazah') == "on" || req.param('dokumenpendukung1') == "on" || req.param('dokumenpendukung2') == "on") {
+				User.update(req.param('id'), {status : 1}, function(err, user){
+					if (err) return next(err);
+					res.redirect('/user/verifyapplicant');
+					return;
+				});
+			}
+		},
 		setopenclose: function(req, res, next){
 			var nowdate = new Date();
 			var opendate = new Date(req.param('opendate'));
 			var closedate = new Date(req.param('closedate'));
-			if (opendate < nowdate){
+			if (nowdate - opendate >= 0){
+				open = req.param('opendate');
+		        close = req.param('closedate');
+		        var usrObj = {
+		                opendate : req.param('opendate'),
+		                closedate : req.param('closedate'),
+		        }
+		        User.update(req.session.User.id, usrObj, function(err, user){
+		            if(err) return next(err);
+		            var info = ['Tanggal Berhasil Disetting']
+		            // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+		            // the key of usernamePasswordRequiredError
+		            req.session.flash = {
+		                success: info,
+		            }
+		            res.redirect('/user/openclose');
+		            return;
+		        });
+			}
+			else {
 				var info = ['Tanggal Pembukaan Tidak Boleh Kurang Dari Tanggal Hari Ini.']
 				req.session.flash = {
 					err : info,
 				}
 				res.redirect('/user/openclose');
 				return;
-			}
-			// if (closedate - opendate != 30){
-			// 	var info = ['Pendaftaran Dibuka Selama 30 Hari.']
-			// 	req.session.flash = {
-			// 		err : info,
-			// 	}
-			// 	res.redirect('/user/openclose');
-			// 	return;
-			// }
-			open = req.param('opendate');
-	        close = req.param('closedate');
-	        var usrObj = {
-	                opendate : req.param('opendate'),
-	                closedate : req.param('closedate'),
-	        }
-	        User.update(req.session.User.id, usrObj, function(err, user){
-	            if(err) return next(err);
-	            var info = ['Tanggal Berhasil Disetting']
-	             // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-	             // the key of usernamePasswordRequiredError
-	             req.session.flash = {
-	                 success: info,
-	             }
-	             res.redirect('/user/openclose');
-	             return;
-	         });
+			}	
 	    },
 	    settestdate: function(req, res, next){
-	        if (open == 'null' || close == 'null'){
+	        if (open == null || close == null){
 	        	var info = ['Harap Tentukan Tanggal Pembukaan Dan Penutupan Terlebih Dahulu.']
 	        	req.session.flash = {
 	        		err : info,
@@ -156,15 +160,51 @@ module.exports = {
 	        }
 	        User.update(req.session.User.id, usrObj, function(err, user){
 	            if(err) return next(err);
-	            var info = ['Tanggal Berhasil Disetting']
-	             // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-	             // the key of usernamePasswordRequiredError
-	             req.session.flash = {
-	                 success: info,
-	             }
-	             res.redirect('/user/testadmin');
-	             return;
-	         });
+	            // var info = ['Tanggal Berhasil Disetting']
+	            //  // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+	            //  // the key of usernamePasswordRequiredError
+	            //  req.session.flash = {
+	            //      success: info,
+	             // }
+	        });
+	        User.find({admin : false, status : 1, grade : "0"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        User.find({admin : false, status : 1, grade : "1"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        User.find({admin : false, status : 1, grade : "2"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        User.find({admin : false, status : 1, grade : "3"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        User.find({admin : false, status : 1, grade : "4"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        User.find({admin : false, status : 1, grade : "5"}).limit(20).exec (function(err, users){
+	        	for (var i = 0; i < users.length; i++){
+	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        	}
+	        });
+	        var info = ['Tanggal Berhasil Disetting']
+	        // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+	        // the key of usernamePasswordRequiredError
+	        req.session.flash = {
+	            success: info,
+	        }
+	        res.redirect('/user/testadmin');
+	        return;
 	    },
 	    applyprofile : function(req,res,next){
 	    	tmpstatus ++;
