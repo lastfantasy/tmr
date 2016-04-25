@@ -51,13 +51,7 @@
            Failed
         <% } %>
       </td>
-      <% if (user.status == 0 || user.status == 1 || user.status == 2) { %>
-        <td><a href="" style="margin-right: 20px;">Pass</a><a href="">Fail</a></td>  
-      <% } else if (user.status == 3) { %>
-        <td>Passed</td>
-      <% } else if (user.status == 4) { %>
-        <td>Failed</td>
-      <% } %>
+      <td><a href="/user/userpass/<%=user.id%>" style="margin-right: 20px;">Pass</a><a href="/user/userfail/<%=user.id%>">Fail</a></td> 
  		</tr>
  	<% }) %>
  </tbody>

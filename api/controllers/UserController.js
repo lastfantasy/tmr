@@ -94,8 +94,15 @@ module.exports = {
 			});
 		},
 		verifyuser : function(req,res,next){
-			if (req.param('aktelahir') == "on" || req.param('ijazah') == "on" || req.param('dokumenpendukung1') == "on" || req.param('dokumenpendukung2') == "on") {
-				User.update(req.param('id'), {status : 1}, function(err, user){
+			if (req.param('aktelahir') == "on" && req.param('ijazah') == "on" && req.param('dokumenpendukung1') == "on" && req.param('dokumenpendukung2') == "on"){
+				User.update(req.param('id'), {status : 1, verifyremarks : req.param('verifyremarks')}, function(err, user){
+					if (err) return next(err);
+					res.redirect('/user/verifyapplicant');
+					return;
+				});
+			}
+			else {
+				User.update(req.param('id'), {status : 0, verifyremarks : req.param('verifyremarks')}, function(err, user){
 					if (err) return next(err);
 					res.redirect('/user/verifyapplicant');
 					return;
@@ -144,7 +151,7 @@ module.exports = {
 	        	return;
 	        }
 
-	        var test = req.param('test');
+	        var test = req.param('testdate');
 
 	        if (open > test || test < close){
 	        	var info = ['Tanggal Ujian Harus Setelah Pendaftaran Ditutup']
@@ -205,6 +212,16 @@ module.exports = {
 	        }
 	        res.redirect('/user/testadmin');
 	        return;
+	    },
+	    userpass : function(req,res,next){
+	    	User.update(req.param('id'), {status : 3, verifyremarks : ""}, function(err, user){
+	    		res.redirect('/user/verifyapplicant')
+	    	});
+	    },
+	    userfail : function(req,res,next){
+	    	User.update(req.param('id'), {status : 4, verifyremarks : ""}, function(err, user){
+	    		res.redirect('/user/verifyapplicant')
+	    	});
 	    },
 	    applyprofile : function(req,res,next){
 	    	tmpstatus ++;

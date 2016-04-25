@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="special_font" align="center">Verify Documents</h2>
  <div class="row">
-  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/verifyuser" role="form">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/verifyuser/<%=user.id%>" role="form">
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
@@ -9,7 +9,7 @@
           </div>
           <div class="panel-body">
           <p>Reg. Number: <%=user.id%></p>
-          <p>Name: <%=user.username%></p>
+          <p>Name: <%=user.name%></p>
           <p>Address: <%=user.address%></p>
           <p>Place of Birth: <%=user.placebirth%></p>
           <p>Date of Birth: <%=user.datebirth%></p>
@@ -94,6 +94,13 @@
                 <input type="hidden" name="file_url_3" id="fileurl3">
                 <input type="hidden" name="file_name_4" id="filename4">
                 <input type="hidden" name="file_url_4" id="fileurl4">
+                <br><br>
+                <div class="form-group" style="margin-bottom: 0px;">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Remarks </label>
+                </div>
+                <textarea style="width:500px;" id="verifyremarks" name="verifyremarks" class="form-control" required="required"></textarea>
+                </div>
+                </div>
                 <div class="form-group">
                 <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
                 </div>                        
