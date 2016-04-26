@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+
     <title>Temanis Baru</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
@@ -13,7 +15,7 @@
     <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
 
   <body>
@@ -36,20 +38,20 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <% if(!session.authenticated) { %>
-                              <li><a class="external" href="/">home</a></li>
-                              <li><a class="external" href="/register">Sign Up</a></li>
-                              <li><a class="external" href="/login">Sign In</a></li>
+                              <li><a class="external" href="/">Beranda</a></li>
+                              <li><a class="external" href="/register">Daftar</a></li>
+                              <li><a class="external" href="/login">Masuk</a></li>
                             <% } else { %>
                               <% if(session.User.admin) { %>
-                                <li><a class="external" href="/user/openclose">Open/Close Reg</a></li>
-                                <li><a class="external" href="/user/verifyapplicant">Verify Applicants</a></li>
-                                <li><a class="external" href="/user/testadmin">Test</a></li>
+                                <li><a class="external" href="/user/openclose">Buka/Tutup Pendaftaran</a></li>
+                                <li><a class="external" href="/user/verifyapplicant">Verifikasi Pendaftar</a></li>
+                                <li><a class="external" href="/user/testadmin">Ujian Saringan Masuk</a></li>
                                 
-                                <li><a class="external" href="/session/signout">Sign Out</a></li>
+                                <li><a class="external" href="/session/signout">Keluar</a></li>
                                 <% } else { %>
-                              <li><a class="external" href="/user/verifyapplication">Application</a></li>
-                              <li><a class="external" href="/user/test">Test</a></li>
-                              <li><a class="external" href="/session/signout">Sign Out</a></li>
+                              <li><a class="external" href="/user/verifyapplication">Pendaftaran</a></li>
+                              <li><a class="external" href="/user/test">Ujian Saringan Masuk</a></li>
+                              <li><a class="external" href="/session/signout">Keluar</a></li>
                                 <% } %>
                             <% } %>
                         </ul>
