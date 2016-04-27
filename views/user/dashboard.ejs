@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="special_font" align="center">Application</h2>
+  <h2 class="special_font" align="center">Pendaftaran</h2>
   <% if(flash) { %>
   <% if(flash.err) { %>
         <div>
@@ -30,13 +30,13 @@
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Fill your details about below topics</h2>
+            <h2 class="panel-title">Isi detail di antara pilihan di bawah ini</h2>
           </div>
           <div class="panel-body">
           
-          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profile</button></a>
-          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Grade</button></a>
-          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Documents</button>
+          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profil</button></a>
+          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Tingkatan</button></a>
+          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Dokumen</button>
           </a>
             <!-- <div class="form-group">
               <select class="btn btn-default" name="grade" style="width:100%">
@@ -54,42 +54,42 @@
     <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Profile - Complete your profile below</h2>
+            <h2 class="panel-title">Profil - Lengkapi profil Anda di bawah ini</h2>
           </div>
           <div class="panel-body">
 
                 <div class="form-group">
-                <label>Registration No.</label><input type="text" id="register_number" name="register_number" class="form-control" value="<%=user.id%>" disabled="">
+                <label>No. Registrasi</label><input type="text" id="register_number" name="register_number" class="form-control" value="<%=user.id%>" disabled="">
                 <br>
-                <label>Full Name</label>
+                <label>Nama Lengkap</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="name" name="name" required="required" class="form-control" value="<%=user.name%>">
                 <% } else { %>
                   <input type="text" id="name" name="name" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Address</label>
+                <label>Alamat</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="address" name="address" required="required" class="form-control" value="<%=user.address%>">
                 <% } else { %>
                   <input type="text" id="address" name="address" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Place of Birth</label>
+                <label>Tempat Lahir</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" value="<%=user.placebirth%>">
                 <% } else { %>
                   <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Date of Birth</label>
+                <label>Tanggal Lahir</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
                 <% } else { %>
                   <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Gender</label>
+                <label>Jenis Kelamin</label>
                 <% if (user.gender == "f") { %>
                   <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
                             <option value="m">Male</p>
@@ -105,14 +105,14 @@
                 <br>
                 <label>Email</label><input type="email" id="email" value="<%=user.email%>" class="form-control" disabled="">
                 <br>
-                <label>Phone Number</label>
+                <label>Nomor Telepon</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="phonenumber" name="phone" required="required" class="form-control" value="<%=user.phone%>">
                 <% } else { %>
                   <input type="text" id="phonenumber" name="phone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Handphone Number</label>
+                <label>Nomor Handphone</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" value="<%=user.handphone%>">
                 <% } else { %>

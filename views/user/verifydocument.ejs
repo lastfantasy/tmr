@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="special_font" align="center">Verify Documents</h2>
+  <h2 class="special_font" align="center">Verifikasi Dokumen</h2>
  <div class="row">
   <form method="post" style="padding-left:10px; padding-right:10px" action="/user/verifyuser/<%=user.id%>" role="form">
     <div class="col-md-4" style="width: 27.333333%;">
@@ -8,12 +8,12 @@
             <h2 class="panel-title">Profile</h2>
           </div>
           <div class="panel-body">
-          <p>Reg. Number: <%=user.id%></p>
-          <p>Name: <%=user.name%></p>
-          <p>Address: <%=user.address%></p>
-          <p>Place of Birth: <%=user.placebirth%></p>
-          <p>Date of Birth: <%=user.datebirth%></p>
-          <p>Gender: 
+          <p>No. Registrasi: <%=user.id%></p>
+          <p>Nama: <%=user.name%></p>
+          <p>Alamat: <%=user.address%></p>
+          <p>Tempat Lahir: <%=user.placebirth%></p>
+          <p>Tanggal Lahir: <%=user.datebirth%></p>
+          <p>Jenis Kelamin: 
           <% if (user.gender == "m") { %>
             Male
           <% } else if (user.gender == "f") { %>
@@ -21,17 +21,17 @@
           <% } %>
           </p>
           <p>Email: <%=user.email%></p>
-          <p>Phone Number: <%=user.phone%></p>
-          <p>Handphone Number: <%=user.handphone%></p>
-          <p>Father's Name: <%=user.fathername%></p>
-          <p>Father's Occupation: <%=user.fatheroccupation%></p>
-          <p>Father's Salary: <%=user.fathersalary%></p>
-          <p>Father's Phone: <%=user.fatherphone%></p>
-          <p>Mother's Name: <%=user.mothername%></p>
-          <p>Mother's Occupation: <%=user.motheroccupation%></p>
-          <p>Mother's Salary: <%=user.mothersalary%></p>
-          <p>Mother's Phone: <%=user.motherphone%></p>
-          <p>Number of Siblings: <%=user.numbersiblings%></p>
+          <p>No. Telepon: <%=user.phone%></p>
+          <p>No. Handphone: <%=user.handphone%></p>
+          <p>Nama Ayah: <%=user.fathername%></p>
+          <p>Pekerjaan Ayah: <%=user.fatheroccupation%></p>
+          <p>Penghasilan Ayah: <%=user.fathersalary%></p>
+          <p>No. Telepon Ayah: <%=user.fatherphone%></p>
+          <p>Nama Ibu: <%=user.mothername%></p>
+          <p>Pekerjaan Ibu: <%=user.motheroccupation%></p>
+          <p>Penghasilan Ibu: <%=user.mothersalary%></p>
+          <p>No. Telepon Ibu: <%=user.motherphone%></p>
+          <p>Jumlah Saudara: <%=user.numbersiblings%></p>
           </div>
         </div>
     </div>
@@ -42,12 +42,7 @@
           </div>
           <div class="panel-body">
 
-                <div style="margin-bottom: 0px; width: 200px; margin-right: 0px;">
-                <p>Softcopy</p>
-                </div>
-                <div style="margin-bottom: 0px; width: 200px; margin-right: 0px;">
-                <p>Hardcopy</p>
-                </div>
+                
                 <div class="form-group" style="margin-bottom: 0px;">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Akte Lahir &#42;</label>
                 <div class="col-lg-8" style="width: 35.6%">
