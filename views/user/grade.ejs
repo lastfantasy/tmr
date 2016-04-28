@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="special_font" align="center">Application</h2>
+  <h2 class="special_font" align="center">Pendaftaran</h2>
   <% if(flash) { %>
   <% if(flash.err) { %>
         <div>
@@ -29,13 +29,13 @@
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Fill your details about below topics</h2>
+            <h2 class="panel-title">Isi detail topik di bawah ini</h2>
           </div>
           <div class="panel-body">
           
-          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profile</button></a>
-          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Grade</button></a>
-          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Documents</button>
+          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profil</button></a>
+          <a class="external" href="/user/grade"><button type="button" autofocus id="send" style="width:100%" class="btn-color btn btn-primary">Tingkatan</button></a>
+          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Dokumen</button>
           </a>
           </div>
         </div>
@@ -43,12 +43,12 @@
     <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Grade - Choose your grade and fill the details below</h2>
+            <h2 class="panel-title">Tingkatan - Pilih tingkatan Anda dan isi detail di bawah</h2>
           </div>
           <div class="panel-body">
                 <div class="form-group">
 
-                <label>Grade</label>
+                <label>Tingkatan</label>
                 <% if (user.grade_status == 1) { %>
                   <% if (user.grade == "0"){ %>
                     <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
@@ -118,14 +118,14 @@
                 
                 <br>
                 <br>
-                <label>Previous School Name</label>
+                <label>Nama Sekolah Sebelumnya</label>
                 <% if (user.grade_status == 1) { %>
                   <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschool%>">
                 <% } else { %>
                   <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
                 <br>
                     
                 </div>

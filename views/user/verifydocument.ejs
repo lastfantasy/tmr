@@ -5,19 +5,19 @@
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Profile</h2>
+            <h2 class="panel-title">Profil</h2>
           </div>
           <div class="panel-body">
-          <p>No. Registrasi: <%=user.id%></p>
+          <p>No. Pendaftaran: <%=user.id%></p>
           <p>Nama: <%=user.name%></p>
           <p>Alamat: <%=user.address%></p>
           <p>Tempat Lahir: <%=user.placebirth%></p>
           <p>Tanggal Lahir: <%=user.datebirth%></p>
           <p>Jenis Kelamin: 
           <% if (user.gender == "m") { %>
-            Male
+            Laki-Laki
           <% } else if (user.gender == "f") { %>
-            Female
+            Perempuan
           <% } %>
           </p>
           <p>Email: <%=user.email%></p>
@@ -38,7 +38,7 @@
     <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Documents</h2>
+            <h2 class="panel-title">Dokumen</h2>
           </div>
           <div class="panel-body">
 
@@ -97,7 +97,7 @@
                 </div>
                 </div>
                 <div class="form-group">
-                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:200px; float: right; margin-top: 0px;">Verifikasi</button>
                 </div>                        
           </div>
           

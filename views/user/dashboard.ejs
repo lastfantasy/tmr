@@ -30,11 +30,11 @@
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Isi detail di antara pilihan di bawah ini</h2>
+            <h2 class="panel-title">Isi detail topik di bawah ini</h2>
           </div>
           <div class="panel-body">
           
-          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profil</button></a>
+          <a class="external" href="/user/dashboard"><button type="button" autofocus id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profil</button></a>
           <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Tingkatan</button></a>
           <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Dokumen</button>
           </a>
@@ -92,13 +92,13 @@
                 <label>Jenis Kelamin</label>
                 <% if (user.gender == "f") { %>
                   <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
-                            <option value="m">Male</p>
-                            <option value="f" selected="">Female</p>
+                            <option value="m">Laki-Laki</p>
+                            <option value="f" selected="">Perempuan</p>
                   </select>
                 <% } else { %>
                   <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
-                            <option value="m" selected="">Male</p>
-                            <option value="f">Female</p>
+                            <option value="m" selected="">Laki-Laki</p>
+                            <option value="f">Perempuan</p>
                   </select>
                 <% } %>
                 <br>
@@ -119,70 +119,70 @@
                   <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Father's Name</label>
+                <label>Nama Ayah</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fathername" name="fathername" required="required" class="form-control" value="<%=user.fathername%>">
                 <% } else { %>
                   <input type="text" id="fathername" name="fathername" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Father's Occupation</label>
+                <label>Pekerjaan Ayah</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" value="<%=user.fatheroccupation%>">
                 <% } else { %>
                   <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Father's Salary</label>
+                <label>Penghasilan Ayah</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" value="<%=user.fathersalary%>">
                 <% } else { %>
                   <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Father's Phone</label>
+                <label>No. Telepon Ayah</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" value="<%=user.fatherphone%>">
                 <% } else { %>
                   <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Mother's Name</label>
+                <label>Nama Ibu</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="mothername" name="mothername" required="required" class="form-control" value="<%=user.mothername%>">
                 <% } else { %>
                   <input type="text" id="mothername" name="mothername" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Mother's Occupation</label>
+                <label>Pekerjaan Ibu</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" value="<%=user.motheroccupation%>">
                 <% } else { %>
                   <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Mother's Salary</label>
+                <label>Penghasilan Ibu</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" value="<%=user.mothersalary%>">
                 <% } else { %>
                   <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Mother's Phone</label>
+                <label>No. Telepon Ibu</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" value="<%=user.motherphone%>">
                 <% } else { %>
                   <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <label>Number of Siblings</label>
+                <label>Jumlah Saudara</label>
                 <% if (user.dashboard_status == 1) { %>
                   <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" value="<%=user.numbersiblings%>">
                 <% } else { %>
                   <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
-                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
                 </div>                                              
           </div>
           

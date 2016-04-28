@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="special_font" align="center">Application</h2>
+  <h2 class="special_font" align="center">Pendaftaran</h2>
   <% if(flash) { %>
   <% if(flash.err) { %>
         <div>
@@ -29,13 +29,13 @@
     <div class="col-md-4" style="width: 27.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Fill your details about below topics</h2>
+            <h2 class="panel-title">Isi detail topik di bawah ini</h2>
           </div>
           <div class="panel-body">
           
-          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profile</button></a>
-          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Grade</button></a>
-          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Documents</button>
+          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn-color btn btn-primary">Profil</button></a>
+          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn-color btn btn-primary">Tingkatan</button></a>
+          <a class="external" href="/user/documents"><button type="button" autofocus id="send" style="width:100%" class="btn-color btn btn-primary">Dokumen</button>
           </a>
             <!-- <div class="form-group">
               <select class="btn btn-default" name="grade" style="width:100%">
@@ -53,7 +53,7 @@
     <div class="col-md-4" style="width: 72.333333%;">
       <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Documents - Upload your documents below</h2>
+            <h2 class="panel-title">Dokumen - Unggah dokumen Anda di bawah ini</h2>
           </div>
           <div class="panel-body">
 
@@ -95,60 +95,14 @@
                 <input type="hidden" name="file_name_4" id="filename4">
                 <input type="hidden" name="file_url_4" id="fileurl4">
                 <div class="form-group">
-                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Submit</button>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
                 </div>                
           </div>
           
           
         </div>
     </div>
-    <!-- <div class="col-md-4">
-      <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h2 class="panel-title">Upload your documents below</h2>
-          </div>
-          <div class="panel-body">
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Akte Lahir &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file1" onchange="previewFile1()">
-                </div>
-                </div>
-                <br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Ijazah &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file2" onchange="previewFile2()">
-                </div>
-                </div>
-                <br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 1 &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file3" onchange="previewFile3()">
-                </div>
-                </div>
-                <br><br><br>
-                <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 2 &#42;</label>
-                <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file4" onchange="previewFile4()">
-                </div>
-                </div>
-                <input type="hidden" name="file_name_1" id="filename1">
-                <input type="hidden" name="file_url_1" id="fileurl1">
-                <input type="hidden" name="file_name_2" id="filename2">
-                <input type="hidden" name="file_url_2" id="fileurl2">
-                <input type="hidden" name="file_name_3" id="filename3">
-                <input type="hidden" name="file_url_3" id="fileurl3">
-                <input type="hidden" name="file_name_4" id="filename4">
-                <input type="hidden" name="file_url_4" id="fileurl4">
-                <div class="form-group">
-                <button type="submit" id="send" style="width:100%" class="btn-color btn btn-primary">Submit</button>
-                </div>
-          </div>
-        </div>
-    </div> -->
+    
   </form>
 </div>
 <hr style="border:1px solid black;">
