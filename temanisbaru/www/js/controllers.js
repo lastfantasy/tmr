@@ -17,21 +17,33 @@ angular.module('starter.controllers',[])
 		};
 
 		$ionicModal.fromTemplateUrl('modal.html',{
+			id: '1',
 			scope: $scope,
 			animation: 'slide-in-up'
 		}).then(function(modal){
-			$scope.modal = modal;
+			$scope.modal1 = modal;
 		});
 
-		$scope.openModal = function() {
-			$scope.modal.show();
+		$ionicModal.fromTemplateUrl('modal1.html',{
+			id: '2',
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function(modal){
+			$scope.modal2 = modal;
+		});
+
+		$scope.openModal = function(index) {
+			if (index == 1) $scope.modal1.show();
+			else $scope.modal2.show();
 		};
 
-		$scope.closeModal = function() {
-			$scope.modal.hide();
+		$scope.closeModal = function(index) {
+			if (index == 1) $scope.modal1.hide();
+			else $scope.modal2.hide();
 		};
 
 		$scope.$on('$destroy', function() {
-			$scope.modal.remove();
+			$scope.modal1.remove();
+			$scope.modal2.remove();
 		});
 });

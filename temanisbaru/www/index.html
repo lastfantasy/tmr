@@ -21,7 +21,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src=“https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit“ async defer></script>
   </head>
   <body ng-app="starter"  ng-controller="ToDoListCtrl">
 
@@ -35,11 +35,11 @@
         <p align="center">Aplikasi resmi dari temanisbaru.com</p>
         <br></br>
         <p align="center">Sudah punya akun?</p>
-        <button class="button button-block button-positive" ng-click="openModal()">
+        <button class="button button-block button-positive" ng-click="openModal(1)">
           Masuk
         </button>
         <p align="center">Belum punya akun?</p>
-        <button class="button button-block button-assertive" ng-click="openModal1()">
+        <button class="button button-block button-assertive" ng-click="openModal(2)">
           Daftar disini
         </button>
       </div>
@@ -48,7 +48,7 @@
     <script id="modal.html" type="text/ng-template">
       <div class="modal">
         <div class="bar bar-header bar-positive">
-          <button class="button" ng-click="closeModal()">Kembali</button>
+          <button class="button" ng-click="closeModal(1)">Kembali</button>
           <h1 class="title">Masuk</h1>
         </div>
         <br></br>
@@ -72,7 +72,7 @@
     <script id="modal1.html" type="text/ng-template">
       <div class="modal">
         <div class="bar bar-header bar-positive">
-          <button class="button" ng-click="closeModal1()">Kembali</button>
+          <button class="button" ng-click="closeModal(2)">Kembali</button>
           <h1 class="title">Daftar</h1>
         </div>
         <br></br>
