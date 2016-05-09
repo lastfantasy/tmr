@@ -1,0 +1,10 @@
+# IDE Files
+.idea/*
+angular-recaptcha.iml
+
+# OS Files
+.DS_Store
+
+# Node, Grunt, Bower, general build process files
+bower_components/*
+node_modules/*
