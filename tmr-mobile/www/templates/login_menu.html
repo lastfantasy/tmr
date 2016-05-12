@@ -1,0 +1,15 @@
+<ion-view>
+	<ion-content>
+	<form ng-submit="login(data)" novalidate="">
+			<label class="item item-input">
+				<span class="input-label">Email</span>
+				<input type="text" name="email" ng-model="data.email">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">Password</span>
+				<input type="password" name="password" ng-model="data.password">
+			</label>
+			<button type="submit" class="button button-full button-assertive">Login</button>
+	</form>
+	</ion-content>
+</ion-view>
