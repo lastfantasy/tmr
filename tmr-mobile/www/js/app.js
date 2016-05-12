@@ -87,7 +87,7 @@ angular.module('starter', ['ionic'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise(function($injector, $location){
       var state = $injector.get('$state');
-      $state.go('tab.dash');
+      state.go('tab.dash');
   });
 })
 
