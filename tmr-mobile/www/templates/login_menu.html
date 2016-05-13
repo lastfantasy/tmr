@@ -1,15 +1,21 @@
-<ion-view>
+<ion-view view-title="Temanis Baru" class="bar-positive">
+	
+	<ion-nav-title>
+          <img src="img/logotemanis.png" height="20px" align="center">
+    </ion-nav-title>
 	<ion-content>
 	<form ng-submit="login(data)" novalidate="">
+		<div class="list list-inset">
 			<label class="item item-input">
-				<span class="input-label">Email</span>
-				<input type="text" name="email" ng-model="data.email">
+				
+				<input type="text" name="email" ng-model="data.email" placeholder="Email">
 			</label>
 			<label class="item item-input">
-				<span class="input-label">Password</span>
-				<input type="password" name="password" ng-model="data.password">
+				
+				<input type="password" name="password" ng-model="data.password" placeholder="Password">
 			</label>
-			<button type="submit" class="button button-full button-assertive">Login</button>
+			<button type="submit" class="button button-block button-assertive" >Masuk</button>
+		</div>
 	</form>
 	</ion-content>
 </ion-view>
