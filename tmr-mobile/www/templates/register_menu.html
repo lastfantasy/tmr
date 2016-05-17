@@ -1,0 +1,22 @@
+<ion-view view-title="Temanis Baru" class="bar-positive">
+	
+	<ion-nav-title>
+          <img src="img/logotemanis.png" height="20px" align="center">
+    </ion-nav-title>
+	<ion-content>
+	<form ng-submit="register(data)" novalidate="">
+		<div class="list list-inset">
+			<label class="item item-input">
+				<input type="text" name="email" ng-model="data.email" placeholder="Email">
+			</label>
+			<label class="item item-input">
+				<input type="password" name="password" ng-model="data.password" placeholder="Password">
+			</label>
+			<label class="item item-input">
+				<input type="password" name="confpassword" ng-model="data.confpassword" placeholder="Confirm Password">
+			</label>
+			<button type="submit" class="button button-block button-assertive" >Daftar</button>
+		</div>
+	</form>
+	</ion-content>
+</ion-view>

@@ -65,7 +65,27 @@ angular.module('starter')
       //   reject('Login Failed.');
       // }
     });
-  }
+  };
+
+  var register = function(email, pw, confpw) {
+    return $q(function(resolve, reject) {
+      var url = 'http://localhost:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
+      $http.get(url).then(function(resp) {
+        if(resp.data.code != 200){
+          var alertPopup = $ionicPopup.alert({
+            title : 'Register Failed',
+            template : resp.data.message
+          });
+          reject('Register Failed');
+        } else {
+          storeUserCredentials(resp.data.user);
+          resolve('Register Success');
+        }
+      }, function(err){
+        reject('Register Failed');
+      })
+    });
+  };
 
   var login = function(name, pw) {
     return $q(function(resolve, reject) {
@@ -114,7 +134,8 @@ angular.module('starter')
   return {
     login: login,
     loginFB : loginFB,
-    logout: logout,
+    logout : logout,
+    register : register,
     isAuthorized: isAuthorized,
     isAuthenticated: function() {return isAuthenticated;},
     user : function() {return user;},

@@ -33,6 +33,23 @@ angular.module('starter')
       })
     }
 })
+.controller('RegisterMenuCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){
+    $scope.data = {};
+    $scope.register = function(data){
+      $ionicLoading.show({
+        template : '<ion-spinner></ion-spinner> <br> Loading'
+      });
+      AuthService.register(data.email, data.password, data.confpassword).then(function(authenticated){
+          $ionicLoading.hide();
+          $ionicHistory.nextViewOptions({
+              disableBack: true
+          });
+          $state.go('tab.dash');
+      }, function(err){
+        $ionicLoading.hide();
+      })
+    }
+})
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
