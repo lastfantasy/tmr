@@ -42,6 +42,11 @@ angular.module('starter', ['ionic'])
       controller : 'RegisterMenuCtrl'
   })
 
+  .state('dashboardmurid',{
+      url : '/dashboard_murid',
+      templateUrl : 'templates/dashboard_murid.html'
+  })
+
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: '/tab',
@@ -95,7 +100,7 @@ angular.module('starter', ['ionic'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise(function($injector, $location){
       var state = $injector.get('$state');
-      state.go('registermenu');
+      state.go('loginmenu');
   });
 })
 
