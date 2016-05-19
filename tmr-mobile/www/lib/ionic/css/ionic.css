@@ -9390,6 +9390,15 @@ a.button {
 .no-resize {
   resize: none; }
 
+.selamatdtg{
+  color: white;
+  font-family: 'Leckerli One', cursive;
+}
+
+.latar{
+  background-color: #387ef5;
+}
+
 .block {
   display: block;
   clear: both; }

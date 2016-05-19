@@ -34,7 +34,7 @@ angular.module('starter')
           $ionicHistory.nextViewOptions({
               disableBack: true
           });
-          $state.go('dashboardmurid');
+          $state.go('tab.dash');
       }, function(err){
         $ionicLoading.hide();
       })
