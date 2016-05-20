@@ -34,6 +34,12 @@ angular.module('starter')
           $ionicHistory.nextViewOptions({
               disableBack: true
           });
+          // if (data.email == "admin@temanis.com" && data.password == "admin") {
+          //   $state.go('registermenu');
+          // }
+          // else{
+          //   $state.go('tab.dash');
+          // }
           $state.go('tab.dash');
       }, function(err){
         $ionicLoading.hide();
