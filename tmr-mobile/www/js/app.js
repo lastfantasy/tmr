@@ -30,68 +30,57 @@ angular.module('starter', ['ionic'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('loginmenu',{
+  .state('home',{
+      url : '/',
+      templateUrl : 'index.html',
+  })
+
+  .state('login',{
       url : '/login_menu',
       templateUrl : 'templates/login_menu.html',
       controller : 'LoginMenuCtrl'
   })
 
-  .state('registermenu',{
+  .state('register',{
       url : '/register_menu',
       templateUrl : 'templates/register_menu.html',
       controller : 'RegisterMenuCtrl'
   })
 
-  .state('dashboardmurid',{
-      url : '/dashboard_murid',
-      templateUrl : 'templates/dashboard_murid.html'
-  })
-
   // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
+  .state('murid', {
+    url: '/murid',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/murid.html'
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('murid.dashboard', {
+    url: '/dashboard',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+      'murid-dashboard': {
+        templateUrl: 'templates/murid-dashboard.html',
         controller: 'DashCtrl'
       }
     }
   })
 
-  
-
-  .state('tab.chats', {
-      url: '/chats',
+  .state('murid.daftar', {
+      url: '/daftar',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+        'murid-daftar': {
+          templateUrl: 'templates/murid-daftar.html',
           controller: 'ChatsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('murid.ujian', {
+    url: '/ujian',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'murid-ujian': {
+        templateUrl: 'templates/murid-ujian.html',
         controller: 'AccountCtrl'
       }
     }
@@ -100,7 +89,7 @@ angular.module('starter', ['ionic'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise(function($injector, $location){
       var state = $injector.get('$state');
-      state.go('loginmenu');
+      state.go('home');
   });
 })
 
@@ -114,10 +103,10 @@ angular.module('starter', ['ionic'])
       else if(next.name!=='login') {
         switch(next.name){
           case 'register' : {event.preventDefault();$state.go('register'); break;}
-          case 'loginmenu' : {event.preventDefault(); $state.go('loginmenu'); break;}
+          case 'login' : {event.preventDefault(); $state.go('login'); break;}
           case 'lupapassword' : {event.preventDefault(); $state.go('lupapassword'); break;}
           case 'gantipass/:idUser' : {event.preventDefault(); $state.go('gantipass/:idUser'); break;};
-          default : { event.preventDefault(); $state.go('loginmenu'); break;}
+          default : { event.preventDefault(); $state.go('home'); break;}
         }
       }
     }

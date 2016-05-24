@@ -16,13 +16,7 @@ angular.module('starter')
     Chats.remove(chat);
   };
 })
-.controller('DashboardMuridController', function($scope) {})
 
-.controller('SideMenuController', function($scope, $ionicSideMenuDelegate) {
-  $scope.toggleLeft = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
-})
 .controller('LoginMenuCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){
     $scope.data = {};
     $scope.login = function(data){
@@ -40,7 +34,7 @@ angular.module('starter')
           // else{
           //   $state.go('tab.dash');
           // }
-          $state.go('tab.dash');
+          $state.go('murid.dashboard');
       }, function(err){
         $ionicLoading.hide();
       })
@@ -57,7 +51,7 @@ angular.module('starter')
           $ionicHistory.nextViewOptions({
               disableBack: true
           });
-          $state.go('tab.dash');
+          $state.go('murid.dashboard');
       }, function(err){
         $ionicLoading.hide();
       })
