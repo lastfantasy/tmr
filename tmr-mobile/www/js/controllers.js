@@ -66,3 +66,9 @@ angular.module('starter')
     enableFriends: true
   };
 });
+
+function MyCtrl($scope, $ionicHistory){
+  $scope.myGoback=function(){
+    $ionicHistory.goBack();
+  };
+}
