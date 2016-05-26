@@ -1,16 +1,15 @@
+<ion-view view-title="Temanis Baru">
 <ion-nav-bar align-title="center" class="bar-positive">
       <ion-nav-title>
           <img src="img/logotemanis.png" height="18px" align="center">
       </ion-nav-title>
   </ion-nav-bar>
-<ion-view view-title="Temanis Baru">
-
     <ion-nav-title>
           <img src="img/logotemanis.png" height="20px" align="center">
     </ion-nav-title>
   <ion-content class="padding latar">
-    <h2 align="center" class="selamatdtg">Selamat Datang {{ user.name }}</h2>
+    <h2 align="center" class="selamatdtg">Selamat Datang {{user.name}}</h2>
     <h4 align="center">Sekarang anda bisa mendaftarkan diri di sekolah ini.</h4>
-    
+    <button ng-click="logout()" class="button button-block button-assertive" >Logout</button>
   </ion-content>
 </ion-view>

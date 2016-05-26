@@ -30,9 +30,9 @@ angular.module('starter', ['ionic'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('home',{
-      url : '/',
-      templateUrl : 'index.html',
+  .state('welcomepage',{
+      url : '/welcome_page',
+      templateUrl : 'templates/welcome_page.html',
   })
 
   .state('login',{
@@ -71,7 +71,7 @@ angular.module('starter', ['ionic'])
       views: {
         'murid-daftar': {
           templateUrl: 'templates/murid-daftar.html',
-          controller: 'ChatsCtrl'
+          controller: 'DaftarCtrl'
         }
       }
     })
@@ -81,7 +81,7 @@ angular.module('starter', ['ionic'])
     views: {
       'murid-ujian': {
         templateUrl: 'templates/murid-ujian.html',
-        controller: 'AccountCtrl'
+        controller: 'UjianCtrl'
       }
     }
   });
@@ -89,7 +89,7 @@ angular.module('starter', ['ionic'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise(function($injector, $location){
       var state = $injector.get('$state');
-      state.go('home');
+      state.go('murid.dashboard');
   });
 })
 
@@ -99,14 +99,14 @@ angular.module('starter', ['ionic'])
 
     if (!AuthService.isAuthenticated()) {
       if(next.name==='register') {}
-      else if(next.name==='loginmenu') {}
+      else if(next.name==='welcomepage') {}
       else if(next.name!=='login') {
         switch(next.name){
           case 'register' : {event.preventDefault();$state.go('register'); break;}
           case 'login' : {event.preventDefault(); $state.go('login'); break;}
           case 'lupapassword' : {event.preventDefault(); $state.go('lupapassword'); break;}
           case 'gantipass/:idUser' : {event.preventDefault(); $state.go('gantipass/:idUser'); break;};
-          default : { event.preventDefault(); $state.go('home'); break;}
+          default : { event.preventDefault(); $state.go('welcomepage'); break;}
         }
       }
     }

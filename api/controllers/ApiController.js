@@ -68,5 +68,22 @@ module.exports = {
 						return res.json({code:200,user:user});
 				});
 		});
-	}
+	},
+	verifyapplication : function(req,res,next){
+		var nowdate = new Date();
+		var opendate;
+		var closedate;
+		User.findOne({admin:true}, function(err, user){
+			opendate = new Date(user.opendate)
+			closedate = new Date(user.closedate)
+			if (nowdate < opendate){
+				return res.json({code:404, message:"Pendaftaran Belum Dibuka."});
+			}
+			else if (nowdate > closedate){
+				return res.json({code:404, message:"Pendaftaran Sudah Ditutup."})
+			}
+			return res.json({code:200, message:"Silahkan Mendaftar."});
+		});
+		
+	},
 };
