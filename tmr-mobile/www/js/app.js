@@ -30,7 +30,7 @@ angular.module('starter', ['ionic'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('welcomepage',{
+  .state('welcome',{
       url : '/welcome_page',
       templateUrl : 'templates/welcome_page.html',
   })
@@ -99,14 +99,14 @@ angular.module('starter', ['ionic'])
 
     if (!AuthService.isAuthenticated()) {
       if(next.name==='register') {}
-      else if(next.name==='welcomepage') {}
+      else if(next.name==='welcome') {}
       else if(next.name!=='login') {
         switch(next.name){
           case 'register' : {event.preventDefault();$state.go('register'); break;}
           case 'login' : {event.preventDefault(); $state.go('login'); break;}
           case 'lupapassword' : {event.preventDefault(); $state.go('lupapassword'); break;}
           case 'gantipass/:idUser' : {event.preventDefault(); $state.go('gantipass/:idUser'); break;};
-          default : { event.preventDefault(); $state.go('welcomepage'); break;}
+          default : { event.preventDefault(); $state.go('welcome'); break;}
         }
       }
     }

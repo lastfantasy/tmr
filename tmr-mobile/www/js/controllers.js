@@ -12,8 +12,8 @@ angular.module('starter')
       $timeout(function(){
         $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
-      },300)
-      $state.go('login');
+      },1000)
+      $state.go('welcome');
     }
 })
 
