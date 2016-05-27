@@ -1,15 +1,16 @@
-<ion-view view-title="Temanis Baru">
-<ion-nav-bar align-title="center" class="bar-positive">
-      <ion-nav-title>
-          <img src="img/logotemanis.png" height="18px" align="center">
-      </ion-nav-title>
-  </ion-nav-bar>
-    <ion-nav-title>
-          <img src="img/logotemanis.png" height="20px" align="center">
-    </ion-nav-title>
+<ion-view>
+
   <ion-content class="padding latar">
-    <h2 align="center" class="selamatdtg">Nomor Registrasi Anda : {{user.id}}</h2>
-    <h2 align="center" class="selamatdtg">Tanggal USM Anda : </h2>
+  
+    <h2 align="center" class="tebal positive">Ujian Saringan Masuk</h2>
+    <br>
+    <h3 align="center" class="assertive">Nomor Registrasi:</h3>
+    <h4 align="center">{{user.id}}<h4>
+    <h3 align="center" class="assertive">Nama:</h3>
+    <h4 align="center">{{user.name}}<h4>
+    <h3 align="center" class="assertive">Tanggal USM Anda :</h3>
     <h4 align="center">{{usm}}</h4>
+    <h3 align="center" class="assertive">Peralatan yang perlu dipersiapkan:</h3>
+    <h4 align="center">- Pensil & Pulpen<br>- Penghapus<br>- Kartu Ujian<br>- Papan Alas</h4>
   </ion-content>
 </ion-view>

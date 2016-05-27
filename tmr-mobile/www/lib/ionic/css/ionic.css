@@ -9394,9 +9394,11 @@ a.button {
   color: white;
   font-family: 'Leckerli One', cursive;
 }
-
+.tebal{
+  font-weight: bold;
+}
 .latar{
-  background-color: #387ef5;
+  background-color: white;
 }
 
 .block {
