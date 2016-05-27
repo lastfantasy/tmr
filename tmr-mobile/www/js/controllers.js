@@ -126,8 +126,3 @@ angular.module('starter')
   $scope.usm = usm;
 })
 
-function MyCtrl($scope, $ionicHistory){
-  $scope.myGoback=function(){
-    $ionicHistory.goBack();
-  };
-}
