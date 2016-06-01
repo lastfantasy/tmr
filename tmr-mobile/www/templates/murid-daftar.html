@@ -1,14 +1,90 @@
 
-<ion-view>
-<
+<ion-view ng-controller="AppCtrl">
+
   <ion-content class="padding latar">
     <h2 align="center" class="tebal positive">Pendaftaran</h2>
     <h4 align="center">{{message}}</h4>
     <br>
     <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
-    <br>
-    <a class="button button-block button-outline button-assertive" href="">Profil</a>
+    <br> 
+    <button class="button button-block button-outline button-assertive" ng-click="modal.show()">Profil</button>
+    
     <a class="button button-block button-outline button-assertive" href="">Tingkatan</a>
     <a class="button button-block button-outline button-assertive" href="">Dokumen</a>
   </ion-content>
 </ion-view>
+
+<script id="templates/modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+          <button class="button button-icon ion-close button-primary" ng-click="modal.hide()"></button>
+        </ion-header-bar>
+        <ion-content class="padding">
+        <h2 align="center" class="tebal positive">Profil</h2>
+        <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" name="noreg" ng-model="user.id" placeholder="No. Registrasi" ng-disabled="true">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="name" ng-model="data.name" placeholder="Nama Lengkap">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="address" ng-model="data.address" placeholder="Alamat">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="tmptlahir" ng-model="data.birthplace" placeholder="Tempat Lahir">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Tanggal Lahir</span>
+              <input type="date" name="tgllahir" ng-model="data.birthday" placeholder="Tanggal Lahir">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Jenis Kelamin</span>
+              <select>
+                <option selected>Laki-laki</option>
+                <option>Perempuan</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <input type="text" name="email" ng-model="data.email" placeholder="Email" ng-disabled="true">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="notelp" ng-model="data.notelp" placeholder="No. Telepon">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="nohp" ng-model="data.nohp" placeholder="No. Handphone">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="namaayah" ng-model="data.namaayah" placeholder="Nama Ayah">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="pekayah" ng-model="data.pekayah" placeholder="Pekerjaan Ayah">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="penghayah" ng-model="data.penghayah" placeholder="Penghasilan Ayah">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="notelpayah" ng-model="data.notelpayah" placeholder="No. Telepon Ayah">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="namaibu" ng-model="data.namaibu" placeholder="Nama Ibu">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="pekibu" ng-model="data.pekibu" placeholder="Pekerjaan Ibu">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="penghibu" ng-model="data.penghibu" placeholder="Penghasilan Ibu">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="notelpibu" ng-model="data.notelpibu" placeholder="No. Telepon Ibu">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="jlhsaudara" ng-model="data.jlhsaudara" placeholder="Jumlah Saudara">
+            </label>
+            <button class="button button-block button-assertive" ng-click="createContact(newUser)">Kirim</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
