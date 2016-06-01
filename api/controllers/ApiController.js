@@ -86,4 +86,90 @@ module.exports = {
 		});
 		
 	},
+	applyprofile : function(req,res,next){
+	    	tmpstatus ++;
+	    	var nowdate = new Date().getFullYear();
+	    	var birthdate = new Date(req.param('datebirth')).getFullYear();
+			if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
+	    		return res.json({code:404, message:"Anda belum cukup umur untuk mendaftar."});
+	    	}
+	    	var phone = req.param('phone');
+			for(var i=0;i<phone.length;i++){
+					if(phone[i]<'0' || phone[i]>'9'){
+						return res.json({code:404, message:"Nomor Telepon harus dalam bentuk angka (0-9)."});
+					}
+			}
+			var handphone = req.param('handphone');
+			for(var i=0;i<handphone.length;i++){
+					if(handphone[i]<'0' || handphone[i]>'9'){
+						return res.json({code:404, message:"Nomor Handphone harus dalam bentuk angka (0-9)."});
+					}
+			}
+			var fatherphone = req.param('fatherphone');
+			for(var i=0;i<fatherphone.length;i++){
+					if(fatherphone[i]<'0' || fatherphone[i]>'9'){
+						return res.json({code:404, message:"Nomor Telepon Ayah harus dalam bentuk angka (0-9)."});
+					}
+			}
+			var motherphone = req.param('motherphone');
+			for(var i=0;i<motherphone.length;i++){
+					if(motherphone[i]<'0' || motherphone[i]>'9'){
+						return res.json({code:404, message:"Nomor Telepon Ibu harus dalam bentuk angka (0-9)."});
+					}
+			}
+			var siblings = req.param('numbersiblings');
+			for(var i=0;i<siblings.length;i++){
+					if(siblings[i]<'0' || siblings[i]>'9'){
+						return res.json({code:404, message:"Mohon input jumlah saudara dengan angka."});
+					}
+			}
+			if (tmpstatus == 3){
+				tmpstatus = 0;
+				var usrObj = {
+					name : req.param('name'),
+					address : req.param('address'),
+					placebirth : req.param('placebirth'),
+					datebirth : req.param('datebirth'),
+					gender : req.param('gender'),
+					phone : req.param('phone'),
+					handphone : req.param('handphone'),
+					fathername : req.param('fathername'),
+					fatheroccupation : req.param('fatheroccupation'),
+					fathersalary : req.param('fathersalary'),
+					fatherphone : req.param('fatherphone'),
+					mothername : req.param('mothername'),
+					motheroccupation : req.param('motheroccupation'),
+					mothersalary : req.param('mothersalary'),
+					motherphone : req.param('motherphone'),
+					numbersiblings : req.param('numbersiblings'),
+					dashboard_status : 1,
+					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+				}
+			}
+			else {
+				var usrObj = {
+					name : req.param('name'),
+					address : req.param('address'),
+					placebirth : req.param('placebirth'),
+					datebirth : req.param('datebirth'),
+					gender : req.param('gender'),
+					phone : req.param('phone'),
+					handphone : req.param('handphone'),
+					fathername : req.param('fathername'),
+					fatheroccupation : req.param('fatheroccupation'),
+					fathersalary : req.param('fathersalary'),
+					fatherphone : req.param('fatherphone'),
+					mothername : req.param('mothername'),
+					motheroccupation : req.param('motheroccupation'),
+					mothersalary : req.param('mothersalary'),
+					motherphone : req.param('motherphone'),
+					numbersiblings : req.param('numbersiblings'),
+					dashboard_status : 1
+				}
+			}
+			User.update(req.session.User.id,usrObj,function(err,user){
+					if(err) return next(err);
+					return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
+			});
+	    },
 };

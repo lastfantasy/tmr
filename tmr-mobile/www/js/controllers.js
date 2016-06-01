@@ -17,18 +17,92 @@ angular.module('starter')
     }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal) {
-  
-  
-
-  $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope
-  }).then(function(modal) {
+.controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal) {
+  $ionicModal.fromTemplateUrl('templates/modal.html', {scope: $scope}).then(function(modal) {
     $scope.modal = modal;
+    var user = AuthService.user();
+    $scope.user = user;
+    var name = "";
+    if (user.name != null){
+      name = user.name;
+    }
+    $scope.name = name;
+    var alamat = "";
+    if (user.address != null){
+      alamat = user.address;
+    }
+    $scope.alamat = alamat;
+    var tempatlahir = "";
+    if (user.placebirth != null){
+      tempatlahir = user.placebirth;
+    }
+    $scope.tempatlahir = tempatlahir;
+    var tgllahir = "";
+    if (user.datebirth != null){
+      tgllahir = user.datebirth;
+    }
+    $scope.tgllahir = tgllahir;
+    var gender = "m";
+    if (user.gender == "f"){
+      gender = "f";
+    }
+    $scope.gender = gender;
+    var telp = "";
+    if (user.phone != null){
+      telp = user.phone;
+    }
+    $scope.telp = telp;
+    var hp = "";
+    if (user.handphone != null){
+      hp = user.handphone;
+    }
+    $scope.hp = hp;
+    var namaayah = "";
+    if (user.fathername != null){
+      namaayah = user.fathername;
+    }
+    $scope.namaayah = namaayah;
+    var pekayah = "";
+    if (user.fatheroccupation != null){
+      pekayah = user.fatheroccupation;
+    }
+    $scope.pekayah = pekayah;
+    var penghayah = "";
+    if (user.fathersalary != null){
+      penghayah = user.fathersalary;
+    }
+    $scope.penghayah = penghayah;
+    var telpayah = "";
+    if (user.fatherphone != null){
+      telpayah = user.fatherphone;
+    }
+    $scope.telpayah = telpayah;
+    var namaibu = "";
+    if (user.mothername != null){
+      namaibu = user.mothername;
+    }
+    $scope.namaibu = namaibu;
+    var pekibu = "";
+    if (user.motheroccupation != null){
+      pekibu = user.motheroccupation;
+    }
+    $scope.pekibu = pekibu;
+    var penghibu = "";
+    if (user.mothersalary != null){
+      penghibu = user.mothersalary;
+    }
+    $scope.penghibu = penghibu;
+    var telpibu = "";
+    if (user.motherphone != null){
+      telpibu = user.motherphone;
+    }
+    $scope.telpibu = telpibu;
+    var saudara = "";
+    if (user.numbersiblings != null){
+      saudara = user.numbersiblings;
+    }
+    $scope.saudara = saudara;
   });
-  
-  
-
 })
 
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
@@ -82,9 +156,6 @@ angular.module('starter')
         $ionicLoading.hide();
       })
     }
-})
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('UjianCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
