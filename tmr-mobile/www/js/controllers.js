@@ -37,9 +37,9 @@ angular.module('starter')
       tempatlahir = user.placebirth;
     }
     $scope.tempatlahir = tempatlahir;
-    var tgllahir = "";
+    var tgllahir;
     if (user.datebirth != null){
-      tgllahir = user.datebirth;
+      tgllahir = new Date(user.datebirth);
     }
     $scope.tgllahir = tgllahir;
     var gender = "m";
