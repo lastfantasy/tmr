@@ -7,18 +7,18 @@
     <br>
     <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
     <br> 
-    <button class="button button-block button-outline button-assertive" ng-click="modal.show()">Profil</button>
+    <button class="button button-block button-outline button-assertive" ng-click="ShowModal1()">Profil</button>
+    <button class="button button-block button-outline button-assertive" ng-click="ShowModal2()">Tingkatan</button>
+    <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
     
-    <a class="button button-block button-outline button-assertive" href="">Tingkatan</a>
-    <a class="button button-block button-outline button-assertive" href="">Dokumen</a>
   </ion-content>
 </ion-view>
 
-<script id="templates/modal.html" type="text/ng-template">
+<script id="templates/modal1.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
-      <button class="button button-icon ion-close button-primary" ng-click="modal.hide()"></button>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(1)"></button>
     </ion-header-bar>
     <ion-content class="padding">
     <h2 align="center" class="tebal positive">Profil</h2>
@@ -100,6 +100,43 @@
           <span class="input-label">Jumlah Saudara</span>
           <input type="text" name="jlhsaudara" ng-model="saudara" placeholder="Jumlah Saudara">
         </label>
+        <button class="button button-block button-assertive">Kirim</button>
+      </div>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal2.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(2)"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <h2 align="center" class="tebal positive">Tingkatan</h2>
+    <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+    <form>
+      
+        <button class="button button-block button-assertive">Kirim</button>
+      </div>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal3.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(3)"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <h2 align="center" class="tebal positive">Dokumen</h2>
+    <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+    <form>
+      <div class="list">
+        
         <button class="button button-block button-assertive">Kirim</button>
       </div>
       </form>
