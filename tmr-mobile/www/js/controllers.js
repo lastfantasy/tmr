@@ -18,7 +18,7 @@ angular.module('starter')
 })
 
 .controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal) {
-  $ionicModal.fromTemplateUrl('templates/modal-1.html', {
+  $ionicModal.fromTemplateUrl('templates/modal_profil.html', {
     id: '1',
     scope: $scope,
     backdropClickToClose: false,
@@ -109,7 +109,7 @@ angular.module('starter')
     $scope.saudara = saudara;
   });
 
-  $ionicModal.fromTemplateUrl('modal-2.html',{
+  $ionicModal.fromTemplateUrl('templates/modal_tingkatan.html',{
     id: '2',
     scope: $scope,
     backdropClickToClose: false,
@@ -119,7 +119,7 @@ angular.module('starter')
     var user = AuthService.user();
   });
 
-  $ionicModal.fromTemplateUrl('modal3.html',{
+  $ionicModal.fromTemplateUrl('templates/modal_dokumen.html',{
     id: '3',
     scope: $scope,
     backdropClickToClose: false,
@@ -142,9 +142,8 @@ angular.module('starter')
 })
 
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
-    var obj = {};
     $scope.message = "";
-    $http.post('http://localhost:1337/api/verifyapplication',obj)
+    $http.get('http://localhost:1337/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
