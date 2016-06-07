@@ -18,13 +18,13 @@ angular.module('starter')
 })
 
 .controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal) {
-  $ionicModal.fromTemplateUrl('templates/modal1.html', {
+  $ionicModal.fromTemplateUrl('templates/modal-1.html', {
     id: '1',
     scope: $scope,
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal) {
-    $scope.oModal1= modal;
+    $scope.oModal1 = modal;
     var user = AuthService.user();
     $scope.user = user;
     var name = "";
@@ -109,7 +109,7 @@ angular.module('starter')
     $scope.saudara = saudara;
   });
 
-  $ionicModal.fromTemplateUrl('modal2.html',{
+  $ionicModal.fromTemplateUrl('modal-2.html',{
     id: '2',
     scope: $scope,
     backdropClickToClose: false,
@@ -129,19 +129,14 @@ angular.module('starter')
     var user = AuthService.user();
   });
 
-  $scope.ShowModal1 = function(){
-    $scope.oModal1.show();
+  $scope.openModal = function(index) {
+    if (index == 1) $scope.oModal1.show();
+    else $scope.oModal2.show();
   };
-  $scope.ShowModal2 = function(){
-    $scope.oModal2.show();
-  };
-  $scope.ShowModal3 = function(){
-    $scope.oModal3.show();
-  };
-  $scope.closeModal = function(index){
+
+  $scope.closeModal = function(index) {
     if (index == 1) $scope.oModal1.hide();
-    if (index == 2) $scope.oModal2.hide();
-    if (index == 3) $scope.oModal3.hide();
+    else $scope.oModal2.hide();
   };
   
 })
