@@ -4,7 +4,8 @@
  * @description :: Server-side logic for managing apis
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
- var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
+var tmpstatus = 0;
 module.exports = {
 	register : function(req,res,next){
 		if(!req.param('email') || !req.param('password') || !req.param('passwordconfirmation')){
@@ -89,7 +90,10 @@ module.exports = {
 	applyprofile : function(req,res,next){
 	    	tmpstatus ++;
 	    	var nowdate = new Date().getFullYear();
-	    	var birthdate = new Date(req.param('datebirth')).getFullYear();
+	    	var datebirth = req.param('year')+"-"+req.param('month')+"-"+req.param('day');
+	    	var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
+	    	var birthdate = tmp.getFullYear();
+	    	console.log(datebirth);
 			if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
 	    		return res.json({code:404, message:"Anda belum cukup umur untuk mendaftar."});
 	    	}
@@ -129,7 +133,7 @@ module.exports = {
 					name : req.param('name'),
 					address : req.param('address'),
 					placebirth : req.param('placebirth'),
-					datebirth : req.param('datebirth'),
+					datebirth : datebirth,
 					gender : req.param('gender'),
 					phone : req.param('phone'),
 					handphone : req.param('handphone'),
@@ -151,7 +155,7 @@ module.exports = {
 					name : req.param('name'),
 					address : req.param('address'),
 					placebirth : req.param('placebirth'),
-					datebirth : req.param('datebirth'),
+					datebirth : datebirth,
 					gender : req.param('gender'),
 					phone : req.param('phone'),
 					handphone : req.param('handphone'),
@@ -167,7 +171,7 @@ module.exports = {
 					dashboard_status : 1
 				}
 			}
-			User.update(req.session.User.id,usrObj,function(err,user){
+			User.update(req.param("id_user"),usrObj,function(err,user){
 					if(err) return next(err);
 					return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
 			});

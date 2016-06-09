@@ -17,7 +17,7 @@ angular.module('starter')
     }
 })
 
-.controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal) {
+.controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal, $http) {
   $ionicModal.fromTemplateUrl('templates/modal_profil.html', {
     id: '1',
     scope: $scope,
@@ -27,86 +27,29 @@ angular.module('starter')
     $scope.oModal1 = modal;
     var user = AuthService.user();
     $scope.user = user;
-    var name = "";
-    if (user.name != null){
-      name = user.name;
-    }
-    $scope.name = name;
-    var alamat = "";
-    if (user.address != null){
-      alamat = user.address;
-    }
-    $scope.alamat = alamat;
-    var tempatlahir = "";
-    if (user.placebirth != null){
-      tempatlahir = user.placebirth;
-    }
-    $scope.tempatlahir = tempatlahir;
-    var tgllahir;
+    var tgllahir, day, month, year;
     if (user.datebirth != null){
       tgllahir = new Date(user.datebirth);
+      day = new Date(user.datebirth).getDate();
+      month = new Date(user.datebirth).getMonth();
+      year = new Date(user.datebirth).getFullYear();
     }
     $scope.tgllahir = tgllahir;
-    var gender = "m";
-    if (user.gender == "f"){
-      gender = "f";
+    $scope.day = day;
+    $scope.month = month;
+    $scope.year = year;
+    $scope.send = function(data, tgllahir){
+      data.id_user = AuthService.user().id;
+      tgl = new Date(tgllahir);
+      data.day = tgl.getDate();
+      data.month = tgl.getMonth()+1;
+      data.year = tgl.getFullYear();
+      // console.log(data);
+      $http.post('http://localhost:1337/api/applyprofile', data)
+      .success(function(datas){
+        $scope.oModal1.hide();
+      })
     }
-    $scope.gender = gender;
-    var telp = "";
-    if (user.phone != null){
-      telp = user.phone;
-    }
-    $scope.telp = telp;
-    var hp = "";
-    if (user.handphone != null){
-      hp = user.handphone;
-    }
-    $scope.hp = hp;
-    var namaayah = "";
-    if (user.fathername != null){
-      namaayah = user.fathername;
-    }
-    $scope.namaayah = namaayah;
-    var pekayah = "";
-    if (user.fatheroccupation != null){
-      pekayah = user.fatheroccupation;
-    }
-    $scope.pekayah = pekayah;
-    var penghayah = "";
-    if (user.fathersalary != null){
-      penghayah = user.fathersalary;
-    }
-    $scope.penghayah = penghayah;
-    var telpayah = "";
-    if (user.fatherphone != null){
-      telpayah = user.fatherphone;
-    }
-    $scope.telpayah = telpayah;
-    var namaibu = "";
-    if (user.mothername != null){
-      namaibu = user.mothername;
-    }
-    $scope.namaibu = namaibu;
-    var pekibu = "";
-    if (user.motheroccupation != null){
-      pekibu = user.motheroccupation;
-    }
-    $scope.pekibu = pekibu;
-    var penghibu = "";
-    if (user.mothersalary != null){
-      penghibu = user.mothersalary;
-    }
-    $scope.penghibu = penghibu;
-    var telpibu = "";
-    if (user.motherphone != null){
-      telpibu = user.motherphone;
-    }
-    $scope.telpibu = telpibu;
-    var saudara = "";
-    if (user.numbersiblings != null){
-      saudara = user.numbersiblings;
-    }
-    $scope.saudara = saudara;
   });
 
   $ionicModal.fromTemplateUrl('templates/modal_tingkatan.html',{
@@ -143,12 +86,15 @@ angular.module('starter')
 
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
     $scope.message = "";
+    $scope.show = true;
     $http.get('http://localhost:1337/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
+            $scope.show = false;
         } else {
             $scope.message  = datas.message;
+            $scope.show = true;
         }
     })
     .error(function(err){
