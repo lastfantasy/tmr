@@ -7,14 +7,14 @@
     <br>
     <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
     <br> 
-    <button class="button button-block button-outline button-assertive" ng-click="ShowModal1()">Profil</button>
-    <button class="button button-block button-outline button-assertive" ng-click="ShowModal2()">Tingkatan</button>
+    <button class="button button-block button-outline button-assertive" ng-click="openModal(1)">Profil</button>
+    <button class="button button-block button-outline button-assertive" ng-click="openModal(2)">Tingkatan</button>
     <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
     
   </ion-content>
 </ion-view>
 
-<script id="templates/modal1.html" type="text/ng-template">
+<script id="templates/modal_profil.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
@@ -31,7 +31,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Lengkap</span>
-          <input type="text" name="name" ng-model="name" placeholder="Nama Lengkap">
+          <input type="text" name="name" ng-model="obj.name" placeholder="Nama Lengkap">
         </label>
         <label class="item item-input">
           <span class="input-label">Alamat</span>
@@ -107,7 +107,7 @@
   </ion-modal-view>
 </script>
 
-<script id="templates/modal2.html" type="text/ng-template">
+<script id="templates/modal_tingkatan.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
@@ -125,7 +125,7 @@
   </ion-modal-view>
 </script>
 
-<script id="templates/modal3.html" type="text/ng-template">
+<script id="templates/modal_dokumen.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
       <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
