@@ -5,12 +5,13 @@
     <h2 align="center" class="tebal positive">Pendaftaran</h2>
     <h4 align="center">{{message}}</h4>
     <br>
-    <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
-    <br> 
-    <button class="button button-block button-outline button-assertive" ng-click="openModal(1)">Profil</button>
-    <button class="button button-block button-outline button-assertive" ng-click="openModal(2)">Tingkatan</button>
-    <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
-    
+    <div ng-if="show==true">
+      <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
+      <br> 
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(1)">Profil</button>
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(2)">Tingkatan</button>
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
+    </div>
   </ion-content>
 </ion-view>
 
@@ -31,15 +32,15 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Lengkap</span>
-          <input type="text" name="name" ng-model="obj.name" placeholder="Nama Lengkap">
+          <input type="text" name="name" ng-model="user.name" placeholder="Nama Lengkap">
         </label>
         <label class="item item-input">
           <span class="input-label">Alamat</span>
-          <input type="text" name="address" ng-model="alamat" placeholder="Alamat">
+          <input type="text" name="address" ng-model="user.address" placeholder="Alamat">
         </label>
         <label class="item item-input">
           <span class="input-label">Tempat Lahir</span>
-          <input type="text" name="tmptlahir" ng-model="tempatlahir" placeholder="Tempat Lahir">
+          <input type="text" name="tmptlahir" ng-model="user.placebirth" placeholder="Tempat Lahir">
         </label>
         <label class="item item-input">
           <span class="input-label">Tanggal Lahir</span>
@@ -47,7 +48,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Jenis Kelamin</span>
-          <select ng-model="gender">
+          <select ng-model="user.gender">
             <option value="m">Laki-laki</option>
             <option value="f">Perempuan</option>
           </select>
@@ -58,49 +59,49 @@
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon</span>
-          <input type="text" name="notelp" ng-model="telp" placeholder="No. Telepon">
+          <input type="text" name="notelp" ng-model="user.phone" placeholder="No. Telepon">
         </label>
         <label class="item item-input">
           <span class="input-label">No. Handphone</span>
-          <input type="text" name="nohp" ng-model="hp" placeholder="No. Handphone">
+          <input type="text" name="nohp" ng-model="user.handphone" placeholder="No. Handphone">
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Ayah</span>
-          <input type="text" name="namaayah" ng-model="namaayah" placeholder="Nama Ayah">
+          <input type="text" name="namaayah" ng-model="user.fathername" placeholder="Nama Ayah">
         </label>
         <label class="item item-input">
           <span class="input-label">Pekerjaan Ayah</span>
-          <input type="text" name="pekayah" ng-model="pekayah" placeholder="Pekerjaan Ayah">
+          <input type="text" name="pekayah" ng-model="user.fatheroccupation" placeholder="Pekerjaan Ayah">
         </label>
         <label class="item item-input">
           <span class="input-label">Penghasilan Ayah</span>
-          <input type="text" name="penghayah" ng-model="penghayah" placeholder="Penghasilan Ayah">
+          <input type="text" name="penghayah" ng-model="user.fathersalary" placeholder="Penghasilan Ayah">
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon Ayah</span>
-          <input type="text" name="notelpayah" ng-model="telpayah" placeholder="No. Telepon Ayah">
+          <input type="text" name="notelpayah" ng-model="user.fatherphone" placeholder="No. Telepon Ayah">
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Ibu</span>
-          <input type="text" name="namaibu" ng-model="namaibu" placeholder="Nama Ibu">
+          <input type="text" name="namaibu" ng-model="user.mothername" placeholder="Nama Ibu">
         </label>
         <label class="item item-input">
           <span class="input-label">Pekerjaan Ibu</span>
-          <input type="text" name="pekibu" ng-model="pekibu" placeholder="Pekerjaan Ibu">
+          <input type="text" name="pekibu" ng-model="user.motheroccupation" placeholder="Pekerjaan Ibu">
         </label>
         <label class="item item-input">
           <span class="input-label">Penghasilan Ibu</span>
-          <input type="text" name="penghibu" ng-model="penghibu" placeholder="Penghasilan Ibu">
+          <input type="text" name="penghibu" ng-model="user.mothersalary" placeholder="Penghasilan Ibu">
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon Ibu</span>
-          <input type="text" name="notelpibu" ng-model="telpibu" placeholder="No. Telepon Ibu">
+          <input type="text" name="notelpibu" ng-model="user.motherphone" placeholder="No. Telepon Ibu">
         </label>
         <label class="item item-input">
           <span class="input-label">Jumlah Saudara</span>
-          <input type="text" name="jlhsaudara" ng-model="saudara" placeholder="Jumlah Saudara">
+          <input type="text" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara">
         </label>
-        <button class="button button-block button-assertive">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send(user, tgllahir)">Kirim</button>
       </div>
       </form>
     </ion-content>
