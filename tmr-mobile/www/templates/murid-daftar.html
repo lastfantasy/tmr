@@ -116,9 +116,23 @@
     </ion-header-bar>
     <ion-content class="padding">
     <h2 align="center" class="tebal positive">Tingkatan</h2>
-    <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+    <p align="center">Silahkan isi data history sekolah Anda di bawah ini.</p>
     <form>
-      
+        <label class="item item-input">
+          <span class="input-label">Tingkatan</span>
+          <select ng-model="user.tingkatan">
+            <option value="">SMP 1</option>
+            <option value="">SMP 2</option>
+            <option value="">SMP 3</option>
+            <option value="">SMA 1</option>
+            <option value="">SMA 2</option>
+            <option value="">SMA 3</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Sekolah Sebelumnya</span>
+          <input type="text" name="sklsblm" ng-model="user.sekolah" placeholder="Sekolah Sebelumnya">
+        </label>
         <button class="button button-block button-assertive">Kirim</button>
       </div>
       </form>
@@ -134,10 +148,26 @@
     </ion-header-bar>
     <ion-content class="padding">
     <h2 align="center" class="tebal positive">Dokumen</h2>
-    <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+    <p align="center">Silahkan upload dokumen Anda di bawah ini.</p>
     <form>
       <div class="list">
-        
+        <label class="item item-input">
+          <span class="input-label">Akte Lahir</span>
+          <button class="button button-right button-small button-outline button-assertive">Browse</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Ijazah</span>
+          
+          <button class="button button-small button-outline button-assertive">Browse</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Dokumen Pendukung 1</span>
+          <button class="button button-small button-outline button-assertive">Browse</button>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Dokumen Pendukung 2</span>
+          <button class="button button-small button-outline button-assertive">Browse</button>
+        </label>
         <button class="button button-block button-assertive">Kirim</button>
       </div>
       </form>

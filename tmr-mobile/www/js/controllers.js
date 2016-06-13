@@ -74,12 +74,14 @@ angular.module('starter')
 
   $scope.openModal = function(index) {
     if (index == 1) $scope.oModal1.show();
-    else $scope.oModal2.show();
+    if (index == 2) $scope.oModal2.show();
+    if (index == 3) $scope.oModal3.show();
   };
 
   $scope.closeModal = function(index) {
     if (index == 1) $scope.oModal1.hide();
-    else $scope.oModal2.hide();
+    if (index == 2) $scope.oModal2.hide();
+    if (index == 3) $scope.oModal3.hide();
   };
   
 })
