@@ -44,7 +44,6 @@ angular.module('starter')
       data.day = tgl.getDate();
       data.month = tgl.getMonth()+1;
       data.year = tgl.getFullYear();
-      // console.log(data);
       $http.post('http://localhost:1337/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
@@ -60,6 +59,14 @@ angular.module('starter')
   }).then(function(modal){
     $scope.oModal2 = modal;
     var user = AuthService.user();
+    $scope.user = user;
+    $scope.send = function(data){
+      data.id_user = AuthService.user().id;
+      $http.post('http://localhost:1337/api/applygrade', data)
+      .success(function(datas){
+        $scope.oModal2.hide();
+      })
+    }
   });
 
   $ionicModal.fromTemplateUrl('templates/modal_dokumen.html',{

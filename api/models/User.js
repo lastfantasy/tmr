@@ -17,7 +17,7 @@ module.exports = {
       file4 : 'string',
       types : 'string',
       gender : 'string',
-      grade : "string",
+      grade : 'string',
       address : 'string',
       placebirth : 'string',
       datebirth : 'string',

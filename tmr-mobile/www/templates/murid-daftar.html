@@ -12,11 +12,16 @@
       <button class="button button-block button-outline button-assertive" ng-click="openModal(2)">Tingkatan</button>
       <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
       <br>
-      <h4 align="center" class="tebal assertive">Status:</h4>
-      <h4 align="center">{{user.status}}<h4>
-      <h4 align="center" class="tebal assertive">Remarks:</h4>
-      <h4 align="center">{{user.remarks}}<h4>
     </div>
+    <h4 align="center" class="tebal assertive">Status:</h4>
+    <h4 align="center" ng-if="user.status==0">Pending<h4>
+    <h4 align="center" ng-if="user.status==1">Verified<h4>
+    <h4 align="center" ng-if="user.status==2">Denied<h4>
+    <h4 align="center" ng-if="user.status==3">Passed<h4>
+    <h4 align="center" ng-if="user.status==4">Failed<h4>
+    <h4 align="center" class="tebal assertive">Remarks:</h4>
+    <h4 align="center">{{user.verifyremarks}}<h4>
+    
   </ion-content>
 </ion-view>
 
@@ -125,20 +130,20 @@
     <form>
         <label class="item item-input">
           <span class="input-label">Tingkatan</span>
-          <select ng-model="user.tingkatan">
-            <option value="">SMP 1</option>
-            <option value="">SMP 2</option>
-            <option value="">SMP 3</option>
-            <option value="">SMA 1</option>
-            <option value="">SMA 2</option>
-            <option value="">SMA 3</option>
+          <select ng-model="user.grade">
+            <option value="0">SMP 1</option>
+            <option value="1">SMP 2</option>
+            <option value="2">SMP 3</option>
+            <option value="3">SMA 1</option>
+            <option value="4">SMA 2</option>
+            <option value="5">SMA 3</option>
           </select>
         </label>
         <label class="item item-input">
           <span class="input-label">Sekolah Sebelumnya</span>
-          <input type="text" name="sklsblm" ng-model="user.sekolah" placeholder="Sekolah Sebelumnya">
+          <input type="text" name="sklsblm" ng-model="user.previousschool" placeholder="Sekolah Sebelumnya">
         </label>
-        <button class="button button-block button-assertive">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send(user)">Kirim</button>
       </div>
       </form>
     </ion-content>
