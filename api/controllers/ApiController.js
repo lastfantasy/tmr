@@ -199,4 +199,72 @@ module.exports = {
 			return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
 		});
     },
+    applydocuments : function(req,res,next){
+    	tmpstatus ++;
+
+    	var file1 = "";
+		var file2 = "";
+		var file3 = "";
+		var file4 = "";
+
+		var fileurl1 = "";
+		var fileurl2 = "";
+		var fileurl3 = "";
+		var fileurl4 = "";
+
+		if(typeof req.param('file_url_1')=="undefined") {
+			return res.json({code:404, message:"Anda harus mengupload akte lahir Anda."});
+		}
+		if(typeof req.param('file_url_2')=="undefined") {
+			return res.json({code:404, message:"Anda harus mengupload ijazah Anda."});
+		}
+		if(typeof req.param('file_url_1')!="undefined") {
+				file1 = req.param('file_name_1');
+				fileurl1 = req.param('file_url_1');
+		}
+		if(typeof req.param('file_url_2')!="undefined") {
+				file2 = req.param('file_name_2');
+				fileurl2 = req.param('file_url_2');		
+		}
+		if(typeof req.param('file_url_3')!="undefined") {
+				file3 = req.param('file_name_3');
+				fileurl3 = req.param('file_url_3');		
+		}
+		if(typeof req.param('file_url_4')!="undefined") {
+				file4 = req.param('file_name_4');
+				fileurl4 = req.param('file_url_4');		
+		}
+		buf = new Buffer(fileurl1.replace(/^data:image\/\w+;base64,/,""),'base64');
+		fs.writeFile('akte lahir ' + req.session.User.id + '.jpg',buf,function(err,data){});
+		buf = new Buffer(fileurl2.replace(/^data:image\/\w+;base64,/,""),'base64');
+		fs.writeFile('ijazah ' + req.session.User.id + '.jpg',buf,function(err,data){});
+		buf = new Buffer(fileurl3.replace(/^data:image\/\w+;base64,/,""),'base64');
+		fs.writeFile('dok1 ' + req.session.User.id + '.jpg',buf,function(err,data){});
+		buf = new Buffer(fileurl4.replace(/^data:image\/\w+;base64,/,""),'base64');
+		fs.writeFile('dok2 ' + req.session.User.id + '.jpg',buf,function(err,data){});
+		if (tmpstatus == 3){
+			tmpstatus = 0;
+			var usrObj = {
+				file1 : file1,
+				file2 : file2,
+				file3 : file3,
+				file4 : file4,
+				documents_status : 1,
+				verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+			}
+		}
+		else {
+			var usrObj = {
+				file1 : file1,
+				file2 : file2,
+				file3 : file3,
+				file4 : file4,
+				documents_status : 1
+			}
+		}
+		User.update(req.param("id_user"),usrObj,function(err,user){
+				if(err) return res.json({code:404, message:"Error"});
+				return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan laengkapi data yang lainnya."});
+		});
+    }
 };

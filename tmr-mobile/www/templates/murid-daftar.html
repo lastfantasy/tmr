@@ -141,7 +141,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Sekolah Sebelumnya</span>
-          <input type="text" name="sklsblm" ng-model="user.previousschool" placeholder="Sekolah Sebelumnya">
+          <input type="text" name="sklsblm" ng-model="user.previousschoolname" placeholder="Sekolah Sebelumnya">
         </label>
         <button class="button button-block button-assertive" ng-click="send(user)">Kirim</button>
       </div>
@@ -163,22 +163,21 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Akte Lahir</span>
-          <button class="button button-right button-small button-outline button-assertive">Browse</button>
+          <button class="button button-primary" ng-click="openfile1()">BROWSE</button>
         </label>
         <label class="item item-input">
           <span class="input-label">Ijazah</span>
-          
-          <button class="button button-small button-outline button-assertive">Browse</button>
+          <button class="button button-primary" ng-click="openfile2()">BROWSE</button>
         </label>
         <label class="item item-input">
           <span class="input-label">Dokumen Pendukung 1</span>
-          <button class="button button-small button-outline button-assertive">Browse</button>
+          <button class="button button-primary" ng-click="openfile3()">BROWSE</button>
         </label>
         <label class="item item-input">
           <span class="input-label">Dokumen Pendukung 2</span>
-          <button class="button button-small button-outline button-assertive">Browse</button>
+          <button class="button button-primary" ng-click="openfile4()">BROWSE</button>
         </label>
-        <button class="button button-block button-assertive">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send()">Kirim</button>
       </div>
       </form>
     </ion-content>

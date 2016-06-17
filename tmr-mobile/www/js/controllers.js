@@ -17,7 +17,75 @@ angular.module('starter')
     }
 })
 
-.controller('AppCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal, $http) {
+.controller('AppCtrl', function($scope, AuthService,$cordovaImagePicker,$ionicLoading,$ionicHistory,$state,$timeout, $ionicModal, $http, $ionicPopup) {
+  $scope.openfile1 = function(){
+    var options = {
+     maximumImagesCount: 1,
+     width: 800,
+     height: 800,
+     quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        window.plugins.Base64.encodeFile(results[0], function(base64){
+            $scope.file_1 = "data:image/png;base64,"+base64;
+        });
+      }, function(error) {
+        // error getting photos
+    });
+  }
+  $scope.openfile2 = function(){
+    var options = {
+     maximumImagesCount: 1,
+     width: 800,
+     height: 800,
+     quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        window.plugins.Base64.encodeFile(results[0], function(base64){
+            $scope.file_2 = "data:image/png;base64,"+base64;
+        });
+      }, function(error) {
+        // error getting photos
+    });
+  }
+  $scope.openfile3 = function(){
+    var options = {
+     maximumImagesCount: 1,
+     width: 800,
+     height: 800,
+     quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        window.plugins.Base64.encodeFile(results[0], function(base64){
+            $scope.file_3 = "data:image/png;base64,"+base64;
+        });
+      }, function(error) {
+        // error getting photos
+    });
+  }
+  $scope.openfile4 = function(){
+    var options = {
+     maximumImagesCount: 1,
+     width: 800,
+     height: 800,
+     quality: 80
+    };
+
+    $cordovaImagePicker.getPictures(options)
+      .then(function (results) {
+        window.plugins.Base64.encodeFile(results[0], function(base64){
+            $scope.file_4 = "data:image/png;base64,"+base64;
+        });
+      }, function(error) {
+        // error getting photos
+    });
+  }
   $ionicModal.fromTemplateUrl('templates/modal_profil.html', {
     id: '1',
     scope: $scope,
@@ -44,7 +112,7 @@ angular.module('starter')
       data.day = tgl.getDate();
       data.month = tgl.getMonth()+1;
       data.year = tgl.getFullYear();
-      $http.post('http://localhost:1337/api/applyprofile', data)
+      $http.post('http://10.0.3.2:1337/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
       })
@@ -62,7 +130,7 @@ angular.module('starter')
     $scope.user = user;
     $scope.send = function(data){
       data.id_user = AuthService.user().id;
-      $http.post('http://localhost:1337/api/applygrade', data)
+      $http.post('http://10.0.3.2:1337/api/applygrade', data)
       .success(function(datas){
         $scope.oModal2.hide();
       })
@@ -75,8 +143,21 @@ angular.module('starter')
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal){
+    $scope.data = {};
     $scope.oModal3 = modal;
     var user = AuthService.user();
+    $scope.user = user;
+    $scope.send = function(){
+      data.id_user = AuthService.user().id;
+      data.file_url_1 = $scope.file_1;
+      data.file_url_2 = $scope.file_2;
+      data.file_url_3 = $scope.file_3;
+      data.file_url_4 = $scope.file_4;
+      $http.post('http://10.0.3.2:1337/api/applydocuments', data)
+      .success(function(datas){
+        $scope.oModal3.hide();
+      })
+    }
   });
 
   $scope.openModal = function(index) {
@@ -96,7 +177,7 @@ angular.module('starter')
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
     $scope.message = "";
     $scope.show = true;
-    $http.get('http://localhost:1337/api/verifyapplication')
+    $http.get('http://10.0.3.2:1337/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
