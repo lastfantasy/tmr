@@ -112,10 +112,14 @@ angular.module('starter')
       data.day = tgl.getDate();
       data.month = tgl.getMonth()+1;
       data.year = tgl.getFullYear();
-      $http.post('http://10.0.3.2:1337/api/applyprofile', data)
+      $http.post('http://localhost:1337/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
       })
+      // $http.post('http://192.168.56.1:1337/api/applyprofile', data)
+      // .success(function(datas){
+      //   $scope.oModal1.hide();
+      // })
     }
   });
 
@@ -130,10 +134,14 @@ angular.module('starter')
     $scope.user = user;
     $scope.send = function(data){
       data.id_user = AuthService.user().id;
-      $http.post('http://10.0.3.2:1337/api/applygrade', data)
+      $http.post('http://localhost:1337/api/applygrade', data)
       .success(function(datas){
         $scope.oModal2.hide();
       })
+      // $http.post('http://192.168.56.1:1337/api/applygrade', data)
+      // .success(function(datas){
+      //   $scope.oModal2.hide();
+      // })
     }
   });
 
@@ -153,10 +161,14 @@ angular.module('starter')
       data.file_url_2 = $scope.file_2;
       data.file_url_3 = $scope.file_3;
       data.file_url_4 = $scope.file_4;
-      $http.post('http://10.0.3.2:1337/api/applydocuments', data)
+      $http.post('http://localhost:1337/api/applydocuments', data)
       .success(function(datas){
         $scope.oModal3.hide();
       })
+      // $http.post('http://192.168.56.1:1337/api/applydocuments', data)
+      // .success(function(datas){
+      //   $scope.oModal3.hide();
+      // })
     }
   });
 
@@ -177,7 +189,7 @@ angular.module('starter')
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
     $scope.message = "";
     $scope.show = true;
-    $http.get('http://10.0.3.2:1337/api/verifyapplication')
+    $http.get('http://localhost:1337/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
@@ -190,6 +202,19 @@ angular.module('starter')
     .error(function(err){
 
     })
+    // $http.get('http://192.168.56.1:1337/api/verifyapplication')
+    // .success(function(datas){
+    //     if(datas.code!=200){
+    //         $scope.message = datas.message;
+    //         $scope.show = false;
+    //     } else {
+    //         $scope.message  = datas.message;
+    //         $scope.show = true;
+    //     }
+    // })
+    // .error(function(err){
+
+    // })
 })
 
 .controller('LoginMenuCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){
