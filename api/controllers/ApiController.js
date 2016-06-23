@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var bcrypt = require('bcrypt');
+var fs = require('fs');
 var tmpstatus = 0;
 module.exports = {
 	register : function(req,res,next){
@@ -88,6 +89,7 @@ module.exports = {
 		
 	},
 	applyprofile : function(req,res,next){
+		console.log('yes');
     	tmpstatus ++;
     	var nowdate = new Date().getFullYear();
     	var datebirth = req.param('year')+"-"+req.param('month')+"-"+req.param('day');
@@ -200,6 +202,7 @@ module.exports = {
 		});
     },
     applydocuments : function(req,res,next){
+    	
     	tmpstatus ++;
 
     	var file1 = "";
@@ -234,31 +237,39 @@ module.exports = {
 				file4 = req.param('file_name_4');
 				fileurl4 = req.param('file_url_4');		
 		}
-		buf = new Buffer(fileurl1.replace(/^data:image\/\w+;base64,/,""),'base64');
-		fs.writeFile('akte lahir ' + req.session.User.id + '.jpg',buf,function(err,data){});
-		buf = new Buffer(fileurl2.replace(/^data:image\/\w+;base64,/,""),'base64');
-		fs.writeFile('ijazah ' + req.session.User.id + '.jpg',buf,function(err,data){});
-		buf = new Buffer(fileurl3.replace(/^data:image\/\w+;base64,/,""),'base64');
-		fs.writeFile('dok1 ' + req.session.User.id + '.jpg',buf,function(err,data){});
-		buf = new Buffer(fileurl4.replace(/^data:image\/\w+;base64,/,""),'base64');
-		fs.writeFile('dok2 ' + req.session.User.id + '.jpg',buf,function(err,data){});
+		// console.log(req.param('file_url_1'));
+  //   	console.log(req.param('file_url_2'));
+  //   	console.log(req.param('file_url_3'));
+  //   	console.log(req.param('file_url_4'));
+		buf = new Buffer(fileurl1.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		var filename1 = 'akte lahir ' + req.param("id_user") + '.jpg';
+		fs.writeFile(filename1,buf,function(err,data){});
+		buf = new Buffer(fileurl2.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		var filename2 = 'ijazah ' + req.param("id_user") + '.jpg';
+		fs.writeFile(filename2,buf,function(err,data){});
+		buf = new Buffer(fileurl3.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		var filename3 = 'dok1 ' + req.param("id_user") + '.jpg';
+		fs.writeFile(filename3,buf,function(err,data){});
+		buf = new Buffer(fileurl4.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		var filename4 = 'dok2 ' + req.param("id_user") + '.jpg';
+		fs.writeFile(filename4,buf,function(err,data){});
 		if (tmpstatus == 3){
 			tmpstatus = 0;
 			var usrObj = {
-				file1 : file1,
-				file2 : file2,
-				file3 : file3,
-				file4 : file4,
+				file1 : filename1,
+				file2 : filename2,
+				file3 : filename3,
+				file4 : filename4,
 				documents_status : 1,
 				verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
 			}
 		}
 		else {
 			var usrObj = {
-				file1 : file1,
-				file2 : file2,
-				file3 : file3,
-				file4 : file4,
+				file1 : filename1,
+				file2 : filename2,
+				file3 : filename3,
+				file4 : filename4,
 				documents_status : 1
 			}
 		}

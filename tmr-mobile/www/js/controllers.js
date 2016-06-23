@@ -29,7 +29,7 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_1 = "data:image/png;base64,"+base64;
+            $scope.file_1 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -46,7 +46,7 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_2 = "data:image/png;base64,"+base64;
+            $scope.file_2 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -63,7 +63,7 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_3 = "data:image/png;base64,"+base64;
+            $scope.file_3 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -80,7 +80,7 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_4 = "data:image/png;base64,"+base64;
+            $scope.file_4 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -106,20 +106,21 @@ angular.module('starter')
     $scope.day = day;
     $scope.month = month;
     $scope.year = year;
-    $scope.send = function(data, tgllahir){
+    $scope.send_profil = function(data, tgllahir){
+      console.log('tes');
       data.id_user = AuthService.user().id;
       tgl = new Date(tgllahir);
       data.day = tgl.getDate();
       data.month = tgl.getMonth()+1;
       data.year = tgl.getFullYear();
-      $http.post('http://localhost:1337/api/applyprofile', data)
-      .success(function(datas){
-        $scope.oModal1.hide();
-      })
-      // $http.post('http://192.168.56.1:1337/api/applyprofile', data)
+      // $http.post('http://localhost:1337/api/applyprofile', data)
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
+      $http.post('http://192.168.1.110:1337/api/applyprofile', data)
+      .success(function(datas){
+        $scope.oModal1.hide();
+      })
     }
   });
 
@@ -132,16 +133,16 @@ angular.module('starter')
     $scope.oModal2 = modal;
     var user = AuthService.user();
     $scope.user = user;
-    $scope.send = function(data){
+    $scope.send_tingkatan = function(data){
       data.id_user = AuthService.user().id;
-      $http.post('http://localhost:1337/api/applygrade', data)
-      .success(function(datas){
-        $scope.oModal2.hide();
-      })
-      // $http.post('http://192.168.56.1:1337/api/applygrade', data)
+      // $http.post('http://localhost:1337/api/applygrade', data)
       // .success(function(datas){
       //   $scope.oModal2.hide();
       // })
+      $http.post('http://192.168.1.110:1337/api/applygrade', data)
+      .success(function(datas){
+        $scope.oModal2.hide();
+      })
     }
   });
 
@@ -155,20 +156,21 @@ angular.module('starter')
     $scope.oModal3 = modal;
     var user = AuthService.user();
     $scope.user = user;
-    $scope.send = function(){
+    $scope.send_dokumen = function(data){
       data.id_user = AuthService.user().id;
       data.file_url_1 = $scope.file_1;
       data.file_url_2 = $scope.file_2;
       data.file_url_3 = $scope.file_3;
       data.file_url_4 = $scope.file_4;
-      $http.post('http://localhost:1337/api/applydocuments', data)
-      .success(function(datas){
-        $scope.oModal3.hide();
-      })
-      // $http.post('http://192.168.56.1:1337/api/applydocuments', data)
+      console.log(data);
+      // $http.post('http://localhost:1337/api/applydocuments', data)
       // .success(function(datas){
       //   $scope.oModal3.hide();
       // })
+      $http.post('http://192.168.1.110:1337/api/applydocuments', data)
+      .success(function(datas){
+        $scope.oModal3.hide();
+      })
     }
   });
 
@@ -189,20 +191,7 @@ angular.module('starter')
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
     $scope.message = "";
     $scope.show = true;
-    $http.get('http://localhost:1337/api/verifyapplication')
-    .success(function(datas){
-        if(datas.code!=200){
-            $scope.message = datas.message;
-            $scope.show = false;
-        } else {
-            $scope.message  = datas.message;
-            $scope.show = true;
-        }
-    })
-    .error(function(err){
-
-    })
-    // $http.get('http://192.168.56.1:1337/api/verifyapplication')
+    // $http.get('http://localhost:1337/api/verifyapplication')
     // .success(function(datas){
     //     if(datas.code!=200){
     //         $scope.message = datas.message;
@@ -215,6 +204,19 @@ angular.module('starter')
     // .error(function(err){
 
     // })
+    $http.get('http://192.168.1.110:1337/api/verifyapplication')
+    .success(function(datas){
+        if(datas.code!=200){
+            $scope.message = datas.message;
+            $scope.show = false;
+        } else {
+            $scope.message  = datas.message;
+            $scope.show = true;
+        }
+    })
+    .error(function(err){
+
+    })
 })
 
 .controller('LoginMenuCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){

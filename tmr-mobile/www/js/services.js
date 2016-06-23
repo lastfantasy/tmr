@@ -69,8 +69,8 @@ angular.module('starter')
 
   var register = function(email, pw, confpw) {
     return $q(function(resolve, reject) {
-      var url = 'http://localhost:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
-      // var url = 'http://192.168.56.1:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
+      // var url = 'http://localhost:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
+      var url = 'http://192.168.1.110:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
       $http.get(url).then(function(resp) {
         if(resp.data.code != 200){
           var alertPopup = $ionicPopup.alert({
@@ -90,8 +90,8 @@ angular.module('starter')
 
   var login = function(name, pw) {
     return $q(function(resolve, reject) {
-      var url = 'http://localhost:1337/api/login?email='+name+'&password='+pw;
-      // var url = 'http://192.168.56.1:1337/api/login?email='+name+'&password='+pw;
+      // var url = 'http://localhost:1337/api/login?email='+name+'&password='+pw;
+      var url = 'http://192.168.1.110:1337/api/login?email='+name+'&password='+pw;
       $http.get(url).then(function(resp) {
         //console.log('Success', resp);
         if(resp.data.code!=200){
@@ -124,12 +124,6 @@ angular.module('starter')
     destroyUserCredentials();
   };
 
-  var isAuthorized = function(authorizedRoles) {
-    if (!angular.isArray(authorizedRoles)) {
-      authorizedRoles = [authorizedRoles];
-    }
-    return (isAuthenticated && authorizedRoles.indexOf(role) !== -1);
-  };
 
   loadUserCredentials();
 
@@ -137,7 +131,6 @@ angular.module('starter')
     login: login,
     logout : logout,
     register : register,
-    isAuthorized: isAuthorized,
     isAuthenticated: function() {return isAuthenticated;},
     user : function() {return user;},
     role: function() {return role;},

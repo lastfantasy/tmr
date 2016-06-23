@@ -104,8 +104,6 @@ angular.module('starter', ['ionic','ngCordova'])
         switch(next.name){
           case 'register' : {event.preventDefault();$state.go('register'); break;}
           case 'login' : {event.preventDefault(); $state.go('login'); break;}
-          case 'lupapassword' : {event.preventDefault(); $state.go('lupapassword'); break;}
-          case 'gantipass/:idUser' : {event.preventDefault(); $state.go('gantipass/:idUser'); break;};
           default : { event.preventDefault(); $state.go('welcome'); break;}
         }
       }
