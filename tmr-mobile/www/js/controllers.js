@@ -117,7 +117,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
-      $http.post('http://192.168.1.110:1337/api/applyprofile', data)
+      $http.post('http://192.168.1.102:1337/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
       })
@@ -139,7 +139,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal2.hide();
       // })
-      $http.post('http://192.168.1.110:1337/api/applygrade', data)
+      $http.post('http://192.168.1.102:1337/api/applygrade', data)
       .success(function(datas){
         $scope.oModal2.hide();
       })
@@ -167,7 +167,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal3.hide();
       // })
-      $http.post('http://192.168.1.110:1337/api/applydocuments', data)
+      $http.post('http://192.168.1.102:1337/api/applydocuments', data)
       .success(function(datas){
         $scope.oModal3.hide();
       })
@@ -204,7 +204,7 @@ angular.module('starter')
     // .error(function(err){
 
     // })
-    $http.get('http://192.168.1.110:1337/api/verifyapplication')
+    $http.get('http://192.168.1.102:1337/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
