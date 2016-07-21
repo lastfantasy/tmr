@@ -38,5 +38,8 @@
     "url": "git://github.com/mike/temanisbaru.git"
   },
   "author": "mike",
-  "license": ""
+  "license": "",
+  "engines": {
+    "node": "4.1.1"
+  }
 }
