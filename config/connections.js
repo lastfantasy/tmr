@@ -43,7 +43,7 @@ module.exports.connections = {
   someMysqlServer: {
     adapter: 'sails-mysql',
     module: 'sails-mysql',
-    url: 'mysql2://root:root@127.0.0.1:3306/temanis_baru'
+    url: 'mysql2://root:root@www.temanisbaru.herokuapp.com:3306/temanis_baru'
     // adapter: 'sails-mysql',
     // host: 'localhost',
     // user: 'root',
