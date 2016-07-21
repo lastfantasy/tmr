@@ -48,30 +48,30 @@ module.exports = {
 				 res.redirect('/register');
 				 return;
 			}
-			if(req.param('g-recaptcha-response') == ""){
-				var info = ['Harap menyelesaikan captcha terlebih dahulu']
+			// if(req.param('g-recaptcha-response') == ""){
+			// 	var info = ['Harap menyelesaikan captcha terlebih dahulu']
 
-				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-				 // the key of usernamePasswordRequiredError
-				 req.session.flash = {
-					 err: info,
-				 }
+			// 	 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 	 // the key of usernamePasswordRequiredError
+			// 	 req.session.flash = {
+			// 		 err: info,
+			// 	 }
 
-				 res.redirect('/register');
-				 return;
-			}
+			// 	 res.redirect('/register');
+			// 	 return;
+			// }
 			var usrObj = {
-					email : req.param('email'),
-					types : "1",
-					name : "",
-					files : [],
-					grade : "",
-					gender: "",
-		      address : '',
-		      placebirth : '',
-		      datebirth : '',
-		      phone : '',
-		      status : 0,
+				email : req.param('email'),
+				types : "1",
+				name : "",
+				files : [],
+				grade : "",
+				gender: "",
+		    	address : '',
+		    	placebirth : '',
+		    	datebirth : '',
+		    	phone : '',
+		    	status : 0,
 			}
 			bcrypt.hash(req.param('password'), null,null, function PasswordEncrypted(err, encryptedPassword) {
 					//if(err) console.log(err);
