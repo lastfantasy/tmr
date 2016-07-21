@@ -73,13 +73,13 @@ module.exports = {
 		    	phone : '',
 		    	status : 0,
 			}
-			bcrypt.hash(req.param('password'), null,null, function PasswordEncrypted(err, encryptedPassword) {
+			bcrypt.hash(req.param('password'),function PasswordEncrypted(err, encryptedPassword) {
 					//if(err) console.log(err);
 					//console.log(encryptedPassword);
 					usrObj.encryptedPassword = encryptedPassword;
 					User.create(usrObj, function(err,user){
 							if(err) return next(err);
-							require('bcrypt').hash(user.id, null, null, function IdEncrypted(err, encryptedId) {
+							require('bcrypt').hash(user.id, function IdEncrypted(err, encryptedId) {
 								var usr = {
                     encryptedId : encryptedId
                 }
