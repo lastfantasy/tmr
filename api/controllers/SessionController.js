@@ -61,25 +61,25 @@ module.exports = {
 				 return;
 			}
 			var usrObj = {
-					email : req.param('email'),
-					types : "1",
-					name : "",
-					files : [],
-					grade : "",
-					gender: "",
-		      address : '',
-		      placebirth : '',
-		      datebirth : '',
-		      phone : '',
-		      status : 0,
+				email : req.param('email'),
+				types : "1",
+				name : "",
+				files : [],
+				grade : "",
+				gender: "",
+		    	address : '',
+		    	placebirth : '',
+		    	datebirth : '',
+		    	phone : '',
+		    	status : 0,
 			}
-			bcrypt.hash(req.param('password'), null,null, function PasswordEncrypted(err, encryptedPassword) {
+			bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 					//if(err) console.log(err);
 					//console.log(encryptedPassword);
 					usrObj.encryptedPassword = encryptedPassword;
 					User.create(usrObj, function(err,user){
 							if(err) return next(err);
-							require('bcrypt').hash(user.id, null, null, function IdEncrypted(err, encryptedId) {
+							require('bcrypt').hash(user.id, 10, function IdEncrypted(err, encryptedId) {
 								var usr = {
                     encryptedId : encryptedId
                 }

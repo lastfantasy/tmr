@@ -40,16 +40,16 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
-  someMysqlServer: {
-    adapter: 'sails-mysql',
-    module: 'sails-mysql',
-    url: 'mysql2://root:root@127.0.0.1:3306/temanis_baru'
-    // adapter: 'sails-mysql',
-    // host: 'localhost',
-    // user: 'root',
-    // password: 'root',
-    // database: 'temanis_baru'
-  },
+  // someMysqlServer: {
+  //   adapter: 'sails-mysql',
+  //   module: 'sails-mysql',
+  //   url: 'mysql2://root:root@www.temanisbaru.herokuapp.com:3306/temanis_baru'
+  //   // adapter: 'sails-mysql',
+  //   // host: 'localhost',
+  //   // user: 'root',
+  //   // password: 'root',
+  //   // database: 'temanis_baru'
+  // },
 
   /***************************************************************************
   *                                                                          *
@@ -59,15 +59,15 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  // someMongodbServer: {
-  //   adapter: 'sails-mongo',
-  //   url : 'mongodb://admin:admin@ds037155.mongolab.com:37155/temanisbaru',
-  //   //host: 'localhost',
-  //   //port: 27017,
-  //   // user: 'username',
-  //   // password: 'password',
-  //   //database: 'temanisbaru'
-  // },
+  someMongodbServer: {
+    adapter: 'sails-mongo',
+    url : 'mongodb://tmr:tmr2016@ds019254.mlab.com:19254/temanisbarurevision',
+    //host: 'localhost',
+    //port: 27017,
+    // user: 'username',
+    // password: 'password',
+    //database: 'temanisbaru'
+  },
 
   /***************************************************************************
   *                                                                          *
