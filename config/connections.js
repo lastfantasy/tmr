@@ -40,16 +40,16 @@ module.exports.connections = {
   * Run: npm install sails-mysql                                             *
   *                                                                          *
   ***************************************************************************/
-  someMysqlServer: {
-    adapter: 'sails-mysql',
-    module: 'sails-mysql',
-    url: 'mysql2://root:root@www.temanisbaru.herokuapp.com:3306/temanis_baru'
-    // adapter: 'sails-mysql',
-    // host: 'localhost',
-    // user: 'root',
-    // password: 'root',
-    // database: 'temanis_baru'
-  },
+  // someMysqlServer: {
+  //   adapter: 'sails-mysql',
+  //   module: 'sails-mysql',
+  //   url: 'mysql2://root:root@www.temanisbaru.herokuapp.com:3306/temanis_baru'
+  //   // adapter: 'sails-mysql',
+  //   // host: 'localhost',
+  //   // user: 'root',
+  //   // password: 'root',
+  //   // database: 'temanis_baru'
+  // },
 
   /***************************************************************************
   *                                                                          *
