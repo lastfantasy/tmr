@@ -64,7 +64,7 @@ module.exports = {
 				email : req.param('email'),
 				types : "1",
 				name : "",
-				files : [4],
+				files : [],
 				grade : "",
 				gender: "",
 		    	address : '',
@@ -89,14 +89,14 @@ module.exports = {
                     req.session.flash = {
                       success: requireLoginError
                     }
-                    user.files[0].name = "";
-                    user.files[0].url = "";
-                    user.files[1].name = "";
-                    user.files[1].url = "";
-                    user.files[2].name = "";
-                    user.files[2].url = "";
-                    user.files[3].name = "";
-                    user.files[3].url = "";
+                    // user.files[0].name = "";
+                    // user.files[0].url = "";
+                    // user.files[1].name = "";
+                    // user.files[1].url = "";
+                    // user.files[2].name = "";
+                    // user.files[2].url = "";
+                    // user.files[3].name = "";
+                    // user.files[3].url = "";
                     res.redirect('/login');
                     return;
 								});
