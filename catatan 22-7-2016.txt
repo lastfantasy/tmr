@@ -1,0 +1,8 @@
+no pendaftaran - ada unsur tahun bla2
+dokumen bisa di donlot - ada respon setelah dokumen di upload: cek extension file apakah jpg dll
+
+status pendaftaran apakah sudah dibuka atau belum di sisi admin dan siswa
+
+kpn tgl pembukaan dan tutup terakhir tidak terlihat
+
+ujian brp gelombang
