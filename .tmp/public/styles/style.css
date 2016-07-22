@@ -161,7 +161,7 @@ label.no {
 }
 
 .btn {
-    background: #cbcbcb;
+    background: #337ab7;
     border-radius: 2px;
     color: #fff;
     border: none;
@@ -170,13 +170,28 @@ label.no {
     padding: 10px 22px;
 }
 
-.btn:hover {
+.btn-active{
+    background: #e74534;
+    border-radius: 2px;
+    color: #fff;
+    border: none;
+    font-size: 1.3em;
+    margin-top: 20px;
+    padding: 10px 22px;
+}
+
+.btn:hover, .btn-active:hover {
     background: #18488f;
     color: #fff;
 }
 
-.btn-default:focus, .btn-default:active, .btn-default.active {
-    background: #cbcbcb;
+.btn-default:focus, .btn-default:active, .btn-default.active{
+    background: #337ab7;
+    color: #fff;
+}
+
+.btn-active:focus, .btn-active:active {
+    background: #e74534;
     color: #fff;
 }
 
