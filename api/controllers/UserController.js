@@ -405,7 +405,7 @@ module.exports = {
 			// var fileurl3 = "";
 			// var fileurl4 = "";
 
-			if(typeof req.param('file_url_1')=="undefined") {
+			if(req.session.User.files[0].url == "" && req.param('file_url_1') == "") {
 				var info = ['Anda harus mengupload akte lahir anda.']
 				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 				 // the key of usernamePasswordRequiredError
@@ -415,7 +415,7 @@ module.exports = {
 				 res.redirect('/user/documents');
 				 return;
 			}
-			if(typeof req.param('file_url_2')=="undefined") {
+			if(req.param('file_url_2')=="" && req.session.User.files[1].url == "") {
 				var info = ['Anda harus mengupload ijazah anda.']
 				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 				 // the key of usernamePasswordRequiredError
@@ -425,25 +425,25 @@ module.exports = {
 				 res.redirect('/user/documents');
 				 return;
 			}
-			if(typeof req.param('file_url_1')!="undefined") {
+			if(req.param('file_url_1') != "") {
 					files[0].name = req.param('file_name_1');
 					files[0].url = req.param('file_url_1');
 					// file1 = req.param('file_name_1');
 					// fileurl1 = req.param('file_url_1');
 			}
-			if(typeof req.param('file_url_2')!="undefined") {
+			if(req.param('file_url_2') != "") {
 					files[1].name = req.param('file_name_2');
 					files[1].url = req.param('file_url_2');
 					// file2 = req.param('file_name_2');
 					// fileurl2 = req.param('file_url_2');		
 			}
-			if(typeof req.param('file_url_3')!="undefined") {
+			if(req.param('file_url_3') != "") {
 					files[2].name = req.param('file_name_3');
 					files[2].url = req.param('file_url_3');
 					// file3 = req.param('file_name_3');
 					// fileurl3 = req.param('file_url_3');		
 			}
-			if(typeof req.param('file_url_4')!="undefined") {
+			if(req.param('file_url_4') != "") {
 					files[3].name = req.param('file_name_4');
 					files[3].url = req.param('file_url_4');
 					// file4 = req.param('file_name_4');
@@ -457,28 +457,37 @@ module.exports = {
 			// fs.writeFile('dok1 ' + req.session.User.id + '.jpg',buf,function(err,data){});
 			// buf = new Buffer(fileurl4.replace(/^data:image\/\w+;base64,/,""),'base64');
 			// fs.writeFile('dok2 ' + req.session.User.id + '.jpg',buf,function(err,data){});
-			if (tmpstatus == 3){
-				tmpstatus = 0;
-				var usrObj = {
-					files : files,
-					// file1 : file1,
-					// file2 : file2,
-					// file3 : file3,
-					// file4 : file4,
-					documents_status : 1,
-					verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
-				}
+			var usrObj = {
+				files : files,
+				// file1 : file1,
+				// file2 : file2,
+				// file3 : file3,
+				// file4 : file4,
+				documents_status : 1,
+				verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
 			}
-			else {
-				var usrObj = {
-					files : files,
-					// file1 : file1,
-					// file2 : file2,
-					// file3 : file3,
-					// file4 : file4,
-					documents_status : 1
-				}
-			}
+			// if (tmpstatus == 3){
+			// 	tmpstatus = 0;
+			// 	var usrObj = {
+			// 		files : files,
+			// 		// file1 : file1,
+			// 		// file2 : file2,
+			// 		// file3 : file3,
+			// 		// file4 : file4,
+			// 		documents_status : 1,
+			// 		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+			// 	}
+			// }
+			// else {
+			// 	var usrObj = {
+			// 		files : files,
+			// 		// file1 : file1,
+			// 		// file2 : file2,
+			// 		// file3 : file3,
+			// 		// file4 : file4,
+			// 		documents_status : 1
+			// 	}
+			// }
 			User.update(req.session.User.id,usrObj,function(err,user){
 					if(err) return next(err);
 					var info = ['Formulir anda sedang kami proses. Silahkan lengkapi data yang lainnya.']

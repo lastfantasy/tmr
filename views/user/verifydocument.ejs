@@ -42,54 +42,64 @@
           </div>
           <div class="panel-body">
 
-                
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="aktelahir">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Akte Lahir &#42;</label>
-                <div class="col-lg-8" >
-                  <%=user.files[0].name%>
-                  <!-- <input type="file" accept="image/*" id="file1" onchange="previewFile1()"> -->
-                </div>
-                <img src="<%=user.files[0].url%>" style="width:200px; height:200px;">
-                
-                <!-- <label class="control-label col-lg-8 required" style="width: 180px;">Akte Lahir &#42;</label> -->
-                <!-- <input type="checkbox" name="aktelahir"> -->
-
+                <% if (user.files[0].name != "") { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[0].name%>
+                  </div>
+                  <img src="<%=user.files[0].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="ijazah">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label>
-                <div class="col-lg-8" >
-                  <%=user.files[1].name%>
-                  <!-- <input type="file" accept="image/*" id="file2" onchange="previewFile2()"> -->
-                </div>
-                <img src="<%=user.files[1].url%>" style="width:200px; height:200px;">
-                <!-- <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label> -->
-                <!-- <input type="checkbox" name="ijazah"> -->
-
+                <% if (user.files[1].name != "") { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[1].name%>
+                  </div>
+                  <img src="<%=user.files[1].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="dokumenpendukung1">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 1 </label>
-                <div class="col-lg-8" >
-                  <%=user.files[2].name%>
-                  <!-- <input type="file" accept="image/*" id="file3" onchange="previewFile3()"> -->
-                </div>
-                <img src="<%=user.files[2].url%>" style="width:200px; height:200px;">
-                <!-- <label class="control-label col-lg-4" style="width: 180px;">Dokumen Pendukung 1 </label><input type="checkbox" name="dokumenpendukung1"> -->
+                <% if (user.files[2].name != "") { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[2].name%>
+                  </div>
+                  <img src="<%=user.files[2].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
                 </div>
                 <br><br>
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="dokumenpendukung2">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 2 </label>
-                <div class="col-lg-8" >
-                  <%=user.files[3].name%>
-                  <!-- <input type="file" accept="image/*" id="file4" onchange="previewFile4()"> -->
-                </div>
-                <img src="<%=user.files[3].url%>" style="width:200px; height:200px;">
-                <!-- <label class="control-label col-lg-4" style="width: 180px;">Dokumen Pendukung 2 </label><input type="checkbox" name="dokumenpendukung2"> -->
+                <% if (user.files[3].name != "") { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[3].name%>
+                  </div>
+                  <img src="<%=user.files[3].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
                 </div>
                 <!-- <input type="hidden" name="file_name_1" id="filename1">
                 <input type="hidden" name="file_url_1" id="fileurl1">

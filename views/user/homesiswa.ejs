@@ -31,6 +31,66 @@
                    <p>
                        Sekarang anda bisa mendaftarkan diri di sekolah ini.
                    </p>
+                   <br>
+                   <h2 class="special_font">Tanggal Pendaftaran : </h2>
+                   <br>
+                   <h2 class="special_font">
+                    <%=user.opendate.getDate()%> 
+                    <% if (user.opendate.getMonth() == 0) { %>
+                        Januari 
+                    <% } else if (user.opendate.getMonth() == 1) { %>
+                        Februari 
+                    <% } else if (user.opendate.getMonth() == 2) { %>
+                        Maret 
+                    <% } else if (user.opendate.getMonth() == 3) { %>
+                        April 
+                    <% } else if (user.opendate.getMonth() == 4) { %>
+                        Mei 
+                    <% } else if (user.opendate.getMonth() == 5) { %>
+                        Juni 
+                    <% } else if (user.opendate.getMonth() == 6) { %>
+                        Juli 
+                    <% } else if (user.opendate.getMonth() == 7) { %>
+                        Agustus 
+                    <% } else if (user.opendate.getMonth() == 8) { %>
+                        September 
+                    <% } else if (user.opendate.getMonth() == 9) { %>
+                        Oktober 
+                    <% } else if (user.opendate.getMonth() == 10) { %>
+                        November 
+                    <% } else if (user.opendate.getMonth() == 11) { %>
+                        Desember 
+                    <% } %> 
+                    <%=user.opendate.getFullYear()%>
+                    <br>s/d<br>
+                    <%=user.closedate.getDate()%> 
+                    <% if (user.closedate.getMonth() == 0) { %>
+                        Januari 
+                    <% } else if (user.closedate.getMonth() == 1) { %>
+                        Februari 
+                    <% } else if (user.closedate.getMonth() == 2) { %>
+                        Maret 
+                    <% } else if (user.closedate.getMonth() == 3) { %>
+                        April 
+                    <% } else if (user.closedate.getMonth() == 4) { %>
+                        Mei 
+                    <% } else if (user.closedate.getMonth() == 5) { %>
+                        Juni 
+                    <% } else if (user.closedate.getMonth() == 6) { %>
+                        Juli 
+                    <% } else if (user.closedate.getMonth() == 7) { %>
+                        Agustus 
+                    <% } else if (user.closedate.getMonth() == 8) { %>
+                        September 
+                    <% } else if (user.closedate.getMonth() == 9) { %>
+                        Oktober 
+                    <% } else if (user.closedate.getMonth() == 10) { %>
+                        November 
+                    <% } else if (user.closedate.getMonth() == 11) { %>
+                        Desember 
+                    <% } %> 
+                    <%=user.closedate.getFullYear()%>
+                   </h2>
                    <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
                        
                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 215px;">

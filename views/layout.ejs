@@ -43,15 +43,16 @@
                               <li><a class="external" href="/login">Masuk</a></li>
                             <% } else { %>
                               <% if(session.User.admin) { %>
+                                <li><a class="external" href="/user/homeadmin">Beranda</a></li>
                                 <li><a class="external" href="/user/openclose">Buka/Tutup Pendaftaran</a></li>
                                 <li><a class="external" href="/user/verifyapplicant">Verifikasi Pendaftar</a></li>
                                 <li><a class="external" href="/user/testadmin">Ujian Saringan Masuk</a></li>
-                                
                                 <li><a class="external" href="/session/signout">Keluar</a></li>
                                 <% } else { %>
-                              <li><a class="external" href="/user/verifyapplication">Pendaftaran</a></li>
-                              <li><a class="external" href="/user/test">Ujian Saringan Masuk</a></li>
-                              <li><a class="external" href="/session/signout">Keluar</a></li>
+                                <li><a class="external" href="/user/homesiswa">Beranda</a></li>
+                                <li><a class="external" href="/user/verifyapplication">Pendaftaran</a></li>
+                                <li><a class="external" href="/user/test">Ujian Saringan Masuk</a></li>
+                                <li><a class="external" href="/session/signout">Keluar</a></li>
                                 <% } %>
                             <% } %>
                         </ul>
