@@ -61,6 +61,13 @@
                 <label class="control-label col-lg-4 required">Akte Lahir &#42;</label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/*" id="file1" onchange="previewFile1()">
+                  <% if (user.files[0]) { %>
+                    <label><%=user.files[0].name%></label>
+                  <% } else { %>
+                    <label>Belum ada dokumen</label>
+                  <% } %>
+                  <br>
+                  <img style="width:200px; height:200px;" id="ijazah" src="<%=user.files[0].url%>">
                 </div>
 
                 </div>
@@ -69,14 +76,27 @@
                 <label class="control-label col-lg-4 required">Ijazah &#42;</label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/*" id="file2" onchange="previewFile2()">
+                  <img style="width:200px; height:200px;" id="aktelahir" src="<%=user.files[1].url%>">
+                  <% if (user.files[1]) { %>
+                    <label><%=user.files[1].name%></label>
+                  <% } else { %>
+                    <label>Belum ada dokumen</label>
+                  <% } %>
+                  <br>
                 </div>
-
                 </div>
                 <br><br>
                 <div class="form-group">
                 <label class="control-label col-lg-4 required">Dokumen Pendukung 1 </label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/*" id="file3" onchange="previewFile3()">
+                  <% if (user.files[2]) { %>
+                    <label><%=user.files[2].name%></label>
+                  <% } else { %>
+                    <label>Belum ada dokumen</label>
+                  <% } %>
+                  <br>
+                  <img style="width:200px; height:200px;" id="dok1" src="<%=user.files[2].url%>">
                 </div>
                 </div>
                 <br><br>
@@ -84,6 +104,13 @@
                 <label class="control-label col-lg-4 required">Dokumen Pendukung 2 </label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/*" id="file4" onchange="previewFile4()">
+                  <% if (user.files[3]) { %>
+                    <label><%=user.files[3].name%></label>
+                  <% } else { %>
+                    <label>Belum ada dokumen</label>
+                  <% } %>
+                  <br>
+                  <img style="width:200px; height:200px;" id="dok2" src="<%=user.files[3].url%>">
                 </div>
                 </div>
                 <input type="hidden" name="file_name_1" id="filename1">
@@ -122,7 +149,7 @@
 </h2>
 <h2 class="text-center">Remarks : <span id="remarks">
 <% if(typeof (user.verifyremarks) != "undefined") { %>
-  <label value="<%=user.verifyremarks%>"></label>
+  <label><%=user.verifyremarks%></label>
 <% } %>
 </span>
 </h2>
@@ -134,8 +161,10 @@ function previewFile1(){
   var reader  = new FileReader();
   var file_url_1 = document.querySelector('#fileurl1');
   var file_name_1 = document.querySelector('#filename1');
-  reader.onloadend = function () {
+  reader.onload = function () {
       file_url_1.value = reader.result;
+      var output = document.getElementById('ijazah');
+      output.src = file_url_1.value;
   }
   if (file1) {
       // if(file.type!="application/zip" && file.type!="application/x-rar")
@@ -158,9 +187,9 @@ function previewFile1(){
         file_name_1.value = file1.name;
         reader.readAsDataURL(file1); //reads the data as a URL
       }
-    } else {
-      file_name_1.value = "";
-      file_url_1.value = "";
+  // } else {
+  //   file_name_1.value = "";
+  //   file_url_1.value = "";
   }
 }
 function previewFile2(){
@@ -168,8 +197,10 @@ function previewFile2(){
   var reader  = new FileReader();
   var file_url_2 = document.querySelector('#fileurl2');
   var file_name_2 = document.querySelector('#filename2');
-  reader.onloadend = function () {
+  reader.onload = function () {
       file_url_2.value = reader.result;
+      var output = document.getElementById('aktelahir');
+      output.src = file_url_2.value;
   }
   if (file2) {
       // if(file.type!="application/zip" && file.type!="application/x-rar")
@@ -192,9 +223,9 @@ function previewFile2(){
         file_name_2.value = file2.name;
         reader.readAsDataURL(file2); //reads the data as a URL
       }
-    } else {
-      file_name_2.value = "";
-      file_url_2.value = "";
+    // } else {
+    //   file_name_2.value = "";
+    //   file_url_2.value = "";
   }
 }
 function previewFile3(){
@@ -202,8 +233,10 @@ function previewFile3(){
   var reader  = new FileReader();
   var file_url_3 = document.querySelector('#fileurl3');
   var file_name_3 = document.querySelector('#filename3');
-  reader.onloadend = function () {
+  reader.onload = function () {
       file_url_3.value = reader.result;
+      var output = document.getElementById('dok1');
+      output.src = file_url_3.value;
   }
   if (file3) {
       // if(file.type!="application/zip" && file.type!="application/x-rar")
@@ -226,9 +259,9 @@ function previewFile3(){
         file_name_3.value = file3.name;
         reader.readAsDataURL(file3); //reads the data as a URL
       }
-    } else {
-      file_name_3.value = "";
-      file_url_3.value = "";
+    // } else {
+    //   file_name_3.value = "";
+    //   file_url_3.value = "";
   }
 }
 function previewFile4(){
@@ -236,8 +269,10 @@ function previewFile4(){
   var reader  = new FileReader();
   var file_url_4 = document.querySelector('#fileurl4');
   var file_name_4 = document.querySelector('#filename4');
-  reader.onloadend = function () {
+  reader.onload = function () {
       file_url_4.value = reader.result;
+      var output = document.getElementById('dok2');
+      output.src = file_url_4.value;
   }
   if (file4) {
       // if(file.type!="application/zip" && file.type!="application/x-rar")
@@ -260,9 +295,9 @@ function previewFile4(){
         file_name_4.value = file4.name;
         reader.readAsDataURL(file4); //reads the data as a URL
       }
-    } else {
-      file_name_4.value = "";
-      file_url_4.value = "";
+    // } else {
+    //   file_name_4.value = "";
+    //   file_url_4.value = "";
   }
 }
 </script>
