@@ -1,4 +1,5 @@
 angular.module('starter')
+var server_url = 'temanisbaru.herokuapp.com';
 
 .controller('DashCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
     var user = AuthService.user();
@@ -117,7 +118,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
-      $http.post('http://192.168.52.1:1337/api/applyprofile', data)
+      $http.post(server_url + '/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
       })
@@ -139,7 +140,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal2.hide();
       // })
-      $http.post('http://127.0.0.1:1337/api/applygrade', data)
+      $http.post(server_url + '/api/applygrade', data)
       .success(function(datas){
         $scope.oModal2.hide();
       })
@@ -167,7 +168,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal3.hide();
       // })
-      $http.post('http://192.168.52.1:1337/api/applydocuments', data)
+      $http.post(server_url + '/api/applydocuments', data)
       .success(function(datas){
         $scope.oModal3.hide();
       })
@@ -204,7 +205,7 @@ angular.module('starter')
     // .error(function(err){
 
     // })
-    $http.get('http://192.168.52.1:1337/api/verifyapplication')
+    $http.get(server_url + '/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;
