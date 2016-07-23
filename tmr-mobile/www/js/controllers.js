@@ -1,5 +1,4 @@
 angular.module('starter')
-var server_url = 'temanisbaru.herokuapp.com';
 
 .controller('DashCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
     var user = AuthService.user();
@@ -93,6 +92,7 @@ var server_url = 'temanisbaru.herokuapp.com';
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal) {
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.oModal1 = modal;
     var user = AuthService.user();
     $scope.user = user;
@@ -131,6 +131,7 @@ var server_url = 'temanisbaru.herokuapp.com';
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal){
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.oModal2 = modal;
     var user = AuthService.user();
     $scope.user = user;
@@ -153,6 +154,7 @@ var server_url = 'temanisbaru.herokuapp.com';
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal){
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.data = {};
     $scope.oModal3 = modal;
     var user = AuthService.user();
@@ -190,6 +192,7 @@ var server_url = 'temanisbaru.herokuapp.com';
 })
 
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.message = "";
     $scope.show = true;
     // $http.get('http://localhost:1337/api/verifyapplication')

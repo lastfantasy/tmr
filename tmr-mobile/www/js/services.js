@@ -6,7 +6,7 @@ angular.module('starter')
   var isAuthenticated = false;
   var role = '';
   var authToken;
-  var server_url = 'temanisbaru.herokuapp.com';
+  var server_url = 'http://temanisbaru.herokuapp.com';
 
   function loadUserCredentials() {
     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
