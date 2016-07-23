@@ -60,14 +60,14 @@
                 <div class="form-group">
                 <label class="control-label col-lg-4 required">Akte Lahir &#42;</label>
                 <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file1" onchange="previewFile1()">
-                  <% if (user.files[0].name != "") { %>
+                  <input type="file" accept="image/jpeg" id="file1" onchange="previewFile1()">
+                  <% if (user.files[0]) { %>
                     <label><%=user.files[0].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
                   <br>
-                  <% if (user.files[0].url != "") { %>
+                  <% if (user.files[0]) { %>
                     <img style="width:200px; height:200px;" id="ijazah" src="<%=user.files[0].url%>">
                   <% } else { %>
                     <img id="ijazah">
@@ -79,14 +79,14 @@
                 <div class="form-group">
                 <label class="control-label col-lg-4 required">Ijazah &#42;</label>
                 <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file2" onchange="previewFile2()">
-                  <% if (user.files[1].name != "") { %>
+                  <input type="file" accept="image/jpeg" id="file2" onchange="previewFile2()">
+                  <% if (user.files[1]) { %>
                     <label><%=user.files[1].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
                   <br>
-                  <% if (user.files[1].url != "") { %>
+                  <% if (user.files[1]) { %>
                     <img style="width:200px; height:200px;" id="aktelahir" src="<%=user.files[1].url%>">
                   <% } else { %>
                     <img id="aktelahir">
@@ -97,14 +97,14 @@
                 <div class="form-group">
                 <label class="control-label col-lg-4 required">Dokumen Pendukung 1 </label>
                 <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file3" onchange="previewFile3()">
-                  <% if (user.files[2].name != "") { %>
+                  <input type="file" accept="image/jpeg" id="file3" onchange="previewFile3()">
+                  <% if (user.files[2]) { %>
                     <label><%=user.files[2].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
                   <br>
-                  <% if (user.files[2].url != "") { %>
+                  <% if (user.files[2]) { %>
                     <img style="width:200px; height:200px;" id="dok1" src="<%=user.files[2].url%>">
                   <% } else { %>
                     <img id="dok1">
@@ -115,28 +115,48 @@
                 <div class="form-group">
                 <label class="control-label col-lg-4 required">Dokumen Pendukung 2 </label>
                 <div class="col-lg-8">
-                  <input type="file" accept="image/*" id="file4" onchange="previewFile4()">
-                  <% if (user.files[3].name != "") { %>
+                  <input type="file" accept="image/jpeg" id="file4" onchange="previewFile4()">
+                  <% if (user.files[3]) { %>
                     <label><%=user.files[3].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
                   <br>
-                  <% if (user.files[3].url != "") { %>
+                  <% if (user.files[3]) { %>
                     <img style="width:200px; height:200px;" id="dok2" src="<%=user.files[3].url%>">
                   <% } else { %>
                     <img id="dok2">
                   <% } %>
                 </div>
                 </div>
-                <input type="hidden" name="file_name_1" id="filename1" value="<%=user.files[0].name%>">
-                <input type="hidden" name="file_url_1" id="fileurl1" value="<%=user.files[0].url%>">
-                <input type="hidden" name="file_name_2" id="filename2" value="<%=user.files[1].name%>">
-                <input type="hidden" name="file_url_2" id="fileurl2" value="<%=user.files[1].url%>">
-                <input type="hidden" name="file_name_3" id="filename3" value="<%=user.files[2].name%>">
-                <input type="hidden" name="file_url_3" id="fileurl3" value="<%=user.files[2].url%>">
-                <input type="hidden" name="file_name_4" id="filename4" value="<%=user.files[3].name%>">
-                <input type="hidden" name="file_url_4" id="fileurl4" value="<%=user.files[3].url%>">
+                <% if (user.files[0]) { %>
+                  <input type="hidden" name="file_name_1" id="filename1" value="<%=user.files[0].name%>">
+                  <input type="hidden" name="file_url_1" id="fileurl1" value="<%=user.files[0].url%>">
+                <% } else { %>
+                  <input type="hidden" name="file_name_1" id="filename1" value="">
+                  <input type="hidden" name="file_url_1" id="fileurl1" value="">
+                <% } %>
+               <% if (user.files[1]) { %>
+                  <input type="hidden" name="file_name_2" id="filename2" value="<%=user.files[1].name%>">
+                  <input type="hidden" name="file_url_2" id="fileurl2" value="<%=user.files[1].url%>">
+                <% } else { %>
+                  <input type="hidden" name="file_name_2" id="filename2" value="">
+                  <input type="hidden" name="file_url_2" id="fileurl2" value="">
+                <% } %>
+                <% if (user.files[2]) { %>
+                  <input type="hidden" name="file_name_3" id="filename3" value="<%=user.files[2].name%>">
+                  <input type="hidden" name="file_url_3" id="fileurl3" value="<%=user.files[2].url%>">
+                <% } else { %>
+                  <input type="hidden" name="file_name_3" id="filename3" value="">
+                  <input type="hidden" name="file_url_3" id="fileurl3" value="">
+                <% } %>
+                <% if (user.files[3]) { %>
+                  <input type="hidden" name="file_name_4" id="filename4" value="<%=user.files[3].name%>">
+                  <input type="hidden" name="file_url_4" id="fileurl4" value="<%=user.files[3].url%>">
+                <% } else { %>
+                  <input type="hidden" name="file_name_4" id="filename4" value="">
+                  <input type="hidden" name="file_url_4" id="fileurl4" value="">
+                <% } %>
                 <div class="form-group">
                 <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
                 </div>                
@@ -184,20 +204,20 @@ function previewFile1(){
       output.style = "width:200px;height:200px;";
   }
   if (file1) {
-      // if(file.type!="application/zip" && file.type!="application/x-rar")
-      // {
-      //   $('#file1').val("");
-      //   alert("File yang diupload harus dalam bentuk RAR ataupun ZIP.");
-      //   file_name_1.value = "";
-      //   file_url_1.value = "";
-      //   return;
-      // }
+      if(file1.type!="image/jpeg")
+      {
+        $('#file1').val("");
+        alert("File yang diupload harus dalam bentuk JPG ataupun JPEG.");
+        // file_name_1.value = "";
+        // file_url_1.value = "";
+        return;
+      }
       if(file1.size>=2000000)
       {
           $('#file1').val("");
           alert("File yang diupload tidak boleh lebih dari 2 MB.");
-          file_name_1.value = "";
-          file_url_1.value = "";
+          // file_name_1.value = "";
+          // file_url_1.value = "";
           return;
       }
       else {
@@ -221,14 +241,14 @@ function previewFile2(){
       output.style = "width:200px;height:200px;";
   }
   if (file2) {
-      // if(file.type!="application/zip" && file.type!="application/x-rar")
-      // {
-      //   $('#file1').val("");
-      //   alert("File yang diupload harus dalam bentuk RAR ataupun ZIP.");
-      //   file_name_1.value = "";
-      //   file_url_1.value = "";
-      //   return;
-      // }
+      if(file2.type!="image/jpeg")
+      {
+        $('#file2').val("");
+        alert("File yang diupload harus dalam bentuk JPG ataupun JPEG.");
+        // file_name_1.value = "";
+        // file_url_1.value = "";
+        return;
+      }
       if(file2.size>=2000000)
       {
           $('#file2').val("");
@@ -258,14 +278,14 @@ function previewFile3(){
       output.style = "width:200px;height:200px;";
   }
   if (file3) {
-      // if(file.type!="application/zip" && file.type!="application/x-rar")
-      // {
-      //   $('#file1').val("");
-      //   alert("File yang diupload harus dalam bentuk RAR ataupun ZIP.");
-      //   file_name_1.value = "";
-      //   file_url_1.value = "";
-      //   return;
-      // }
+      if(file3.type!="image/jpeg")
+      {
+        $('#file3').val("");
+        alert("File yang diupload harus dalam bentuk JPG ataupun JPEG.");
+        // file_name_1.value = "";
+        // file_url_1.value = "";
+        return;
+      }
       if(file3.size>=2000000)
       {
           $('#file3').val("");
@@ -295,14 +315,14 @@ function previewFile4(){
       output.style = "width:200px;height:200px;";
   }
   if (file4) {
-      // if(file.type!="application/zip" && file.type!="application/x-rar")
-      // {
-      //   $('#file1').val("");
-      //   alert("File yang diupload harus dalam bentuk RAR ataupun ZIP.");
-      //   file_name_1.value = "";
-      //   file_url_1.value = "";
-      //   return;
-      // }
+      if(file4.type!="image/jpeg")
+      {
+        $('#file4').val("");
+        alert("File yang diupload harus dalam bentuk JPG ataupun JPEG.");
+        // file_name_1.value = "";
+        // file_url_1.value = "";
+        return;
+      }
       if(file4.size>=2000000)
       {
           $('#file4').val("");
