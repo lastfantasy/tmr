@@ -45,7 +45,7 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="aktelahir">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Akte Lahir &#42;</label>
-                <% if (user.files[0].name != "" || user.files[0].name != "undefined") { %>
+                <% if (user.files[0]) { %>
                   <div class="col-lg-8" >
                     <%=user.files[0].name%>
                   </div>
@@ -60,7 +60,7 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="ijazah">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah &#42;</label>
-                <% if (user.files[1].name != "" || user.files[1].name != "undefined") { %>
+                <% if (user.files[1]) { %>
                   <div class="col-lg-8" >
                     <%=user.files[1].name%>
                   </div>
@@ -75,7 +75,7 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="dokumenpendukung1">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 1 </label>
-                <% if (user.files[2].name != "" || user.files[2].name != "undefined") { %>
+                <% if (user.files[2]) { %>
                   <div class="col-lg-8" >
                     <%=user.files[2].name%>
                   </div>
@@ -90,7 +90,7 @@
                 <div class="form-group" style="margin-bottom: 0px;">
                 <input type="checkbox" name="dokumenpendukung2">
                 <label class="control-label col-lg-4 required" style="width: 180px;">Dokumen Pendukung 2 </label>
-                <% if (user.files[3].name != "" || typeof(user.files[3].name) != "undefined") { %>
+                <% if (user.files[3]) { %>
                   <div class="col-lg-8" >
                     <%=user.files[3].name%>
                   </div>
