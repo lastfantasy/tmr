@@ -9,11 +9,7 @@ var _opendate, _closedate;
 module.exports = {
 	index : function(req,res,next){
 		User.findOne({admin : true}, function(err, user){
-			_opendate = new Date(user.opendate);
-			_closedate = new Date(user.closedate);
-			console.log(_opendate);
-			console.log(_closedate);
-			return res.view('homepage.ejs');
+			return res.view({user:user});
 		});
 		// console.log(opendate);
 		// console.log(closedate);

@@ -26,7 +26,10 @@
        <section id="slider" class="slider">
            <figure></figure>
            <div class="container center text-center">
-               <h2 class="special_font">Selamat Datang Temanis Baru</h2>
+               <h2 class="special_font">Selamat Datang Di Temanis Baru</h2>
+               <% if (user.name != '') { %>
+                <h6 class="special_font"><%=user.name%></h3>
+               <% } %>
                <p>
                        Sekarang anda bisa mendaftarkan diri di sekolah ini.
                    </p>

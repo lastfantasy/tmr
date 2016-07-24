@@ -10,7 +10,20 @@ module.exports = {
       email : 'string',
       encryptedPassword : 'string',
       encryptedId : 'string',
-      name : 'string',
+      name : {
+        type : 'string',
+        defaultsTo : ''
+      },
+      idgrade0 : 'integer',
+      idgrade1 : 'integer',
+      idgrade2 : 'integer',
+      idgrade3 : 'integer',
+      idgrade4 : 'integer',
+      idgrade5 : 'integer',
+      nousm : {
+        type : 'string',
+        defaultsTo : '-'
+      },
       // file1 : 'object',
       // file2 : 'object',
       // file3 : 'object',

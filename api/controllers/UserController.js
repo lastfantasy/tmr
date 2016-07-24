@@ -162,48 +162,87 @@ module.exports = {
 	        // 	return; 
 	        // }
 
-	        var usrObj = {
-	                testdate : req.param('testdate')
-	        }
-	        User.update(req.session.User.id, usrObj, function(err, user){
-	            if(err) return next(err);
-	            // var info = ['Tanggal Berhasil Disetting']
-	            //  // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-	            //  // the key of usernamePasswordRequiredError
-	            //  req.session.flash = {
-	            //      success: info,
-	             // }
-	        });
+	        var _idgrade0 = req.session.User.idgrade0;
+	        var _idgrade1 = req.session.User.idgrade1;
+	        var _idgrade2 = req.session.User.idgrade2;
+	        var _idgrade3 = req.session.User.idgrade3;
+	        var _idgrade4 = req.session.User.idgrade4;
+	        var _idgrade5 = req.session.User.idgrade5;
+
+	        // var usrObj = {
+	        //         idgrade0 : _idgrade0,
+	        //         idgrade1 : _idgrade1,
+	        //         idgrade2 : _idgrade2,
+	        //         idgrade3 : _idgrade3,
+	        //         idgrade4 : _idgrade4,
+	        //         idgrade5 : _idgrade5,
+	        //         testdate : req.param('testdate')
+	        // }
 	        User.find({admin : false, status : 1, grade : "0"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade0 ++;
+	        		var string_id0 = users[i].createdAt.getYear() + "-000-" + _idgrade0;
+	        		User.update(req.session.User.id, {idgrade0 : _idgrade0, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id0}, function(err, usersss){});
 	        	}
 	        });
 	        User.find({admin : false, status : 1, grade : "1"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade1 ++;
+	        		var string_id1 = users[i].createdAt.getYear() + "-001-" + _idgrade1;
+	        		User.update(req.session.User.id, {idgrade1 : _idgrade1, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id1}, function(err, usersss){});
 	        	}
 	        });
 	        User.find({admin : false, status : 1, grade : "2"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade2 ++;
+	        		var string_id2 = users[i].createdAt.getYear() + "-002-" + _idgrade2;
+	        		User.update(req.session.User.id, {idgrade2 : _idgrade2, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id2}, function(err, usersss){});
 	        	}
 	        });
 	        User.find({admin : false, status : 1, grade : "3"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade3 ++;
+	        		var string_id3 = users[i].createdAt.getFullYear() + "-003-" + _idgrade3;
+	        		User.update(req.session.User.id, {idgrade3 : _idgrade3, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id3}, function(err, usersss){});
 	        	}
 	        });
 	        User.find({admin : false, status : 1, grade : "4"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade4 ++;
+	        		var string_id4 = users[i].createdAt.getFullYear() + "-004-" + _idgrade4;
+	        		User.update(req.session.User.id, {idgrade4 : _idgrade4, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id4}, function(err, usersss){});
 	        	}
 	        });
 	        User.find({admin : false, status : 1, grade : "5"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
-	        		User.update(users[i].id, usrObj, function(err, usersss){});
+	        		_idgrade5 ++;
+	        		var string_id5 = users[i].createdAt.getFullYear() + "-005-" + _idgrade5;
+	        		User.update(req.session.User.id, {idgrade5 : _idgrade5, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id5}, function(err, usersss){});
 	        	}
 	        });
+	        // User.update(req.session.User.id, {
+        	// 	idgrade0 : _idgrade0,
+        	// 	idgrade1 : _idgrade1,
+        	// 	idgrade2 : _idgrade2,
+         //        idgrade3 : _idgrade3,
+         //        idgrade4 : _idgrade4,
+         //        idgrade5 : _idgrade5,
+         //        testdate : req.param('testdate')}, function(err, user){
+         //        	console.log(user.idgrade5);
+	        //     if(err) return next(err);
+	        //     // var info = ['Tanggal Berhasil Disetting']
+	        //     //  // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+	        //     //  // the key of usernamePasswordRequiredError
+	        //     //  req.session.flash = {
+	        //     //      success: info,
+	        //      // }
+	        // });
 	        var info = ['Tanggal Berhasil Disetting']
 	        // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 	        // the key of usernamePasswordRequiredError
@@ -214,12 +253,12 @@ module.exports = {
 	        return;
 	    },
 	    userpass : function(req,res,next){
-	    	User.update(req.param('id'), {status : 3, verifyremarks : ""}, function(err, user){
+	    	User.update(req.param('id'), {status : 3, verifyremarks : "Selamat, Anda Lulus."}, function(err, user){
 	    		res.redirect('/user/verifyapplicant')
 	    	});
 	    },
 	    userfail : function(req,res,next){
-	    	User.update(req.param('id'), {status : 4, verifyremarks : ""}, function(err, user){
+	    	User.update(req.param('id'), {status : 4, verifyremarks : "Maaf, Anda Gagal."}, function(err, user){
 	    		res.redirect('/user/verifyapplicant')
 	    	});
 	    },
