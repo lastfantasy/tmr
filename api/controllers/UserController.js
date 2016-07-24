@@ -181,7 +181,7 @@ module.exports = {
 	        User.find({admin : false, status : 1, grade : "0"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade0 ++;
-	        		var string_id0 = users[i].createdAt.getYear() + "-000-" + _idgrade0;
+	        		var string_id0 = users[i].createdAt.getFullYear() + "-000-" + _idgrade0;
 	        		User.update(req.session.User.id, {idgrade0 : _idgrade0, testdate : req.param('testdate')}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id0}, function(err, usersss){});
 	        	}
@@ -189,7 +189,7 @@ module.exports = {
 	        User.find({admin : false, status : 1, grade : "1"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade1 ++;
-	        		var string_id1 = users[i].createdAt.getYear() + "-001-" + _idgrade1;
+	        		var string_id1 = users[i].createdAt.getFullYear() + "-001-" + _idgrade1;
 	        		User.update(req.session.User.id, {idgrade1 : _idgrade1, testdate : req.param('testdate')}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id1}, function(err, usersss){});
 	        	}
@@ -197,7 +197,7 @@ module.exports = {
 	        User.find({admin : false, status : 1, grade : "2"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade2 ++;
-	        		var string_id2 = users[i].createdAt.getYear() + "-002-" + _idgrade2;
+	        		var string_id2 = users[i].createdAt.getFullYear() + "-002-" + _idgrade2;
 	        		User.update(req.session.User.id, {idgrade2 : _idgrade2, testdate : req.param('testdate')}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id2}, function(err, usersss){});
 	        	}
