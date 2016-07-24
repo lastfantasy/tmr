@@ -92,6 +92,7 @@ angular.module('starter')
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal) {
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.oModal1 = modal;
     var user = AuthService.user();
     $scope.user = user;
@@ -117,7 +118,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
-      $http.post('http://192.168.52.1:1337/api/applyprofile', data)
+      $http.post(server_url + '/api/applyprofile', data)
       .success(function(datas){
         $scope.oModal1.hide();
       })
@@ -130,6 +131,7 @@ angular.module('starter')
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal){
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.oModal2 = modal;
     var user = AuthService.user();
     $scope.user = user;
@@ -139,7 +141,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal2.hide();
       // })
-      $http.post('http://127.0.0.1:1337/api/applygrade', data)
+      $http.post(server_url + '/api/applygrade', data)
       .success(function(datas){
         $scope.oModal2.hide();
       })
@@ -152,6 +154,7 @@ angular.module('starter')
     backdropClickToClose: false,
     animation: 'slide-in-up'
   }).then(function(modal){
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.data = {};
     $scope.oModal3 = modal;
     var user = AuthService.user();
@@ -167,7 +170,7 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal3.hide();
       // })
-      $http.post('http://192.168.52.1:1337/api/applydocuments', data)
+      $http.post(server_url + '/api/applydocuments', data)
       .success(function(datas){
         $scope.oModal3.hide();
       })
@@ -189,6 +192,7 @@ angular.module('starter')
 })
 
 .controller('DaftarCtrl', function($scope, $http, $ionicLoading, $state) {
+    var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.message = "";
     $scope.show = true;
     // $http.get('http://localhost:1337/api/verifyapplication')
@@ -204,7 +208,7 @@ angular.module('starter')
     // .error(function(err){
 
     // })
-    $http.get('http://192.168.52.1:1337/api/verifyapplication')
+    $http.get(server_url + '/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
             $scope.message = datas.message;

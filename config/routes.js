@@ -32,9 +32,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  // '/': {
+  //   view: 'homepage',
+  // },
+  '/' : 'HomeController.index',
   '/register' : 'SessionController.register',
   '/login' : 'SessionController.login'
   /***************************************************************************

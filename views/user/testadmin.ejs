@@ -46,7 +46,11 @@
         <i class="fa fa-calendar-check-o">
         </i>
        </div>
-       <input class="form-control" id="testdate" name="testdate" placeholder="" type="text"/>
+       <% if (user.testdate != "") { %>
+        <input class="form-control" id="testdate" name="testdate" value="<%=user.testdate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="testdate" name="testdate" placeholder="" type="text"/>
+       <% } %>
       </div>
      </div>
      <div class="form-group">

@@ -89,6 +89,14 @@ module.exports = {
                     req.session.flash = {
                       success: requireLoginError
                     }
+                    // user.files[0].name = "";
+                    // user.files[0].url = "";
+                    // user.files[1].name = "";
+                    // user.files[1].url = "";
+                    // user.files[2].name = "";
+                    // user.files[2].url = "";
+                    // user.files[3].name = "";
+                    // user.files[3].url = "";
                     res.redirect('/login');
                     return;
 								});
@@ -137,9 +145,20 @@ module.exports = {
 						req.session.authenticated = true;
 						req.session.User = user;
 						if(user.admin)
-							return res.redirect('/');
-						else
-							return res.redirect('/user/homesiswa');
+							return res.redirect('/user/homeadmin');
+						else {
+							var opendate, closedate;
+							User.findOne({admin : true}, function(err, user){
+								opendate = new Date(user.opendate);
+								closedate = new Date(user.closedate);
+								User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, _user){
+									if (err) return next(err);
+									res.redirect('/user/homesiswa');
+									return;
+								});
+							});
+							// return res.redirect('/user/homesiswa');
+						}
 				});
 		});
 	},

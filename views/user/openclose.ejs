@@ -46,7 +46,11 @@
         <i class="fa fa-calendar-check-o">
         </i>
        </div>
-       <input class="form-control" id="opendate" name="opendate" placeholder="" type="text"/>
+       <% if (user.opendate != "") { %>
+        <input class="form-control" id="opendate" name="opendate" value="<%=user.opendate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="opendate" name="opendate" placeholder="" type="text"/>
+       <% } %>
       </div>
      </div>
      <div class="form-group ">
@@ -56,7 +60,11 @@
         <i class="fa fa-calendar-check-o">
         </i>
        </div>
-       <input class="form-control" id="closedate" name="closedate" placeholder="" type="text"/>
+       <% if (user.closedate != "") { %>
+        <input class="form-control" id="closedate" name="closedate" value="<%=user.closedate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="closedate" name="closedate" placeholder="" type="text"/>
+       <% } %>
       </div>
      </div>
      <div class="form-group">
