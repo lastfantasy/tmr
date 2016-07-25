@@ -15,6 +15,20 @@ module.exports = {
 		if(req.param('password')!=req.param('passwordconfirmation')){
 			return res.json({code:404, message:"Password anda harus sama dengan password konfirmasi anda"});
 		}
+		User.findOne({ or : [ {username : req.param('email')}, { email: req.param('email') } ]}, function foundUser(err, user){
+			if (err) return res.json({code : 404, message : "Error"});
+			if (user) return res.json({code : 404, message : 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'});
+			// if (user) {
+			// 	var existingAccountError = [
+			// 	 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'
+			// 	]
+			// 	req.session.flash = {
+			// 		err: existingAccountError
+			// 	}
+			// 	res.redirect('/register');
+			// 	return;
+			// }
+		});
 		// if(req.param('g-recaptcha-response') == ""){
 		// 	var info = ['Harap menyelesaikan captcha terlebih dahulu']
 
@@ -40,11 +54,11 @@ module.exports = {
 		    phone : '',
 		    status : 0,
 		}
-		bcrypt.hash(req.param('password'), null,null, function PasswordEncrypted(err, encryptedPassword) {
+		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			usrObj.encryptedPassword = encryptedPassword;
 			User.create(usrObj, function(err,user){
 				if(err) return res.json({code:404, message:"Error"});
-				require('bcrypt').hash(user.id, null, null, function IdEncrypted(err, encryptedId) {
+				require('bcrypt').hash(user.id, 10, function IdEncrypted(err, encryptedId) {
 					var usr = {
 		                encryptedId : encryptedId
 		            }
@@ -65,9 +79,19 @@ module.exports = {
 				if (err) return res.json({code:404, message:"Error"});
 				if (!user) return res.json({code:404, message:"Tidak ada user"});
 				bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
-						if (err) return res.json({code:404, message:"Error"});
-						if (!valid) return res.json({code:404, message:"Password salah"});
-						return res.json({code:200,user:user});
+					if (err) return res.json({code:404, message:"Error"});
+					if (!valid) return res.json({code:404, message:"Password salah"});
+					// var opendate, closedate;
+					User.findOne({admin : true}, function(err, user){
+						var opendate = new Date(user.opendate);
+						var closedate = new Date(user.closedate);
+						User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, _user){
+							if (err) return res.json({code:404, message:"Error"});
+							return res.json({code:200,user:user});
+							// return;
+						});
+					});
+					// return res.json({code:200,user:user});
 				});
 		});
 	},
