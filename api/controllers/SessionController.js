@@ -36,6 +36,19 @@ module.exports = {
 				 res.redirect('/register');
 				 return;
 			}
+			User.findOne({ or : [ {username : req.param('email')}, { email: req.param('email') } ]}, function foundUser(err, user){
+				if (err) return next(err);
+				if (user) {
+					var existingAccountError = [
+					 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'
+					]
+					req.session.flash = {
+						err: existingAccountError
+					}
+					res.redirect('/register');
+					return;
+				}
+			});
 			if(req.param('password')!=req.param('passwordconfirmation')){
 				var info = ['Password anda harus sama dengan password konfirmasi anda.']
 

@@ -3,7 +3,7 @@
     <table width="95%" border="1" class="table">
   <thead>
     <th>Nama</th>
-    <th>No. Registrasi</th>
+    <th>No. USM</th>
     <th>Tingkatan</th>
     <th>Sekolah Sebelumnya</th>
     <th>Status</th>
@@ -13,7 +13,7 @@
  	<% _.each(users, function(user){ %>
  		<tr>
  			<td><a href="verifydocument/<%=user.id%>"><%=user.name%></a></td>
- 			<td><%=user.id%></td>
+ 			<td><%=user.nousm%></td>
  			<td>
         <% if (user.grade == "0") { %>
           SMP 1
