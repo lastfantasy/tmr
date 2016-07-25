@@ -178,7 +178,7 @@ module.exports = {
 	        //         idgrade5 : _idgrade5,
 	        //         testdate : req.param('testdate')
 	        // }
-	        User.find({admin : false, status : 1, grade : "0"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "0", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade0 ++;
 	        		var string_id0 = users[i].createdAt.getFullYear() + "-000-" + _idgrade0;
@@ -186,7 +186,7 @@ module.exports = {
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id0}, function(err, usersss){});
 	        	}
 	        });
-	        User.find({admin : false, status : 1, grade : "1"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "1", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade1 ++;
 	        		var string_id1 = users[i].createdAt.getFullYear() + "-001-" + _idgrade1;
@@ -194,7 +194,7 @@ module.exports = {
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id1}, function(err, usersss){});
 	        	}
 	        });
-	        User.find({admin : false, status : 1, grade : "2"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "2", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade2 ++;
 	        		var string_id2 = users[i].createdAt.getFullYear() + "-002-" + _idgrade2;
@@ -202,7 +202,7 @@ module.exports = {
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id2}, function(err, usersss){});
 	        	}
 	        });
-	        User.find({admin : false, status : 1, grade : "3"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "3", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade3 ++;
 	        		var string_id3 = users[i].createdAt.getFullYear() + "-003-" + _idgrade3;
@@ -210,7 +210,7 @@ module.exports = {
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id3}, function(err, usersss){});
 	        	}
 	        });
-	        User.find({admin : false, status : 1, grade : "4"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "4", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade4 ++;
 	        		var string_id4 = users[i].createdAt.getFullYear() + "-004-" + _idgrade4;
@@ -218,7 +218,7 @@ module.exports = {
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id4}, function(err, usersss){});
 	        	}
 	        });
-	        User.find({admin : false, status : 1, grade : "5"}).limit(20).exec (function(err, users){
+	        User.find({admin : false, status : 1, grade : "5", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade5 ++;
 	        		var string_id5 = users[i].createdAt.getFullYear() + "-005-" + _idgrade5;
