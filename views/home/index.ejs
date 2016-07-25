@@ -3,14 +3,14 @@
            <figure></figure>
            <div class="container center text-center">
                <h2 class="special_font">Selamat Datang di Temanis Baru</h2>
-               
-               <div class="col-sm-12 col-lg-6 col-lg-offset-3">
-                   <p>
+               <p>
                        Pelajari cara mendaftar di sekolah kami.
                    </p>
+               <div class="col-sm-12 col-lg-6 col-lg-offset-3" style="margin-right: 25%; margin-bottom: 20px;">
+                   
                    <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
                        
-                       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 215px;">
+                       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 229px;">
                         <ul class="nav navbar-nav navbar-right" style="margin-left: 0px;">
                             <% if(!session.authenticated) { %>
                            <a class="nav-button" data-src="features" href="#features">
@@ -20,7 +20,10 @@
                         </ul>
                        </div>
                    </form>
-                   <h3 style="color:yellow;">Tanggal Pendaftaran: 
+                   
+               </div>
+               <br><br>
+               <h4 style="color:yellow;">Tanggal Pendaftaran: 
                     <%=user.opendate.getDate()%> 
                     <% if (user.opendate.getMonth() == 0) { %>
                         Januari 
@@ -76,10 +79,10 @@
                         Desember 
                     <% } %> 
                     <%=user.closedate.getFullYear()%>
-                   </h3>
-                   <br><br>
-                   <h3 style="color:yellow;">
-                     Tanggal Ujian Saringan Masuk :
+                   </h4>
+                   
+                   <h4 style="color:yellow;">
+                     Tanggal Ujian Saringan Masuk:
                      <br> - 06 Agustus 2016
                      <br> - 20 Agustus 2016
                      <br> - 03 September 2016
@@ -88,8 +91,7 @@
                      <br> - 15 Oktober 2016
                      <br> - 29 Oktober 2016
                      <br> - 12 November 2016
-                   </h3>
-               </div>
+                   </h4>
                <figure class="content_img col-sm-12 " style="margin-top: 10px;">
                    <img src="/img/chrome.png" alt="//">
                </figure>
