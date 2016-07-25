@@ -84,9 +84,9 @@
                 <br>
                 <label>Tanggal Lahir</label>
                 <% if (user.dashboard_status == 1) { %>
-                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
+                  <input type="date" id="datebirth" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
                 <% } else { %>
-                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="dd/mm/yyyy">
+                  <input type="date" id="datebirth" name="datebirth" required="required" class="form-control" placeholder="dd/mm/yyyy">
                 <% } %>
                 <br>
                 <label>Jenis Kelamin</label>
@@ -135,9 +135,9 @@
                 <br>
                 <label>Penghasilan Ayah</label>
                 <% if (user.dashboard_status == 1) { %>
-                  <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" value="<%=user.fathersalary%>">
+                  <input type="number" id="fathersalary" name="fathersalary" required="required" class="form-control" value="<%=user.fathersalary%>">
                 <% } else { %>
-                  <input type="text" id="fathersalary" name="fathersalary" required="required" class="form-control" placeholder="">
+                  <input type="number" id="fathersalary" name="fathersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>No. Telepon Ayah</label>
@@ -163,9 +163,9 @@
                 <br>
                 <label>Penghasilan Ibu</label>
                 <% if (user.dashboard_status == 1) { %>
-                  <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" value="<%=user.mothersalary%>">
+                  <input type="number" id="mothersalary" name="mothersalary" required="required" class="form-control" value="<%=user.mothersalary%>">
                 <% } else { %>
-                  <input type="text" id="mothersalary" name="mothersalary" required="required" class="form-control" placeholder="">
+                  <input type="number" id="mothersalary" name="mothersalary" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <label>No. Telepon Ibu</label>
@@ -177,9 +177,9 @@
                 <br>
                 <label>Jumlah Saudara</label>
                 <% if (user.dashboard_status == 1) { %>
-                  <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" value="<%=user.numbersiblings%>">
+                  <input type="number" id="numbersiblings" name="numbersiblings" required="required" class="form-control" value="<%=user.numbersiblings%>">
                 <% } else { %>
-                  <input type="text" id="numbersiblings" name="numbersiblings" required="required" class="form-control" placeholder="">
+                  <input type="number" id="numbersiblings" name="numbersiblings" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>
                 <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>

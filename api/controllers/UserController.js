@@ -94,7 +94,7 @@ module.exports = {
 			});
 		},
 		verifyuser : function(req,res,next){
-			if (req.param('aktelahir') == "on" && req.param('ijazah') == "on" && req.param('dokumenpendukung1') == "on" && req.param('dokumenpendukung2') == "on"){
+			if (req.param('aktelahir') == "on" && req.param('ijazah') == "on" && req.param('pasfoto') == "on" && req.param('rapor') == "on"){
 				User.update(req.param('id'), {status : 1, verifyremarks : req.param('verifyremarks')}, function(err, user){
 					if (err) return next(err);
 					res.redirect('/user/verifyapplicant');
@@ -178,11 +178,12 @@ module.exports = {
 	        //         idgrade5 : _idgrade5,
 	        //         testdate : req.param('testdate')
 	        // }
+	        User.update(req.session.User.id, {testdate : req.param('testdate')}, function(err, user){});
 	        User.find({admin : false, status : 1, grade : "0", nousm : "-"}).limit(20).exec (function(err, users){
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade0 ++;
 	        		var string_id0 = users[i].createdAt.getFullYear() + "-000-" + _idgrade0;
-	        		User.update(req.session.User.id, {idgrade0 : _idgrade0, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade0 : _idgrade0}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id0}, function(err, usersss){});
 	        	}
 	        });
@@ -190,7 +191,7 @@ module.exports = {
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade1 ++;
 	        		var string_id1 = users[i].createdAt.getFullYear() + "-001-" + _idgrade1;
-	        		User.update(req.session.User.id, {idgrade1 : _idgrade1, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade1 : _idgrade1}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id1}, function(err, usersss){});
 	        	}
 	        });
@@ -198,7 +199,7 @@ module.exports = {
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade2 ++;
 	        		var string_id2 = users[i].createdAt.getFullYear() + "-002-" + _idgrade2;
-	        		User.update(req.session.User.id, {idgrade2 : _idgrade2, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade2 : _idgrade2}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id2}, function(err, usersss){});
 	        	}
 	        });
@@ -206,7 +207,7 @@ module.exports = {
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade3 ++;
 	        		var string_id3 = users[i].createdAt.getFullYear() + "-003-" + _idgrade3;
-	        		User.update(req.session.User.id, {idgrade3 : _idgrade3, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade3 : _idgrade3}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id3}, function(err, usersss){});
 	        	}
 	        });
@@ -214,7 +215,7 @@ module.exports = {
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade4 ++;
 	        		var string_id4 = users[i].createdAt.getFullYear() + "-004-" + _idgrade4;
-	        		User.update(req.session.User.id, {idgrade4 : _idgrade4, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade4 : _idgrade4}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id4}, function(err, usersss){});
 	        	}
 	        });
@@ -222,7 +223,7 @@ module.exports = {
 	        	for (var i = 0; i < users.length; i++){
 	        		_idgrade5 ++;
 	        		var string_id5 = users[i].createdAt.getFullYear() + "-005-" + _idgrade5;
-	        		User.update(req.session.User.id, {idgrade5 : _idgrade5, testdate : req.param('testdate')}, function(err, user){});
+	        		User.update(req.session.User.id, {idgrade5 : _idgrade5}, function(err, user){});
 	        		User.update(users[i].id, {testdate : req.param('testdate'), nousm : string_id5}, function(err, usersss){});
 	        	}
 	        });
@@ -481,6 +482,26 @@ module.exports = {
 			}
 			if(req.param('file_url_2')=="" && !req.session.User.files[1]) {
 				var info = ['Anda harus mengupload ijazah anda.']
+				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+				 // the key of usernamePasswordRequiredError
+				 req.session.flash = {
+					 err: info,
+				 }
+				 res.redirect('/user/documents');
+				 return;
+			}
+			if(!req.session.User.files[2] && req.param('file_url_3') == "") {
+				var info = ['Anda harus mengupload pas foto anda.']
+				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+				 // the key of usernamePasswordRequiredError
+				 req.session.flash = {
+					 err: info,
+				 }
+				 res.redirect('/user/documents');
+				 return;
+			}
+			if(req.param('file_url_4')=="" && !req.session.User.files[3]) {
+				var info = ['Anda harus mengupload rapor anda.']
 				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
 				 // the key of usernamePasswordRequiredError
 				 req.session.flash = {

@@ -95,7 +95,7 @@
                 </div>
                 <br><br>
                 <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 1 </label>
+                <label class="control-label col-lg-4 required">Pas Foto &#42;</label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/jpeg" id="file3" onchange="previewFile3()">
                   <% if (user.files[2]) { %>
@@ -105,15 +105,15 @@
                   <% } %>
                   <br>
                   <% if (user.files[2]) { %>
-                    <img style="width:200px; height:200px;" id="dok1" src="<%=user.files[2].url%>">
+                    <img style="width:200px; height:200px;" id="pasfoto" src="<%=user.files[2].url%>">
                   <% } else { %>
-                    <img id="dok1">
+                    <img id="pasfoto">
                   <% } %>
                 </div>
                 </div>
                 <br><br>
                 <div class="form-group">
-                <label class="control-label col-lg-4 required">Dokumen Pendukung 2 </label>
+                <label class="control-label col-lg-4 required">Rapor (Terakhir) &#42;</label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/jpeg" id="file4" onchange="previewFile4()">
                   <% if (user.files[3]) { %>
@@ -123,9 +123,9 @@
                   <% } %>
                   <br>
                   <% if (user.files[3]) { %>
-                    <img style="width:200px; height:200px;" id="dok2" src="<%=user.files[3].url%>">
+                    <img style="width:200px; height:200px;" id="rapor" src="<%=user.files[3].url%>">
                   <% } else { %>
-                    <img id="dok2">
+                    <img id="rapor">
                   <% } %>
                 </div>
                 </div>
@@ -273,7 +273,7 @@ function previewFile3(){
   var file_name_3 = document.querySelector('#filename3');
   reader.onload = function () {
       file_url_3.value = reader.result;
-      var output = document.getElementById('dok1');
+      var output = document.getElementById('pasfoto');
       output.src = file_url_3.value;
       output.style = "width:200px;height:200px;";
   }
@@ -310,7 +310,7 @@ function previewFile4(){
   var file_name_4 = document.querySelector('#filename4');
   reader.onload = function () {
       file_url_4.value = reader.result;
-      var output = document.getElementById('dok2');
+      var output = document.getElementById('rapor');
       output.src = file_url_4.value;
       output.style = "width:200px;height:200px;";
   }
