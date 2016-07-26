@@ -173,13 +173,13 @@ angular.module('starter')
       data.id_user = AuthService.user().id;
       // AuthService.user().datebirth = new Date(tgllahir);
       // tgl = new Date(tgllahir);
-      console.log(tgl);
+      // console.log(tgl);
       // data.birth = new Date(tgl);
       // data.day = tgl.getDate();
       // data.month = tgl.getMonth();
       // data.year = tgl.getFullYear();
       data.datebirth = new Date(tgl);
-      console.log(data.datebirth);
+      // console.log(data.datebirth);
       // $http.post('http://localhost:1337/api/applyprofile', data)
       // .success(function(datas){
       //   $scope.oModal1.hide();
