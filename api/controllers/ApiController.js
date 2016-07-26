@@ -29,6 +29,11 @@ module.exports = {
 			// 	return;
 			// }
 		});
+		var opendate, closedate;
+		User.findOne({admin : true}, function(err, user){
+			opendate = new Date(user.opendate);
+			closedate = new Date(user.closedate);
+		});
 		// if(req.param('g-recaptcha-response') == ""){
 		// 	var info = ['Harap menyelesaikan captcha terlebih dahulu']
 
@@ -53,6 +58,8 @@ module.exports = {
 		    datebirth : '',
 		    phone : '',
 		    status : 0,
+		    opendate : opendate,
+		    closedate : closedate
 		}
 		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			usrObj.encryptedPassword = encryptedPassword;
@@ -82,10 +89,10 @@ module.exports = {
 					if (err) return res.json({code:404, message:"Error"});
 					if (!valid) return res.json({code:404, message:"Password salah"});
 					// var opendate, closedate;
-					User.findOne({admin : true}, function(err, user){
-						var opendate = new Date(user.opendate);
-						var closedate = new Date(user.closedate);
-						User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, _user){
+					User.findOne({admin : true}, function(err, _user){
+						var opendate = new Date(_user.opendate);
+						var closedate = new Date(_user.closedate);
+						User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, usersss){
 							if (err) return res.json({code:404, message:"Error"});
 							return res.json({code:200,user:user});
 							// return;
