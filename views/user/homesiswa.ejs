@@ -27,7 +27,7 @@
            <figure></figure>
            <div class="container center text-center">
 
-               <h2 class="special_font">Selamat Datang di Temanis Baru</h2>
+               <h1 style="color: white; font-size: 4em; line-height: 1em;">Selamat Datang di Temanis Baru</h1>
 
                <% if (user.name != '') { %>
                 <h3 class="special_font" style="color:yellow;"><%=user.name%></h3>
@@ -36,7 +36,7 @@
                        Sekarang anda bisa mendaftarkan diri di sekolah ini.
                    </p>
                    
-                   <h4 style="color:yellow;">Tanggal Pendaftaran: 
+                   <p>Tanggal Pendaftaran: 
                     <%=user.opendate.getDate()%> 
                     <% if (user.opendate.getMonth() == 0) { %>
                         Januari 
@@ -92,19 +92,13 @@
                         Desember 
                     <% } %> 
                     <%=user.closedate.getFullYear()%>
-                   </h4>
+                   </p>
                    
-                   <h4 style="color:yellow;">
-                     Tanggal Ujian Saringan Masuk :
-                     <br> - 06 Agustus 2016
-                     <br> - 20 Agustus 2016
-                     <br> - 03 September 2016
-                     <br> - 17 September 2016
-                     <br> - 01 Oktober 2016
-                     <br> - 15 Oktober 2016
-                     <br> - 29 Oktober 2016
-                     <br> - 12 November 2016
-                   </h4>
+                   <p>
+                     Tanggal Ujian Saringan Masuk:
+                     <br>06 Agustus 2016 - 20 Agustus 2016 - 03 September 2016 - 17 September 2016
+                     <br>01 Oktober 2016 - 15 Oktober 2016 - 29 Oktober 2016 - 12 November 2016
+                   </p>
                <div class="col-sm-12 col-lg-6 col-lg-offset-3">
                    
                    <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
