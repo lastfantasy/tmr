@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="special_font" align="center">Pendaftaran</h2>
+  <h1 style=" font-size: 4em; line-height: 1em;" align="center">Pendaftaran</h1>
   <% if(flash) { %>
   <% if(flash.err) { %>
         <div>
@@ -27,7 +27,7 @@
 
 <div class="row">
   <form method="post" style="padding-left:10px; padding-right:10px" action="/user/applyprofile" role="form">
-    <div class="col-md-4" style="width: 27.333333%;">
+    <div class="col-md-4" style="width: 27.333333%; margin-top: 10px;">
       <div class="panel panel-primary">
           <div class="panel-heading">
             <h2 class="panel-title">Isi detail topik di bawah ini</h2>
@@ -51,7 +51,7 @@
           </div>
         </div>
     </div>
-    <div class="col-md-4" style="width: 72.333333%;">
+    <div class="col-md-4" style="width: 72.333333%;margin-top: 10px;">
       <div class="panel panel-primary">
           <div class="panel-heading">
             <h2 class="panel-title">Profil - Lengkapi profil Anda di bawah ini</h2>
@@ -237,8 +237,9 @@
         </div>
     </div> -->
   </form>
+  <hr style="border:1px solid black;">
 </div>
-<hr style="border:1px solid black;">
+
 <h2 class="text-center">Status : <span id="status">
 <% if(user.status==0) { %>
   Pending
