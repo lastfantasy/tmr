@@ -113,13 +113,13 @@ module.exports = {
 		
 	},
 	applyprofile : function(req,res,next){
-		console.log('yes');
+		// console.log('yes');
     	// tmpstatus ++;
     	var nowdate = new Date().getFullYear();
     	// var datebirth = req.param('birth');
     	// var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
     	var birthdate = user.datebirth.getFullYear();
-    	console.log(datebirth);
+    	// console.log(datebirth);
 		if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
     		return res.json({code:404, message:"Anda belum cukup umur untuk mendaftar."});
     	}
