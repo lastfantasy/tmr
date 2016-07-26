@@ -29,7 +29,8 @@ module.exports = {
 			// 	return;
 			// }
 		});
-		var opendate, closedate;
+		var opendate = new Date();
+		var closedate = new Date();
 		User.findOne({admin : true}, function(err, user){
 			opendate = new Date(user.opendate);
 			closedate = new Date(user.closedate);
@@ -82,23 +83,31 @@ module.exports = {
 			return res.json({code:404, message:"Harap mengisi email dan password anda"});
 		}
 		var email = req.param('email');
+		var opendate = new Date();
+		var closedate = new Date();
+		User.findOne({admin : true}, function(err, user){
+			opendate = new Date(user.opendate);
+			closedate = new Date(user.closedate);
+		});
 		User.findOne({ email: email }, function foundUser(err, user) {
 				if (err) return res.json({code:404, message:"Error"});
 				if (!user) return res.json({code:404, message:"Tidak ada user"});
 				bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
 					if (err) return res.json({code:404, message:"Error"});
 					if (!valid) return res.json({code:404, message:"Password salah"});
-					// var opendate, closedate;
-					User.findOne({admin : true}, function(err, _user){
-						var opendate = new Date(_user.opendate);
-						var closedate = new Date(_user.closedate);
-						User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, usersss){
-							if (err) return res.json({code:404, message:"Error"});
-							return res.json({code:200,user:user});
-							// return;
-						});
-					});
-					// return res.json({code:200,user:user});
+					user.opendate = opendate;
+					user.closedate = closedate;
+					// // var opendate, closedate;
+					// User.findOne({admin : true}, function(err, _user){
+					// 	var opendate = new Date(_user.opendate);
+					// 	var closedate = new Date(_user.closedate);
+					// 	User.update(user.id, {opendate : opendate, closedate : closedate}, function(err, usersss){
+					// 		if (err) return res.json({code:404, message:"Error"});
+					// 		return res.json({code:200,user:user});
+					// 		// return;
+					// 	});
+					// });
+					return res.json({code:200,user:user});
 				});
 		});
 	},

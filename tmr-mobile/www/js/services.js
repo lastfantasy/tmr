@@ -127,6 +127,7 @@ angular.module('starter')
 
 
   loadUserCredentials();
+  // destroyUserCredentials();
 
   return {
     login: login,
