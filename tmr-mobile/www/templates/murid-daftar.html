@@ -37,24 +37,20 @@
     <form>
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">No. Registrasi</span>
-          <input type="text" name="noreg" ng-model="user.id" placeholder="No. Registrasi" ng-disabled="true">
-        </label>
-        <label class="item item-input">
           <span class="input-label">Nama Lengkap</span>
-          <input type="text" name="name" ng-model="user.name" placeholder="Nama Lengkap">
+          <input type="text" name="name" ng-model="user.name" placeholder="Nama Lengkap" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Alamat</span>
-          <input type="text" name="address" ng-model="user.address" placeholder="Alamat">
+          <input type="text" name="address" ng-model="user.address" placeholder="Alamat" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Tempat Lahir</span>
-          <input type="text" name="tmptlahir" ng-model="user.placebirth" placeholder="Tempat Lahir">
+          <input type="text" name="tmptlahir" ng-model="user.placebirth" placeholder="Tempat Lahir" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Tanggal Lahir</span>
-          <input type="date" name="tgllahir" ng-model="tgllahir" placeholder="Tanggal Lahir">
+          <input type="date" name="tgllahir" ng-model="tgllahir" placeholder="dd/mmmm/yyyy" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Jenis Kelamin</span>
@@ -69,47 +65,47 @@
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon</span>
-          <input type="text" name="notelp" ng-model="user.phone" placeholder="No. Telepon">
+          <input type="text" name="notelp" ng-model="user.phone" placeholder="No. Telepon" required>
         </label>
         <label class="item item-input">
           <span class="input-label">No. Handphone</span>
-          <input type="text" name="nohp" ng-model="user.handphone" placeholder="No. Handphone">
+          <input type="text" name="nohp" ng-model="user.handphone" placeholder="No. Handphone" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Ayah</span>
-          <input type="text" name="namaayah" ng-model="user.fathername" placeholder="Nama Ayah">
+          <input type="text" name="namaayah" ng-model="user.fathername" placeholder="Nama Ayah" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Pekerjaan Ayah</span>
-          <input type="text" name="pekayah" ng-model="user.fatheroccupation" placeholder="Pekerjaan Ayah">
+          <input type="text" name="pekayah" ng-model="user.fatheroccupation" placeholder="Pekerjaan Ayah" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Penghasilan Ayah</span>
-          <input type="text" name="penghayah" ng-model="user.fathersalary" placeholder="Penghasilan Ayah">
+          <input type="number" name="penghayah" ng-model="user.fathersalary" placeholder="Penghasilan Ayah" required>
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon Ayah</span>
-          <input type="text" name="notelpayah" ng-model="user.fatherphone" placeholder="No. Telepon Ayah">
+          <input type="text" name="notelpayah" ng-model="user.fatherphone" placeholder="No. Telepon Ayah" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Nama Ibu</span>
-          <input type="text" name="namaibu" ng-model="user.mothername" placeholder="Nama Ibu">
+          <input type="text" name="namaibu" ng-model="user.mothername" placeholder="Nama Ibu" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Pekerjaan Ibu</span>
-          <input type="text" name="pekibu" ng-model="user.motheroccupation" placeholder="Pekerjaan Ibu">
+          <input type="text" name="pekibu" ng-model="user.motheroccupation" placeholder="Pekerjaan Ibu" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Penghasilan Ibu</span>
-          <input type="text" name="penghibu" ng-model="user.mothersalary" placeholder="Penghasilan Ibu">
+          <input type="number" name="penghibu" ng-model="user.mothersalary" placeholder="Penghasilan Ibu" required>
         </label>
         <label class="item item-input">
           <span class="input-label">No. Telepon Ibu</span>
-          <input type="text" name="notelpibu" ng-model="user.motherphone" placeholder="No. Telepon Ibu">
+          <input type="text" name="notelpibu" ng-model="user.motherphone" placeholder="No. Telepon Ibu" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Jumlah Saudara</span>
-          <input type="text" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara">
+          <input type="number" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara" required>
         </label>
         <button class="button button-block button-assertive" ng-click="send_profil(user, tgllahir)">Kirim</button>
       </div>

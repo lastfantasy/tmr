@@ -15,6 +15,20 @@ module.exports = {
 		if(req.param('password')!=req.param('passwordconfirmation')){
 			return res.json({code:404, message:"Password anda harus sama dengan password konfirmasi anda"});
 		}
+		User.findOne({ or : [ {username : req.param('email')}, { email: req.param('email') } ]}, function foundUser(err, user){
+			if (err) return res.json({code : 404, message : "Error"});
+			if (user) return res.json({code : 404, message : 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'});
+			// if (user) {
+			// 	var existingAccountError = [
+			// 	 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'
+			// 	]
+			// 	req.session.flash = {
+			// 		err: existingAccountError
+			// 	}
+			// 	res.redirect('/register');
+			// 	return;
+			// }
+		});
 		// if(req.param('g-recaptcha-response') == ""){
 		// 	var info = ['Harap menyelesaikan captcha terlebih dahulu']
 
@@ -40,11 +54,11 @@ module.exports = {
 		    phone : '',
 		    status : 0,
 		}
-		bcrypt.hash(req.param('password'), null,null, function PasswordEncrypted(err, encryptedPassword) {
+		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			usrObj.encryptedPassword = encryptedPassword;
 			User.create(usrObj, function(err,user){
 				if(err) return res.json({code:404, message:"Error"});
-				require('bcrypt').hash(user.id, null, null, function IdEncrypted(err, encryptedId) {
+				require('bcrypt').hash(user.id, 10, function IdEncrypted(err, encryptedId) {
 					var usr = {
 		                encryptedId : encryptedId
 		            }
@@ -65,9 +79,19 @@ module.exports = {
 				if (err) return res.json({code:404, message:"Error"});
 				if (!user) return res.json({code:404, message:"Tidak ada user"});
 				bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
-						if (err) return res.json({code:404, message:"Error"});
-						if (!valid) return res.json({code:404, message:"Password salah"});
-						return res.json({code:200,user:user});
+					if (err) return res.json({code:404, message:"Error"});
+					if (!valid) return res.json({code:404, message:"Password salah"});
+					// var opendate, closedate;
+					User.findOne({admin : true}, function(err, user){
+						var opendate = new Date(user.opendate);
+						var closedate = new Date(user.closedate);
+						User.update(req.session.User.id, {opendate : opendate, closedate : closedate}, function(err, _user){
+							if (err) return res.json({code:404, message:"Error"});
+							return res.json({code:200,user:user});
+							// return;
+						});
+					});
+					// return res.json({code:200,user:user});
 				});
 		});
 	},
@@ -92,7 +116,7 @@ module.exports = {
 		console.log('yes');
     	tmpstatus ++;
     	var nowdate = new Date().getFullYear();
-    	var datebirth = req.param('year')+"-"+req.param('month')+"-"+req.param('day');
+    	// var datebirth = req.param('year')+"-"+req.param('month')+"-"+req.param('day');
     	var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
     	var birthdate = tmp.getFullYear();
     	console.log(datebirth);
@@ -129,50 +153,69 @@ module.exports = {
 					return res.json({code:404, message:"Mohon input jumlah saudara dengan angka."});
 				}
 		}
-		if (tmpstatus == 3){
-			tmpstatus = 0;
-			var usrObj = {
-				name : req.param('name'),
-				address : req.param('address'),
-				placebirth : req.param('placebirth'),
-				datebirth : datebirth,
-				gender : req.param('gender'),
-				phone : req.param('phone'),
-				handphone : req.param('handphone'),
-				fathername : req.param('fathername'),
-				fatheroccupation : req.param('fatheroccupation'),
-				fathersalary : req.param('fathersalary'),
-				fatherphone : req.param('fatherphone'),
-				mothername : req.param('mothername'),
-				motheroccupation : req.param('motheroccupation'),
-				mothersalary : req.param('mothersalary'),
-				motherphone : req.param('motherphone'),
-				numbersiblings : req.param('numbersiblings'),
-				dashboard_status : 1,
-				verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
-			}
+		var usrObj = {
+			name : req.param('name'),
+			address : req.param('address'),
+			placebirth : req.param('placebirth'),
+			datebirth : req.param('datebirth'),
+			gender : req.param('gender'),
+			phone : req.param('phone'),
+			handphone : req.param('handphone'),
+			fathername : req.param('fathername'),
+			fatheroccupation : req.param('fatheroccupation'),
+			fathersalary : req.param('fathersalary'),
+			fatherphone : req.param('fatherphone'),
+			mothername : req.param('mothername'),
+			motheroccupation : req.param('motheroccupation'),
+			mothersalary : req.param('mothersalary'),
+			motherphone : req.param('motherphone'),
+			numbersiblings : req.param('numbersiblings'),
+			dashboard_status : 1
 		}
-		else {
-			var usrObj = {
-				name : req.param('name'),
-				address : req.param('address'),
-				placebirth : req.param('placebirth'),
-				datebirth : datebirth,
-				gender : req.param('gender'),
-				phone : req.param('phone'),
-				handphone : req.param('handphone'),
-				fathername : req.param('fathername'),
-				fatheroccupation : req.param('fatheroccupation'),
-				fathersalary : req.param('fathersalary'),
-				fatherphone : req.param('fatherphone'),
-				mothername : req.param('mothername'),
-				motheroccupation : req.param('motheroccupation'),
-				mothersalary : req.param('mothersalary'),
-				motherphone : req.param('motherphone'),
-				numbersiblings : req.param('numbersiblings'),
-				dashboard_status : 1
-			}
-		}
+		// if (tmpstatus == 3){
+		// 	tmpstatus = 0;
+		// 	var usrObj = {
+		// 		name : req.param('name'),
+		// 		address : req.param('address'),
+		// 		placebirth : req.param('placebirth'),
+		// 		datebirth : datebirth,
+		// 		gender : req.param('gender'),
+		// 		phone : req.param('phone'),
+		// 		handphone : req.param('handphone'),
+		// 		fathername : req.param('fathername'),
+		// 		fatheroccupation : req.param('fatheroccupation'),
+		// 		fathersalary : req.param('fathersalary'),
+		// 		fatherphone : req.param('fatherphone'),
+		// 		mothername : req.param('mothername'),
+		// 		motheroccupation : req.param('motheroccupation'),
+		// 		mothersalary : req.param('mothersalary'),
+		// 		motherphone : req.param('motherphone'),
+		// 		numbersiblings : req.param('numbersiblings'),
+		// 		dashboard_status : 1,
+		// 		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+		// 	}
+		// }
+		// else {
+		// 	var usrObj = {
+		// 		name : req.param('name'),
+		// 		address : req.param('address'),
+		// 		placebirth : req.param('placebirth'),
+		// 		datebirth : req.param('datebirth'),
+		// 		gender : req.param('gender'),
+		// 		phone : req.param('phone'),
+		// 		handphone : req.param('handphone'),
+		// 		fathername : req.param('fathername'),
+		// 		fatheroccupation : req.param('fatheroccupation'),
+		// 		fathersalary : req.param('fathersalary'),
+		// 		fatherphone : req.param('fatherphone'),
+		// 		mothername : req.param('mothername'),
+		// 		motheroccupation : req.param('motheroccupation'),
+		// 		mothersalary : req.param('mothersalary'),
+		// 		motherphone : req.param('motherphone'),
+		// 		numbersiblings : req.param('numbersiblings'),
+		// 		dashboard_status : 1
+		// 	}
+		// }
 		User.update(req.param("id_user"),usrObj,function(err,user){
 			if(err) return res.json({code:404, message:"Error!"});
 			return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
@@ -180,22 +223,27 @@ module.exports = {
     },
     applygrade : function(req,res,next){
     	tmpstatus ++;
-    	if (tmpstatus == 3){
-    		tmpstatus = 0;
-    		var usrObj = {
-	    		grade : req.param('grade'),
-	    		previousschool : req.param('previousschoolname'),
-	    		grade_status : 1,
-	    		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
-    		}
-    	}
-    	else {
-    		var usrObj = {
-	    		grade : req.param('grade'),
-	    		previousschool : req.param('previousschoolname'),
-	    		grade_status : 1
-    		}
-    	}
+    	var usrObj = {
+    		grade : req.param('grade'),
+    		previousschool : req.param('previousschoolname'),
+    		grade_status : 1
+		}
+    	// if (tmpstatus == 3){
+    	// 	tmpstatus = 0;
+    	// 	var usrObj = {
+	    // 		grade : req.param('grade'),
+	    // 		previousschool : req.param('previousschoolname'),
+	    // 		grade_status : 1,
+	    // 		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
+    	// 	}
+    	// }
+    	// else {
+    	// 	var usrObj = {
+	    // 		grade : req.param('grade'),
+	    // 		previousschool : req.param('previousschoolname'),
+	    // 		grade_status : 1
+    	// 	}
+    	// }
     	User.update(req.param("id_user"),usrObj,function(err,user){
 			if(err) return res.json({code:404, message:"Error!"});
 			return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
@@ -241,41 +289,49 @@ module.exports = {
   //   	console.log(req.param('file_url_2'));
   //   	console.log(req.param('file_url_3'));
   //   	console.log(req.param('file_url_4'));
-		buf = new Buffer(fileurl1.replace("data:image/*;charset=utf-8;base64,",""),'base64');
-		var filename1 = 'akte lahir ' + req.param("id_user") + '.jpg';
-		fs.writeFile(filename1,buf,function(err,data){});
-		buf = new Buffer(fileurl2.replace("data:image/*;charset=utf-8;base64,",""),'base64');
-		var filename2 = 'ijazah ' + req.param("id_user") + '.jpg';
-		fs.writeFile(filename2,buf,function(err,data){});
-		buf = new Buffer(fileurl3.replace("data:image/*;charset=utf-8;base64,",""),'base64');
-		var filename3 = 'dok1 ' + req.param("id_user") + '.jpg';
-		fs.writeFile(filename3,buf,function(err,data){});
-		buf = new Buffer(fileurl4.replace("data:image/*;charset=utf-8;base64,",""),'base64');
-		var filename4 = 'dok2 ' + req.param("id_user") + '.jpg';
-		fs.writeFile(filename4,buf,function(err,data){});
-		if (tmpstatus == 3){
-			tmpstatus = 0;
-			var usrObj = {
-				file1 : filename1,
-				file2 : filename2,
-				file3 : filename3,
-				file4 : filename4,
-				documents_status : 1,
-				verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Tanggal XX-XX-XXXX"
-			}
+		// buf = new Buffer(fileurl1.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		// var filename1 = 'akte lahir ' + req.param("id_user") + '.jpg';
+		// fs.writeFile(filename1,buf,function(err,data){});
+		// buf = new Buffer(fileurl2.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		// var filename2 = 'ijazah ' + req.param("id_user") + '.jpg';
+		// fs.writeFile(filename2,buf,function(err,data){});
+		// buf = new Buffer(fileurl3.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		// var filename3 = 'dok1 ' + req.param("id_user") + '.jpg';
+		// fs.writeFile(filename3,buf,function(err,data){});
+		// buf = new Buffer(fileurl4.replace("data:image/*;charset=utf-8;base64,",""),'base64');
+		// var filename4 = 'dok2 ' + req.param("id_user") + '.jpg';
+		// fs.writeFile(filename4,buf,function(err,data){});
+		var usrObj = {
+			file1 : filename1,
+			file2 : filename2,
+			file3 : filename3,
+			file4 : filename4,
+			documents_status : 1,
+			verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Pendaftaran Ditutup."
 		}
-		else {
-			var usrObj = {
-				file1 : filename1,
-				file2 : filename2,
-				file3 : filename3,
-				file4 : filename4,
-				documents_status : 1
-			}
-		}
+		// if (tmpstatus == 3){
+		// 	tmpstatus = 0;
+		// 	var usrObj = {
+		// 		file1 : filename1,
+		// 		file2 : filename2,
+		// 		file3 : filename3,
+		// 		file4 : filename4,
+		// 		documents_status : 1,
+		// 		verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Pendaftaran Ditutup."
+		// 	}
+		// }
+		// else {
+		// 	var usrObj = {
+		// 		file1 : filename1,
+		// 		file2 : filename2,
+		// 		file3 : filename3,
+		// 		file4 : filename4,
+		// 		documents_status : 1
+		// 	}
+		// }
 		User.update(req.param("id_user"),usrObj,function(err,user){
 				if(err) return res.json({code:404, message:"Error"});
-				return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan laengkapi data yang lainnya."});
+				return res.json({code:200, message:"Formulir Anda sedang kami proses. Silahkan lengkapi data yang lainnya."});
 		});
     }
 };

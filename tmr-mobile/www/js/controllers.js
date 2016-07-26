@@ -2,7 +2,69 @@ angular.module('starter')
 
 .controller('DashCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
     var user = AuthService.user();
+    var stropendate = "";
+    var strclosedate = "";
     $scope.user = user;
+
+    var opendate = new Date(user.opendate);
+    stropendate += opendate.getDate() + " ";
+    if (opendate.getMonth() == 0) {
+        stropendate += "Januari "; 
+    } else if (opendate.getMonth() == 1) {
+        stropendate += "Februari ";
+    } else if (opendate.getMonth() == 2) {
+        stropendate += "Maret ";
+    } else if (opendate.getMonth() == 3) {
+        stropendate += "April ";
+    } else if (opendate.getMonth() == 4) {
+        stropendate += "Mei ";
+    } else if (opendate.getMonth() == 5) {
+        stropendate += "Juni ";
+    } else if (opendate.getMonth() == 6) {
+        stropendate += "Juli ";
+    } else if (opendate.getMonth() == 7) {
+        stropendate += "Agustus ";
+    } else if (opendate.getMonth() == 8) {
+        stropendate += "September ";
+    } else if (opendate.getMonth() == 9) {
+        stropendate += "Oktober ";
+    } else if (opendate.getMonth() == 10) {
+        stropendate += "November ";
+    } else if (opendate.getMonth() == 11) {
+        stropendate += "Desember ";
+    }
+    stropendate += opendate.getFullYear(); 
+    $scope.stropendate = stropendate;
+
+    var closedate = new Date(user.closedate);
+    strclosedate += closedate.getDate() + " ";
+    if (closedate.getMonth() == 0) {
+        strclosedate += "Januari "; 
+    } else if (closedate.getMonth() == 1) {
+        strclosedate += "Februari ";
+    } else if (closedate.getMonth() == 2) {
+        strclosedate += "Maret ";
+    } else if (closedate.getMonth() == 3) {
+        strclosedate += "April ";
+    } else if (closedate.getMonth() == 4) {
+        strclosedate += "Mei ";
+    } else if (closedate.getMonth() == 5) {
+        strclosedate += "Juni ";
+    } else if (closedate.getMonth() == 6) {
+        strclosedate += "Juli ";
+    } else if (closedate.getMonth() == 7) {
+        strclosedate += "Agustus ";
+    } else if (closedate.getMonth() == 8) {
+        strclosedate += "September ";
+    } else if (closedate.getMonth() == 9) {
+        strclosedate += "Oktober ";
+    } else if (closedate.getMonth() == 10) {
+        strclosedate += "November ";
+    } else if (closedate.getMonth() == 11) {
+        strclosedate += "Desember ";
+    }
+    strclosedate += closedate.getFullYear(); 
+    $scope.strclosedate = strclosedate;
     $scope.logout = function(){
       $ionicLoading.show({
         template : '<ion-spinner></ion-spinner> <br> Loading'
@@ -99,21 +161,21 @@ angular.module('starter')
     var tgllahir, day, month, year;
     if (user.datebirth != null){
       tgllahir = new Date(user.datebirth);
-      day = new Date(user.datebirth).getDate();
-      month = new Date(user.datebirth).getMonth();
-      year = new Date(user.datebirth).getFullYear();
+      console.log(tgllahir);
+      // day = new Date(user.datebirth).getDate();
+      // month = new Date(user.datebirth).getMonth();
+      // year = new Date(user.datebirth).getFullYear();
     }
     $scope.tgllahir = tgllahir;
-    $scope.day = day;
-    $scope.month = month;
-    $scope.year = year;
+    // $scope.day = day;
+    // $scope.month = month;
+    // $scope.year = year;
     $scope.send_profil = function(data, tgllahir){
-      console.log('tes');
       data.id_user = AuthService.user().id;
-      tgl = new Date(tgllahir);
-      data.day = tgl.getDate();
-      data.month = tgl.getMonth()+1;
-      data.year = tgl.getFullYear();
+      var tgl = new Date(tgllahir);
+      console.log(tgl);
+      data.datebirth = new Date(tgl);
+      // data.datebirth.setFullYear(tgl.getFullYear(), tgl.getMonth(), tgl.getDate());
       // $http.post('http://localhost:1337/api/applyprofile', data)
       // .success(function(datas){
       //   $scope.oModal1.hide();
