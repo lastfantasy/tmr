@@ -114,11 +114,11 @@ module.exports = {
 	},
 	applyprofile : function(req,res,next){
 		console.log('yes');
-    	tmpstatus ++;
+    	// tmpstatus ++;
     	var nowdate = new Date().getFullYear();
-    	// var datebirth = req.param('year')+"-"+req.param('month')+"-"+req.param('day');
-    	var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
-    	var birthdate = tmp.getFullYear();
+    	// var datebirth = req.param('birth');
+    	// var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
+    	var birthdate = user.datebirth.getFullYear();
     	console.log(datebirth);
 		if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
     		return res.json({code:404, message:"Anda belum cukup umur untuk mendaftar."});
@@ -157,7 +157,7 @@ module.exports = {
 			name : req.param('name'),
 			address : req.param('address'),
 			placebirth : req.param('placebirth'),
-			datebirth : req.param('datebirth'),
+			// datebirth : tmp,
 			gender : req.param('gender'),
 			phone : req.param('phone'),
 			handphone : req.param('handphone'),
@@ -225,7 +225,7 @@ module.exports = {
     	tmpstatus ++;
     	var usrObj = {
     		grade : req.param('grade'),
-    		previousschool : req.param('previousschoolname'),
+    		previousschool : req.param('previousschool'),
     		grade_status : 1
 		}
     	// if (tmpstatus == 3){
