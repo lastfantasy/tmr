@@ -15,7 +15,7 @@ module.exports = {
 		if(req.param('password')!=req.param('passwordconfirmation')){
 			return res.json({code:404, message:"Password anda harus sama dengan password konfirmasi anda"});
 		}
-		User.findOne({ or : [ {username : req.param('email')}, { email: req.param('email') } ]}, function foundUser(err, user){
+		User.findOne({ email: req.param('email') }, function foundUser(err, user){
 			if (err) return res.json({code : 404, message : "Error"});
 			if (user) return res.json({code : 404, message : 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'});
 			// if (user) {
@@ -75,7 +75,7 @@ module.exports = {
 			return res.json({code:404, message:"Harap mengisi email dan password anda"});
 		}
 		var email = req.param('email');
-		User.findOne({ or : [ {username : email}, { email: email } ] }, function foundUser(err, user) {
+		User.findOne({ email: email }, function foundUser(err, user) {
 				if (err) return res.json({code:404, message:"Error"});
 				if (!user) return res.json({code:404, message:"Tidak ada user"});
 				bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
