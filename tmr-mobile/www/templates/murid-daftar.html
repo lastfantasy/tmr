@@ -50,7 +50,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Tanggal Lahir</span>
-          <input type="date" name="tgllahir" ng-model="tgllahir" placeholder="dd/mmmm/yyyy" required>
+          <input type="text" name="tgllahir" ng-model="user.datebirth" placeholder="mm/dd/yyyy" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Jenis Kelamin</span>
@@ -107,7 +107,7 @@
           <span class="input-label">Jumlah Saudara</span>
           <input type="number" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara" required>
         </label>
-        <button class="button button-block button-assertive" ng-click="send_profil(user, tgllahir)">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send_profil(user)">Kirim</button>
       </div>
       </form>
     </ion-content>

@@ -37,7 +37,7 @@ module.exports = {
       grade : 'string',
       address : 'string',
       placebirth : 'string',
-      datebirth : 'date',
+      datebirth : 'string',
       phone : 'string',
       dashboard_status : {
         type : 'integer',

@@ -84,9 +84,9 @@
                 <br>
                 <label>Tanggal Lahir</label>
                 <% if (user.dashboard_status == 1) { %>
-                  <input type="date" id="datebirth" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
+                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
                 <% } else { %>
-                  <input type="date" id="datebirth" name="datebirth" required="required" class="form-control" placeholder="dd/mm/yyyy">
+                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="mm/dd/yyyy">
                 <% } %>
                 <br>
                 <label>Jenis Kelamin</label>

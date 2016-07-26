@@ -264,7 +264,7 @@ module.exports = {
 	    	});
 	    },
 	    applyprofile : function(req,res,next){
-	    	tmpstatus ++;
+	    	// tmpstatus ++;
 	    	var nowdate = new Date().getFullYear();
 	    	var birthdate = new Date(req.param('datebirth')).getFullYear();
 			if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
@@ -275,71 +275,71 @@ module.exports = {
 	    		res.redirect('/user/dashboard');
 	    		return;
 	    	}
-	    	var phone = req.param('phone');
-			for(var i=0;i<phone.length;i++){
-					if(phone[i]<'0' || phone[i]>'9'){
-						var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 err: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
-					}
-			}
-			var handphone = req.param('handphone');
-			for(var i=0;i<handphone.length;i++){
-					if(handphone[i]<'0' || handphone[i]>'9'){
-						var info = ['Nomor Handphone harus dalam bentuk angka (0-9)']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 err: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
-					}
-			}
-			var fatherphone = req.param('fatherphone');
-			for(var i=0;i<fatherphone.length;i++){
-					if(fatherphone[i]<'0' || fatherphone[i]>'9'){
-						var info = ['Nomor Telepon Ayah harus dalam bentuk angka (0-9)']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 err: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
-					}
-			}
-			var motherphone = req.param('motherphone');
-			for(var i=0;i<motherphone.length;i++){
-					if(motherphone[i]<'0' || motherphone[i]>'9'){
-						var info = ['Nomor Telepon Ibu harus dalam bentuk angka (0-9)']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 err: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
-					}
-			}
-			var siblings = req.param('numbersiblings');
-			for(var i=0;i<siblings.length;i++){
-					if(siblings[i]<'0' || siblings[i]>'9'){
-						var info = ['Mohon input jumlah saudara dengan angka.']
-						 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-						 // the key of usernamePasswordRequiredError
-						 req.session.flash = {
-							 err: info,
-						 }
-						 res.redirect('/user/dashboard');
-						 return;
-					}
-			}
+	  //   	var phone = req.param('phone');
+			// for(var i=0;i<phone.length;i++){
+			// 		if(phone[i]<'0' || phone[i]>'9'){
+			// 			var info = ['Nomor Telepon harus dalam bentuk angka (0-9)']
+			// 			 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 			 // the key of usernamePasswordRequiredError
+			// 			 req.session.flash = {
+			// 				 err: info,
+			// 			 }
+			// 			 res.redirect('/user/dashboard');
+			// 			 return;
+			// 		}
+			// }
+			// var handphone = req.param('handphone');
+			// for(var i=0;i<handphone.length;i++){
+			// 		if(handphone[i]<'0' || handphone[i]>'9'){
+			// 			var info = ['Nomor Handphone harus dalam bentuk angka (0-9)']
+			// 			 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 			 // the key of usernamePasswordRequiredError
+			// 			 req.session.flash = {
+			// 				 err: info,
+			// 			 }
+			// 			 res.redirect('/user/dashboard');
+			// 			 return;
+			// 		}
+			// }
+			// var fatherphone = req.param('fatherphone');
+			// for(var i=0;i<fatherphone.length;i++){
+			// 		if(fatherphone[i]<'0' || fatherphone[i]>'9'){
+			// 			var info = ['Nomor Telepon Ayah harus dalam bentuk angka (0-9)']
+			// 			 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 			 // the key of usernamePasswordRequiredError
+			// 			 req.session.flash = {
+			// 				 err: info,
+			// 			 }
+			// 			 res.redirect('/user/dashboard');
+			// 			 return;
+			// 		}
+			// }
+			// var motherphone = req.param('motherphone');
+			// for(var i=0;i<motherphone.length;i++){
+			// 		if(motherphone[i]<'0' || motherphone[i]>'9'){
+			// 			var info = ['Nomor Telepon Ibu harus dalam bentuk angka (0-9)']
+			// 			 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 			 // the key of usernamePasswordRequiredError
+			// 			 req.session.flash = {
+			// 				 err: info,
+			// 			 }
+			// 			 res.redirect('/user/dashboard');
+			// 			 return;
+			// 		}
+			// }
+			// var siblings = req.param('numbersiblings');
+			// for(var i=0;i<siblings.length;i++){
+			// 		if(siblings[i]<'0' || siblings[i]>'9'){
+			// 			var info = ['Mohon input jumlah saudara dengan angka.']
+			// 			 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+			// 			 // the key of usernamePasswordRequiredError
+			// 			 req.session.flash = {
+			// 				 err: info,
+			// 			 }
+			// 			 res.redirect('/user/dashboard');
+			// 			 return;
+			// 		}
+			// }
 			var usrObj = {
 				name : req.param('name'),
 				address : req.param('address'),

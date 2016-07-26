@@ -158,18 +158,18 @@ angular.module('starter')
     $scope.oModal1 = modal;
     var user = AuthService.user();
     $scope.user = user;
-    var tgllahir, day, month, year;
-    if (user.datebirth != null){
-      tgllahir = new Date(user.datebirth);
-      // day = new Date(user.datebirth).getDate();
-      // month = new Date(user.datebirth).getMonth();
-      // year = new Date(user.datebirth).getFullYear();
-    }
-    $scope.tgllahir = tgllahir;
+    // var tgllahir, day, month, year;
+    // if (user.datebirth != null){
+    //   tgllahir = new Date(user.datebirth);
+    //   // day = new Date(user.datebirth).getDate();
+    //   // month = new Date(user.datebirth).getMonth();
+    //   // year = new Date(user.datebirth).getFullYear();
+    // }
+    // $scope.tgllahir = tgllahir;
     // $scope.day = day;
     // $scope.month = month;
     // $scope.year = year;
-    $scope.send_profil = function(data, tgl){
+    $scope.send_profil = function(data){
       data.id_user = AuthService.user().id;
       // AuthService.user().datebirth = new Date(tgllahir);
       // tgl = new Date(tgllahir);
@@ -178,7 +178,7 @@ angular.module('starter')
       // data.day = tgl.getDate();
       // data.month = tgl.getMonth();
       // data.year = tgl.getFullYear();
-      data.datebirth = new Date(tgl);
+      // data.datebirth = new Date(tgl);
       // console.log(data.datebirth);
       // $http.post('http://localhost:1337/api/applyprofile', data)
       // .success(function(datas){

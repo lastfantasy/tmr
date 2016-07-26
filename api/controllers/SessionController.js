@@ -36,7 +36,7 @@ module.exports = {
 				 res.redirect('/register');
 				 return;
 			}
-			User.findOne({ or : [ {username : req.param('email')}, { email: req.param('email') } ]}, function foundUser(err, user){
+			User.findOne({ email: req.param('email') }, function foundUser(err, user){
 				if (err) return next(err);
 				if (user) {
 					var existingAccountError = [
@@ -133,7 +133,7 @@ module.exports = {
 			return;
 		}
 		var email = req.param('email');
-		User.findOne({ or : [ {username : email}, { email: email } ] }, function foundUser(err, user) {
+		User.findOne({ email: email }, function foundUser(err, user) {
 				if (err) return next(err);
 				if (!user) {
 					var noAccountError = [

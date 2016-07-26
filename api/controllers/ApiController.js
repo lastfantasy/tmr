@@ -118,7 +118,7 @@ module.exports = {
     	var nowdate = new Date().getFullYear();
     	// var datebirth = req.param('birth');
     	// var tmp = new Date(req.param('year'),req.param('month'),req.param('day'));
-    	var birthdate = user.datebirth.getFullYear();
+    	var birthdate = new Date(req.param('datebirth')).getFullYear();
     	// console.log(datebirth);
 		if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
     		return res.json({code:404, message:"Anda belum cukup umur untuk mendaftar."});
@@ -157,7 +157,7 @@ module.exports = {
 			name : req.param('name'),
 			address : req.param('address'),
 			placebirth : req.param('placebirth'),
-			// datebirth : tmp,
+			datebirth : req.param('datebirth'),
 			gender : req.param('gender'),
 			phone : req.param('phone'),
 			handphone : req.param('handphone'),
