@@ -107,7 +107,7 @@
           <span class="input-label">Jumlah Saudara</span>
           <input type="number" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara" required>
         </label>
-        <button class="button button-block button-assertive" ng-click="send_profil(user)">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send_profil(user, user.datebirth)">Kirim</button>
       </div>
       </form>
     </ion-content>

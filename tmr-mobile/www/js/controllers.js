@@ -169,17 +169,12 @@ angular.module('starter')
     // $scope.day = day;
     // $scope.month = month;
     // $scope.year = year;
-    $scope.send_profil = function(data){
+    $scope.send_profil = function(data, tgl){
       data.id_user = AuthService.user().id;
-      // AuthService.user().datebirth = new Date(tgllahir);
-      // tgl = new Date(tgllahir);
-      // console.log(tgl);
-      // data.birth = new Date(tgl);
-      // data.day = tgl.getDate();
-      // data.month = tgl.getMonth();
-      // data.year = tgl.getFullYear();
-      // data.datebirth = new Date(tgl);
-      // console.log(data.datebirth);
+      var _tgl = new Date(tgl);
+      data.day = _tgl.getDate();
+      data.month = _tgl.getMonth();
+      data.year = _tgl.getFullYear();
       // $http.post('http://localhost:1337/api/applyprofile', data)
       // .success(function(datas){
       //   $scope.oModal1.hide();
