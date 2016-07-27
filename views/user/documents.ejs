@@ -66,14 +66,7 @@
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
-                  <br>
-                  <% if (user.files[0]) { %>
-                    <img style="width:200px; height:200px;" id="ijazah" src="<%=user.files[0].url%>">
-                  <% } else { %>
-                    <img id="ijazah">
-                  <% } %>
                 </div>
-
                 </div>
                 <br><br>
                 <div class="form-group">
@@ -84,12 +77,6 @@
                     <label><%=user.files[1].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
-                  <% } %>
-                  <br>
-                  <% if (user.files[1]) { %>
-                    <img style="width:200px; height:200px;" id="aktelahir" src="<%=user.files[1].url%>">
-                  <% } else { %>
-                    <img id="aktelahir">
                   <% } %>
                 </div>
                 </div>
@@ -103,12 +90,6 @@
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
-                  <br>
-                  <% if (user.files[2]) { %>
-                    <img style="width:200px; height:200px;" id="pasfoto" src="<%=user.files[2].url%>">
-                  <% } else { %>
-                    <img id="pasfoto">
-                  <% } %>
                 </div>
                 </div>
                 <br><br>
@@ -120,12 +101,6 @@
                     <label><%=user.files[3].name%></label>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
-                  <% } %>
-                  <br>
-                  <% if (user.files[3]) { %>
-                    <img style="width:200px; height:200px;" id="rapor" src="<%=user.files[3].url%>">
-                  <% } else { %>
-                    <img id="rapor">
                   <% } %>
                 </div>
                 </div>
