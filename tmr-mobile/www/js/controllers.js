@@ -92,8 +92,10 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-          console.log(base64);
-            $scope.file_1 = base64;
+          // console.log(base64);
+          var tmp = results[0];
+          $scope.filename1 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
+          $scope.file_1 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -110,7 +112,9 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_2 = base64;
+          var tmp = results[0];
+          $scope.filename2 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
+          $scope.file_2 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -127,7 +131,11 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_3 = base64;
+          // console.log(results[0]);
+          var tmp = results[0];
+          $scope.filename3 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
+          // console.log($scope.filename3);
+          $scope.file_3 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -144,7 +152,9 @@ angular.module('starter')
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
-            $scope.file_4 = base64;
+          var tmp = results[0];
+          $scope.filename4 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
+          $scope.file_4 = base64;
         });
       }, function(error) {
         // error getting photos
@@ -181,10 +191,24 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
-      $http.post(server_url + '/api/applyprofile', data)
-      .success(function(datas){
-        $scope.oModal1.hide();
+      $http.post(url, data).then(function(resp) {
+        if(resp.data.code != 200){
+          var alertPopup = $ionicPopup.alert({
+            title : 'Pendaftaran Gagal.',
+            template : resp.data.message
+          });
+          reject('Pendaftaran Gagal.');
+        } else {
+          storeUserCredentials(resp.data.user);
+          resolve('Pendaftaran Berhasil.');
+        }
+      }, function(err){
+        reject('Pendaftaran Gagal.');
       })
+      // $http.post(server_url + '/api/applyprofile', data)
+      // .success(function(datas){
+      //   $scope.oModal1.hide();
+      // })
     }
   });
 
@@ -223,68 +247,112 @@ angular.module('starter')
     var user = AuthService.user();
     $scope.user = user;
     if (typeof($scope.file_1) == "undefined"){
-      if (typeof(user.files[0].url) != "undefined" || user.files[0].url != ""){
+      if (user.documents_status == 1){
         $scope.file_1 = user.files[0].url;
       }
-      // else{
-      //   var alertPopup = $ionicPopup.alert({
-      //     title : 'Upload Dokumen',
-      //     template : "Mohon upload akte lahir Anda."
-      //   });
-      // }
+    }
+    if (typeof($scope.filename1) == "undefined"){
+      if (user.documents_status == 1){
+        $scope.filename1 = user.files[0].name;
+      }
     }
     if (typeof($scope.file_2) == "undefined"){
-      if (typeof(user.files[1].url) != "undefined" || user.files[1].url != ""){
+      if (user.documents_status == 1){
         $scope.file_2 = user.files[1].url;
       }
-      // else{
-      //   var alertPopup = $ionicPopup.alert({
-      //     title : 'Upload Dokumen',
-      //     template : "Mohon upload ijazah Anda."
-      //   });
-      // }
+    }
+    if (typeof($scope.filename2) == "undefined"){
+      if (user.documents_status == 1){
+        $scope.filename2 = user.files[1].name;
+      }
     }
     if (typeof($scope.file_3) == "undefined"){
-      if (typeof(user.files[2].url) != "undefined" || user.files[2].url != ""){
+      if (user.documents_status == 1){
         $scope.file_3 = user.files[2].url;
       }
-      // else{
-      //   var alertPopup = $ionicPopup.alert({
-      //     title : 'Upload Dokumen',
-      //     template : "Mohon upload pas foto Anda."
-      //   });
-      // }
+    }
+    if (typeof($scope.filename3) == "undefined"){
+      if (user.documents_status == 1){
+        $scope.filename3 = user.files[2].name;
+      }
     }
     if (typeof($scope.file_4) == "undefined"){
-      if (typeof(user.files[3].url) != "undefined" || user.files[3].url != ""){
+      if (user.documents_status == 1){
         $scope.file_4 = user.files[3].url;
       }
-      // else{
-      //   var alertPopup = $ionicPopup.alert({
-      //     title : 'Upload Dokumen',
-      //     template : "Mohon upload rapor terakhir Anda."
-      //   });
-      // }
+    }
+    if (typeof($scope.filename4) == "undefined"){
+      if (user.documents_status == 1){
+        $scope.filename4 = user.files[3].name;
+      }
     }
     $scope.send_dokumen = function(data){
+      console.log($scope.filename1);
+      console.log($scope.filename2);
+      console.log($scope.filename3);
+      console.log($scope.filename4);
+      if (typeof($scope.filename1) == "undefined"){
+        // console.log('yes');
+        var alertPopup = $ionicPopup.alert({
+          title : 'Upload Gagal',
+          template : "Anda harus mengupload akte lahir Anda."
+        });
+        return;
+      }
+      if (typeof($scope.filename2) == "undefined"){
+        // console.log('yes');
+        var alertPopup = $ionicPopup.alert({
+          title : 'Upload Gagal',
+          template : "Anda harus mengupload ijazah Anda."
+        });
+        return;
+      }
+      if (typeof($scope.filename3) == "undefined"){
+        // console.log('yes');
+        var alertPopup = $ionicPopup.alert({
+          title : 'Upload Gagal',
+          template : "Anda harus mengupload pas foto Anda."
+        });
+        return;
+      }
+      if (typeof($scope.filename4) == "undefined"){
+        // console.log('yes');
+        var alertPopup = $ionicPopup.alert({
+          title : 'Upload Gagal',
+          template : "Anda harus mengupload rapor terakhir Anda."
+        });
+        return;
+      }
+      data.files = [];
+      data.files[0] = {name : $scope.filename1, url : $scope.file_1};
+      data.files[1] = {name : $scope.filename2, url : $scope.file_2};
+      data.files[2] = {name : $scope.filename3, url : $scope.file_3};
+      data.files[3] = {name : $scope.filename4, url : $scope.file_4};
+      console.log(data.files);
+      // _user.files = files;
+      // _user.documents_status = 1;
+      // _user.verifyremarks = "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Pendaftaran Ditutup.";
+      // console.log(_user);
+      // $scope.oModal3.hide();
       data.id_user = AuthService.user().id;
-      data.file1 = $scope.file_1;
-      data.file2 = $scope.file_2;
-      data.file3 = $scope.file_3;
-      data.file4 = $scope.file_4;
-      // data.files[0].url = $scope.file_1;
-      // data.files[1].url = $scope.file_2;
-      // data.files[2].url = $scope.file_3;
-      // data.files[3].url = $scope.file_4;
-      console.log(data);
-      $http.post('http://localhost:1337/api/applydocuments', data)
-      .success(function(datas){
-        $scope.oModal3.hide();
-      })
-      // $http.post(server_url + '/api/applydocuments', data)
+      // data.files = files;
+      // data.file1 = $scope.file_1;
+      // data.file2 = $scope.file_2;
+      // data.file3 = $scope.file_3;
+      // data.file4 = $scope.file_4;
+      // // data.files[0].url = $scope.file_1;
+      // // data.files[1].url = $scope.file_2;
+      // // data.files[2].url = $scope.file_3;
+      // // data.files[3].url = $scope.file_4;
+      // console.log(data);
+      // $http.post('http://localhost:1337/api/applydocuments', data)
       // .success(function(datas){
       //   $scope.oModal3.hide();
       // })
+      $http.post(server_url + '/api/applydocuments', data)
+      .success(function(datas){
+        $scope.oModal3.hide();
+      })
     }
   });
 

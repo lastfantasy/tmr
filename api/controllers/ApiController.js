@@ -269,21 +269,21 @@ module.exports = {
     	
     	// tmpstatus ++;
 
-    	var file1 = req.param("file1");
-		var file2 = req.param("file2");
-		var file3 = req.param("file3");
-		var file4 = req.param("file4");
+  //   	var file1 = req.param("file1");
+		// var file2 = req.param("file2");
+		// var file3 = req.param("file3");
+		// var file4 = req.param("file4");
 
-		// var fileurl1 = "";
-		// var fileurl2 = "";
-		// var fileurl3 = "";
-		// var fileurl4 = "";
+		// // var fileurl1 = "";
+		// // var fileurl2 = "";
+		// // var fileurl3 = "";
+		// // var fileurl4 = "";
 
-		var files = [];
-		files[0] = {name : "", url : file1};
-		files[1] = {name : "", url : file2};
-		files[2] = {name : "", url : file3};
-		files[3] = {name : "", url : file4};
+		// var files = [];
+		// files[0] = {name : "", url : file1};
+		// files[1] = {name : "", url : file2};
+		// files[2] = {name : "", url : file3};
+		// files[3] = {name : "", url : file4};
 		// if(typeof req.param('file1')=="undefined") {
 		// 	return res.json({code:404, message:"Anda harus mengupload akte lahir Anda."});
 		// }
@@ -333,7 +333,7 @@ module.exports = {
 		// var filename4 = 'dok2 ' + req.param("id_user") + '.jpg';
 		// fs.writeFile(filename4,buf,function(err,data){});
 		var usrObj = {
-			files : files,
+			files : req.param('files'),
 			documents_status : 1,
 			verifyremarks : "Harap Menyerahkan Dokumen Asli Ke Sekolah Sebelum Pendaftaran Ditutup."
 		}

@@ -160,24 +160,24 @@
         <label class="item item-input">
           <span class="input-label">Akte Lahir</span>
           <button class="button button-primary" ng-click="openfile1()">BROWSE</button>
-          <img ng-if="user.files[0]" ng-src="{{user.files[0].url}}" style="width:200px; height:200px;">
+          <label ng-if="user.files[0]">{{user.files[0].name}}</label>
         </label>
         <label class="item item-input">
           <span class="input-label">Ijazah</span>
           <button class="button button-primary" ng-click="openfile2()">BROWSE</button>
-          <img ng-if="user.files[1]" ng-src="{{user.files[1].url}}" style="width:200px; height:200px;">
+          <label ng-if="user.files[1]">{{user.files[1].name}}</label>
         </label>
         <label class="item item-input">
           <span class="input-label">Pas Foto</span>
           <button class="button button-primary" ng-model="data.img3" ng-click="openfile3()">BROWSE</button>
-          <img ng-if="user.files[2]" ng-src="{{user.files[2].url}}" style="width:200px; height:200px;">
+          <label ng-if="user.files[2]">{{user.files[2].name}}</label>
         </label>
         <label class="item item-input">
           <span class="input-label">Rapor (Terakhir)</span>
           <button class="button button-primary" ng-click="openfile4()">BROWSE</button>
-          <img ng-if="user.files[3]" ng-src="{{user.files[3].url}}" style="width:200px; height:200px;">
+          <label ng-if="user.files[3]">{{user.files[3].name}}</label>
         </label>
-        <button class="button button-block button-assertive" ng-click="send_dokumen(user)">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send_dokumen(data)">Kirim</button>
       </div>
       </form>
     </ion-content>
