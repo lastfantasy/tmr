@@ -87,10 +87,12 @@ angular.module('starter')
      height: 800,
      quality: 80
     };
+    // var LOCAL_IMAGE_1 = "myImage1";
 
     $cordovaImagePicker.getPictures(options)
       .then(function (results) {
         window.plugins.Base64.encodeFile(results[0], function(base64){
+          console.log(base64);
             $scope.file_1 = base64;
         });
       }, function(error) {
@@ -220,21 +222,69 @@ angular.module('starter')
     $scope.oModal3 = modal;
     var user = AuthService.user();
     $scope.user = user;
+    if (typeof($scope.file_1) == "undefined"){
+      if (typeof(user.files[0].url) != "undefined" || user.files[0].url != ""){
+        $scope.file_1 = user.files[0].url;
+      }
+      // else{
+      //   var alertPopup = $ionicPopup.alert({
+      //     title : 'Upload Dokumen',
+      //     template : "Mohon upload akte lahir Anda."
+      //   });
+      // }
+    }
+    if (typeof($scope.file_2) == "undefined"){
+      if (typeof(user.files[1].url) != "undefined" || user.files[1].url != ""){
+        $scope.file_2 = user.files[1].url;
+      }
+      // else{
+      //   var alertPopup = $ionicPopup.alert({
+      //     title : 'Upload Dokumen',
+      //     template : "Mohon upload ijazah Anda."
+      //   });
+      // }
+    }
+    if (typeof($scope.file_3) == "undefined"){
+      if (typeof(user.files[2].url) != "undefined" || user.files[2].url != ""){
+        $scope.file_3 = user.files[2].url;
+      }
+      // else{
+      //   var alertPopup = $ionicPopup.alert({
+      //     title : 'Upload Dokumen',
+      //     template : "Mohon upload pas foto Anda."
+      //   });
+      // }
+    }
+    if (typeof($scope.file_4) == "undefined"){
+      if (typeof(user.files[3].url) != "undefined" || user.files[3].url != ""){
+        $scope.file_4 = user.files[3].url;
+      }
+      // else{
+      //   var alertPopup = $ionicPopup.alert({
+      //     title : 'Upload Dokumen',
+      //     template : "Mohon upload rapor terakhir Anda."
+      //   });
+      // }
+    }
     $scope.send_dokumen = function(data){
       data.id_user = AuthService.user().id;
-      data.file_url_1 = $scope.file_1;
-      data.file_url_2 = $scope.file_2;
-      data.file_url_3 = $scope.file_3;
-      data.file_url_4 = $scope.file_4;
+      data.file1 = $scope.file_1;
+      data.file2 = $scope.file_2;
+      data.file3 = $scope.file_3;
+      data.file4 = $scope.file_4;
+      // data.files[0].url = $scope.file_1;
+      // data.files[1].url = $scope.file_2;
+      // data.files[2].url = $scope.file_3;
+      // data.files[3].url = $scope.file_4;
       console.log(data);
-      // $http.post('http://localhost:1337/api/applydocuments', data)
-      // .success(function(datas){
-      //   $scope.oModal3.hide();
-      // })
-      $http.post(server_url + '/api/applydocuments', data)
+      $http.post('http://localhost:1337/api/applydocuments', data)
       .success(function(datas){
         $scope.oModal3.hide();
       })
+      // $http.post(server_url + '/api/applydocuments', data)
+      // .success(function(datas){
+      //   $scope.oModal3.hide();
+      // })
     }
   });
 

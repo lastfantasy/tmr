@@ -159,21 +159,25 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Akte Lahir</span>
-          <button class="button button-primary" ng-model="user.files[0]" ng-click="openfile1()">BROWSE</button>
+          <button class="button button-primary" ng-click="openfile1()">BROWSE</button>
+          <img ng-if="user.files[0]" ng-src="{{user.files[0].url}}" style="width:200px; height:200px;">
         </label>
         <label class="item item-input">
           <span class="input-label">Ijazah</span>
-          <button class="button button-primary" ng-model="user.files[1]" ng-click="openfile2()">BROWSE</button>
+          <button class="button button-primary" ng-click="openfile2()">BROWSE</button>
+          <img ng-if="user.files[1]" ng-src="{{user.files[1].url}}" style="width:200px; height:200px;">
         </label>
         <label class="item item-input">
-          <span class="input-label">Dokumen Pendukung 1</span>
-          <button class="button button-primary" ng-model="user.files[2]" ng-click="openfile3()">BROWSE</button>
+          <span class="input-label">Pas Foto</span>
+          <button class="button button-primary" ng-model="data.img3" ng-click="openfile3()">BROWSE</button>
+          <img ng-if="user.files[2]" ng-src="{{user.files[2].url}}" style="width:200px; height:200px;">
         </label>
         <label class="item item-input">
-          <span class="input-label">Dokumen Pendukung 2</span>
-          <button class="button button-primary" ng-model="user.files[3]" ng-click="openfile4()">BROWSE</button>
+          <span class="input-label">Rapor (Terakhir)</span>
+          <button class="button button-primary" ng-click="openfile4()">BROWSE</button>
+          <img ng-if="user.files[3]" ng-src="{{user.files[3].url}}" style="width:200px; height:200px;">
         </label>
-        <button class="button button-block button-assertive" ng-click="send_dokumen(data)">Kirim</button>
+        <button class="button button-block button-assertive" ng-click="send_dokumen(user)">Kirim</button>
       </div>
       </form>
     </ion-content>
