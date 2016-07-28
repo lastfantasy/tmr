@@ -191,19 +191,18 @@ angular.module('starter')
       // .success(function(datas){
       //   $scope.oModal1.hide();
       // })
+      var url = server_url + '/api/applyprofile';
       $http.post(url, data).then(function(resp) {
         if(resp.data.code != 200){
           var alertPopup = $ionicPopup.alert({
             title : 'Pendaftaran Gagal.',
             template : resp.data.message
           });
-          reject('Pendaftaran Gagal.');
         } else {
-          storeUserCredentials(resp.data.user);
-          resolve('Pendaftaran Berhasil.');
+          $scope.oModal1.hide();
         }
       }, function(err){
-        reject('Pendaftaran Gagal.');
+        
       })
       // $http.post(server_url + '/api/applyprofile', data)
       // .success(function(datas){
