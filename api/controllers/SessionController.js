@@ -61,6 +61,19 @@ module.exports = {
 				 res.redirect('/register');
 				 return;
 			}
+			var pw = req.param('password');
+			if(pw.length < 6 || pw.length > 8){
+				var info = ['Password Anda harus berisi 6-8 karakter.']
+
+				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
+				 // the key of usernamePasswordRequiredError
+				 req.session.flash = {
+					 err: info,
+				 }
+
+				 res.redirect('/register');
+				 return;
+			}
 			if(req.param('g-recaptcha-response') == ""){
 				var info = ['Harap menyelesaikan captcha terlebih dahulu']
 

@@ -15,6 +15,10 @@ module.exports = {
 		if(req.param('password')!=req.param('passwordconfirmation')){
 			return res.json({code:404, message:"Password anda harus sama dengan password konfirmasi anda"});
 		}
+		var pw = req.param('password');
+		if (pw.length < 6 || pw.length > 8){
+			return res.json({code:404, message:"Password Anda harus berisi 6-8 karakter."});
+		}
 		User.findOne({ email: req.param('email') }, function foundUser(err, user){
 			if (err) return res.json({code : 404, message : "Error"});
 			if (user) return res.json({code : 404, message : 'Email ' + req.param('email') + ' sudah terdaftar. Mohon gunakan email lain.'});

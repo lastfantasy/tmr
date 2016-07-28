@@ -63,6 +63,8 @@
                   <input type="file" accept="image/jpeg" id="file1" onchange="previewFile1()">
                   <% if (user.files[0]) { %>
                     <label><%=user.files[0].name%></label>
+                    <button onclick="imageView1()">Lihat File</button>
+                    <img id="akte">
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -75,6 +77,8 @@
                   <input type="file" accept="image/jpeg" id="file2" onchange="previewFile2()">
                   <% if (user.files[1]) { %>
                     <label><%=user.files[1].name%></label>
+                    <button onclick="imageView2()">Lihat File</button>
+                    <img id="ijazah">
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -87,6 +91,8 @@
                   <input type="file" accept="image/jpeg" id="file3" onchange="previewFile3()">
                   <% if (user.files[2]) { %>
                     <label><%=user.files[2].name%></label>
+                    <button onclick="imageView3()">Lihat File</button>
+                    <img id="pasfoto">
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -99,6 +105,8 @@
                   <input type="file" accept="image/jpeg" id="file4" onchange="previewFile4()">
                   <% if (user.files[3]) { %>
                     <label><%=user.files[3].name%></label>
+                    <button onclick="imageView4()">Lihat File</button>
+                    <img id="rapor">
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -174,9 +182,9 @@ function previewFile1(){
   var file_name_1 = document.querySelector('#filename1');
   reader.onload = function () {
       file_url_1.value = reader.result;
-      var output = document.getElementById('ijazah');
-      output.src = file_url_1.value;
-      output.style = "width:200px;height:200px;";
+      // var output = document.getElementById('ijazah');
+      // output.src = file_url_1.value;
+      // output.style = "width:200px;height:200px;";
   }
   if (file1) {
       if(file1.type!="image/jpeg")
@@ -211,9 +219,9 @@ function previewFile2(){
   var file_name_2 = document.querySelector('#filename2');
   reader.onload = function () {
       file_url_2.value = reader.result;
-      var output = document.getElementById('aktelahir');
-      output.src = file_url_2.value;
-      output.style = "width:200px;height:200px;";
+      // var output = document.getElementById('aktelahir');
+      // output.src = file_url_2.value;
+      // output.style = "width:200px;height:200px;";
   }
   if (file2) {
       if(file2.type!="image/jpeg")
@@ -248,9 +256,9 @@ function previewFile3(){
   var file_name_3 = document.querySelector('#filename3');
   reader.onload = function () {
       file_url_3.value = reader.result;
-      var output = document.getElementById('pasfoto');
-      output.src = file_url_3.value;
-      output.style = "width:200px;height:200px;";
+      // var output = document.getElementById('pasfoto');
+      // output.src = file_url_3.value;
+      // output.style = "width:200px;height:200px;";
   }
   if (file3) {
       if(file3.type!="image/jpeg")
@@ -285,9 +293,9 @@ function previewFile4(){
   var file_name_4 = document.querySelector('#filename4');
   reader.onload = function () {
       file_url_4.value = reader.result;
-      var output = document.getElementById('rapor');
-      output.src = file_url_4.value;
-      output.style = "width:200px;height:200px;";
+      // var output = document.getElementById('rapor');
+      // output.src = file_url_4.value;
+      // output.style = "width:200px;height:200px;";
   }
   if (file4) {
       if(file4.type!="image/jpeg")
@@ -314,6 +322,30 @@ function previewFile4(){
   //   file_name_4.value = "";
   //   file_url_4.value = "";
   }
+}
+function imageView1(){
+  var output = document.getElementById('akte');
+  var url1 = document.querySelector('#fileurl1');
+  output.src = url1.value;
+  output.style = "width:200px;height:200px;";
+}
+function imageView2(){
+  var output = document.getElementById('ijazah');
+  var url2 = document.querySelector('#fileurl2');
+  output.src = url2.value;
+  output.style = "width:200px;height:200px;";
+}
+function imageView3(){
+  var output = document.getElementById('pasfoto');
+  var url3 = document.querySelector('#fileurl3');
+  output.src = url3.value;
+  output.style = "width:200px;height:200px;";
+}
+function imageView4(){
+  var output = document.getElementById('rapor');
+  var url4 = document.querySelector('#fileurl4');
+  output.src = url4.value;
+  output.style = "width:200px;height:200px;";
 }
 </script>
 
