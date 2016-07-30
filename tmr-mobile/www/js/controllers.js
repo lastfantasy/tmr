@@ -95,7 +95,7 @@ angular.module('starter')
           // console.log(base64);
           var tmp = results[0];
           $scope.filename1 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
-          $scope.file_1 = base64;
+          $scope.file_1 = base64.replace("data:image/*;charset=utf-8", "data:image/jpeg");
         });
       }, function(error) {
         // error getting photos
@@ -114,7 +114,7 @@ angular.module('starter')
         window.plugins.Base64.encodeFile(results[0], function(base64){
           var tmp = results[0];
           $scope.filename2 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
-          $scope.file_2 = base64;
+          $scope.file_2 = base64.replace("data:image/*;charset=utf-8", "data:image/jpeg");
         });
       }, function(error) {
         // error getting photos
@@ -135,7 +135,7 @@ angular.module('starter')
           var tmp = results[0];
           $scope.filename3 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
           // console.log($scope.filename3);
-          $scope.file_3 = base64;
+          $scope.file_3 = base64.replace("data:image/*;charset=utf-8", "data:image/jpeg");
         });
       }, function(error) {
         // error getting photos
@@ -154,7 +154,7 @@ angular.module('starter')
         window.plugins.Base64.encodeFile(results[0], function(base64){
           var tmp = results[0];
           $scope.filename4 = tmp.replace("file:///data/data/com.ionicframework.tmrmobile648571/cache/tmp_", "");
-          $scope.file_4 = base64;
+          $scope.file_4 = base64.replace("data:image/*;charset=utf-8", "data:image/jpeg");
         });
       }, function(error) {
         // error getting photos
@@ -286,10 +286,10 @@ angular.module('starter')
       }
     }
     $scope.send_dokumen = function(data){
-      console.log($scope.filename1);
-      console.log($scope.filename2);
-      console.log($scope.filename3);
-      console.log($scope.filename4);
+      console.log($scope.file_1);
+      console.log($scope.file_2);
+      console.log($scope.file_3);
+      console.log($scope.file_4);
       if (typeof($scope.filename1) == "undefined"){
         // console.log('yes');
         var alertPopup = $ionicPopup.alert({
