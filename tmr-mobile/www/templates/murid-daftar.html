@@ -21,6 +21,7 @@
     <h4 align="center" ng-if="user.status==4">Failed<h4>
     <h4 align="center" class="tebal assertive">Remarks:</h4>
     <h4 align="center">{{user.verifyremarks}}<h4>
+    <br><br>
     
   </ion-content>
 </ion-view>
@@ -160,23 +161,23 @@
         <label class="item item-input">
           <span class="input-label">Akte Lahir</span>
           <button class="button button-primary" ng-click="openfile1()">BROWSE</button>
-          <label ng-if="user.files[0]">{{user.files[0].name}}</label>
         </label>
+        <label ng-if="user.files[0]">{{user.files[0].name}}</label>
         <label class="item item-input">
           <span class="input-label">Ijazah</span>
           <button class="button button-primary" ng-click="openfile2()">BROWSE</button>
-          <label ng-if="user.files[1]">{{user.files[1].name}}</label>
         </label>
+        <label ng-if="user.files[1]">{{user.files[1].name}}</label>
         <label class="item item-input">
           <span class="input-label">Pas Foto</span>
-          <button class="button button-primary" ng-model="data.img3" ng-click="openfile3()">BROWSE</button>
-          <label ng-if="user.files[2]">{{user.files[2].name}}</label>
+          <button class="button button-primary" ng-click="openfile3()">BROWSE</button>
         </label>
+        <label ng-if="user.files[2]">{{user.files[2].name}}</label>
         <label class="item item-input">
           <span class="input-label">Rapor (Terakhir)</span>
           <button class="button button-primary" ng-click="openfile4()">BROWSE</button>
-          <label ng-if="user.files[3]">{{user.files[3].name}}</label>
         </label>
+        <label ng-if="user.files[3]">{{user.files[3].name}}</label>
         <button class="button button-block button-assertive" ng-click="send_dokumen(data)">Kirim</button>
       </div>
       </form>
