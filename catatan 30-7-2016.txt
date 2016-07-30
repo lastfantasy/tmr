@@ -1,0 +1,10 @@
+erd simbol
+
+tampilan mobile screenshot
+mockup
+saran:
+
+- fitur notif
+- ganti font teks
+- penambahan fitur 
+- respon loading lambat mungkin karena jaringan 
