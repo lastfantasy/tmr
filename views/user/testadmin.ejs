@@ -8,7 +8,7 @@
 <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
 
 
-<div class="container" style="margin-bottom: 243px;">
+<div class="container" style="margin-bottom: 26px;">
   <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Tanggal USM</h1>
   <% if(flash) { %>
   <% if(flash.err) { %>
@@ -41,7 +41,7 @@
     <form method="post" action="/user/settestdate">
      <div class="form-group ">
       <h3 align="center">Jumlah Murid</h3>
-      <div class="input-group">
+      <center><div class="input-group" align="center">
         <label>SMP 1</label>
         <input type="number" id="jlhsmp1" name="jlhsmp1" required="required" class="form-control" value="<%=user.smp1%>">
         <br>
@@ -60,7 +60,7 @@
         <label>SMA 3</label>
         <input type="number" id="jlhsma3" name="jlhsma3" required="required" class="form-control" value="<%=user.sma3%>">
         <br>
-      </div>
+      </div></center>
       <h3 align="center">Tanggal Ujian Saringan Masuk:</h3>
       <div class="input-group">
        <div class="input-group-addon">
@@ -101,7 +101,7 @@
         </div>
       </div>
     </div> -->
-    <br><br><br>
+    
 </div>
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 <!-- Include jQuery -->
