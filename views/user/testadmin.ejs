@@ -8,7 +8,7 @@
 <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
 
 
-<div class="container" style="margin-bottom: 243px;">
+<div class="container" style="margin-bottom: 26px;">
   <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Tanggal USM</h1>
   <% if(flash) { %>
   <% if(flash.err) { %>
@@ -41,7 +41,7 @@
     <form method="post" action="/user/settestdate">
      <div class="form-group ">
       <h3 align="center">Jumlah Murid</h3>
-      <div class="input-group">
+      <center><div class="input-group" align="center">
         <label>SMP 1</label>
         <input type="number" id="jlhsmp1" name="jlhsmp1" required="required" class="form-control" value="<%=user.smp1%>">
         <br>
@@ -60,7 +60,7 @@
         <label>SMA 3</label>
         <input type="number" id="jlhsma3" name="jlhsma3" required="required" class="form-control" value="<%=user.sma3%>">
         <br>
-      </div>
+      </div></center>
       <h3 align="center">Tanggal Ujian Saringan Masuk:</h3>
       <div class="input-group">
        <div class="input-group-addon">
@@ -87,8 +87,26 @@
 
  </div>
 </div>
+<<<<<<< HEAD
 
     <br><br><br>
+=======
+    <!-- <div class="row">
+      <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
+        <div class="form-group">
+        
+                    <h3 align="center">Open Registration Date:</h3>
+                    <input type="text" id="datepicker" name="opendate" required="required" class="form-control" placeholder="" style="width: 30%; align: center;text-align: center; "></div>
+        
+                    <h3 align="center">Close Registration Date:</h3>
+                    <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder=""></div>
+                        
+                    <button class="btn btn-large" type="button" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
+        </div>
+      </div>
+    </div> -->
+    
+>>>>>>> c8cad89655eced6ce4bdac83a4f2a760ea686346
 </div>
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 <!-- Include jQuery -->
