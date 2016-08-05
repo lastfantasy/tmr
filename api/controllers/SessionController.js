@@ -27,8 +27,6 @@ module.exports = {
 			if(typeof req.param('email')=="undefined" || typeof req.param('password')=="undefined" || typeof req.param('passwordconfirmation')=="undefined"){
 				var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']
 
-				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-				 // the key of usernamePasswordRequiredError
 				 req.session.flash = {
 					 err: info,
 				 }
@@ -52,8 +50,6 @@ module.exports = {
 			if(req.param('password')!=req.param('passwordconfirmation')){
 				var info = ['Password anda harus sama dengan password konfirmasi anda.']
 
-				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-				 // the key of usernamePasswordRequiredError
 				 req.session.flash = {
 					 err: info,
 				 }
@@ -65,8 +61,6 @@ module.exports = {
 			if(pw.length < 6 || pw.length > 8){
 				var info = ['Password Anda harus berisi 6-8 karakter.']
 
-				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-				 // the key of usernamePasswordRequiredError
 				 req.session.flash = {
 					 err: info,
 				 }
@@ -77,8 +71,6 @@ module.exports = {
 			if(req.param('g-recaptcha-response') == ""){
 				var info = ['Harap menyelesaikan captcha terlebih dahulu']
 
-				 // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-				 // the key of usernamePasswordRequiredError
 				 req.session.flash = {
 					 err: info,
 				 }
@@ -100,8 +92,6 @@ module.exports = {
 		    	status : 0,
 			}
 			bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
-					//if(err) console.log(err);
-					//console.log(encryptedPassword);
 					usrObj.encryptedPassword = encryptedPassword;
 					User.create(usrObj, function(err,user){
 							if(err) return next(err);
@@ -115,14 +105,6 @@ module.exports = {
                     req.session.flash = {
                       success: requireLoginError
                     }
-                    // user.files[0].name = "";
-                    // user.files[0].url = "";
-                    // user.files[1].name = "";
-                    // user.files[1].url = "";
-                    // user.files[2].name = "";
-                    // user.files[2].url = "";
-                    // user.files[3].name = "";
-                    // user.files[3].url = "";
                     res.redirect('/login');
                     return;
 								});
@@ -132,12 +114,8 @@ module.exports = {
 	},
 	signin : function(req,res,next){
 		if (!req.param('email') || !req.param('password')) {
-			// return next({err: ["Password doesn't match password confirmation."]});
-
 			var usernamePasswordRequiredError = ['Anda harus memasukkan email dan password']
 
-			// Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
-			// the key of usernamePasswordRequiredError
 			req.session.flash = {
 				err: usernamePasswordRequiredError,
 			}
@@ -183,7 +161,6 @@ module.exports = {
 									return;
 								});
 							});
-							// return res.redirect('/user/homesiswa');
 						}
 				});
 		});

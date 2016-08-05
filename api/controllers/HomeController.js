@@ -11,9 +11,6 @@ module.exports = {
 		User.findOne({admin : true}, function(err, user){
 			return res.view({user:user});
 		});
-		// console.log(opendate);
-		// console.log(closedate);
-		// return res.view('homepage.ejs');
 	}
 };
 

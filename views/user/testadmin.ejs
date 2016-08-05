@@ -87,20 +87,7 @@
 
  </div>
 </div>
-    <!-- <div class="row">
-      <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
-        <div class="form-group">
-        
-                    <h3 align="center">Open Registration Date:</h3>
-                    <input type="text" id="datepicker" name="opendate" required="required" class="form-control" placeholder="" style="width: 30%; align: center;text-align: center; "></div>
-        
-                    <h3 align="center">Close Registration Date:</h3>
-                    <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder=""></div>
-                        
-                    <button class="btn btn-large" type="button" style="margin-top: 0px; text-align: center; position: relative; left: 44.5%;">Set Date</button>
-        </div>
-      </div>
-    </div> -->
+
     <br><br><br>
 </div>
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
@@ -113,10 +100,10 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        var date_input=$('input[name="testdate"]'); //our date input has the name "date"
+        var date_input=$('input[name="testdate"]'); 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            // format: 'mm/dd/yyyy',
+            format: 'mm/dd/yyyy',
             container: container,
             todayHighlight: true,
             autoclose: true,
