@@ -170,8 +170,8 @@ module.exports = {
 		return res.view();
 	},
 	resetpassword : function(req,res,next){
-		User.findOne({email : sentEmail}, function(err, user){
-			sentEmail = "";
+		User.findOne({email : resetEmail}, function(err, user){
+			resetEmail = "";
 			return res.view ({user:user});
 		});
 	},
@@ -221,7 +221,7 @@ module.exports = {
 			    subject: 'Reset Password Akun', // Subject line
 			    text: 'Anda menerima email ini karena Anda (atau seseorang) telah mengirimkan permintaan untuk me-reset password Temanis Baru Anda\n\n' +
 			    'Silahkan klik link di bawah ini, atau paste link di bawah ke browser Anda untuk me-reset password Anda :\n\n' +
-			    'http://temanisbaru.herokuapp.com/resetpassword/ \n\n' +
+			    'http://temanisbaru.herokuapp.com/resetpassword\n\n' +
 			    'Jikalau Anda tidak merasa melakukan permintaan ini, silahkan abaikan email ini dan password Anda tidak akan berganti.\n' // plaintext body
 			};
 
