@@ -271,8 +271,8 @@ module.exports = {
 		}
 		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			if (err) return next(err);
-			User.update(req.session.User.id, {encryptedPassword : encryptedPassword}, function(err, _user){
-				var info = ['Password Anda berhasil direset. SIlahkan Login.']
+			User.update(user.id, {encryptedPassword : encryptedPassword}, function(err, _user){
+				var info = ['Password Anda berhasil direset. Silahkan Login.']
 				req.session.flash = {
 					success : info,
 				}
