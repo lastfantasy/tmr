@@ -6,6 +6,7 @@
  */
  var bcrypt = require('bcrypt');
  var nodemailer = require('nodemailer');
+ var resetEmail = "";
 module.exports = {
 	register : function(req,res,next){
 		return res.view({
@@ -163,6 +164,120 @@ module.exports = {
 							});
 						}
 				});
+		});
+	},
+	emailpass : function(req, res, next){
+		return res.view();
+	},
+	resetpassword : function(req,res,next){
+		User.findOne({email : sentEmail}, function(err, user){
+			sentEmail = "";
+			return res.view ({user:user});
+		});
+	},
+	cekemail : function(req, res, next){
+		if (!req.param('email')){
+			var info = ['Anda harus mengisi email pendaftaran Anda.']
+			req.session.flash = {
+				err : info
+			}
+			res.redirect('/emailpass');
+			return;
+		}
+		if(req.param('g-recaptcha-response') == ""){
+			var info = ['Harap menyelesaikan captcha terlebih dahulu']
+			req.session.flash = {
+				err: info,
+			}
+			res.redirect('/emailpass');
+			return;
+		}
+		User.findOne({email : req.param('email')}, function foundUser(err, user){
+			if (err) return next(err);
+			if (!user) {
+				var noAccountError = [
+				 'Email ' + req.param('email') + ' tidak ditemukan.'
+				]
+				req.session.flash = {
+					err: noAccountError
+				}
+				res.redirect('/emailpass');
+				return;
+			}
+			resetEmail = user.email;
+			// create reusable transporter object using the default SMTP transport
+			var transporter = nodemailer.createTransport('SMTP', {
+				service : 'Gmail',
+				auth : {
+					user : 'noreply.temanisbaru@gmail.com',
+					pass : 'temanisbaru2016'
+				}
+			});
+
+			// setup e-mail data with unicode symbols
+			var mailOptions = {
+			    from: 'Temanis Baru', // sender address
+			    to: user.email, // list of receivers
+			    subject: 'Reset Password Akun', // Subject line
+			    text: 'Anda menerima email ini karena Anda (atau seseorang) telah mengirimkan permintaan untuk me-reset password Temanis Baru Anda\n\n' +
+			    'Silahkan klik link di bawah ini, atau paste link di bawah ke browser Anda untuk me-reset password Anda :\n\n' +
+			    'http://temanisbaru.herokuapp.com/resetpassword/ \n\n' +
+			    'Jikalau Anda tidak merasa melakukan permintaan ini, silahkan abaikan email ini dan password Anda tidak akan berganti.\n' // plaintext body
+			};
+
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, function(err){
+			    if(err) return next(err);
+			    var emailSent = ['Link reset password sudah terkirim ke ' + req.param('email')]
+			    req.session.flash = {
+			    	success : emailSent
+			    }
+			    res.redirect('/login');
+			    return;
+			});
+		});
+	},
+	reset : function(req,res,next){
+		if(typeof req.param('password')=="undefined" || typeof req.param('passwordconfirmation')=="undefined"){
+			var info = ['Anda harus mengisi secara lengkap formulir yang sudah kami sediakan.']
+
+			 req.session.flash = {
+				 err: info,
+			 }
+
+			 res.redirect('/resetpassword');
+			 return;
+		}
+		if(req.param('password')!=req.param('passwordconfirmation')){
+			var info = ['Password baru Anda harus sama dengan password konfirmasi baru Anda.']
+
+			 req.session.flash = {
+				 err: info,
+			 }
+
+			 res.redirect('/resetpassword');
+			 return;
+		}
+		var pw = req.param('password');
+		if(pw.length < 6 || pw.length > 8){
+			var info = ['Password baru Anda harus berisi 6-8 karakter.']
+
+			 req.session.flash = {
+				 err: info,
+			 }
+
+			 res.redirect('/resetpassword');
+			 return;
+		}
+		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
+			if (err) return next(err);
+			user.encryptedPassword = encryptedPassword;
+			var info = ['Password Anda berhasil direset. SIlahkan Login.']
+			req.session.flash = {
+				success : info,
+			}
+			res.redirect('/login');
+			return;
 		});
 	},
 	signout : function(req,res,next){

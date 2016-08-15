@@ -29,7 +29,9 @@ module.exports.policies = {
   // '*': true,
   'session' : {
     'login' : ['flash'],
-    'register' : ['flash']
+    'register' : ['flash'],
+    'emailpass' : ['flash'],
+    'resetpassword' : ['flash']
   },
   'user' : {
     'homesiswa' : ['flash'],
