@@ -271,13 +271,14 @@ module.exports = {
 		}
 		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			if (err) return next(err);
-			user.encryptedPassword = encryptedPassword;
-			var info = ['Password Anda berhasil direset. SIlahkan Login.']
-			req.session.flash = {
-				success : info,
-			}
-			res.redirect('/login');
-			return;
+			User.update(req.session.User.id, {encryptedPassword : encryptedPassword}, function(err, _user){
+				var info = ['Password Anda berhasil direset. SIlahkan Login.']
+				req.session.flash = {
+					success : info,
+				}
+				res.redirect('/login');
+				return;
+			});
 		});
 	},
 	signout : function(req,res,next){
