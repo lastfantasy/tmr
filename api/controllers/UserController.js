@@ -83,6 +83,11 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
+		kartuujian : function(req,res,next){
+			User.findOne(req.session.User.id, function(err, user){
+				return res.view({user:user});
+			});
+		},
 		homesiswa : function(req,res,next){
 			User.findOne(req.session.User.id, function(err, user){
 				return res.view({user:user});
