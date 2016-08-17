@@ -1,0 +1,4 @@
+nama field
+tipe data yang digunakan 
+
+tombol cetak di hide
