@@ -39,6 +39,7 @@ module.exports.policies = {
     'grade' : ['flash'],
     'documents' : ['flash'],
     'openclose' : ['flash'],
+    'verifyapplicant' : ['flash'],
     'testadmin' : ['flash']
   }
   /***************************************************************************

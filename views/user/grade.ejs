@@ -47,11 +47,21 @@
           </div>
           <div class="panel-body">
                 <div class="form-group">
-                <label>Murid: </label>
-                <input type="radio" name="murid" value="baru" style="margin-left: 10px;"> Baru
-                <input type="radio" name="murid" value="baru" style="margin-left: 10px;"> Pindahan
-                <br>
-                <br>
+                  <label>Murid: </label>
+                  <% if (user.grade_status == 1) { %>
+                    <% if (user.statusmurid == "temanis") { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;" checked=""> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;"> Pindahan Sekolah Lain
+                    <% } else if (user.statusmurid == "pindahan") { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;"> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;" checked=""> Pindahan Sekolah Lain
+                    <% } else { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;" checked=""> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;"> Pindahan Sekolah Lain
+                    <% } %>
+                  <% } %>
+                  <br>
+                  <br>
                 <label>Tingkatan</label>
                 <% if (user.grade_status == 1) { %>
                   <% if (user.grade == "0"){ %>
@@ -122,10 +132,8 @@
                 
                 <br>
                 <br>
-                <label>Sekolah Asal</label>
-                <% if (user.grade_status == 1) { %>
-                  <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschool%>">
-                <% } else { %>
+                <% if (user.grade_status == 1 && user.statusmurid == "pindahan") { %>
+                  <label>Sekolah Asal</label>
                   <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
                 <% } %>
                 <br>

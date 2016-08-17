@@ -1,5 +1,69 @@
 <div class="container" style="margin-bottom: 55px; min-height: 370px;">
     <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Verifikasi Pendaftar</h1>
+    <% if(flash) { %>
+    <% if(flash.err) { %>
+          <div>
+            <br><br>
+              <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                <% Object.keys(flash.err).forEach(function(error) { %>
+                      <%= flash.err[error] %>
+                <% }) %>
+              </div>
+          </div>
+    <% } else if (flash.success){ %>
+      <div>
+      <br><br>
+      <div class="alert alert-success" role="alert">
+        <span class="sr-only">Success:</span>
+        <% Object.keys(flash.success).forEach(function(success) { %>
+              <%= flash.success[success] %>
+        <% }) %>
+      </div>
+      </div>
+    <% } %>
+    <% } %>
+    <h3 align="center">Saring Keluaran :</h3>
+    <form method="post" action="/user/verifyapplicant">
+     <div class="form-group ">
+      <center><div class="input-group" align="center">
+        <label>Nama</label>
+        <input type="text" id="filternama" name="filternama" class="form-control">
+        <br>
+        <label>No. USM</label>
+        <input type="text" id="filternousm" name="filternousm" class="form-control">
+        <br>
+        <label>Tingkatan</label>
+        <select class="btn btn-default" name="filtertingkatan" style="width:100%; margin-top: 0px;">
+                    <option></option>
+                    <option value="0">SMP 1</option>
+                    <option value="1">SMP 2</option>
+                    <option value="2">SMP 3</option>
+                    <option value="3">SMA 1</option>
+                    <option value="4">SMA 2</option>
+                    <option value="5">SMA 3</option>
+        </select>
+        <br>
+        <label>Sekolah Asal</label>
+        <input type="text" id="filtersekolah" name="filtersekolah" class="form-control">
+        <br>
+        <label>Status</label>
+        <select class="btn btn-default" name="filterstatus" style="width:100%; margin-top: 0px;">
+                    <option></option>
+                    <option value="0">Pending</option>
+                    <option value="1">Verified</option>
+                    <option value="2">Denied</option>
+                    <option value="3">Passed</option>
+                    <option value="4">Failed</option>
+        </select>
+      </div></center>
+      </div>
+      <div class="form-group">
+        <div>
+         <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 45.5%;">Saring</button>
+        </div>
+       </div>
     <table width="95%" border="1" class="table" style="margin-top: 20px;">
   <thead>
     <th style="background-color: #0062B2; color: white;">Nama</th>

@@ -29,73 +29,140 @@
 
                <% if (user.name != '') { %>
                 <h3 style="color: yellow; font-size: 3em; line-height: 1.5em;"><%=user.name%></h3>
+                <p>Status : 
+                  <% if(user.status==0) { %>
+                    <label>Pending</label>
+                  <% } else if(user.status==1) { %>
+                    <label>Verified</label>
+                  <% } else if(user.status==2) { %>
+                     <label>Denied</label>
+                  <% } else if(user.status==3) { %>
+                     <label>Passed</label>
+                  <% } else if(user.status==4) { %>
+                     <label>Failed</label>
+                  <% } %>
+                </p>
+                <p>Remarks : 
+                  <% if(typeof (user.verifyremarks) != "undefined") { %>
+                    <label><%=user.verifyremarks%></label>
+                  <% } %>
+                </p>
                <% } %>
-               <p>
-                    Sekarang anda bisa mendaftarkan diri di Sekolah Temanis Baru.
-               </p>
-               <p>Tanggal Pendaftaran: 
-                    <%=user.opendate.getDate()%> 
-                    <% if (user.opendate.getMonth() == 0) { %>
-                        Januari 
-                    <% } else if (user.opendate.getMonth() == 1) { %>
-                        Februari 
-                    <% } else if (user.opendate.getMonth() == 2) { %>
-                        Maret 
-                    <% } else if (user.opendate.getMonth() == 3) { %>
-                        April 
-                    <% } else if (user.opendate.getMonth() == 4) { %>
-                        Mei 
-                    <% } else if (user.opendate.getMonth() == 5) { %>
-                        Juni 
-                    <% } else if (user.opendate.getMonth() == 6) { %>
-                        Juli 
-                    <% } else if (user.opendate.getMonth() == 7) { %>
-                        Agustus 
-                    <% } else if (user.opendate.getMonth() == 8) { %>
-                        September 
-                    <% } else if (user.opendate.getMonth() == 9) { %>
-                        Oktober 
-                    <% } else if (user.opendate.getMonth() == 10) { %>
-                        November 
-                    <% } else if (user.opendate.getMonth() == 11) { %>
-                        Desember 
-                    <% } %> 
-                    <%=user.opendate.getFullYear()%>
-                    s/d
-                    <%=user.closedate.getDate()%> 
-                    <% if (user.closedate.getMonth() == 0) { %>
-                        Januari 
-                    <% } else if (user.closedate.getMonth() == 1) { %>
-                        Februari 
-                    <% } else if (user.closedate.getMonth() == 2) { %>
-                        Maret 
-                    <% } else if (user.closedate.getMonth() == 3) { %>
-                        April 
-                    <% } else if (user.closedate.getMonth() == 4) { %>
-                        Mei 
-                    <% } else if (user.closedate.getMonth() == 5) { %>
-                        Juni 
-                    <% } else if (user.closedate.getMonth() == 6) { %>
-                        Juli 
-                    <% } else if (user.closedate.getMonth() == 7) { %>
-                        Agustus 
-                    <% } else if (user.closedate.getMonth() == 8) { %>
-                        September 
-                    <% } else if (user.closedate.getMonth() == 9) { %>
-                        Oktober 
-                    <% } else if (user.closedate.getMonth() == 10) { %>
-                        November 
-                    <% } else if (user.closedate.getMonth() == 11) { %>
-                        Desember 
-                    <% } %> 
-                    <%=user.closedate.getFullYear()%>
-                   </p>
+               <% if (user.name == "") { %>
+                 <p>
+                      Sekarang anda bisa mendaftarkan diri di Sekolah Temanis Baru.
+                 </p>
+
+                 <p>Tanggal Pendaftaran: 
+                      <%=user.opendate.getDate()%> 
+                      <% if (user.opendate.getMonth() == 0) { %>
+                          Januari 
+                      <% } else if (user.opendate.getMonth() == 1) { %>
+                          Februari 
+                      <% } else if (user.opendate.getMonth() == 2) { %>
+                          Maret 
+                      <% } else if (user.opendate.getMonth() == 3) { %>
+                          April 
+                      <% } else if (user.opendate.getMonth() == 4) { %>
+                          Mei 
+                      <% } else if (user.opendate.getMonth() == 5) { %>
+                          Juni 
+                      <% } else if (user.opendate.getMonth() == 6) { %>
+                          Juli 
+                      <% } else if (user.opendate.getMonth() == 7) { %>
+                          Agustus 
+                      <% } else if (user.opendate.getMonth() == 8) { %>
+                          September 
+                      <% } else if (user.opendate.getMonth() == 9) { %>
+                          Oktober 
+                      <% } else if (user.opendate.getMonth() == 10) { %>
+                          November 
+                      <% } else if (user.opendate.getMonth() == 11) { %>
+                          Desember 
+                      <% } %> 
+                      <%=user.opendate.getFullYear()%>
+                      s/d
+                      <%=user.closedate.getDate()%> 
+                      <% if (user.closedate.getMonth() == 0) { %>
+                          Januari 
+                      <% } else if (user.closedate.getMonth() == 1) { %>
+                          Februari 
+                      <% } else if (user.closedate.getMonth() == 2) { %>
+                          Maret 
+                      <% } else if (user.closedate.getMonth() == 3) { %>
+                          April 
+                      <% } else if (user.closedate.getMonth() == 4) { %>
+                          Mei 
+                      <% } else if (user.closedate.getMonth() == 5) { %>
+                          Juni 
+                      <% } else if (user.closedate.getMonth() == 6) { %>
+                          Juli 
+                      <% } else if (user.closedate.getMonth() == 7) { %>
+                          Agustus 
+                      <% } else if (user.closedate.getMonth() == 8) { %>
+                          September 
+                      <% } else if (user.closedate.getMonth() == 9) { %>
+                          Oktober 
+                      <% } else if (user.closedate.getMonth() == 10) { %>
+                          November 
+                      <% } else if (user.closedate.getMonth() == 11) { %>
+                          Desember 
+                      <% } %> 
+                      <%=user.closedate.getFullYear()%>
+                  </p>
+                <% } %>
                    
-                   <p>
+                <% if (user.testdate != null) { %>
+                    <h2 style="color: white; font-size: 4em; line-height: 1em;">Tanggal USM Anda:</h2>
+                    <h3 style="color: yellow; font-size: 3em; line-height: 1.5em;">
+                        <% if (user.testdate.getDay() == 1) { %>
+                            Senin, 
+                        <% } else if (user.testdate.getDay() == 2) { %>
+                            Selasa, 
+                        <% } else if (user.testdate.getDay() == 3) { %>
+                            Rabu, 
+                        <% } else if (user.testdate.getDay() == 4) { %>
+                            Kamis, 
+                        <% } else if (user.testdate.getDay() == 5) { %>
+                            Jumat, 
+                        <% } else if (user.testdate.getDay() == 6) { %>
+                            Sabtu, 
+                        <% } %>
+                        <%=user.testdate.getDate()%> 
+                        <% if (user.testdate.getMonth() == 0) { %>
+                            Januari 
+                        <% } else if (user.testdate.getMonth() == 1) { %>
+                            Februari 
+                        <% } else if (user.testdate.getMonth() == 2) { %>
+                            Maret 
+                        <% } else if (user.testdate.getMonth() == 3) { %>
+                            April 
+                        <% } else if (user.testdate.getMonth() == 4) { %>
+                            Mei 
+                        <% } else if (user.testdate.getMonth() == 5) { %>
+                            Juni 
+                        <% } else if (user.testdate.getMonth() == 6) { %>
+                            Juli 
+                        <% } else if (user.testdate.getMonth() == 7) { %>
+                            Agustus 
+                        <% } else if (user.testdate.getMonth() == 8) { %>
+                            September 
+                        <% } else if (user.testdate.getMonth() == 9) { %>
+                            Oktober 
+                        <% } else if (user.testdate.getMonth() == 10) { %>
+                            November 
+                        <% } else if (user.testdate.getMonth() == 11) { %>
+                            Desember 
+                        <% } %> 
+                        <%=user.testdate.getFullYear()%>    
+                    </h3>
+                <% } else { %>
+                    <p>
                      Tanggal Ujian Saringan Masuk:
                      <br>06 Agustus 2016 - 20 Agustus 2016 - 03 September 2016 - 17 September 2016
                      <br>01 Oktober 2016 - 15 Oktober 2016 - 29 Oktober 2016 - 12 November 2016
                    </p>
+                <% } %>
                <div class="col-sm-12 col-lg-6 col-lg-offset-3">
                    
                    <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">

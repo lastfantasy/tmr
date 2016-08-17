@@ -44,7 +44,30 @@ module.exports = {
 			
 		},
 		verifyapplicant : function(req,res,next){
-			User.find({admin:false},function(err,users){
+			var info = "";
+			var usrFind = {
+				admin : false
+			}
+			if (req.param('filternama') != '' && typeof(req.param('filternama')) != "undefined"){
+				usrFind.name = req.param('filternama');
+			}
+			if (req.param('filternousm') != '' && typeof(req.param('filternousm')) != "undefined"){
+				usrFind.nousm = req.param('filternousm');
+			}
+			if (req.param('filtertingkatan') != '' && typeof(req.param('filtertingkatan')) != "undefined"){
+				usrFind.grade = req.param('filtertingkatan');
+			}
+			if (req.param('filtersekolah') != '' && typeof(req.param('filtersekolah')) != "undefined"){
+				usrFind.previousschoolname = req.param('filtersekolah');
+			}
+			if (req.param('filterstatus') != '' && typeof(req.param('filterstatus')) != "undefined"){
+				usrFind.status = req.param('filterstatus');
+			}
+			User.find(usrFind,function(err,users){
+				info = ['Data Berhasil Disaring.']
+				req.session.flash = {
+					success : info
+				}
 				return res.view({users:users});
 			});
 		},
@@ -145,6 +168,17 @@ module.exports = {
 			}	
 	    },
 	    settestdate: function(req, res, next){
+	    	var nowdate = new Date();
+	    	var testdate = new Date(req.param('testdate'));
+	    	if (testdate <= nowdate){
+	    		var info = ['Tanggal Ujian Tidak Boleh Kurang Dari Tanggal Hari Ini.']
+	    		req.session.flash = {
+	    			err : info,
+	    		}
+	    		res.redirect('/user/testadmin');
+	    		return;
+	    	}
+
 	        var _idgrade0 = req.session.User.idgrade0;
 	        var _idgrade1 = req.session.User.idgrade1;
 	        var _idgrade2 = req.session.User.idgrade2;
@@ -245,7 +279,7 @@ module.exports = {
 	    applyprofile : function(req,res,next){
 	    	var nowdate = new Date().getFullYear();
 	    	var birthdate = new Date(req.param('datebirth')).getFullYear();
-			if (nowdate - birthdate < 13 || nowdate - birthdate > 18){
+			if (nowdate - birthdate < 10 || nowdate - birthdate > 20){
 	    		var info = ['Anda belum cukup umur untuk mendaftar.']
 	    		req.session.flash = {
 	    			err : info,
@@ -283,9 +317,17 @@ module.exports = {
 			});
 	    },
 	    applygrade : function(req,res,next){
+	    	var previousschool = "";
+	    	if (req.param('statusmurid') == 'temanis'){
+	    		previousschool = "Temanis Baru";
+	    	}
+	    	if (req.param('statusmurid') == 'pindahan' && req.param('previousschoolname') != ""){
+	    		previousschool = req.param('previousschoolname');
+	    	}
 	    	var usrObj = {
+	    		statusmurid : req.param('statusmurid'),
 	    		grade : req.param('grade'),
-	    		previousschool : req.param('previousschoolname'),
+	    		previousschool : previousschool,
 	    		grade_status : 1
     		}
 	    	User.update(req.session.User.id,usrObj,function(err,user){

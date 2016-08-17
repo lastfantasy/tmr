@@ -53,8 +53,12 @@
                   <input type="file" accept="image/jpeg" id="file1" onchange="previewFile1()">
                   <% if (user.files[0]) { %>
                     <label><%=user.files[0].name%></label>
-                    <button onclick="imageView1()">Lihat File</button>
-                    <img id="akte">
+                    <button form="" onclick="imageView1()">Lihat File</button>
+                    <img class="myImg" id="akte">
+                    <div id="imgModal1" class="modal">
+                      <img class="modal-content" id="imgZoom1">
+                      <div id="caption1"></div>
+                    </div>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -62,13 +66,17 @@
                 </div>
                 <br><br><br>
                 <div class="form-group">
-                <label class="control-label col-lg-4 required">Ijazah &#42;</label>
+                <label class="control-label col-lg-4 required">Ijazah (Terakhir) &#42;</label>
                 <div class="col-lg-8">
                   <input type="file" accept="image/jpeg" id="file2" onchange="previewFile2()">
                   <% if (user.files[1]) { %>
                     <label><%=user.files[1].name%></label>
-                    <button onclick="imageView2()">Lihat File</button>
-                    <img id="ijazah">
+                    <button form="" onclick="imageView2()">Lihat File</button>
+                    <img class="myImg" id="ijazah">
+                    <div id="imgModal2" class="modal">
+                      <img class="modal-content" id="imgZoom2">
+                      <div id="caption2"></div>
+                    </div>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -81,8 +89,12 @@
                   <input type="file" accept="image/jpeg" id="file3" onchange="previewFile3()">
                   <% if (user.files[2]) { %>
                     <label><%=user.files[2].name%></label>
-                    <button onclick="imageView3()">Lihat File</button>
-                    <img id="pasfoto">
+                    <button form="" onclick="imageView3()">Lihat File</button>
+                    <img class="myImg" id="pasfoto">
+                    <div id="imgModal3" class="modal">
+                      <img class="modal-content" id="imgZoom3">
+                      <div id="caption3"></div>
+                    </div>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -95,8 +107,12 @@
                   <input type="file" accept="image/jpeg" id="file4" onchange="previewFile4()">
                   <% if (user.files[3]) { %>
                     <label><%=user.files[3].name%></label>
-                    <button onclick="imageView4()">Lihat File</button>
-                    <img id="rapor">
+                    <button form="" onclick="imageView4()">Lihat File</button>
+                    <img class="myImg" id="rapor">
+                    <div id="imgModal4" class="modal">
+                      <img class="modal-content" id="imgZoom4">
+                      <div id="caption4"></div>
+                    </div>
                   <% } else { %>
                     <label>Belum ada dokumen</label>
                   <% } %>
@@ -285,24 +301,68 @@ function imageView1(){
   var url1 = document.querySelector('#fileurl1');
   output.src = url1.value;
   output.style = "width:200px;height:200px;";
+  var modal = document.getElementById('imgModal1');
+  var modalImg = document.getElementById("imgZoom1");
+  var captionText = document.getElementById("caption1");
+  output.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = "Akte Lahir";
+  }
+  modal.onclick = function() {
+      modal.style.display = "none";
+  }
 }
 function imageView2(){
   var output = document.getElementById('ijazah');
   var url2 = document.querySelector('#fileurl2');
   output.src = url2.value;
   output.style = "width:200px;height:200px;";
+  var modal = document.getElementById('imgModal2');
+  var modalImg = document.getElementById("imgZoom2");
+  var captionText = document.getElementById("caption2");
+  output.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = "Ijazah (Terakhir)";
+  }
+  modal.onclick = function() {
+      modal.style.display = "none";
+  }
 }
 function imageView3(){
   var output = document.getElementById('pasfoto');
   var url3 = document.querySelector('#fileurl3');
   output.src = url3.value;
   output.style = "width:200px;height:200px;";
+  var modal = document.getElementById('imgModal3');
+  var modalImg = document.getElementById("imgZoom3");
+  var captionText = document.getElementById("caption3");
+  output.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = "Pas Foto";
+  }
+  modal.onclick = function() {
+      modal.style.display = "none";
+  }
 }
 function imageView4(){
   var output = document.getElementById('rapor');
   var url4 = document.querySelector('#fileurl4');
   output.src = url4.value;
   output.style = "width:200px;height:200px;";
+  var modal = document.getElementById('imgModal4');
+  var modalImg = document.getElementById("imgZoom4");
+  var captionText = document.getElementById("caption4");
+  output.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = "Rapor (Terakhir)";
+  }
+  modal.onclick = function() {
+      modal.style.display = "none";
+  }
 }
 </script>
 
