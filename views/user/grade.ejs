@@ -47,7 +47,11 @@
           </div>
           <div class="panel-body">
                 <div class="form-group">
-
+                <label>Murid: </label>
+                <input type="radio" name="murid" value="baru" style="margin-left: 10px;"> Baru
+                <input type="radio" name="murid" value="baru" style="margin-left: 10px;"> Pindahan
+                <br>
+                <br>
                 <label>Tingkatan</label>
                 <% if (user.grade_status == 1) { %>
                   <% if (user.grade == "0"){ %>
@@ -118,7 +122,7 @@
                 
                 <br>
                 <br>
-                <label>Nama Sekolah Sebelumnya</label>
+                <label>Sekolah Asal</label>
                 <% if (user.grade_status == 1) { %>
                   <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschool%>">
                 <% } else { %>
