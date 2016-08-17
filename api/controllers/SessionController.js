@@ -266,7 +266,7 @@ module.exports = {
 			 res.redirect('/resetpassword');
 			 return;
 		}
-		bcrypt.hash(req.param('password'), null, null, function PasswordEncrypted(err, encryptedPassword) {
+		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
 			if (err) return next(err);
 			User.update(req.param('id'), {encryptedPassword : encryptedPassword}, function(err, _user){
 				var info = ['Password Anda berhasil direset. Silahkan Login.']
