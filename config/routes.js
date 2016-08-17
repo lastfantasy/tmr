@@ -36,7 +36,7 @@ module.exports.routes = {
   '/register' : 'SessionController.register',
   '/login' : 'SessionController.login',
   '/emailpass' : 'SessionController.emailpass',
-  '/resetpassword' : 'SessionController.resetpassword'
+  '/resetpassword/:id' : 'SessionController.resetpassword'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
