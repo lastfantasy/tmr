@@ -6,7 +6,6 @@
  */
  var bcrypt = require('bcrypt');
  var nodemailer = require('nodemailer');
- var resetEmail = "";
 module.exports = {
 	register : function(req,res,next){
 		return res.view({
@@ -170,8 +169,7 @@ module.exports = {
 		return res.view();
 	},
 	resetpassword : function(req,res,next){
-		User.findOne({email : resetEmail}, function(err, user){
-			resetEmail = "";
+		User.findOne(req.param('id'), function(err, user){
 			return res.view ({user:user});
 		});
 	},
@@ -204,7 +202,6 @@ module.exports = {
 				res.redirect('/emailpass');
 				return;
 			}
-			resetEmail = user.email;
 			// create reusable transporter object using the default SMTP transport
 			var transporter = nodemailer.createTransport('SMTP', {
 				service : 'Gmail',
@@ -218,10 +215,10 @@ module.exports = {
 			var mailOptions = {
 			    from: 'Temanis Baru', // sender address
 			    to: user.email, // list of receivers
-			    subject: 'Reset Password Akun', // Subject line
+			    subject: 'Reset Password Temanis Baru', // Subject line
 			    text: 'Anda menerima email ini karena Anda (atau seseorang) telah mengirimkan permintaan untuk me-reset password Temanis Baru Anda\n\n' +
 			    'Silahkan klik link di bawah ini, atau paste link di bawah ke browser Anda untuk me-reset password Anda :\n\n' +
-			    'http://temanisbaru.herokuapp.com/resetpassword\n\n' +
+			    'http://temanisbaru.herokuapp.com/resetpassword/' + user.id + '\n\n' +
 			    'Jikalau Anda tidak merasa melakukan permintaan ini, silahkan abaikan email ini dan password Anda tidak akan berganti.\n' // plaintext body
 			};
 
@@ -269,9 +266,9 @@ module.exports = {
 			 res.redirect('/resetpassword');
 			 return;
 		}
-		bcrypt.hash(req.param('password'), 10, function PasswordEncrypted(err, encryptedPassword) {
+		bcrypt.hash(req.param('password'), null, null, function PasswordEncrypted(err, encryptedPassword) {
 			if (err) return next(err);
-			User.update(user.id, {encryptedPassword : encryptedPassword}, function(err, _user){
+			User.update(req.param('id'), {encryptedPassword : encryptedPassword}, function(err, _user){
 				var info = ['Password Anda berhasil direset. Silahkan Login.']
 				req.session.flash = {
 					success : info,
