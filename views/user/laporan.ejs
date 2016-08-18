@@ -5,24 +5,63 @@
                     
                     <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
                     <h1 style=" font-size: 3em; line-height: 1em;font-weight: bold;  " align="center">Statistik Pendaftar</h1>
-                        <h3 align="center">Jumlah Pendaftar : <%=user.totaldaftar%></h3>
-                        <h3 align="center">Jumlah Status "Pending" : <%=user.totalpending%></h3>
-                        <h3 align="center">Jumlah Status "Verified" : <%=user.totalverified%></h3>
-                        <h3 align="center">Jumlah Status "Denied" : <%=user.totaldenied%></h3>
-                        <h3 align="center">Jumlah Status "Passed" : <%=user.totalpassed%></h3>
-                        <h3 align="center">Jumlah Status "Failed" : <%=user.totalfailed%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 06-Agustus-2016 : <%=user.totalujian1%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 20-Agustus-2016 : <%=user.totalujian2%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 03-September-2016 : <%=user.totalujian3%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 17-September-2016 : <%=user.totalujian4%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 01-Oktober-2016 : <%=user.totalujian5%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 15-Oktober-2016 : <%=user.totalujian6%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 29-Oktober-2016 : <%=user.totalujian7%></h3>
-                        <h3 align="center">Total Peserta Ujian Tanggal 12-November-2016 : <%=user.totalujian8%></h3>
+                        <h3 align="center">Jumlah Pendaftar : <%=users.length%></h3>
+                        <table width="95%" border="1" class="table" style="margin-top: 20px;">
+                          <thead>
+                            <th style="background-color: #0062B2; color: white; align="center";">Nama</th>
+                            <th style="background-color: #0062B2; color: white;">No. USM</th>
+                            <th style="background-color: #0062B2; color: white;">Tingkatan</th>
+                            <th style="background-color: #0062B2; color: white;">Sekolah Asal</th>
+                            <th style="background-color: #0062B2; color: white;">Status</th>
+                          </thead>
+                         <tbody>
+                            <% _.each(users, function(user){ %>
+                                <tr>
+                                    <td><%=user.name%></td>
+                                    <td><%=user.nousm%></td>
+                                    <td>
+                                        <% if (user.grade == "0") { %>
+                                          SMP 1
+                                        <% } else if (user.grade == "1") { %>
+                                          SMP 2
+                                        <% } else if (user.grade == "2") { %>
+                                          SMP 3
+                                        <% } else if (user.grade == "3") { %>
+                                          SMA 1
+                                        <% } else if (user.grade == "4") { %>
+                                          SMA 2
+                                        <% } else if (user.grade == "5") { %>
+                                          SMA 3
+                                        <% } else { %>
+                                          -
+                                        <% } %>    
+                                      </td>
+                                      <td>
+                                        <% if (user.previousschool == null) { %>
+                                          -
+                                        <% } else { %>
+                                          <%=user.previousschool%>
+                                        <% } %>  
+                                      </td>
+                                      <td>
+                                        <% if(user.status==0) { %>
+                                          Pending
+                                        <% } else if(user.status==1) { %>
+                                          Verified
+                                        <% } else if(user.status==2) { %>
+                                           Denied
+                                        <% } else if(user.status==3) { %>
+                                           Passed
+                                        <% } else if(user.status==4) { %>
+                                           Failed
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                         </tbody>
+                        </table>
                     </div>
                 </article>
-
-                
             </div>
         </div>
 

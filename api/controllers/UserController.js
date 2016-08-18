@@ -70,12 +70,18 @@ module.exports = {
 				usrFind.status = req.param('filterstatus');
 			}
 			User.find(usrFind,function(err,users){
+				var _users = [];
+				for (var i = 0; i < users.length; i++){
+					if (users[i].name != "" && users[i].grade != null && users[i].previousschool != null){
+						_users.push(users[i]);
+					}
+				}
 				if (info != ""){
 					req.session.flash = {
 						success : info
 					}
 				}
-				return res.view({users:users});
+				return res.view({users:_users});
 			});
 		},
 		verifydocument : function(req,res,next){
@@ -84,118 +90,8 @@ module.exports = {
 			});
 		},
 		laporan : function(req,res,next){
-			User.find({admin:false}, function(err, users1){
-				var totalujian1 = 0;
-				var totalujian2 = 0;
-				var totalujian3 = 0;
-				var totalujian4 = 0;
-				var totalujian5 = 0;
-				var totalujian6 = 0;
-				var totalujian7 = 0;
-				var totalujian8 = 0;
-				var _date1, _date2, _date3, _date4, _date5, _date6, _date7, _date8;
-				_date1 = new Date("2016-08-06");
-				_date2 = new Date("2016-08-20");
-				_date3 = new Date("2016-09-03");
-				_date4 = new Date("2016-09-17");
-				_date5 = new Date("2016-10-01");
-				_date6 = new Date("2016-10-15");
-				_date7 = new Date("2016-10-29");
-				_date8 = new Date("2016-11-12");
-				for (var i = 0; i < users1.length; i++){
-					if (users1[i].testdate){
-						var userdate = new Date(users1[i].testdate).getDate();
-						var usermonth = new Date(users1[i].testdate).getMonth();
-						var useryear = new Date(users1[i].testdate).getFullYear();
-						if (userdate == _date1.getDate() && usermonth == _date1.getMonth()+1 && useryear == _date1.getFullYear()){
-							totalujian1++;
-						}
-						else if (userdate == _date2.getDate() && usermonth == _date2.getMonth()+1 && useryear == _date2.getFullYear()){
-							totalujian2++;
-						}
-						else if (userdate == _date3.getDate() && usermonth == _date3.getMonth()+1 && useryear == _date3.getFullYear()){
-							totalujian3++;
-						}
-						else if (userdate == _date4.getDate() && usermonth == _date4.getMonth()+1 && useryear == _date4.getFullYear()){
-							totalujian4++;
-						}
-						else if (userdate == _date5.getDate() && usermonth == _date5.getMonth()+1 && useryear == _date5.getFullYear()){
-							totalujian5++;
-						}
-						else if (userdate == _date6.getDate() && usermonth == _date6.getMonth()+1 && useryear == _date6.getFullYear()){
-							totalujian6++;
-						}
-						else if (userdate == _date7.getDate() && usermonth == _date7.getMonth()+1 && useryear == _date7.getFullYear()){
-							totalujian7++;
-						}
-						else if (userdate == _date8.getDate() && usermonth == _date8.getMonth()+1 && useryear == _date8.getFullYear()){
-							totalujian8++;
-						}
-					}
-				}
-				var usrObj = {
-					totaldaftar : users1.length,
-					totalujian1 : totalujian1,
-					totalujian2 : totalujian2,
-					totalujian3 : totalujian3,
-					totalujian4 : totalujian4,
-					totalujian5 : totalujian5,
-					totalujian6 : totalujian6,
-					totalujian7 : totalujian7,
-					totalujian8 : totalujian8,
-				}
-				User.update(req.session.User.id, usrObj, function(err, _user){});
-			});
-			User.find({admin:false, status:0}, function(err, users2){
-				User.update(req.session.User.id, {totalpending : users2.length}, function(err, _user){});
-			});
-			User.find({admin:false, status:1}, function(err, users3){
-				User.update(req.session.User.id, {totalverified : users3.length}, function(err, _user){});
-			});
-			User.find({admin:false, status:2}, function(err, users4){
-				User.update(req.session.User.id, {totaldenied : users4.length}, function(err, _user){});
-			});
-			User.find({admin:false, status:3}, function(err, users5){
-				User.update(req.session.User.id, {totalpassed : users5.length}, function(err, _user){});
-			});
-			User.find({admin:false, status:4}, function(err, users6){
-				User.update(req.session.User.id, {totalfailed : users6.length}, function(err, _user){});
-			});
-			// var _date1, _date2, _date3, _date4, _date5, _date6, _date7, _date8;
-			// _date1 = new Date("2016-08-06");
-			// User.find({admin:false, testdate:_date1}, function(err, usersujian1){
-			// 	User.update(req.session.User.id, {totalujian1 : usersujian1.length}, function(err, _user){});
-			// });
-			// _date2 = new Date("2016-08-20");
-			// User.find({admin:false, testdate:_date2}, function(err, usersujian2){
-			// 	User.update(req.session.User.id, {totalujian2 : usersujian2.length}, function(err, _user){});
-			// });
-			// _date3 = new Date("2016-09-03");
-			// User.find({admin:false, testdate:_date3}, function(err, usersujian3){
-			// 	User.update(req.session.User.id, {totalujian3 : usersujian3.length}, function(err, _user){});
-			// });
-			// _date4 = new Date("2016-09-17");
-			// User.find({admin:false, testdate:_date4}, function(err, usersujian4){
-			// 	User.update(req.session.User.id, {totalujian4 : usersujian4.length}, function(err, _user){});
-			// });
-			// _date5 = new Date("2016-10-01");
-			// User.find({admin:false, testdate:_date5}, function(err, usersujian5){
-			// 	User.update(req.session.User.id, {totalujian5 : usersujian5.length}, function(err, _user){});
-			// });
-			// _date6 = new Date("2016-10-15");
-			// User.find({admin:false, testdate:_date6}, function(err, usersujian6){
-			// 	User.update(req.session.User.id, {totalujian6 : usersujian6.length}, function(err, _user){});
-			// });
-			// _date7 = new Date("2016-10-29");
-			// User.find({admin:false, testdate:_date7}, function(err, usersujian7){
-			// 	User.update(req.session.User.id, {totalujian7 : usersujian7.length}, function(err, _user){});
-			// });
-			// _date8 = new Date("2016-11-12");
-			// User.find({admin:false, testdate:_date8}, function(err, usersujian8){
-			// 	User.update(req.session.User.id, {totalujian8 : usersujian8.length}, function(err, _user){});
-			// });
-			User.findOne(req.session.User.id, function(err, user){
-				return res.view({user:user});
+			User.find({admin:false}, function(err, users){
+				return res.view({users:users});
 			});
 		},
 		testadmin : function(req,res,next){

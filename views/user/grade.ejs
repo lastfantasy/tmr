@@ -134,7 +134,11 @@
                 <br>
                 <% if (user.grade_status == 1 && user.statusmurid == "pindahan") { %>
                   <label>Sekolah Asal</label>
-                  <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
+                  <% if (user.previousschoolname != "") { %>
+                    <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschoolname%>">
+                  <% } else { %>
+                    <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
+                  <% } %>
                 <% } %>
                 <br>
                 <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>

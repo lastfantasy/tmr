@@ -65,62 +65,6 @@ module.exports = {
       admin : {
         type : 'boolean',
         defaultsTo : false
-      },
-      totaldaftar : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalpending : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalverified : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totaldenied : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalpassed : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalfailed : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian1 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian2 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian3 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian4 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian5 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian6 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian7 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
-      totalujian8 : {
-        type : 'integer',
-        defaultsTo : 0
-      },
+      }
   }
 };
