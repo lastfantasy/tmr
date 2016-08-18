@@ -94,31 +94,31 @@ module.exports = {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian2 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian3 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian4 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian5 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian6 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian7 : {
         type : 'integer',
         defaultsTo : 0
       },
-      totalujian1 : {
+      totalujian8 : {
         type : 'integer',
         defaultsTo : 0
       },

@@ -85,7 +85,66 @@ module.exports = {
 		},
 		laporan : function(req,res,next){
 			User.find({admin:false}, function(err, users1){
-				User.update(req.session.User.id, {totaldaftar : users1.length}, function(err, _user){});
+				var totalujian1 = 0;
+				var totalujian2 = 0;
+				var totalujian3 = 0;
+				var totalujian4 = 0;
+				var totalujian5 = 0;
+				var totalujian6 = 0;
+				var totalujian7 = 0;
+				var totalujian8 = 0;
+				var _date1, _date2, _date3, _date4, _date5, _date6, _date7, _date8;
+				_date1 = new Date("2016-08-06");
+				_date2 = new Date("2016-08-20");
+				_date3 = new Date("2016-09-03");
+				_date4 = new Date("2016-09-17");
+				_date5 = new Date("2016-10-01");
+				_date6 = new Date("2016-10-15");
+				_date7 = new Date("2016-10-29");
+				_date8 = new Date("2016-11-12");
+				for (var i = 0; i < users1.length; i++){
+					if (users1[i].testdate){
+						var userdate = new Date(users1[i].testdate).getDate();
+						var usermonth = new Date(users1[i].testdate).getMonth();
+						var useryear = new Date(users1[i].testdate).getFullYear();
+						if (userdate == _date1.getDate() && usermonth == _date1.getMonth()+1 && useryear == _date1.getFullYear()){
+							totalujian1++;
+						}
+						else if (userdate == _date2.getDate() && usermonth == _date2.getMonth()+1 && useryear == _date2.getFullYear()){
+							totalujian2++;
+						}
+						else if (userdate == _date3.getDate() && usermonth == _date3.getMonth()+1 && useryear == _date3.getFullYear()){
+							totalujian3++;
+						}
+						else if (userdate == _date4.getDate() && usermonth == _date4.getMonth()+1 && useryear == _date4.getFullYear()){
+							totalujian4++;
+						}
+						else if (userdate == _date5.getDate() && usermonth == _date5.getMonth()+1 && useryear == _date5.getFullYear()){
+							totalujian5++;
+						}
+						else if (userdate == _date6.getDate() && usermonth == _date6.getMonth()+1 && useryear == _date6.getFullYear()){
+							totalujian6++;
+						}
+						else if (userdate == _date7.getDate() && usermonth == _date7.getMonth()+1 && useryear == _date7.getFullYear()){
+							totalujian7++;
+						}
+						else if (userdate == _date8.getDate() && usermonth == _date8.getMonth()+1 && useryear == _date8.getFullYear()){
+							totalujian8++;
+						}
+					}
+				}
+				var usrObj = {
+					totaldaftar : users1.length,
+					totalujian1 : totalujian1,
+					totalujian2 : totalujian2,
+					totalujian3 : totalujian3,
+					totalujian4 : totalujian4,
+					totalujian5 : totalujian5,
+					totalujian6 : totalujian6,
+					totalujian7 : totalujian7,
+					totalujian8 : totalujian8,
+				}
+				User.update(req.session.User.id, usrObj, function(err, _user){});
 			});
 			User.find({admin:false, status:0}, function(err, users2){
 				User.update(req.session.User.id, {totalpending : users2.length}, function(err, _user){});
