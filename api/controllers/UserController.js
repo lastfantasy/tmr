@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
  var fs = require('fs');
+ var nodemailer = require('nodemailer');
  var open = 'null';
  var close = 'null';
  var tmpstatus = 0;
@@ -49,24 +50,30 @@ module.exports = {
 				admin : false
 			}
 			if (req.param('filternama') != '' && typeof(req.param('filternama')) != "undefined"){
+				info = ['Data Berhasil Disaring.']
 				usrFind.name = req.param('filternama');
 			}
 			if (req.param('filternousm') != '' && typeof(req.param('filternousm')) != "undefined"){
+				info = ['Data Berhasil Disaring.']
 				usrFind.nousm = req.param('filternousm');
 			}
 			if (req.param('filtertingkatan') != '' && typeof(req.param('filtertingkatan')) != "undefined"){
+				info = ['Data Berhasil Disaring.']
 				usrFind.grade = req.param('filtertingkatan');
 			}
 			if (req.param('filtersekolah') != '' && typeof(req.param('filtersekolah')) != "undefined"){
+				info = ['Data Berhasil Disaring.']
 				usrFind.previousschoolname = req.param('filtersekolah');
 			}
 			if (req.param('filterstatus') != '' && typeof(req.param('filterstatus')) != "undefined"){
+				info = ['Data Berhasil Disaring.']
 				usrFind.status = req.param('filterstatus');
 			}
 			User.find(usrFind,function(err,users){
-				info = ['Data Berhasil Disaring.']
-				req.session.flash = {
-					success : info
+				if (info != ""){
+					req.session.flash = {
+						success : info
+					}
 				}
 				return res.view({users:users});
 			});
@@ -76,8 +83,59 @@ module.exports = {
 				return res.view({user:user});
 			});
 		},
-		aboutus : function(req,res,next){
-			User.findOne(req.session.User.id, function(err,user){
+		laporan : function(req,res,next){
+			User.find({admin:false}, function(err, users1){
+				User.update(req.session.User.id, {totaldaftar : users1.length}, function(err, _user){});
+			});
+			User.find({admin:false, status:0}, function(err, users2){
+				User.update(req.session.User.id, {totalpending : users2.length}, function(err, _user){});
+			});
+			User.find({admin:false, status:1}, function(err, users3){
+				User.update(req.session.User.id, {totalverified : users3.length}, function(err, _user){});
+			});
+			User.find({admin:false, status:2}, function(err, users4){
+				User.update(req.session.User.id, {totaldenied : users4.length}, function(err, _user){});
+			});
+			User.find({admin:false, status:3}, function(err, users5){
+				User.update(req.session.User.id, {totalpassed : users5.length}, function(err, _user){});
+			});
+			User.find({admin:false, status:4}, function(err, users6){
+				User.update(req.session.User.id, {totalfailed : users6.length}, function(err, _user){});
+			});
+			// var _date1, _date2, _date3, _date4, _date5, _date6, _date7, _date8;
+			// _date1 = new Date("2016-08-06");
+			// User.find({admin:false, testdate:_date1}, function(err, usersujian1){
+			// 	User.update(req.session.User.id, {totalujian1 : usersujian1.length}, function(err, _user){});
+			// });
+			// _date2 = new Date("2016-08-20");
+			// User.find({admin:false, testdate:_date2}, function(err, usersujian2){
+			// 	User.update(req.session.User.id, {totalujian2 : usersujian2.length}, function(err, _user){});
+			// });
+			// _date3 = new Date("2016-09-03");
+			// User.find({admin:false, testdate:_date3}, function(err, usersujian3){
+			// 	User.update(req.session.User.id, {totalujian3 : usersujian3.length}, function(err, _user){});
+			// });
+			// _date4 = new Date("2016-09-17");
+			// User.find({admin:false, testdate:_date4}, function(err, usersujian4){
+			// 	User.update(req.session.User.id, {totalujian4 : usersujian4.length}, function(err, _user){});
+			// });
+			// _date5 = new Date("2016-10-01");
+			// User.find({admin:false, testdate:_date5}, function(err, usersujian5){
+			// 	User.update(req.session.User.id, {totalujian5 : usersujian5.length}, function(err, _user){});
+			// });
+			// _date6 = new Date("2016-10-15");
+			// User.find({admin:false, testdate:_date6}, function(err, usersujian6){
+			// 	User.update(req.session.User.id, {totalujian6 : usersujian6.length}, function(err, _user){});
+			// });
+			// _date7 = new Date("2016-10-29");
+			// User.find({admin:false, testdate:_date7}, function(err, usersujian7){
+			// 	User.update(req.session.User.id, {totalujian7 : usersujian7.length}, function(err, _user){});
+			// });
+			// _date8 = new Date("2016-11-12");
+			// User.find({admin:false, testdate:_date8}, function(err, usersujian8){
+			// 	User.update(req.session.User.id, {totalujian8 : usersujian8.length}, function(err, _user){});
+			// });
+			User.findOne(req.session.User.id, function(err, user){
 				return res.view({user:user});
 			});
 		},

@@ -38,6 +38,7 @@ module.exports.policies = {
     'dashboard' : ['sessionAuth','flash'],
     'grade' : ['flash'],
     'documents' : ['flash'],
+    'contactus' : ['flash'],
     'openclose' : ['flash'],
     'verifyapplicant' : ['flash'],
     'testadmin' : ['flash']
