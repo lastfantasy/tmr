@@ -84,42 +84,6 @@ module.exports = {
 				});
 		});
 	},
-	cekemail : function(req, res, next){
-		if (!req.param('email')){
-			return res.json({code:404, message:'Anda harus mengisi email Anda.'});
-		}
-		User.findOne({email : req.param('email')}, function foundUser(err, user){
-			if (err) return res.json({code:404, message:'Error.'});
-			if (!user) {
-				return res.json({code:404, message:'Email ' + req.param('email') + ' tidak ditemukan.'});
-			}
-			// create reusable transporter object using the default SMTP transport
-			var transporter = nodemailer.createTransport('SMTP', {
-				service : 'Gmail',
-				auth : {
-					user : 'noreply.temanisbaru@gmail.com',
-					pass : 'temanisbaru2016'
-				}
-			});
-
-			// setup e-mail data with unicode symbols
-			var mailOptions = {
-			    from: 'Temanis Baru', // sender address
-			    to: user.email, // list of receivers
-			    subject: 'Reset Password Temanis Baru', // Subject line
-			    text: 'Anda menerima email ini karena Anda (atau seseorang) telah mengirimkan permintaan untuk me-reset password Temanis Baru Anda\n\n' +
-			    'Silahkan klik link di bawah ini, atau paste link di bawah ke browser Anda untuk me-reset password Anda :\n\n' +
-			    'http://temanisbaru.herokuapp.com/resetpassword/' + user.id + '\n\n' +
-			    'Jikalau Anda tidak merasa melakukan permintaan ini, silahkan abaikan email ini dan password Anda tidak akan berganti.\n' // plaintext body
-			};
-
-			// send mail with defined transport object
-			transporter.sendMail(mailOptions, function(err){
-			    if (err) return res.json({code:404, message:'Error.'});
-			    return res.json({code:200, message:'Link reset password sudah terkirim ke ' + req.param('email')});
-			});
-		});
-	},
 	verifyapplication : function(req,res,next){
 		var nowdate = new Date();
 		var opendate;
