@@ -373,19 +373,6 @@ angular.module('starter')
     var server_url = 'http://temanisbaru.herokuapp.com';
     $scope.message = "";
     $scope.show = true;
-    // $http.get('http://localhost:1337/api/verifyapplication')
-    // .success(function(datas){
-    //     if(datas.code!=200){
-    //         $scope.message = datas.message;
-    //         $scope.show = false;
-    //     } else {
-    //         $scope.message  = datas.message;
-    //         $scope.show = true;
-    //     }
-    // })
-    // .error(function(err){
-
-    // })
     $http.get(server_url + '/api/verifyapplication')
     .success(function(datas){
         if(datas.code!=200){
@@ -437,7 +424,20 @@ angular.module('starter')
       })
     }
 })
-
+.controller('ResetPasswordCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){
+    $scope.data = {};
+    $scope.resetpass = function(data){
+      $ionicLoading.show({
+        template : '<ion-spinner></ion-spinner> <br> Loading'
+      });
+      AuthService.cekemail(data.email).then(function(authenticated){
+          $ionicLoading.hide();
+          $state.go('login');
+      }, function(err){
+        $ionicLoading.hide();
+      })
+    }
+})
 .controller('UjianCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
   var user = AuthService.user();
   var usm = "";

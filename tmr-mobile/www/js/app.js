@@ -47,6 +47,12 @@ angular.module('starter', ['ionic','ngCordova'])
       controller : 'RegisterMenuCtrl'
   })
 
+  .state('resetpass', {
+      url : '/resetpass_menu',
+      templateUrl : 'templates/resetpass_menu.html',
+      controller : 'ResetPasswordCtrl'
+  })
+
   // setup an abstract state for the tabs directive
   .state('murid', {
     url: '/murid',

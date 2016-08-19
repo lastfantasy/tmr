@@ -70,7 +70,6 @@ angular.module('starter')
 
   var register = function(email, pw, confpw) {
     return $q(function(resolve, reject) {
-      // var url = 'http://localhost:1337/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
       var url = server_url + '/api/register?email='+email+'&password='+pw+'&passwordconfirmation='+confpw;
       $http.get(url).then(function(resp) {
         if(resp.data.code != 200){
@@ -91,10 +90,8 @@ angular.module('starter')
 
   var login = function(name, pw) {
     return $q(function(resolve, reject) {
-      // var url = 'http://localhost:1337/api/login?email='+name+'&password='+pw;
       var url = server_url + '/api/login?email='+name+'&password='+pw;
       $http.get(url).then(function(resp) {
-        //console.log('Success', resp);
         if(resp.data.code!=200){
             var alertPopup = $ionicPopup.alert({
                 title : 'Login Failed',
@@ -105,19 +102,32 @@ angular.module('starter')
             storeUserCredentials(resp.data.user);
             resolve('Login success.');
         }
-        // For JSON responses, resp.data contains the result
       }, function(err) {
-        // console.error('ERR', err);
         reject('Login Failed.');
-        // err.status will contain the status code
       })
-      // if ((name == 'admin' && pw == '1') || (name == 'user' && pw == '1')) {
-      //   // Make a request and receive your auth token from your server
-      //   storeUserCredentials(name + '.yourServerToken');
-      //   resolve('Login success.');
-      // } else {
-      //   reject('Login Failed.');
-      // }
+    });
+  };
+
+  var cekemail = function(name) {
+    return $q(function(resolve, reject) {
+      var url = server_url + '/api/cekemail?email='+name;
+      $http.get(url).then(function(resp) {
+        if(resp.data.code!=200){
+            var alertPopup = $ionicPopup.alert({
+                title : 'Link Gagal Dikirim',
+                template : resp.data.message
+            });
+            reject('Reset Failed.');
+        } else {
+            var alertPopup = $ionicPopup.alert({
+              title : 'Link Terkirim',
+              template : resp.data.message
+            });
+            resolve('Reset Success.');
+        }
+      }, function(err) {
+        reject('Reset Failed.');
+      })
     });
   };
 
@@ -127,7 +137,6 @@ angular.module('starter')
 
 
   loadUserCredentials();
-  // destroyUserCredentials();
 
   return {
     login: login,

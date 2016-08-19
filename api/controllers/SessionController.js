@@ -175,7 +175,7 @@ module.exports = {
 	},
 	cekemail : function(req, res, next){
 		if (!req.param('email')){
-			var info = ['Anda harus mengisi email pendaftaran Anda.']
+			var info = ['Anda harus mengisi email Anda.']
 			req.session.flash = {
 				err : info
 			}
