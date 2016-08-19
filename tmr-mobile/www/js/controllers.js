@@ -424,27 +424,12 @@ angular.module('starter')
       })
     }
 })
-.controller('ResetPasswordCtrl', function($scope,$state,$ionicModal,$ionicPopup, $http, AuthService,$ionicLoading, $ionicHistory){
-    $scope.data = {};
-    $scope.resetpass = function(data){
-      $ionicLoading.show({
-        template : '<ion-spinner></ion-spinner> <br> Loading'
-      });
-      AuthService.cekemail(data.email).then(function(authenticated){
-          $ionicLoading.hide();
-          $state.go('login');
-      }, function(err){
-        $ionicLoading.hide();
-      })
-    }
-})
 .controller('UjianCtrl', function($scope, AuthService,$ionicLoading,$ionicHistory,$state,$timeout) {
   var user = AuthService.user();
   var usm = "";
   $scope.user = user;
   if (user.testdate != null) {
     var date = new Date(user.testdate);
-    console.log(date.getDay())
     if (date.getDay() == 1) {
         usm += "Senin, ";
     } else if (date.getDay() == 2) {

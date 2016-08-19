@@ -108,29 +108,6 @@ angular.module('starter')
     });
   };
 
-  var cekemail = function(name) {
-    return $q(function(resolve, reject) {
-      var url = server_url + '/api/cekemail?email='+name;
-      $http.get(url).then(function(resp) {
-        if(resp.data.code!=200){
-            var alertPopup = $ionicPopup.alert({
-                title : 'Link Gagal Dikirim',
-                template : resp.data.message
-            });
-            reject('Reset Failed.');
-        } else {
-            var alertPopup = $ionicPopup.alert({
-              title : 'Link Terkirim',
-              template : resp.data.message
-            });
-            resolve('Reset Success.');
-        }
-      }, function(err) {
-        reject('Reset Failed.');
-      })
-    });
-  };
-
   var logout = function() {
     destroyUserCredentials();
   };

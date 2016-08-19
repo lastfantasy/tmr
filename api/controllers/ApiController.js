@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var bcrypt = require('bcrypt');
+var nodemailer = require('nodemailer');
 var fs = require('fs');
 var tmpstatus = 0;
 module.exports = {
