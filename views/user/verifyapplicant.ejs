@@ -27,15 +27,23 @@
     <h3 align="center">Saring Keluaran :</h3>
     <form method="post" action="/user/verifyapplicant">
      <div class="form-group ">
-      <center><div class="input-group" align="center">
-        <label>Nama</label>
-        <input type="text" id="filternama" name="filternama" class="form-control">
-        <br>
-        <label>No. USM</label>
-        <input type="text" id="filternousm" name="filternousm" class="form-control">
-        <br>
-        <label>Tingkatan</label>
-        <select class="btn btn-default" name="filtertingkatan" style="width:100%; margin-top: 0px;">
+      <center><div class="input-group" align="center" style="width: auto;">
+      <div>
+      <div style="float: left;">
+        <label>Nama
+        <input type="text" id="filternama" name="filternama" class="form-control" style="margin-top: 2px;">
+        </label>
+      </div>
+      <div style="float: right; margin-left: 10px;">
+        <label>No. USM
+        <input type="text" id="filternousm" name="filternousm" class="form-control" style="margin-top: 2px;">
+        </label>
+      </div>
+      </div>
+      <div>
+      <div style="margin-top: 60px;">
+        <label style="width: 100%;">Tingkatan</label>
+        <select class="btn btn-default" name="filtertingkatan" style="width:100%; margin-top: 2px; margin-bottom: 2px;">
                     <option></option>
                     <option value="0">SMP 1</option>
                     <option value="1">SMP 2</option>
@@ -44,12 +52,11 @@
                     <option value="4">SMA 2</option>
                     <option value="5">SMA 3</option>
         </select>
-        <br>
-        <label>Sekolah Asal</label>
-        <input type="text" id="filtersekolah" name="filtersekolah" class="form-control">
-        <br>
-        <label>Status</label>
-        <select class="btn btn-default" name="filterstatus" style="width:100%; margin-top: 0px;">
+        
+      </div>
+      <div style="margin-top: 5px;">
+        <label style="width: 100%;">Status</label>
+        <select class="btn btn-default" name="filterstatus" style="width:100%; margin-top: 2px; margin-bottom: 2px;">
                     <option></option>
                     <option value="0">Pending</option>
                     <option value="1">Verified</option>
@@ -57,6 +64,15 @@
                     <option value="3">Passed</option>
                     <option value="4">Failed</option>
         </select>
+        
+      </div>
+      </div>
+      <div style="margin-top: 5px;">
+        <label>Sekolah Asal</label>
+        <input type="text" id="filtersekolah" name="filtersekolah" class="form-control" style="width:100%; margin-top: 2px;">
+        
+      </div>
+      
       </div></center>
       </div>
       <div class="form-group">
