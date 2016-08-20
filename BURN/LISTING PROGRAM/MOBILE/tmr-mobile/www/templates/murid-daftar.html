@@ -1,0 +1,186 @@
+
+<ion-view ng-controller="AppCtrl">
+
+  <ion-content class="padding latar">
+    <h2 align="center" class="tebal positive">Pendaftaran</h2>
+    <h4 align="center">{{message}}</h4>
+    <br>
+    <div ng-if="show==true">
+      <h4 align="center">Silahkan mengisi form pendaftaran dengan memilih topik di bawah ini</h4>
+      <br> 
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(1)">Profil</button>
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(2)">Tingkatan</button>
+      <button class="button button-block button-outline button-assertive" ng-click="openModal(3)">Dokumen</button>
+      <br>
+    </div>
+    <h4 align="center" class="tebal assertive">Status:</h4>
+    <h4 align="center" ng-if="user.status==0">Pending<h4>
+    <h4 align="center" ng-if="user.status==1">Verified<h4>
+    <h4 align="center" ng-if="user.status==2">Denied<h4>
+    <h4 align="center" ng-if="user.status==3">Passed<h4>
+    <h4 align="center" ng-if="user.status==4">Failed<h4>
+    <h4 align="center" class="tebal assertive">Remarks:</h4>
+    <h4 align="center">{{user.verifyremarks}}<h4>
+    <br><br>
+    
+  </ion-content>
+</ion-view>
+
+<script id="templates/modal_profil.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(1)"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <h2 align="center" class="tebal positive">Profil</h2>
+    <p align="center">Silahkan isi profil Anda di bawah ini.</p>
+    <form>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nama Lengkap</span>
+          <input type="text" name="name" ng-model="user.name" placeholder="Nama Lengkap" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Alamat</span>
+          <input type="text" name="address" ng-model="user.address" placeholder="Alamat" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Tempat Lahir</span>
+          <input type="text" name="tmptlahir" ng-model="user.placebirth" placeholder="Tempat Lahir" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Tanggal Lahir</span>
+          <input type="text" name="tgllahir" ng-model="user.datebirth" placeholder="mm/dd/yyyy" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Jenis Kelamin</span>
+          <select ng-model="user.gender">
+            <option value="m">Laki-laki</option>
+            <option value="f">Perempuan</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" name="email" ng-model="user.email" placeholder="Email" ng-disabled="true">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">No. Telepon</span>
+          <input type="text" name="notelp" ng-model="user.phone" placeholder="No. Telepon" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">No. Handphone</span>
+          <input type="text" name="nohp" ng-model="user.handphone" placeholder="No. Handphone" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Nama Ayah</span>
+          <input type="text" name="namaayah" ng-model="user.fathername" placeholder="Nama Ayah" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Pekerjaan Ayah</span>
+          <input type="text" name="pekayah" ng-model="user.fatheroccupation" placeholder="Pekerjaan Ayah" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Penghasilan Ayah</span>
+          <input type="number" name="penghayah" ng-model="user.fathersalary" placeholder="Penghasilan Ayah" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">No. Telepon Ayah</span>
+          <input type="text" name="notelpayah" ng-model="user.fatherphone" placeholder="No. Telepon Ayah" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Nama Ibu</span>
+          <input type="text" name="namaibu" ng-model="user.mothername" placeholder="Nama Ibu" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Pekerjaan Ibu</span>
+          <input type="text" name="pekibu" ng-model="user.motheroccupation" placeholder="Pekerjaan Ibu" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Penghasilan Ibu</span>
+          <input type="number" name="penghibu" ng-model="user.mothersalary" placeholder="Penghasilan Ibu" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">No. Telepon Ibu</span>
+          <input type="text" name="notelpibu" ng-model="user.motherphone" placeholder="No. Telepon Ibu" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Jumlah Saudara</span>
+          <input type="number" name="jlhsaudara" ng-model="user.numbersiblings" placeholder="Jumlah Saudara" required>
+        </label>
+        <button class="button button-block button-assertive" ng-click="send_profil(user, user.datebirth)">Kirim</button>
+      </div>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal_tingkatan.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(2)"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <h2 align="center" class="tebal positive">Tingkatan</h2>
+    <p align="center">Silahkan isi data history sekolah Anda di bawah ini.</p>
+    <form>
+        <label class="item item-input">
+          <span class="input-label">Tingkatan</span>
+          <select ng-model="user.grade">
+            <option value="0">SMP 1</option>
+            <option value="1">SMP 2</option>
+            <option value="2">SMP 3</option>
+            <option value="3">SMA 1</option>
+            <option value="4">SMA 2</option>
+            <option value="5">SMA 3</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Sekolah Sebelumnya</span>
+          <input type="text" name="sklsblm" ng-model="user.previousschool" placeholder="Sekolah Sebelumnya">
+        </label>
+        <button class="button button-block button-assertive" ng-click="send_tingkatan(user)">Kirim</button>
+      </div>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="templates/modal_dokumen.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title" ><img src="img/logotemanis.png" height="18px" align="center"></h1>
+      <button class="button button-icon ion-close button-primary" ng-click="closeModal(3)"></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+    <h2 align="center" class="tebal positive">Dokumen</h2>
+    <p align="center">Silahkan upload dokumen Anda di bawah ini.</p>
+    <form>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Akte Lahir</span>
+          <button class="button button-primary" ng-click="openfile1()">BROWSE</button>
+        </label>
+        <label ng-if="user.files[0]">{{user.files[0].name}}</label>
+        <label class="item item-input">
+          <span class="input-label">Ijazah</span>
+          <button class="button button-primary" ng-click="openfile2()">BROWSE</button>
+        </label>
+        <label ng-if="user.files[1]">{{user.files[1].name}}</label>
+        <label class="item item-input">
+          <span class="input-label">Pas Foto</span>
+          <button class="button button-primary" ng-click="openfile3()">BROWSE</button>
+        </label>
+        <label ng-if="user.files[2]">{{user.files[2].name}}</label>
+        <label class="item item-input">
+          <span class="input-label">Rapor (Terakhir)</span>
+          <button class="button button-primary" ng-click="openfile4()">BROWSE</button>
+        </label>
+        <label ng-if="user.files[3]">{{user.files[3].name}}</label>
+        <button class="button button-block button-assertive" ng-click="send_dokumen(data)">Kirim</button>
+      </div>
+      </form>
+    </ion-content>
+  </ion-modal-view>
+</script>

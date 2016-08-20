@@ -1,0 +1,147 @@
+        <div class="container text-center">
+            <div class="row">
+
+                <article class="item col-xs-12 col-sm-6 col-lg-12 ">
+                    
+                    <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
+                        
+                    <h1 style=" font-size: 3em; line-height: 1em;font-weight: bold;  " align="center">Kartu Ujian</h2>
+                        <h4 align="center">Klik tombol dibawah untuk mencetak</h4>
+                        <button onclick="cetak('printableArea')" class="btn btn-large" align="center" type="button" style="margin-top: 0px; text-align: center; position: relative; ">Klik disini</button>
+                        <br><br>
+
+                        <div id="printableArea" style="margin-bottom: 30px;">
+                            <center>
+                                <div style="background-color: white; border-color: black; border-style: solid; padding:5px 5px; border-width: 1px; width: 650px; ">
+                        
+                                    <div style="background-color: white; border-color: black; border-style: solid; border-width: 1px;height: 50px;">
+                                        <img src="/img/logotemanis.png" height="30px;" align="left;" style="float: left; margin:10px 20px;">
+                                        <h4 style="font-weight: bold;"> KARTU UJIAN SARINGAN MASUK</h4>
+                                    </div>
+                                    <div style="background-color: white; border-color: black; border-style: solid; border-width: 1px;margin-top: 5px; height: 180px;">
+                                        <div style="float: left; height: 100%; padding:10px 10px; width: 470px; text-align: left;">
+                                            <p align="left;" style="color: black; font-weight: bold;">No. USM: <%=user.nousm%></p>
+                                            <p align="left;" style="color: black; font-weight: bold;">Nama: <%=user.name%></p>
+                                            <p align="left" style="color: black; font-weight: bold;">Tingkatan: 
+                                            <% if (user.grade == "0") { %>
+                                              SMP 1
+                                            <% } else if (user.grade == "1") { %>
+                                              SMP 2
+                                            <% } else if (user.grade == "2") { %>
+                                              SMP 3
+                                            <% } else if (user.grade == "3") { %>
+                                              SMA 1
+                                            <% } else if (user.grade == "4") { %>
+                                              SMA 2
+                                            <% } else if (user.grade == "5") { %>
+                                              SMA 3
+                                            <% } else { %>
+                                              -
+                                            <% } %>
+
+                                            </p>
+                                            <p align="left" style="color: black; font-weight: bold;">Alamat: <%=user.address%></p>
+                                            <p align="left" style="color: black; font-weight: bold;">Tanggal USM Anda: 
+                                                <% if (user.testdate != null) { %>
+                                                    
+                                                        <% if (user.testdate.getDay() == 1) { %>
+                                                            Senin, 
+                                                        <% } else if (user.testdate.getDay() == 2) { %>
+                                                            Selasa, 
+                                                        <% } else if (user.testdate.getDay() == 3) { %>
+                                                            Rabu, 
+                                                        <% } else if (user.testdate.getDay() == 4) { %>
+                                                            Kamis, 
+                                                        <% } else if (user.testdate.getDay() == 5) { %>
+                                                            Jumat, 
+                                                        <% } else if (user.testdate.getDay() == 6) { %>
+                                                            Sabtu, 
+                                                        <% } %>
+                                                        <%=user.testdate.getDate()%> 
+                                                        <% if (user.testdate.getMonth() == 0) { %>
+                                                            Januari 
+                                                        <% } else if (user.testdate.getMonth() == 1) { %>
+                                                            Februari 
+                                                        <% } else if (user.testdate.getMonth() == 2) { %>
+                                                            Maret 
+                                                        <% } else if (user.testdate.getMonth() == 3) { %>
+                                                            April 
+                                                        <% } else if (user.testdate.getMonth() == 4) { %>
+                                                            Mei 
+                                                        <% } else if (user.testdate.getMonth() == 5) { %>
+                                                            Juni 
+                                                        <% } else if (user.testdate.getMonth() == 6) { %>
+                                                            Juli 
+                                                        <% } else if (user.testdate.getMonth() == 7) { %>
+                                                            Agustus 
+                                                        <% } else if (user.testdate.getMonth() == 8) { %>
+                                                            September 
+                                                        <% } else if (user.testdate.getMonth() == 9) { %>
+                                                            Oktober 
+                                                        <% } else if (user.testdate.getMonth() == 10) { %>
+                                                            November 
+                                                        <% } else if (user.testdate.getMonth() == 11) { %>
+                                                            Desember 
+                                                        <% } %> 
+                                                        <%=user.testdate.getFullYear()%>    
+                                                            
+                                                        <% } else { %>
+                                                            -
+                                                        <% } %>
+                                                        </p>
+                            
+                                        </div>
+                                        <div style="float: right; height: 100%; padding:10px 10px; width: 150px; text-align: left;">
+                                        <img src="<%=user.files[2].url%>" style="height: 100%;">
+                                        </div>
+                                    </div>
+        <div style="background-color: white; border-color: black; border-style: solid; border-width: 1px;margin-top: 5px; height: 175px;">
+                            <div style="float: left; height: 100%; padding:10px 10px; width: 500px; text-align: left;">
+                            <p align="left" style="color: black; font-weight: bold;">
+                            Peserta diharapkan hadir 30 menit sebelum waktu yang ditentukan.
+                            <br>Peralatan-peralatan yang perlu dipersiapkan:
+                            <br>- Pensil 2B & Pulpen
+                            <br>- Peraut Pensil
+                            <br>- Penghapus
+                            <br>- Kartu Ujian
+                            <br>- Papan Alas
+                            </p>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+    					
+                        
+                    
+
+                        
+                        </center>
+                    </div>
+                </article>
+
+                <br><br>
+            </div>
+        </div></div>
+    
+<script>
+function cetak(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+
+
+
+
+
+
+   

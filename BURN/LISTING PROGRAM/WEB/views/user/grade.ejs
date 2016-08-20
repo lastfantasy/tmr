@@ -1,0 +1,179 @@
+<div class="container">
+  <h1 style=" font-size: 4em; line-height: 1em;" align="center">Pendaftaran</h1>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
+        </div>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
+    </div>
+    </div>
+  <% } %>
+  <% } %>
+<div class="row">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/applygrade" role="form">
+    <div class="col-md-4" style="width: 27.333333%;margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Isi detail topik di bawah ini</h2>
+          </div>
+          <div class="panel-body">
+          
+          <a class="external" href="/user/dashboard"><button type="button" id="send" style="width:100%; margin-top: 0px;" class="btn">Profil</button></a>
+          <a class="external" href="/user/grade"><button type="button" autofocus id="send" style="width:100%" class="btn btn-active btn-default">Tingkatan</button></a>
+          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn">Dokumen</button>
+          </a>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="width: 72.333333%;margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Tingkatan - Pilih tingkatan Anda dan isi detail di bawah</h2>
+          </div>
+          <div class="panel-body">
+                <div class="form-group">
+                  <label>Murid: </label>
+                  <% if (user.grade_status == 1) { %>
+                    <% if (user.statusmurid == "temanis") { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;" checked=""> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;"> Pindahan Sekolah Lain
+                    <% } else if (user.statusmurid == "pindahan") { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;"> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;" checked=""> Pindahan Sekolah Lain
+                    <% } else { %>
+                      <input type="radio" name="statusmurid" value="temanis" style="margin-left: 10px;" checked=""> Temanis Baru
+                      <input type="radio" name="statusmurid" value="pindahan" style="margin-left: 10px;"> Pindahan Sekolah Lain
+                    <% } %>
+                  <% } %>
+                  <br>
+                  <br>
+                <label>Tingkatan</label>
+                <% if (user.grade_status == 1) { %>
+                  <% if (user.grade == "0"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0" selected="">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "1"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1" selected="">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "2"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2" selected="">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "3"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3" selected="">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "4"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4" selected="">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                    </select>
+                  <% } else if (user.grade == "5"){ %>
+                    <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5" selected="">SMA 3</option>
+                    </select>
+                  <% } %>
+                <% } else { %>
+                  <select class="btn btn-default" name="grade" style="width:100%; margin-top: 0px;">
+                              <option value="0">SMP 1</option>
+                              <option value="1">SMP 2</option>
+                              <option value="2">SMP 3</option>
+                              <option value="3">SMA 1</option>
+                              <option value="4">SMA 2</option>
+                              <option value="5">SMA 3</option>
+                  </select>
+                <% } %> 
+                
+                <br>
+                <br>
+                <% if (user.grade_status == 1 && user.statusmurid == "pindahan") { %>
+                  <label>Sekolah Asal</label>
+                  <% if (user.previousschoolname != "") { %>
+                    <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" value="<%=user.previousschoolname%>">
+                  <% } else { %>
+                    <input type="text" id="previousschoolname" name="previousschoolname" required="required" class="form-control" placeholder="">
+                  <% } %>
+                <% } %>
+                <br>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
+                <br>
+                    
+                </div>
+
+                                
+          </div>
+          
+          
+        </div>
+    </div>
+  </form>
+</div>
+<hr style="border:1px solid black;">
+<h2 class="text-center">Status : <span id="status">
+<% if(user.status==0) { %>
+  Pending
+<% } else if(user.status==1) { %>
+  Verified
+<% } else if(user.status==2) { %>
+   Denied
+<% } else if(user.status==3) { %>
+   Passed
+<% } else if(user.status==4) { %>
+   Failed
+<% } %>
+</span>
+</h2>
+<h2 class="text-center">Remarks : <span id="remarks">
+<% if(typeof (user.verifyremarks) != "undefined") { %>
+  <label><%=user.verifyremarks%></label>
+<% } %>
+</span>
+</h2>
+<br><br><br>
+</div>

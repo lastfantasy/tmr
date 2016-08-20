@@ -1,0 +1,123 @@
+<div class="container">
+  <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Verifikasi Dokumen</h2>
+ <div class="row">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/verifyuser/<%=user.id%>" role="form">
+    <div class="col-md-4" style="width: 27.333333%; margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Profil</h2>
+          </div>
+          <div class="panel-body">
+          <p>No. USM: <%=user.nousm%></p>
+          <p>Nama: <%=user.name%></p>
+          <p>Alamat: <%=user.address%></p>
+          <p>Tempat Lahir: <%=user.placebirth%></p>
+          <p>Tanggal Lahir: <%=user.datebirth%></p>
+          <p>Jenis Kelamin: 
+          <% if (user.gender == "m") { %>
+            Laki-Laki
+          <% } else if (user.gender == "f") { %>
+            Perempuan
+          <% } %>
+          </p>
+          <p>Email: <%=user.email%></p>
+          <p>No. Telepon: <%=user.phone%></p>
+          <p>No. Handphone: <%=user.handphone%></p>
+          <p>Nama Ayah: <%=user.fathername%></p>
+          <p>Pekerjaan Ayah: <%=user.fatheroccupation%></p>
+          <p>Penghasilan Ayah: <%=user.fathersalary%></p>
+          <p>No. Telepon Ayah: <%=user.fatherphone%></p>
+          <p>Nama Ibu: <%=user.mothername%></p>
+          <p>Pekerjaan Ibu: <%=user.motheroccupation%></p>
+          <p>Penghasilan Ibu: <%=user.mothersalary%></p>
+          <p>No. Telepon Ibu: <%=user.motherphone%></p>
+          <p>Jumlah Saudara: <%=user.numbersiblings%></p>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="width: 72.333333%; margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Dokumen</h2>
+          </div>
+          <div class="panel-body">
+
+                <div class="form-group" style="margin-bottom: 0px;">
+                <input type="checkbox" name="aktelahir">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Akte Lahir </label>
+                <% if (user.files[0]) { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[0].name%>
+                  </div>
+                  <img src="<%=user.files[0].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
+                </div>
+                <br><br>
+                <div class="form-group" style="margin-bottom: 0px;">
+                <input type="checkbox" name="ijazah">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Ijazah </label>
+                <% if (user.files[1]) { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[1].name%>
+                  </div>
+                  <img src="<%=user.files[1].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
+                </div>
+                <br><br>
+                <div class="form-group" style="margin-bottom: 0px;">
+                <input type="checkbox" name="pasfoto">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Pas Foto </label>
+                <% if (user.files[2]) { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[2].name%>
+                  </div>
+                  <img src="<%=user.files[2].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
+                </div>
+                <br><br>
+                <div class="form-group" style="margin-bottom: 0px;">
+                <input type="checkbox" name="rapor">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Rapor (Terakhir) </label>
+                <% if (user.files[3]) { %>
+                  <div class="col-lg-8" >
+                    <%=user.files[3].name%>
+                  </div>
+                  <img src="<%=user.files[3].url%>" style="width:200px; height:200px;">
+                <% } else { %>
+                  <div class="col-lg-8" >
+                    Belum ada dokumen
+                  </div>
+                <% } %>  
+                </div>
+                <br><br>
+                <div class="form-group" style="margin-bottom: 0px;">
+                <label class="control-label col-lg-4 required" style="width: 180px;">Remarks </label>
+                </div>
+                <textarea style="width:500px;" id="verifyremarks" name="verifyremarks" class="form-control" required="required"></textarea>
+                </div>
+                </div>
+                <div class="form-group">
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:200px; float: right; margin-top: 0px;">Verifikasi</button>
+                </div>                        
+          </div>
+          
+          
+        </div>
+    </div>
+  </form>
+</div>
+
+<br><br><br>
+</div>

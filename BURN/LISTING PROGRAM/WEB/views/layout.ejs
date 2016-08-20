@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Temanis Baru</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/media-queries.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--STYLES END-->
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+
+  <body>
+    <!--header-->
+        <header class="navbar navbar-default navbar-fixed-top">
+            <nav class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <figure class="content-logo">
+                            <a class="navbar-brand" href="/"><img src="/img/logotemanis.png" style="margin-top: 5px;"></a>
+                        </figure>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <% if(!session.authenticated) { %>
+                              <li><a class="external" href="/">Beranda</a></li>
+                              <li><a class="external" href="/register">Daftar</a></li>
+                              <li><a class="external" href="/login">Masuk</a></li>
+                              <li><a class="external" href="mailto:noreply.temanisbaru@gmail.com">Hubungi Kami</a></li>
+                            <% } else { %>
+                              <% if(session.User.admin) { %>
+                                <li><a class="external" href="/user/homeadmin">Beranda</a></li>
+                                <li><a class="external" href="/user/openclose">Buka/Tutup Pendaftaran</a></li>
+                                <li><a class="external" href="/user/verifyapplicant">Verifikasi Pendaftar</a></li>
+                                <li><a class="external" href="/user/testadmin">Ujian Saringan Masuk</a></li>
+                                <li><a class="external" href="/user/laporan">Statistik</a></li>
+                                <li><a class="external" href="/session/signout">Keluar</a></li>
+                                <% } else { %>
+                                <li><a class="external" href="/user/homesiswa">Beranda</a></li>
+                                <li><a class="external" href="/user/verifyapplication">Pendaftaran dan Cek Status</a></li>
+                                <li><a class="external" href="/user/test">Ujian Saringan Masuk</a></li>
+                                <li><a class="external" href="mailto:noreply.temanisbaru@gmail.com">Hubungi Kami</a></li>
+                                <li><a class="external" href="/session/signout">Keluar</a></li>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    </div>
+            </nav>
+        </header>
+
+    <%- body %>
+    <!--Footer-->
+    <div class="copyright text-center" style="margin-top: 0px;">
+            <div class="container">
+                <h6 class="col-xs-12 col-lg-6">© 2016 Temanis Baru. All rights reserved.</h6>
+                <ul class="list-unstyled col-xs-12 col-lg-6 social">
+                    <li class="tooltip_hover" title="vimeo" data-placement="top"  data-toggle="tooltip"><a href="#"><i class="icon-vimeo"></i></a></li>
+                    <li class="tooltip_hover" title="twitter" data-placement="top"  data-toggle="tooltip"><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li class="tooltip_hover" title="gplus" data-placement="top"  data-toggle="tooltip"><a  href="#" ><i class="icon-gplus"></i></a></li>
+                    <li class="tooltip_hover" title="in" data-placement="top"  data-toggle="tooltip"><a href="#"><i class="icon-linkedin"></i></a></li>
+                    <li class="tooltip_hover" title="play" data-placement="top"  data-toggle="tooltip"><a href="#"><i class="icon-next"></i></a></li>
+                    <li class="tooltip_hover" title="pinterest" data-placement="top"  data-toggle="tooltip"><a href="#"><i class="icon-pinterest"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    
+    <!--Footer-->
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+    <!--SCRIPTS-->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-func.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/jquery.scrollTo.js"></script>
+    <script src="/js/snap.js"></script>
+    <script src="/js/waypoints.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

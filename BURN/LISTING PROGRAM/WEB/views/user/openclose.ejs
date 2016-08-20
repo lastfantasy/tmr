@@ -1,0 +1,113 @@
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+
+<div class="container" style="margin-bottom: 177px;">
+  <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Buka/Tutup Pendaftaran</h1>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
+        </div>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
+    </div>
+    </div>
+  <% } %>
+  <% } %>
+  <div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+    <form method="post" action="/user/setopenclose">
+     <div class="form-group ">
+      <h3 align="center">Tanggal Buka Pendaftaran:</h3>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-calendar-check-o">
+        </i>
+       </div>
+       <% if (user.opendate != "") { %>
+        <input class="form-control" id="opendate" name="opendate" value="<%=user.opendate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="opendate" name="opendate" placeholder="" type="text"/>
+       <% } %>
+      </div>
+     </div>
+     <div class="form-group ">
+      <h3 align="center">Tanggal Tutup Pendaftaran:</h3>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-calendar-check-o">
+        </i>
+       </div>
+       <% if (user.closedate != "") { %>
+        <input class="form-control" id="closedate" name="closedate" value="<%=user.closedate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="closedate" name="closedate" placeholder="" type="text"/>
+       <% } %>
+      </div>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 35.5%;">Tetapkan Tanggal</button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+
+ </div>
+</div>
+    
+    <br><br><br>
+</div>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var date_input=$('input[name="opendate"]'); 
+       var date_input2=$('input[name="closedate"]'); 
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+date_input2.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+

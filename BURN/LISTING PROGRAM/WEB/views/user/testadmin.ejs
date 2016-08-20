@@ -1,0 +1,110 @@
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+
+<div class="container" style="margin-bottom: 26px;">
+  <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Tanggal USM</h1>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
+        </div>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
+    </div>
+    </div>
+  <% } %>
+  <% } %>
+  <div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left: 25%;">
+    <form method="post" action="/user/settestdate">
+     <div class="form-group ">
+      <h3 align="center">Jumlah Murid</h3>
+      <center><div class="input-group" align="center">
+        <label>SMP 1</label>
+        <input type="number" id="jlhsmp1" name="jlhsmp1" required="required" class="form-control" value="<%=user.smp1%>">
+        <br>
+        <label>SMP 2</label>
+        <input type="number" id="jlhsmp2" name="jlhsmp2" required="required" class="form-control" value="<%=user.smp2%>">
+        <br>
+        <label>SMP 3</label>
+        <input type="number" id="jlhsmp3" name="jlhsmp3" required="required" class="form-control" value="<%=user.smp3%>">
+        <br>
+        <label>SMA 1</label>
+        <input type="number" id="jlhsma1" name="jlhsma1" required="required" class="form-control" value="<%=user.sma1%>">
+        <br>
+        <label>SMA 2</label>
+        <input type="number" id="jlhsma2" name="jlhsma2" required="required" class="form-control" value="<%=user.sma2%>">
+        <br>
+        <label>SMA 3</label>
+        <input type="number" id="jlhsma3" name="jlhsma3" required="required" class="form-control" value="<%=user.sma3%>">
+        <br>
+      </div></center>
+      <h3 align="center">Tanggal Ujian Saringan Masuk:</h3>
+      <div class="input-group">
+       <div class="input-group-addon">
+        <i class="fa fa-calendar-check-o">
+        </i>
+       </div>
+       <% if (user.testdate != "") { %>
+        <input class="form-control" id="testdate" name="testdate" value="<%=user.testdate%>" type="text"/>
+       <% } else { %>
+        <input class="form-control" id="testdate" name="testdate" placeholder="" type="text"/>
+       <% } %>
+      </div>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 35.5%;">Tetapkan Tanggal</button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+
+ </div>
+
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var date_input=$('input[name="testdate"]'); 
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+

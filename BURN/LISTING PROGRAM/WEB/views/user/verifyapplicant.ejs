@@ -1,0 +1,139 @@
+<div class="container" style="margin-bottom: 55px; min-height: 370px;">
+    <h1 style=" font-size: 3em; line-height: 1em;  " align="center">Verifikasi Pendaftar</h1>
+    <% if(flash) { %>
+    <% if(flash.err) { %>
+          <div>
+            <br><br>
+              <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                <% Object.keys(flash.err).forEach(function(error) { %>
+                      <%= flash.err[error] %>
+                <% }) %>
+              </div>
+          </div>
+    <% } else if (flash.success){ %>
+      <div>
+      <br><br>
+      <div class="alert alert-success" role="alert">
+        <span class="sr-only">Success:</span>
+        <% Object.keys(flash.success).forEach(function(success) { %>
+              <%= flash.success[success] %>
+        <% }) %>
+      </div>
+      </div>
+    <% } %>
+    <% } %>
+    <h3 align="center">Saring Keluaran :</h3>
+    <form method="post" action="/user/verifyapplicant">
+     <div class="form-group ">
+      <center><div class="input-group" align="center" style="width: auto;">
+      <div>
+      <div style="float: left;">
+        <label>Nama
+        <input type="text" id="filternama" name="filternama" class="form-control" style="margin-top: 2px;">
+        </label>
+      </div>
+      <div style="float: right; margin-left: 10px;">
+        <label>No. USM
+        <input type="text" id="filternousm" name="filternousm" class="form-control" style="margin-top: 2px;">
+        </label>
+      </div>
+      </div>
+      <div>
+      <div style="margin-top: 60px;">
+        <label style="width: 100%;">Tingkatan</label>
+        <select class="btn btn-default" name="filtertingkatan" style="width:100%; margin-top: 2px; margin-bottom: 2px;">
+                    <option></option>
+                    <option value="0">SMP 1</option>
+                    <option value="1">SMP 2</option>
+                    <option value="2">SMP 3</option>
+                    <option value="3">SMA 1</option>
+                    <option value="4">SMA 2</option>
+                    <option value="5">SMA 3</option>
+        </select>
+        
+      </div>
+      <div style="margin-top: 5px;">
+        <label style="width: 100%;">Status</label>
+        <select class="btn btn-default" name="filterstatus" style="width:100%; margin-top: 2px; margin-bottom: 2px;">
+                    <option></option>
+                    <option value="0">Pending</option>
+                    <option value="1">Verified</option>
+                    <option value="2">Denied</option>
+                    <option value="3">Passed</option>
+                    <option value="4">Failed</option>
+        </select>
+        
+      </div>
+      </div>
+      <div style="margin-top: 5px;">
+        <label>Sekolah Asal</label>
+        <input type="text" id="filtersekolah" name="filtersekolah" class="form-control" style="width:100%; margin-top: 2px;">
+        
+      </div>
+      
+      </div></center>
+      </div>
+      <div class="form-group">
+        <div>
+         <button class="btn btn-large" id="send" type="submit" style="margin-top: 0px; text-align: center; position: relative; left: 45.5%;">Saring</button>
+        </div>
+       </div>
+    <table width="95%" border="1" class="table" style="margin-top: 20px;">
+  <thead>
+    <th style="background-color: #0062B2; color: white;">Nama</th>
+    <th style="background-color: #0062B2; color: white;">No. USM</th>
+    <th style="background-color: #0062B2; color: white;">Tingkatan</th>
+    <th style="background-color: #0062B2; color: white;">Sekolah Asal</th>
+    <th style="background-color: #0062B2; color: white;">Status</th>
+    <th style="background-color: #0062B2; color: white;">Hasil USM</th>
+  </thead>
+ <tbody>
+ 	<% _.each(users, function(user){ %>
+ 		<tr>
+ 			<td><a href="verifydocument/<%=user.id%>"><%=user.name%></a></td>
+ 			<td><%=user.nousm%></td>
+ 			<td>
+        <% if (user.grade == "0") { %>
+          SMP 1
+        <% } else if (user.grade == "1") { %>
+          SMP 2
+        <% } else if (user.grade == "2") { %>
+          SMP 3
+        <% } else if (user.grade == "3") { %>
+          SMA 1
+        <% } else if (user.grade == "4") { %>
+          SMA 2
+        <% } else if (user.grade == "5") { %>
+          SMA 3
+        <% } else { %>
+          -
+        <% } %>    
+      </td>
+      <td>
+        <% if (user.previousschool == null) { %>
+          -
+        <% } else { %>
+          <%=user.previousschool%>
+        <% } %>  
+      </td>
+      <td>
+        <% if(user.status==0) { %>
+          Pending
+        <% } else if(user.status==1) { %>
+          Verified
+        <% } else if(user.status==2) { %>
+           Denied
+        <% } else if(user.status==3) { %>
+           Passed
+        <% } else if(user.status==4) { %>
+           Failed
+        <% } %>
+      </td>
+      <td><a href="/user/userpass/<%=user.id%>" style="margin-right: 20px;">Pass</a><a href="/user/userfail/<%=user.id%>">Fail</a></td> 
+ 		</tr>
+ 	<% }) %>
+ </tbody>
+</table>
+</div>

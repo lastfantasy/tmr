@@ -1,0 +1,15 @@
+Untuk menjalankan Web:
+buka terminal dan masuk ke dalam folder Web.
+Lalu ketikkan
+> npm install
+
+Setelah proses di atas selesai, ketikkan
+> sails lift
+
+Lalu buka browser dan ketikkan di browser: localhost:1337
+
+Untuk menjalankan Mobile, buka emulator android.
+Lalu cari file bernama "android-debug.apk" di folder Mobile
+MOBILE\tmr-mobile\platforms\android\build\outputs\apk
+
+Website telah dihost pada temanisbaru.herokuapp.com

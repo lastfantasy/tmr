@@ -1,0 +1,204 @@
+<div class="container">
+  <h1 style=" font-size: 4em; line-height: 1em;" align="center">Pendaftaran</h1>
+  <% if(flash) { %>
+  <% if(flash.err) { %>
+        <div>
+          <br><br>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <% Object.keys(flash.err).forEach(function(error) { %>
+                    <%= flash.err[error] %>
+              <% }) %>
+            </div>
+        </div>
+  <% } else if (flash.success){ %>
+    <div>
+    <br><br>
+    <div class="alert alert-success" role="alert">
+      <span class="sr-only">Success:</span>
+      <% Object.keys(flash.success).forEach(function(success) { %>
+            <%= flash.success[success] %>
+      <% }) %>
+    </div>
+    </div>
+  <% } %>
+  <% } %>
+
+<div class="row">
+  <form method="post" style="padding-left:10px; padding-right:10px" action="/user/applyprofile" role="form">
+    <div class="col-md-4" style="width: 27.333333%; margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Isi detail topik di bawah ini</h2>
+          </div>
+          <div class="panel-body">
+          
+          <a class="external" href="/user/dashboard"><button type="button" id="send" active style="width:100%; margin-top: 0px; " class="btn btn-active btn-default">Profil</button></a>
+          <a class="external" href="/user/grade"><button type="button" id="send" style="width:100%" class="btn">Tingkatan</button></a>
+          <a class="external" href="/user/documents"><button type="button" id="send" style="width:100%" class="btn">Dokumen</button>
+          </a>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="width: 72.333333%;margin-top: 10px;">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Profil - Lengkapi profil Anda di bawah ini</h2>
+          </div>
+          <div class="panel-body">
+
+                <label>Nama Lengkap</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="name" name="name" required="required" class="form-control" value="<%=user.name%>">
+                <% } else { %>
+                  <input type="text" id="name" name="name" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Alamat</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="address" name="address" required="required" class="form-control" value="<%=user.address%>">
+                <% } else { %>
+                  <input type="text" id="address" name="address" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Tempat Lahir</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" value="<%=user.placebirth%>">
+                <% } else { %>
+                  <input type="text" id="placebirth" name="placebirth" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Tanggal Lahir</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" value="<%=user.datebirth%>">
+                <% } else { %>
+                  <input type="text" id="datepicker" name="datebirth" required="required" class="form-control" placeholder="mm/dd/yyyy">
+                <% } %>
+                <br>
+                <label>Jenis Kelamin</label>
+                <% if (user.gender == "f") { %>
+                  <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
+                            <option value="m">Laki-Laki</p>
+                            <option value="f" selected="">Perempuan</p>
+                  </select>
+                <% } else { %>
+                  <select class="btn btn-default" name="gender" style="width:100%; margin-top: 0px;">
+                            <option value="m" selected="">Laki-Laki</p>
+                            <option value="f">Perempuan</p>
+                  </select>
+                <% } %>
+                <br>
+                <br>
+                <label>Email</label><input type="email" id="email" value="<%=user.email%>" class="form-control" disabled="">
+                <br>
+                <label>Nomor Telepon</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="phonenumber" name="phone" required="required" class="form-control" value="<%=user.phone%>">
+                <% } else { %>
+                  <input type="text" id="phonenumber" name="phone" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Nomor Handphone</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" value="<%=user.handphone%>">
+                <% } else { %>
+                  <input type="text" id="handphonenumber" name="handphone" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Nama Ayah</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="fathername" name="fathername" required="required" class="form-control" value="<%=user.fathername%>">
+                <% } else { %>
+                  <input type="text" id="fathername" name="fathername" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Pekerjaan Ayah</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" value="<%=user.fatheroccupation%>">
+                <% } else { %>
+                  <input type="text" id="fatheroccupation" name="fatheroccupation" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Penghasilan Ayah</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="number" id="fathersalary" name="fathersalary" required="required" class="form-control" value="<%=user.fathersalary%>">
+                <% } else { %>
+                  <input type="number" id="fathersalary" name="fathersalary" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>No. Telepon Ayah</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" value="<%=user.fatherphone%>">
+                <% } else { %>
+                  <input type="text" id="fatherphone" name="fatherphone" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Nama Ibu</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="mothername" name="mothername" required="required" class="form-control" value="<%=user.mothername%>">
+                <% } else { %>
+                  <input type="text" id="mothername" name="mothername" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Pekerjaan Ibu</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" value="<%=user.motheroccupation%>">
+                <% } else { %>
+                  <input type="text" id="motheroccupation" name="motheroccupation" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Penghasilan Ibu</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="number" id="mothersalary" name="mothersalary" required="required" class="form-control" value="<%=user.mothersalary%>">
+                <% } else { %>
+                  <input type="number" id="mothersalary" name="mothersalary" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>No. Telepon Ibu</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" value="<%=user.motherphone%>">
+                <% } else { %>
+                  <input type="text" id="motherphone" name="motherphone" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <label>Jumlah Saudara</label>
+                <% if (user.dashboard_status == 1) { %>
+                  <input type="number" id="numbersiblings" name="numbersiblings" required="required" class="form-control" value="<%=user.numbersiblings%>">
+                <% } else { %>
+                  <input type="number" id="numbersiblings" name="numbersiblings" required="required" class="form-control" placeholder="">
+                <% } %>
+                <br>
+                <button type="submit" id="send" class="btn-color btn btn-primary" style="width:100px; float: right; margin-top: 0px;">Kirim</button>
+                </div>                                              
+          </div>
+          
+          
+        </div>
+    </div>
+  </form>
+  <hr style="border:1px solid black;">
+</div>
+
+<h2 class="text-center">Status : <span id="status">
+<% if(user.status==0) { %>
+  Pending
+<% } else if(user.status==1) { %>
+  Verified
+<% } else if(user.status==2) { %>
+   Denied
+<% } else if(user.status==3) { %>
+   Passed
+<% } else if(user.status==4) { %>
+   Failed
+<% } %>
+</span>
+</h2>
+<h2 class="text-center">Remarks : <span id="remarks">
+<% if(typeof (user.verifyremarks) != "undefined") { %>
+  <label><%=user.verifyremarks%></label>
+<% } %>
+</span>
+</h2>
+<br><br><br>
+</div>

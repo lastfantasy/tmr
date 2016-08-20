@@ -1,0 +1,22 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-light tabs-assertive">
+
+  <ion-tab title="Beranda" icon="ion-home" href="#/murid/dashboard.html">
+    <ion-nav-view name="murid-dashboard"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Pendaftaran" icon="ion-android-person-add" href="#/murid/daftar">
+    <ion-nav-view name="murid-daftar"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Ujian Masuk" icon="ion-edit" href="#/murid/ujian">
+    <ion-nav-view name="murid-ujian"></ion-nav-view>
+  </ion-tab>
+
+
+
+</ion-tabs>

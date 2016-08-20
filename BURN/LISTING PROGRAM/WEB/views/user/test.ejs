@@ -1,0 +1,123 @@
+        <div class="container text-center">
+            <div class="row">
+
+                <article class="item col-xs-12 col-sm-6 col-lg-12 ">
+                    
+                    <div class="col-sm-12 col-lg-7 info_text" style="width: 1140px;">
+                        <div id="printableArea">
+                    <h1 style=" font-size: 3em; line-height: 1em;font-weight: bold;  " align="center">Ujian Saringan Masuk</h2>
+                        <h3 align="center">Nama Sekolah: Temanis Baru</h3>
+                        <h3 align="center" style="line-height: 1em;">No. USM: <%=user.nousm%></h3>
+                        <h3 align="center" style="line-height: 1em;">Nama: <%=user.name%></h3>
+                        <h3 align="center">Tanggal USM Anda:</h3>
+                        <% if (user.testdate != null) { %>
+                            <h2 align="center">
+                                <% if (user.testdate.getDay() == 1) { %>
+                                    Senin, 
+                                <% } else if (user.testdate.getDay() == 2) { %>
+                                    Selasa, 
+                                <% } else if (user.testdate.getDay() == 3) { %>
+                                    Rabu, 
+                                <% } else if (user.testdate.getDay() == 4) { %>
+                                    Kamis, 
+                                <% } else if (user.testdate.getDay() == 5) { %>
+                                    Jumat, 
+                                <% } else if (user.testdate.getDay() == 6) { %>
+                                    Sabtu, 
+                                <% } %>
+                                <%=user.testdate.getDate()%> 
+                                <% if (user.testdate.getMonth() == 0) { %>
+                                    Januari 
+                                <% } else if (user.testdate.getMonth() == 1) { %>
+                                    Februari 
+                                <% } else if (user.testdate.getMonth() == 2) { %>
+                                    Maret 
+                                <% } else if (user.testdate.getMonth() == 3) { %>
+                                    April 
+                                <% } else if (user.testdate.getMonth() == 4) { %>
+                                    Mei 
+                                <% } else if (user.testdate.getMonth() == 5) { %>
+                                    Juni 
+                                <% } else if (user.testdate.getMonth() == 6) { %>
+                                    Juli 
+                                <% } else if (user.testdate.getMonth() == 7) { %>
+                                    Agustus 
+                                <% } else if (user.testdate.getMonth() == 8) { %>
+                                    September 
+                                <% } else if (user.testdate.getMonth() == 9) { %>
+                                    Oktober 
+                                <% } else if (user.testdate.getMonth() == 10) { %>
+                                    November 
+                                <% } else if (user.testdate.getMonth() == 11) { %>
+                                    Desember 
+                                <% } %> 
+                                <%=user.testdate.getFullYear()%>    
+                            </h2>
+                        <% } else { %>
+                            <h2 align="center">-</h2>
+                        <% } %>
+                        </div>
+                        <% if (user.nousm != "-") { %>
+                            <h3 align="center">Cetak kartu ujian Anda</h3>
+                            <a href="/user/kartuujian/<%=user.id%>"><button class="btn btn-large" align="center" type="button" style="margin-top: 0px; text-align: center; position: relative; ">Klik disini</button></a>
+                        <% } %>
+                        <p align="center">
+    					
+                        <br>
+                        Peralatan-peralatan yang perlu dipersiapkan:
+                        <br>- Pensil 2B & Pulpen
+                        <br>- Peraut Pensil
+                        <br>- Penghapus
+                        <br>- Kartu Ujian
+                        <br>- Papan Alas
+                        </p>
+                    
+
+                        <hr style="border:1px solid black;">
+    					<h2 class="text-center">Status : <span id="status">
+                        <% if(user.status==0) { %>
+                          Pending
+                        <% } else if(user.status==1) { %>
+                          Verified
+                        <% } else if(user.status==2) { %>
+                           Denied
+                        <% } else if(user.status==3) { %>
+                           Passed
+                        <% } else if(user.status==4) { %>
+                           Failed
+                        <% } %>
+                        </span>
+                        </h2>
+                        <h2 class="text-center">Remarks : <span id="remarks">
+                        <% if(typeof (user.verifyremarks) != "undefined") { %>
+                          <label value="<%=user.verifyremarks%>"></label>
+                        <% } %>
+                        </span>
+                        </h2>
+                    </div>
+                </article>
+
+                
+            </div>
+        </div></div>
+    
+<script>
+function cetak(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+
+
+
+
+
+
+   

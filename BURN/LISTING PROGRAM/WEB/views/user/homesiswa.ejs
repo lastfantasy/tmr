@@ -1,0 +1,237 @@
+       <% if(flash) { %>
+          <% if(flash.err) { %>
+                <div>
+                  <br><br>
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>
+                      <% Object.keys(flash.err).forEach(function(error) { %>
+                            <%= flash.err[error] %>
+                      <% }) %>
+                    </div>
+                </div>
+          <% } else if (flash.success){ %>
+            <div>
+            <br><br>
+            <div class="alert alert-success" role="alert">
+              <span class="sr-only">Success:</span>
+              <% Object.keys(flash.success).forEach(function(success) { %>
+                    <%= flash.success[success] %>
+              <% }) %>
+            </div>
+            </div>
+          <% } %>
+          <% } %>
+       <section id="slider" class="slider" style="min-height:256px; background-color:#0062B2; opacity:0.8;">
+           
+           <div class="container center text-center">
+               <h1 style="color: white; font-size: 4em; line-height: 1em;">Selamat Datang di Temanis Baru</h1>
+
+               <% if (user.name != '') { %>
+                <h3 style="color: yellow; font-size: 3em; line-height: 1.5em;"><%=user.name%></h3>
+                <p>Status : 
+                  <% if(user.status==0) { %>
+                    <label>Pending</label>
+                  <% } else if(user.status==1) { %>
+                    <label>Verified</label>
+                  <% } else if(user.status==2) { %>
+                     <label>Denied</label>
+                  <% } else if(user.status==3) { %>
+                     <label>Passed</label>
+                  <% } else if(user.status==4) { %>
+                     <label>Failed</label>
+                  <% } %>
+                </p>
+                <p>Remarks : 
+                  <% if(typeof (user.verifyremarks) != "undefined") { %>
+                    <label><%=user.verifyremarks%></label>
+                  <% } %>
+                </p>
+               <% } %>
+               <% if (user.name == "") { %>
+                 <p>
+                      Sekarang anda bisa mendaftarkan diri di Sekolah Temanis Baru.
+                 </p>
+
+                 <p>Tanggal Pendaftaran: 
+                      <%=user.opendate.getDate()%> 
+                      <% if (user.opendate.getMonth() == 0) { %>
+                          Januari 
+                      <% } else if (user.opendate.getMonth() == 1) { %>
+                          Februari 
+                      <% } else if (user.opendate.getMonth() == 2) { %>
+                          Maret 
+                      <% } else if (user.opendate.getMonth() == 3) { %>
+                          April 
+                      <% } else if (user.opendate.getMonth() == 4) { %>
+                          Mei 
+                      <% } else if (user.opendate.getMonth() == 5) { %>
+                          Juni 
+                      <% } else if (user.opendate.getMonth() == 6) { %>
+                          Juli 
+                      <% } else if (user.opendate.getMonth() == 7) { %>
+                          Agustus 
+                      <% } else if (user.opendate.getMonth() == 8) { %>
+                          September 
+                      <% } else if (user.opendate.getMonth() == 9) { %>
+                          Oktober 
+                      <% } else if (user.opendate.getMonth() == 10) { %>
+                          November 
+                      <% } else if (user.opendate.getMonth() == 11) { %>
+                          Desember 
+                      <% } %> 
+                      <%=user.opendate.getFullYear()%>
+                      s/d
+                      <%=user.closedate.getDate()%> 
+                      <% if (user.closedate.getMonth() == 0) { %>
+                          Januari 
+                      <% } else if (user.closedate.getMonth() == 1) { %>
+                          Februari 
+                      <% } else if (user.closedate.getMonth() == 2) { %>
+                          Maret 
+                      <% } else if (user.closedate.getMonth() == 3) { %>
+                          April 
+                      <% } else if (user.closedate.getMonth() == 4) { %>
+                          Mei 
+                      <% } else if (user.closedate.getMonth() == 5) { %>
+                          Juni 
+                      <% } else if (user.closedate.getMonth() == 6) { %>
+                          Juli 
+                      <% } else if (user.closedate.getMonth() == 7) { %>
+                          Agustus 
+                      <% } else if (user.closedate.getMonth() == 8) { %>
+                          September 
+                      <% } else if (user.closedate.getMonth() == 9) { %>
+                          Oktober 
+                      <% } else if (user.closedate.getMonth() == 10) { %>
+                          November 
+                      <% } else if (user.closedate.getMonth() == 11) { %>
+                          Desember 
+                      <% } %> 
+                      <%=user.closedate.getFullYear()%>
+                  </p>
+                <% } %>
+                   
+                <% if (user.testdate != null) { %>
+                    <h3 style="color: white; line-height: 1em;">Tanggal USM Anda:</h3>
+                    <h3 style="color: yellow; line-height: 1em;">
+                        <% if (user.testdate.getDay() == 1) { %>
+                            Senin, 
+                        <% } else if (user.testdate.getDay() == 2) { %>
+                            Selasa, 
+                        <% } else if (user.testdate.getDay() == 3) { %>
+                            Rabu, 
+                        <% } else if (user.testdate.getDay() == 4) { %>
+                            Kamis, 
+                        <% } else if (user.testdate.getDay() == 5) { %>
+                            Jumat, 
+                        <% } else if (user.testdate.getDay() == 6) { %>
+                            Sabtu, 
+                        <% } %>
+                        <%=user.testdate.getDate()%> 
+                        <% if (user.testdate.getMonth() == 0) { %>
+                            Januari 
+                        <% } else if (user.testdate.getMonth() == 1) { %>
+                            Februari 
+                        <% } else if (user.testdate.getMonth() == 2) { %>
+                            Maret 
+                        <% } else if (user.testdate.getMonth() == 3) { %>
+                            April 
+                        <% } else if (user.testdate.getMonth() == 4) { %>
+                            Mei 
+                        <% } else if (user.testdate.getMonth() == 5) { %>
+                            Juni 
+                        <% } else if (user.testdate.getMonth() == 6) { %>
+                            Juli 
+                        <% } else if (user.testdate.getMonth() == 7) { %>
+                            Agustus 
+                        <% } else if (user.testdate.getMonth() == 8) { %>
+                            September 
+                        <% } else if (user.testdate.getMonth() == 9) { %>
+                            Oktober 
+                        <% } else if (user.testdate.getMonth() == 10) { %>
+                            November 
+                        <% } else if (user.testdate.getMonth() == 11) { %>
+                            Desember 
+                        <% } %> 
+                        <%=user.testdate.getFullYear()%>    
+                    </h3>
+                <% } else { %>
+                    <p>
+                     Tanggal Ujian Saringan Masuk:
+                     <br>06 Agustus 2016 - 20 Agustus 2016 - 03 September 2016 - 17 September 2016
+                     <br>01 Oktober 2016 - 15 Oktober 2016 - 29 Oktober 2016 - 12 November 2016
+                   </p>
+                <% } %>
+               <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+                   
+                   <form id="newsletter" class="formNewsletter nm" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
+                       
+                       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 215px;">
+                        <ul class="nav navbar-nav navbar-right" style="margin-left: 0px;">
+                            <% if(!session.authenticated) { %>
+                           <a class="nav-button" data-src="features" href="#features">
+                                <button class="btn btn-large" type="button">Tell Me How</button>
+                            </a>
+                           <% } %>
+                        </ul>
+                       </div>
+                   </form>
+               </div>
+              
+           </div>
+           
+       </section>
+       
+          <section id="features" class="features generic">
+              <div class="container text-center">
+                    <h1 style=" font-size: 3em; line-height: 1em;">Ikuti langkah-langkah di bawah ini.</h1>
+                  <div class="row" style="padding-left: 160px;">
+                      
+                      <article class="item col-sm-3 " style="margin-top: 50px; margin-left: 150px;">
+                          <a href="/user/dashboard" style="width: 64px;"><img class="icon-users" src="/img/features-03.png" alt="//" width="64px" height="64px" style="width: 64px; height: 64px; "></a>
+                          <a class="external" href="/user/dashboard"><h2>Isi profil dan pilih tingkatan</h2></a>
+                          <p>Pertama, isi profil tentang dirimu, pilih tingkatan pendidikan yang ingin kamu ambil dan terakhir unggah dokumen-dokumen yang dibutuhkan di menu <a class="external" href="/user/dashboard">PENDAFTARAN DAN CEK STATUS</a></p>
+                      </article>
+                      <article class="item col-sm-3 " style="margin-top: 50px; margin-right: 15px; margin-left: 15px;">
+                          <a href="/user/test" style="width: 64px;"><img class="icon-book-open" src="/img/features-04.png" alt="//" width="64px" height="64px" style="width: 64px; height: 64px; "></a>
+                          <a class="external" href="/user/test"><h2>Ujian Saringan Masuk</h2></a>
+                          <p>Kemudian, kamu bisa memeriksa jadwal ujian saringan masuk, mencetak kartu ujian saringan masuk kamu, serta memeriksa hasil ujian saringan masuk kamu di menu <a class="external" href="/user/test">UJIAN SARINGAN MASUK</a>.</p>
+                      </article>
+                      
+                  </div>
+              </div>
+          </section>
+          
+    <svg preserveAspectRatio="none" viewBox="0 0 100 100" height="180" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" id="curveUpColor">
+        <path d="M0 100 C 20 0 50 0 100 100 Z"/>
+    </svg>
+    
+    <section id="information" class="information generic">
+        <div class="container text-center">
+            <div class="row">
+                <h1 style=" font-size: 3em; line-height: 1em;">Tentang Sekolah Kami</h1>
+
+                <article class="item col-xs-12 col-sm-6 col-lg-12 ">
+                    <a class="icon col-sm-12 col-lg-5" href="#"><img class="icon-monitor" src="/img/a.png" alt="//"></a>
+                    <div class="col-sm-12 col-lg-7 info_text">
+                        <h2>Temanis Baru School</h2>
+                        <h3>Didirikan pada tahun 1995.</h3>
+                        <p align="justify">
+                            Temanis Baru School merupakan sebuah sekolah yang didirikan oleh Yayasan Temanis Baru Foundation.
+                            Sekolah ini didirikan atas ide Bapak Prof. Dr. Jastian Leonardo yang melihat begitu banyak anak-anak yang putus sekolah karena biaya pendidikan yang terlalu mahal. Sekolah ini berniat menerima siapapun murid yang memiliki
+                            niat belajar yang tinggi dan akan memberikan beasiswa bagi murid yang berprestasi.
+                            
+                            <br>
+                            <br>
+                            Fasilitas: Lapangan Bola, Lapangan Basket, Lapangan Badminton, Kolam Renang, Laboratorium, Kantin, & Perpustakaan.
+                        </p>
+                        <p>
+
+                        </p>
+                    </div>
+                </article>
+              
+            </div>
+        </div>
+    </section>
